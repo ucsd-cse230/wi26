@@ -1,0 +1,22 @@
+name:                cse230-code
+version:             0.1.0.0
+github:              "ucsd-cse230/web"
+license:             MIT
+author:              "Ranjit Jhala"
+maintainer:          "jhala@cs.ucsd.edu"
+copyright:           "2020 Ranjit Jhala"
+
+extra-source-files:
+- README.md
+
+dependencies:
+- base >= 4.7 && < 5
+- process 
+- directory 
+- filepath
+- containers
+- unordered-containers
+- mtl
+
+library:
+  source-dirs: src

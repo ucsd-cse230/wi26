@@ -1,0 +1,3 @@
+eval ex1:
+  (\x -> x) apple     
+  =b> apple

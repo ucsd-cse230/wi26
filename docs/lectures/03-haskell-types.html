@@ -1,0 +1,1172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 230">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse230.github.io/fa23/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse230</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse230.github.io/fa23/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 230" />
+    <meta property="og:site_name" content="UCSD CSE 230" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse230.github.io/fa23" id="blog-title-left-top">cse230</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://ucsd-cse230.github.io/fa23/calendar.html">Calendar</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/ln3oae6zy584n9" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/48988" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse230.github.io/fa23/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/ln3oae6zy584n9" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/48988" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse230.github.io/fa23/static/img/sea.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Haskell Crash Course Part II</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="recap-haskell-crash-course-ii">Recap: Haskell Crash Course II</h2>
+<p><img src="../static/img/trinity.png" id="fig:types" class="align-center" style="width:60.0%" /></p>
+<ul>
+<li>Core program element is an <strong>expression</strong></li>
+<li>Every <em>valid</em> expression has a <strong>type</strong> (determined at compile-time)</li>
+<li>Every <em>valid</em> expression reduces to a <em>value</em> (computed at run-time)</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="recap-haskell">Recap: Haskell</h2>
+<p><strong>Basic values &amp; operators</strong></p>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">Int</span></code>, <code class="sourceCode haskell"><span class="dt">Bool</span></code>, <code class="sourceCode haskell"><span class="dt">Char</span></code>, <code class="sourceCode haskell"><span class="dt">Double</span></code></li>
+<li><code class="sourceCode haskell"><span class="op">+</span></code>, <code class="sourceCode haskell"><span class="op">-</span></code>, <code class="sourceCode haskell"><span class="op">==</span></code>, <code class="sourceCode haskell"><span class="op">/=</span></code></li>
+</ul>
+<p><strong>Execution / Function Calls</strong></p>
+<ul>
+<li>Just <em>substitute equals by equals</em></li>
+</ul>
+<p><strong>Producing Collections</strong></p>
+<ul>
+<li>Pack data into <em>tuples</em> &amp; <em>lists</em></li>
+</ul>
+<p><strong>Consuming Collections</strong></p>
+<ul>
+<li>Unpack data via <em>pattern-matching</em></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="next-creating-and-using-new-data-types">Next: Creating and Using New Data Types</h2>
+<ol type="1">
+<li><p><code class="sourceCode haskell"><span class="kw">type</span></code> Synonyms: <em>Naming</em> existing types</p></li>
+<li><p><code class="sourceCode haskell"><span class="kw">data</span></code> types: <em>Creating</em> new types</p></li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="type-synonyms">Type Synonyms</h2>
+<p>Synonyms are just names (“aliases”) for existing types</p>
+<ul>
+<li>think <code class="sourceCode haskell">typedef</code> in <code class="sourceCode haskell"><span class="dt">C</span></code></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-type-to-represent-circle">A type to represent <code class="sourceCode haskell"><span class="dt">Circle</span></code></h2>
+<p>A tuple <code class="sourceCode haskell">(x, y, r)</code> is a <em>circle</em> with center at <code class="sourceCode haskell">(x, y)</code> and radius <code class="sourceCode haskell">r</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Circle</span> <span class="ot">=</span> (<span class="dt">Double</span>, <span class="dt">Double</span>, <span class="dt">Double</span>)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-type-to-represent-cuboid">A type to represent <code class="sourceCode haskell"><span class="dt">Cuboid</span></code></h2>
+<p>A tuple <code class="sourceCode haskell">(<span class="fu">length</span>, depth, height)</code> is a <em>cuboid</em></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Cuboid</span> <span class="ot">=</span> (<span class="dt">Double</span>, <span class="dt">Double</span>, <span class="dt">Double</span>)</span></code></pre></div>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Cuboid.png" id="fig:cuboid" class="align-center" style="width:60.0%" /></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="using-type-synonyms">Using Type Synonyms</h2>
+<p>We can now use synonyms by creating values of the given types</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">circ0 ::</span> <span class="dt">Circle</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>circ0 <span class="ot">=</span> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">100</span>)  <span class="co">-- ^ circle at &quot;origin&quot; with radius 100</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ot">cub0 ::</span> <span class="dt">Cuboid</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cub0 <span class="ot">=</span> (<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)  <span class="co">-- ^ cuboid with length=10, depth=20, height=30 </span></span></code></pre></div>
+<p>And we can write functions over synonyms too</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">area ::</span> <span class="dt">Circle</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>area (x, y, r) <span class="ot">=</span> <span class="fu">pi</span> <span class="op">*</span> r <span class="op">*</span> r  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">volume ::</span> <span class="dt">Cuboid</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>volume (l, d, h) <span class="ot">=</span> l <span class="op">*</span> d <span class="op">*</span> h </span></code></pre></div>
+<p>We should get this behavior</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> area circ0 </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fl">31415.926535897932</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> volume cub0</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dv">6000</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>Suppose we have the definitions</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Circle</span> <span class="ot">=</span> (<span class="dt">Double</span>, <span class="dt">Double</span>, <span class="dt">Double</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Cuboid</span> <span class="ot">=</span> (<span class="dt">Double</span>, <span class="dt">Double</span>, <span class="dt">Double</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ot">circ0 ::</span> <span class="dt">Circle</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>circ0 <span class="ot">=</span> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">100</span>)  <span class="co">-- ^ circle at &quot;origin&quot; with radius 100</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ot">cub0 ::</span> <span class="dt">Cuboid</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>cub0 <span class="ot">=</span> (<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)  <span class="co">-- ^ cuboid with length=10, depth=20, height=30 </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ot">area ::</span> <span class="dt">Circle</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>area (x, y, r) <span class="ot">=</span> <span class="fu">pi</span> <span class="op">*</span> r <span class="op">*</span> r  </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ot">volume ::</span> <span class="dt">Cuboid</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>volume (l, d, h) <span class="ot">=</span> l <span class="op">*</span> d <span class="op">*</span> h</span></code></pre></div>
+<p>What is the result of</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> volume circ0</span></code></pre></div>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dv">0</span></code></p>
+<p><strong>B.</strong> Type error</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="beware">Beware!</h2>
+<p>Type Synonyms</p>
+<ul>
+<li><p>Do not <em>create</em> new types</p></li>
+<li><p>Just <em>name</em> existing types</p></li>
+</ul>
+<p>And hence, synonyms</p>
+<ul>
+<li>Do not prevent <em>confusing</em> different values</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="creating-new-data-types">Creating <em>New</em> Data Types</h2>
+<p>We can avoid mixing up by creating <em>new</em> <code class="sourceCode haskell"><span class="kw">data</span></code> types</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | A new type `CircleT` with constructor `MkCircle`</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">CircleT</span> <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span>     </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- | A new type `CuboidT` with constructor `MkCuboid`</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">CuboidT</span> <span class="ot">=</span> <span class="dt">MkCuboid</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span></span></code></pre></div>
+<h3 id="constructors-are-the-only-way-to-create-values">Constructors are the <strong>only way</strong> to create values</h3>
+<ul>
+<li><p><code class="sourceCode haskell"><span class="dt">MkCircle</span></code> creates <code class="sourceCode haskell"><span class="dt">CircleT</span></code></p></li>
+<li><p><code class="sourceCode haskell"><span class="dt">MkCuboid</span></code> creates <code class="sourceCode haskell"><span class="dt">CuboidT</span></code></p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-1">QUIZ</h2>
+<p>Suppose we create a new type with a <code class="sourceCode haskell"><span class="kw">data</span></code> definition</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | A new type `CircleT` with constructor `MkCircle`</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">CircleT</span> <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span>     </span></code></pre></div>
+<p>What is the <strong>type of</strong> the <code class="sourceCode haskell"><span class="dt">MkCircle</span></code> <em>constructor</em>?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">MkCircle</span><span class="ot"> ::</span> <span class="dt">CircleT</span></code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">MkCircle</span><span class="ot"> ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">CircleT</span></code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dt">MkCircle</span><span class="ot"> ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">CircleT</span></code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">MkCircle</span><span class="ot"> ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">CircleT</span></code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">MkCircle</span><span class="ot"> ::</span> (<span class="dt">Double</span>, <span class="dt">Double</span>, <span class="dt">Double</span>) <span class="ot">-&gt;</span> <span class="dt">CircleT</span></code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="constructing-data">Constructing Data</h2>
+<p>Constructors let us <em>build</em> values of the new type</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ot">circ1 ::</span> <span class="dt">CircleT</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>circ1 <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">100</span>  <span class="co">-- ^ circle at &quot;origin&quot; w/ radius 100</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ot">cub1 ::</span> <span class="dt">Cuboid</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>cub1 <span class="ot">=</span> <span class="dt">MkCuboid</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span>  <span class="co">-- ^ cuboid w/ len=10, dep=20, ht=30 </span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-2">QUIZ</h2>
+<p>Suppose we have the definitions</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">CuboidT</span> <span class="ot">=</span> <span class="dt">MkCuboid</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span>     </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Cuboid</span>  <span class="ot">=</span> (<span class="dt">Double</span>, <span class="dt">Double</span>, <span class="dt">Double</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ot">volume ::</span> <span class="dt">Cuboid</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>volume (l, d, h) <span class="ot">=</span> l <span class="op">*</span> d <span class="op">*</span> h</span></code></pre></div>
+<p>What is the result of</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> volume (<span class="dt">MkCuboid</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span>)</span></code></pre></div>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dv">6000</span></code></p>
+<p><strong>B.</strong> Type error</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="deconstructing-data">Deconstructing Data</h2>
+<p>Constructors let us <em>build</em> values of new type … but how to <em>use</em> those values?</p>
+<p>How can we implement a function</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ot">volume ::</span> <span class="dt">Cuboid</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>volume c <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p>such that</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> volume (<span class="dt">MkCuboid</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dv">6000</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="deconstructing-data-by-pattern-matching">Deconstructing Data by Pattern Matching</h2>
+<p>Haskell lets us <em>deconstruct</em> data via pattern-matching</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ot">volume ::</span> <span class="dt">Cuboid</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>volume c <span class="ot">=</span> <span class="kw">case</span> c <span class="kw">of</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>             <span class="dt">MkCuboid</span> l d h <span class="ot">-&gt;</span> l <span class="op">*</span> d <span class="op">*</span> h</span></code></pre></div>
+<p><code class="sourceCode haskell"><span class="kw">case</span> e <span class="kw">of</span> <span class="dt">Ctor</span> x y z <span class="ot">-&gt;</span> e1</code> is read as as</p>
+<p><strong>IF</strong>
+- <code class="sourceCode haskell">e</code> evaluates to a value that <em>matches the pattern</em> <code class="sourceCode haskell"><span class="dt">Ctor</span> vx vy vz</code></p>
+<p><strong>THEN</strong>
+- evaluate <code class="sourceCode haskell">e1</code> after naming <code class="sourceCode haskell">x <span class="op">:=</span> vx</code>, <code class="sourceCode haskell">y <span class="op">:=</span> vy</code>, <code class="sourceCode haskell">z <span class="op">:=</span> vz</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="pattern-matching-on-function-inputs">Pattern matching on Function Inputs</h2>
+<p>Very common to do matching on function inputs</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ot">volume ::</span> <span class="dt">Cuboid</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>volume c <span class="ot">=</span> <span class="kw">case</span> c <span class="kw">of</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>            <span class="dt">MkCuboid</span> l d h <span class="ot">-&gt;</span> l <span class="op">*</span> d <span class="op">*</span> h</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ot">area ::</span> <span class="dt">Circle</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>area a  <span class="ot">=</span> <span class="kw">case</span> a <span class="kw">of</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>            <span class="dt">MkCircle</span> x y r <span class="ot">-&gt;</span> <span class="fu">pi</span> <span class="op">*</span> r <span class="op">*</span> r</span></code></pre></div>
+<p>So Haskell allows a nicer syntax: <em>patterns in the arguments</em></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ot">volume ::</span> <span class="dt">Cuboid</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>volume (<span class="dt">MkCuboid</span> l d h) <span class="ot">=</span> l <span class="op">*</span> d <span class="op">*</span> h</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ot">area ::</span> <span class="dt">Circle</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>area (<span class="dt">MkCircle</span> x y r) <span class="ot">=</span> <span class="fu">pi</span> <span class="op">*</span> r <span class="op">*</span> r</span></code></pre></div>
+<p>Nice syntax <em>plus</em> the compiler saves us from <em>mixing up</em> values!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="but-what-if-we-need-to-mix-up-values">But … what if we <em>need</em> to mix up values?</h2>
+<p>Suppose I need to represent a <em>list of shapes</em></p>
+<ul>
+<li>Some <code class="sourceCode haskell"><span class="dt">Circle</span></code>s</li>
+<li>Some <code class="sourceCode haskell"><span class="dt">Cuboid</span></code>s</li>
+</ul>
+<p>What is the problem with <code class="sourceCode haskell">shapes</code> as defined below?</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>shapes <span class="ot">=</span> [circ1, cub1]</span></code></pre></div>
+<p>Where we have defined</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ot">circ1 ::</span> <span class="dt">CircleT</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>circ1 <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">100</span>  <span class="co">-- ^ circle at &quot;origin&quot; with radius 100</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="ot">cub1 ::</span> <span class="dt">Cuboid</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>cub1 <span class="ot">=</span> <span class="dt">MkCuboid</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span>  <span class="co">-- ^ cuboid with length=10, depth=20, height=30 </span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="problem-all-list-elements-must-have-the-same-type">Problem: All list elements must have the <em>same</em> type</h2>
+<p><strong>Solution???</strong></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-variant-aka-union-types">QUIZ: Variant (aka Union) Types</h2>
+<p>Lets create a <em>single</em> type that can represent <em>both</em> kinds of shapes!</p>
+<p><br></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Shape</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span>   <span class="co">-- ^ Circle at x, y with radius r </span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkCuboid</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span>   <span class="co">-- ^ Cuboid with length, depth, height</span></span></code></pre></div>
+<p><br></p>
+<p>What is the type of <code class="sourceCode haskell"><span class="dt">MkCircle</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">100</span></code> ?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Shape</span></code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Circle</span></code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell">(<span class="dt">Double</span>, <span class="dt">Double</span>, <span class="dt">Double</span>)</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="each-data-constructor-of-shape-has-a-different-type">Each <em>Data Constructor</em> of <code class="sourceCode haskell"><span class="dt">Shape</span></code> has a different type</h2>
+<p>When we define a data type like the below</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Shape</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">MkCircle</span>  <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span>   <span class="co">-- ^ Circle at x, y with radius r </span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkCuboid</span>  <span class="dt">Double</span> <span class="dt">Double</span> <span class="dt">Double</span>   <span class="co">-- ^ Cuboid with length, depth, height</span></span></code></pre></div>
+<p>We get <em>multiple constructors</em> for <code class="sourceCode haskell"><span class="dt">Shape</span></code></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">MkCircle</span><span class="ot"> ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Shape</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="dt">MkCuboid</span><span class="ot"> ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Shape</span></span></code></pre></div>
+<h2 id="now-we-can-create-collections-of-shape">Now we can create collections of <code class="sourceCode haskell"><span class="dt">Shape</span></code></h2>
+<p>Now we can define</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ot">circ2 ::</span> <span class="dt">Shape</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>circ2 <span class="ot">=</span> <span class="dt">MkCircle</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">100</span>  <span class="co">-- ^ circle at &quot;origin&quot; with radius 100</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ot">cub2 ::</span> <span class="dt">Shape</span> </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>cub2 <span class="ot">=</span> <span class="dt">MkCuboid</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span>  <span class="co">-- ^ cuboid with length=10, depth=20, height=30 </span></span></code></pre></div>
+<p>and then define collections of <code class="sourceCode haskell"><span class="dt">Shape</span></code>s</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ot">shapes ::</span> [<span class="dt">Shape</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>shapes <span class="ot">=</span> [circ1, cub1]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise">EXERCISE</h2>
+<p>Lets define a type for 2D shapes</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Shape2D</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">MkRect</span> <span class="dt">Double</span> <span class="dt">Double</span> <span class="co">-- ^ 'MkRect w h' is a rectangle with width 'w', height 'h'</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkCirc</span> <span class="dt">Double</span>        <span class="co">-- ^ 'MkCirc r' is a circle with radius 'r'</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkPoly</span> [<span class="dt">Vertex</span>]      <span class="co">-- ^ 'MkPoly [v1,...,vn]' is a polygon with vertices at 'v1...vn'</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Vertex</span> <span class="ot">=</span> (<span class="dt">Double</span>, <span class="dt">Double</span>)</span></code></pre></div>
+<p>Write a function to compute the <code class="sourceCode haskell">area</code> of a <code class="sourceCode haskell"><span class="dt">Shape2D</span></code></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ot">area2D ::</span> <span class="dt">Shape2D</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>area2D s <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>HINT</strong></p>
+<figure>
+<img src="../static/img/area-polygon.png" id="fig:polygon" class="align-center" style="width:60.0%" alt="Area of a polygon" />
+<figcaption aria-hidden="true">Area of a polygon</figcaption>
+</figure>
+<p>You may want to use this helper that computes the area of a triangle at <code class="sourceCode haskell">v1</code>, <code class="sourceCode haskell">v2</code>, <code class="sourceCode haskell">v3</code></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ot">areaTriangle ::</span> <span class="dt">Vertex</span> <span class="ot">-&gt;</span> <span class="dt">Vertex</span> <span class="ot">-&gt;</span> <span class="dt">Vertex</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>areaTriangle v1 v2 v3 <span class="ot">=</span> <span class="fu">sqrt</span> (s <span class="op">*</span> (s <span class="op">-</span> s1) <span class="op">*</span> (s <span class="op">-</span> s2) <span class="op">*</span> (s <span class="op">-</span> s3))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>      s  <span class="ot">=</span> (s1 <span class="op">+</span> s2 <span class="op">+</span> s3) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>      s1 <span class="ot">=</span> distance v1 v2 </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>      s2 <span class="ot">=</span> distance v2 v3</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>      s3 <span class="ot">=</span> distance v3 v1</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="ot">distance ::</span> <span class="dt">Vertex</span> <span class="ot">-&gt;</span> <span class="dt">Vertex</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>distance (x1, y1) (x2, y2) <span class="ot">=</span> <span class="fu">sqrt</span> ((x2 <span class="op">-</span> x1) <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> (y2 <span class="op">-</span> y1) <span class="op">**</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="polymorphic-data-structures">Polymorphic Data Structures</h2>
+<p>Next, lets see <strong>polymorphic data types</strong></p>
+<p>which <strong>contain</strong> many kinds of values.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="recap-data-types">Recap: Data Types</h2>
+<p>Recall that Haskell allows you to create brand <a href="03-haskell-types.html">new data types</a></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Shape</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">MkRect</span>  <span class="dt">Double</span> <span class="dt">Double</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkPoly</span> [(<span class="dt">Double</span>, <span class="dt">Double</span>)]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-3">QUIZ</h2>
+<p>What is the type of <code class="sourceCode haskell"><span class="dt">MkRect</span></code> ?</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Shape</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">MkRect</span>  <span class="dt">Double</span> <span class="dt">Double</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">MkPoly</span> [(<span class="dt">Double</span>, <span class="dt">Double</span>)]</span></code></pre></div>
+<p><strong>a.</strong> <code class="sourceCode haskell"><span class="dt">Shape</span></code></p>
+<p><strong>b.</strong> <code class="sourceCode haskell"><span class="dt">Double</span></code></p>
+<p><strong>c.</strong> <code class="sourceCode haskell"><span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Shape</span></code></p>
+<p><strong>d.</strong> <code class="sourceCode haskell">(<span class="dt">Double</span>, <span class="dt">Double</span>) <span class="ot">-&gt;</span> <span class="dt">Shape</span></code></p>
+<p><strong>e.</strong> <code class="sourceCode haskell">[(<span class="dt">Double</span>, <span class="dt">Double</span>)] <span class="ot">-&gt;</span> <span class="dt">Shape</span></code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="tagged-boxes">Tagged Boxes</h2>
+<p>Values of this type are either two doubles <em>tagged</em> with <code class="sourceCode haskell"><span class="dt">Rectangle</span></code></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span><span class="kw">type</span> (<span class="dt">Rectangle</span> <span class="fl">4.5</span> <span class="fl">1.2</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Rectangle</span> <span class="fl">4.5</span> <span class="fl">1.2</span>)<span class="ot"> ::</span> <span class="dt">Shape</span></span></code></pre></div>
+<p>or a list of pairs of <code class="sourceCode haskell"><span class="dt">Double</span></code> values <em>tagged</em> with <code class="sourceCode haskell"><span class="dt">Polygon</span></code></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ghci<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> (<span class="dt">Polygon</span> [(<span class="dv">1</span>, <span class="dv">1</span>), (<span class="dv">2</span>, <span class="dv">2</span>), (<span class="dv">3</span>, <span class="dv">3</span>)])</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>(<span class="dt">Polygon</span> [(<span class="dv">1</span>, <span class="dv">1</span>), (<span class="dv">2</span>, <span class="dv">2</span>), (<span class="dv">3</span>, <span class="dv">3</span>)])<span class="ot"> ::</span> <span class="dt">Shape</span></span></code></pre></div>
+<h3 id="data-values-inside-special-tagged-boxes">Data values inside special <strong>Tagged Boxes</strong></h3>
+<figure>
+<img src="../static/img/lec4_boxed.png" alt="Datatypes are Boxed-and-Tagged Values" />
+<figcaption aria-hidden="true">Datatypes are Boxed-and-Tagged Values</figcaption>
+</figure>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="recursive-data-types"><em>Recursive</em> Data Types</h2>
+<p>We can define datatypes <em>recursively</em> too</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IntList</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">INil</span>                <span class="co">-- ^ empty list</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">ICons</span> <span class="dt">Int</span> <span class="dt">IntList</span>   <span class="co">-- ^ list with &quot;hd&quot; Int and &quot;tl&quot; IntList</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p>(Ignore the bit about <code class="sourceCode haskell"><span class="kw">deriving</span></code> for now.)</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-4">QUIZ</h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IntList</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">INil</span>                <span class="co">-- ^ empty list</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">ICons</span> <span class="dt">Int</span> <span class="dt">IntList</span>   <span class="co">-- ^ list with &quot;hd&quot; Int and &quot;tl&quot; IntList</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p>What is the type of <code class="sourceCode haskell"><span class="dt">ICons</span></code> ?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">List</span></code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">IntList</span></code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span></code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">List</span>    <span class="ot">-&gt;</span> <span class="dt">IntList</span></code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span></code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="constructing-intlist">Constructing <code class="sourceCode haskell"><span class="dt">IntList</span></code></h2>
+<p>Can <em>only</em> build <code class="sourceCode haskell"><span class="dt">IntList</span></code> via constructors.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span><span class="kw">type</span> <span class="dt">INil</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="dt">INil</span><span class="ot">::</span> <span class="dt">IntList</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span><span class="kw">type</span> <span class="dt">ICons</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="dt">ICons</span><span class="ot"> ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span> <span class="ot">-&gt;</span> <span class="dt">IntList</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-1">EXERCISE</h2>
+<p>Write down a representation of type <code class="sourceCode haskell"><span class="dt">IntList</span></code> of the list of three numbers <code class="sourceCode haskell"><span class="dv">1</span></code>, <code class="sourceCode haskell"><span class="dv">2</span></code> and <code class="sourceCode haskell"><span class="dv">3</span></code>.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list_1_2_3 ::</span> <span class="dt">IntList</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>list_1_2_3 <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>Hint</strong> Recursion means boxes <em>within</em> boxes</p>
+<figure>
+<img src="../static/img/lec4_nested.png" alt="Recursively Nested Boxes" />
+<figcaption aria-hidden="true">Recursively Nested Boxes</figcaption>
+</figure>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="trees-multiple-recursive-occurrences">Trees: Multiple Recursive Occurrences</h2>
+<p>We can represent <code class="sourceCode haskell"><span class="dt">Int</span></code> <em>trees</em> like</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IntTree</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>   <span class="ot">=</span> <span class="dt">ILeaf</span> <span class="dt">Int</span>              <span class="co">-- ^ single &quot;leaf&quot; w/ an Int</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span> <span class="dt">INode</span> <span class="dt">IntTree</span> <span class="dt">IntTree</span>  <span class="co">-- ^ internal &quot;node&quot; w/ 2 sub-trees</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p>A <em>leaf</em> is a box containing an <code class="sourceCode haskell"><span class="dt">Int</span></code> tagged <code class="sourceCode haskell"><span class="dt">ILeaf</span></code> e.g.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> it1  <span class="ot">=</span> <span class="dt">ILeaf</span> <span class="dv">1</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> it2  <span class="ot">=</span> <span class="dt">ILeaf</span> <span class="dv">2</span></span></code></pre></div>
+<p>A <em>node</em> is a box containing two sub-trees tagged <code class="sourceCode haskell"><span class="dt">INode</span></code> e.g. </p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> itt   <span class="ot">=</span> <span class="dt">INode</span> (<span class="dt">ILeaf</span> <span class="dv">1</span>) (<span class="dt">ILeaf</span> <span class="dv">2</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> itt'  <span class="ot">=</span> <span class="dt">INode</span> itt itt</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="dt">INode</span> itt' itt'</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="dt">INode</span> (<span class="dt">INode</span> (<span class="dt">ILeaf</span> <span class="dv">1</span>) (<span class="dt">ILeaf</span> <span class="dv">2</span>)) (<span class="dt">INode</span> (<span class="dt">ILeaf</span> <span class="dv">1</span>) (<span class="dt">ILeaf</span> <span class="dv">2</span>))</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="multiple-branching-factors">Multiple Branching Factors</h2>
+<p>e.g. <a href="http://en.wikipedia.org/wiki/2-3_tree">2-3 trees</a></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Int23T</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">ILeaf0</span> </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">INode2</span> <span class="dt">Int</span> <span class="dt">Int23T</span> <span class="dt">Int23T</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">INode3</span> <span class="dt">Int</span> <span class="dt">Int23T</span> <span class="dt">Int23T</span> <span class="dt">Int23T</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p>An example value of type <code class="sourceCode haskell"><span class="dt">Int23T</span></code> would be</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ot">i23t ::</span> <span class="dt">Int23T</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>i23t <span class="ot">=</span> <span class="dt">INode3</span> <span class="dv">0</span> t t t</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span> t <span class="ot">=</span> <span class="dt">INode2</span> <span class="dv">1</span> <span class="dt">ILeaf0</span> <span class="dt">ILeaf0</span></span></code></pre></div>
+<p>which looks like</p>
+<figure>
+<img src="../static/img/lec4_int23t.png" alt="Integer 2-3 Tree" />
+<figcaption aria-hidden="true">Integer 2-3 Tree</figcaption>
+</figure>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="parameterized-types">Parameterized Types</h2>
+<p>We can define <code class="sourceCode haskell"><span class="dt">CharList</span></code> or <code class="sourceCode haskell"><span class="dt">DoubleList</span></code>
+- versions of <code class="sourceCode haskell"><span class="dt">IntList</span></code> for <code class="sourceCode haskell"><span class="dt">Char</span></code> and <code class="sourceCode haskell"><span class="dt">Double</span></code> as</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">CharList</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">CNil</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">CCons</span> <span class="dt">Char</span> <span class="dt">CharList</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">DoubleList</span> </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>   <span class="ot">=</span> <span class="dt">DNil</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span> <span class="dt">DCons</span> <span class="dt">Char</span> <span class="dt">DoubleList</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>   <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="dont-repeat-yourself">Don’t Repeat Yourself!</h2>
+<p>Don’t repeat definitions
+- Instead <em>reuse</em> the list <em>structure</em> across <em>all</em> types!</p>
+<p>Find abstract <em>data</em> patterns by</p>
+<ul>
+<li>identifying the <em>different</em> parts and</li>
+<li>refactor those into <em>parameters</em></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-refactored-list">A Refactored List</h2>
+<p>Here are the three types: What is common? What is different?</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">IList</span> <span class="ot">=</span> <span class="dt">INil</span> <span class="op">|</span> <span class="dt">ICons</span> <span class="dt">Int</span>    <span class="dt">IList</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">CList</span> <span class="ot">=</span> <span class="dt">CNil</span> <span class="op">|</span> <span class="dt">CCons</span> <span class="dt">Char</span>   <span class="dt">CList</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">DList</span> <span class="ot">=</span> <span class="dt">DNil</span> <span class="op">|</span> <span class="dt">DCons</span> <span class="dt">Double</span> <span class="dt">DList</span></span></code></pre></div>
+<p><strong>Common:</strong> <code class="sourceCode haskell"><span class="dt">Nil</span></code>/<code class="sourceCode haskell"><span class="dt">Cons</span></code> structure</p>
+<p><strong>Different:</strong> type of each “head” element</p>
+<h3 id="refactored-using-type-parameter">Refactored using Type Parameter</h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">List</span> a <span class="ot">=</span> <span class="dt">Nil</span> <span class="op">|</span> <span class="dt">Cons</span> a  (<span class="dt">List</span> a)</span></code></pre></div>
+<h3 id="recover-original-types-as-instances-of-list">Recover original types as <em>instances</em> of <code class="sourceCode haskell"><span class="dt">List</span></code></h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">IntList</span>    <span class="ot">=</span> <span class="dt">List</span> <span class="dt">Int</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">CharList</span>   <span class="ot">=</span> <span class="dt">List</span> <span class="dt">Char</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">DoubleList</span> <span class="ot">=</span> <span class="dt">List</span> <span class="dt">Double</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="polymorphic-data-has-polymorphic-constructors">Polymorphic Data has Polymorphic Constructors</h2>
+<p>Look at the types of the constructors</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span><span class="kw">type</span> <span class="dt">Nil</span> </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Nil</span><span class="ot"> ::</span> <span class="dt">List</span> a</span></code></pre></div>
+<p>That is, the <code class="sourceCode haskell"><span class="dt">Empty</span></code> tag is a value of <em>any</em> kind of list, and</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span><span class="kw">type</span> <span class="dt">Cons</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Cons</span><span class="ot"> ::</span> a <span class="ot">-&gt;</span> <span class="dt">List</span> a <span class="ot">-&gt;</span> <span class="dt">List</span> a</span></code></pre></div>
+<p><code class="sourceCode haskell"><span class="dt">Cons</span></code> takes an <code class="sourceCode haskell">a</code> <em>and</em> a <code class="sourceCode haskell"><span class="dt">List</span> a</code> and returns a <code class="sourceCode haskell"><span class="dt">List</span> a</code>.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="ot">cList ::</span> <span class="dt">List</span> <span class="dt">Char</span>     <span class="co">-- list where 'a' = 'Char' </span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>cList <span class="ot">=</span> <span class="dt">Cons</span> <span class="ch">'a'</span> (<span class="dt">Cons</span> <span class="ch">'b'</span> (<span class="dt">Cons</span> <span class="ch">'c'</span> <span class="dt">Nil</span>))</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="ot">iList ::</span> <span class="dt">List</span> <span class="dt">Int</span>      <span class="co">-- list where 'a' = 'Int' </span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>iList <span class="ot">=</span> <span class="dt">Cons</span> <span class="dv">1</span> (<span class="dt">Cons</span> <span class="dv">2</span> (<span class="dt">Cons</span> <span class="dv">3</span> <span class="dt">Nil</span>))</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="ot">dList ::</span> <span class="dt">List</span> <span class="dt">Double</span>   <span class="co">-- list where 'a' = 'Double' </span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>dList <span class="ot">=</span> <span class="dt">Cons</span> <span class="fl">1.1</span> (<span class="dt">Cons</span> <span class="fl">2.2</span> (<span class="dt">Cons</span> <span class="fl">3.3</span> <span class="dt">Nil</span>))</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="polymorphic-function-over-polymorphic-data">Polymorphic Function over Polymorphic Data</h2>
+<p>Lets write the list length function</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="ot">len ::</span> <span class="dt">List</span> a <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>len <span class="dt">Nil</span>         <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>len (<span class="dt">Cons</span> x xs) <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> len xs</span></code></pre></div>
+<p><code class="sourceCode haskell">len</code> doesn’t care about the actual <em>values</em> in the list
+- only “counts” the number of <code class="sourceCode haskell"><span class="dt">Cons</span></code> constructors</p>
+<p>Hence <code class="sourceCode haskell"><span class="ot">len ::</span> <span class="dt">List</span> a <span class="ot">-&gt;</span> <span class="dt">Int</span></code></p>
+<ul>
+<li>we can call <code class="sourceCode haskell">len</code> on <strong>any kind of list</strong>.</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> len [<span class="fl">1.1</span>, <span class="fl">2.2</span>, <span class="fl">3.3</span>, <span class="fl">4.4</span>]    <span class="co">-- a := Double  </span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> len <span class="st">&quot;mmm donuts!&quot;</span>           <span class="co">-- a := Char</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="dv">11</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> len [[<span class="dv">1</span>], [<span class="dv">1</span>,<span class="dv">2</span>], [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]]   <span class="co">-- a := ???</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="built-in-lists">Built-in Lists?</h2>
+<p>This is exactly how Haskell’s “built-in” lists are defined:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> [a]    <span class="ot">=</span> [] <span class="op">|</span> (<span class="op">:</span>) a [a]</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">List</span> a <span class="ot">=</span> <span class="dt">Nil</span> <span class="op">|</span> <span class="dt">Cons</span> a (<span class="dt">List</span> a)</span></code></pre></div>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">Nil</span></code> is called <code class="sourceCode haskell">[]</code></li>
+<li><code class="sourceCode haskell"><span class="dt">Cons</span></code> is called <code class="sourceCode haskell"><span class="op">:</span></code></li>
+</ul>
+<p>Many list manipulating functions e.g. in [Data.List][1] are <em>polymorphic</em>
+- Can be reused across all kinds of lists.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ot">(++) ::</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [a]</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span><span class="ot"> ::</span> [a] <span class="ot">-&gt;</span> a</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span><span class="ot"> ::</span> [a] <span class="ot">-&gt;</span> [a]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="generalizing-other-data-types">Generalizing Other Data Types</h2>
+<p>Polymorphic trees</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Tree</span> a </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>   <span class="ot">=</span> <span class="dt">Leaf</span> a </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span> <span class="dt">Node</span> (<span class="dt">Tree</span> a) (<span class="dt">Tree</span> a) </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p>Polymorphic <em>2-3</em> trees</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Tree23</span> a </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>   <span class="ot">=</span> <span class="dt">Leaf0</span>  </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span> <span class="dt">Node2</span> (<span class="dt">Tree23</span> a) (<span class="dt">Tree23</span> a)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span> <span class="dt">Node3</span> (<span class="dt">Tree23</span> a) (<span class="dt">Tree23</span> a) (<span class="dt">Tree23</span> a)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="kinds">Kinds</h2>
+<p><code class="sourceCode haskell"><span class="dt">List</span> a</code> corresponds to <em>lists of values</em> of type <code class="sourceCode haskell">a</code>.</p>
+<p>If <code class="sourceCode haskell">a</code> is the <em>type parameter</em>, then what is <code class="sourceCode haskell"><span class="dt">List</span></code>?</p>
+<p>A <em>type-constructor</em> that
+- takes <em>as input</em> a type <code class="sourceCode haskell">a</code>
+- returns <em>as output</em> the type <code class="sourceCode haskell"><span class="dt">List</span> a</code></p>
+<p>But wait, if <code class="sourceCode haskell"><span class="dt">List</span></code> is a <em>type-constructor</em> then what is its “type”?</p>
+<ul>
+<li>A <em>kind</em> is the “type” of a type.</li>
+</ul>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span>kind <span class="dt">Int</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Int</span><span class="ot"> ::</span> <span class="op">*</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span>kind <span class="dt">Char</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Char</span><span class="ot"> ::</span> <span class="op">*</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span>kind <span class="dt">Bool</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="dt">Bool</span><span class="ot"> ::</span> <span class="op">*</span></span></code></pre></div>
+<p>Thus, <code class="sourceCode haskell"><span class="dt">List</span></code> is a function from any “type” to any other “type”, and so</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span>kind <span class="dt">List</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span><span class="ot"> ::</span> <span class="op">*</span> <span class="ot">-&gt;</span> <span class="op">*</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-5">QUIZ</h2>
+<p>What is the <em>kind</em> of <code class="sourceCode haskell"><span class="ot">-&gt;</span></code>? That, is what does GHCi say if we type</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="op">:</span>kind (<span class="ot">-&gt;</span>) </span></code></pre></div>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="op">*</span></code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="op">*</span> <span class="ot">-&gt;</span> <span class="op">*</span></code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell"><span class="op">*</span> <span class="ot">-&gt;</span> <span class="op">*</span> <span class="ot">-&gt;</span> <span class="op">*</span></code></p>
+<p>We will not dwell too much on this now.</p>
+<p>As you might imagine, they allow for all sorts of abstractions over data.</p>
+<p>If interested, see <a href="http://en.wikipedia.org/wiki/Kind_(type_theory)">this for more information about kinds</a>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse230.github.io/fa23/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse230.github.io/fa23/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/bootstrap.min.js"></script>
+<!--
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/anim.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/scripts.js"></script>
+-->
+
+
+    </body>
+</html>

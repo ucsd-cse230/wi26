@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 230">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse230.github.io/fa23/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse230</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse230.github.io/fa23/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 230" />
+    <meta property="og:site_name" content="UCSD CSE 230" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse230.github.io/fa23" id="blog-title-left-top">cse230</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://ucsd-cse230.github.io/fa23/calendar.html">Calendar</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/ln3oae6zy584n9" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/48988" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse230.github.io/fa23/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/ln3oae6zy584n9" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/48988" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse230.github.io/fa23/static/img/sea.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Haskell Crash Course Part III</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="writing-applications">Writing Applications</h2>
+<p>Lets write the classic “Hello world!” program.</p>
+<p>For example, in Python you may write:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> <span class="st">&quot;hello, world!&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>main()</span></code></pre></div>
+<p>and then you can run it:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python hello.py</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hello</span> world!</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="haskell-is-a-pure-language.">Haskell is a <strong>Pure</strong> language.</h2>
+<p>Not a <em>value</em> judgment, but a precise <em>technical</em> statement:</p>
+<p><strong>The “Immutability Principle”:</strong></p>
+<ul>
+<li><p>A function must <em>always</em> return the same output for a given input</p></li>
+<li><p>A function’s behavior should <em>never change</em></p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="no-side-effects">No Side Effects</h2>
+<p><img src="../static/img/trinity.png" id="fig:types" class="align-center" style="width:60.0%" /></p>
+<p>Haskell’s most radical idea: <code class="sourceCode haskell">expression <span class="op">=*&gt;</span> value</code></p>
+<ul>
+<li><p>When you evaluate an expression you get a value and</p></li>
+<li><p><strong>Nothing else happens</strong></p></li>
+</ul>
+<p>Specifically, evaluation must not have an <strong>side effects</strong></p>
+<ul>
+<li><p><em>change</em> a global variable or</p></li>
+<li><p><em>print</em> to screen or</p></li>
+<li><p><em>read</em> a file or</p></li>
+<li><p><em>send</em> an email or</p></li>
+<li><p><em>launch</em> a missile.</p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="but-how-to-write-hello-world">But… how to write “Hello, world!”</h2>
+<p>But, we <strong>want</strong> to …</p>
+<ul>
+<li><strong>print</strong> to screen</li>
+<li><strong>read</strong> a file</li>
+<li><strong>send</strong> an email</li>
+</ul>
+<p>Thankfully, you <em>can</em> do all the above via a very clever idea: <code class="sourceCode haskell"><span class="dt">Recipe</span></code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="recipes">Recipes</h2>
+<p><a href="https://www.seas.upenn.edu/~cis194/fall16/lectures/06-io-and-monads.html">This analogy is due to Joachim Brietner</a></p>
+<p>Haskell has a special type called <code class="sourceCode haskell"><span class="dt">IO</span></code> – which you can think of as <code class="sourceCode haskell"><span class="dt">Recipe</span></code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Recipe</span> a <span class="ot">=</span> <span class="dt">IO</span> a</span></code></pre></div>
+<p>A <em>value</em> of type <code class="sourceCode haskell"><span class="dt">Recipe</span> a</code></p>
+<ul>
+<li><p>is a <strong>description</strong> of a <em>computation</em> that can have <em>side-effects</em></p></li>
+<li><p>which <strong>when executed</strong> performs some effectful I/O operations</p></li>
+<li><p>to <strong>produce</strong> a value of type <code class="sourceCode haskell">a</code>.</p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="recipes-have-no-side-effects">Recipes have No Side Effects</h2>
+<p>A value of type <code class="sourceCode haskell"><span class="dt">Recipe</span> a</code> is</p>
+<ul>
+<li>A <strong>description</strong> of a computation that can have side-effects</li>
+</ul>
+<figure>
+<img src="../static/img/cake.png" id="fig:types" class="align-center" style="width:60.0%" alt="Cake vs. Recipe" />
+<figcaption aria-hidden="true">Cake vs. Recipe</figcaption>
+</figure>
+<p><strong>(L)</strong> chocolate <em>cake</em>, <strong>(R)</strong> a <em>sequence of instructions</em> on how to make a cake.</p>
+<p>They are different (<em>Hint</em>: only one of them is delicious.)</p>
+<p>Merely having a <code class="sourceCode haskell"><span class="dt">Recipe</span> <span class="dt">Cake</span></code> has no effects! The recipe</p>
+<ul>
+<li><p>Does not make your oven <em>hot</em></p></li>
+<li><p>Does not make your your floor <em>dirty</em></p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="only-one-way-to-execute-recipes">Only One Way to Execute Recipes</h2>
+<p>Haskell looks for a special value</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">Recipe</span> ()</span></code></pre></div>
+<p>The value associated with <code class="sourceCode haskell">main</code> is handed to the <strong>runtime system and executed</strong></p>
+<figure>
+<img src="../static/img/baker-aker.jpg" id="fig:types" class="align-center" style="width:70.0%" alt="Baker Aker" />
+<figcaption aria-hidden="true">Baker Aker</figcaption>
+</figure>
+<p>The Haskell runtime is a <em>master chef</em> who is the only one allowed to cook!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="how-to-write-an-app-in-haskell">How to write an App in Haskell</h2>
+<p>Make a <code class="sourceCode haskell"><span class="dt">Recipe</span> ()</code> that is handed off to the master chef <code class="sourceCode haskell">main</code>.</p>
+<ul>
+<li><p><code class="sourceCode haskell">main</code> can be arbitrarily complicated</p></li>
+<li><p>composed of <strong>smaller</strong> sub-recipes</p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-recipe-to-print-to-screen">A Recipe to Print to Screen</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">putStrLn</span><span class="ot"> ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> ()</span></code></pre></div>
+<p>The function <code class="sourceCode haskell"><span class="fu">putStrLn</span></code></p>
+<ul>
+<li>takes as input a <code class="sourceCode haskell"><span class="dt">String</span></code></li>
+<li>returns as output a <code class="sourceCode haskell"><span class="dt">Recipe</span> ()</code></li>
+</ul>
+<p><code class="sourceCode haskell"><span class="fu">putStrLn</span> msg</code> is a <code class="sourceCode haskell"><span class="dt">Recipe</span> ()</code>
+- <em>when executed</em> prints out <code class="sourceCode haskell">msg</code> on the screen.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ot">main ::</span> <span class="dt">Recipe</span> ()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">putStrLn</span> <span class="st">&quot;Hello, world!&quot;</span></span></code></pre></div>
+<p>… and we can compile and run it</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ghc <span class="at">--make</span> hello.hs</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> world!</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-how-to-print-multiple-things">QUIZ: How to Print Multiple Things?</h2>
+<p>Suppose I want to print <em>two</em> things e.g.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ghc <span class="at">--make</span> hello.hs</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello2</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello!</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">World!</span></span></code></pre></div>
+<p>Can we try to compile and run this:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> (<span class="fu">putStrLn</span> <span class="st">&quot;Hello!&quot;</span>, <span class="fu">putStrLn</span> <span class="st">&quot;World!&quot;</span>)</span></code></pre></div>
+<p><strong>A.</strong> Yes!</p>
+<p><strong>B.</strong> No, there is a type error!</p>
+<p><strong>C.</strong> No, it compiles but produces a different result!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-collection-of-recipes">A <em>Collection</em> of Recipes</h2>
+<p>Is just … a <em>collection</em> of Recipes!</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ot">recPair ::</span> (<span class="dt">Recipe</span> (), <span class="dt">Recipe</span> ())</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>recPair <span class="ot">=</span> (<span class="fu">putStrLn</span> <span class="st">&quot;Hello!&quot;</span>, <span class="fu">putStrLn</span> <span class="st">&quot;World!&quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ot">recList ::</span> [<span class="dt">Recipe</span> ()]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>recList <span class="ot">=</span> [<span class="fu">putStrLn</span> <span class="st">&quot;Hello!&quot;</span>, <span class="fu">putStrLn</span> <span class="st">&quot;World!&quot;</span>]</span></code></pre></div>
+<p>… we need a way to <strong>combine</strong> recipes!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="combining-just-do-it">Combining? Just <code class="sourceCode haskell"><span class="kw">do</span></code> it!</h2>
+<p>We can <em>combine</em> many recipes into a single one using a <code class="sourceCode haskell"><span class="kw">do</span></code> block</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ot">foo ::</span> <span class="dt">Recipe</span> a3</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>foo <span class="ot">=</span> <span class="kw">do</span> r1       <span class="co">-- r1 :: Recipe a1</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>         r2       <span class="co">-- r2 :: Recipe a2</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>         r3       <span class="co">-- r3 :: Recipe a3</span></span></code></pre></div>
+<p>(or if you <em>prefer</em> curly braces to indentation)</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>foo <span class="ot">=</span> <span class="kw">do</span> { r1;    <span class="co">-- r1 :: Recipe a1</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>           r2;    <span class="co">-- r2 :: Recipe a2</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>           r3     <span class="co">-- r3 :: Recipe a3</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         }</span></code></pre></div>
+<p>The <code class="sourceCode haskell"><span class="kw">do</span></code> block combines sub-recipes <code class="sourceCode haskell">r1</code>, <code class="sourceCode haskell">r2</code> and <code class="sourceCode haskell">r3</code> into a <em>new</em> recipe that</p>
+<ul>
+<li>Will execute each sub-recipe in <em>sequence</em> and</li>
+<li>Return the value of type <code class="sourceCode haskell">a3</code> produced by the last recipe <code class="sourceCode haskell">r3</code></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="combining-just-do-it-1">Combining? Just <code class="sourceCode haskell"><span class="kw">do</span></code> it!</h2>
+<p>So we can write</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span> <span class="fu">putStrLn</span> <span class="st">&quot;Hello!&quot;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">putStrLn</span> <span class="st">&quot;World!&quot;</span></span></code></pre></div>
+<p>or if you prefer</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="kw">do</span> { <span class="fu">putStrLn</span> <span class="st">&quot;Hello!&quot;</span>; </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">putStrLn</span> <span class="st">&quot;World!&quot;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>          }</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-combining-many-recipes">EXERCISE: Combining Many Recipes</h2>
+<p>Write a function called <code class="sourceCode haskell"><span class="fu">sequence</span></code> that</p>
+<ul>
+<li>Takes a <em>non-empty list</em> of recipes <code class="sourceCode haskell">[r1,<span class="op">...</span>,rn]</code> as input and</li>
+<li>Returns a <em>single</em> recipe equivalent to <code class="sourceCode haskell"><span class="kw">do</span> {r1; <span class="op">...</span>; rn}</code></li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sequence</span><span class="ot"> ::</span> [<span class="dt">Recipe</span> a] <span class="ot">-&gt;</span> <span class="dt">Recipe</span> a</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sequence</span> rs <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p>When you are done you should see the following behavior</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Hello.hs</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">sequence</span> [<span class="fu">putStrLn</span> <span class="st">&quot;Hello!&quot;</span>, <span class="fu">putStrLn</span> <span class="st">&quot;World!&quot;</span>] </span></code></pre></div>
+<p>and then</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ghc <span class="at">--make</span> Hello.hs</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello!</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">World!</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="using-the-results-of-sub--recipes">Using the Results of (Sub-) Recipes</h2>
+<p>Suppose we want a function that <strong>asks</strong> for the user’s name</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ranjit</span>             <span class="co"># &lt;&lt;&lt;&lt;&lt; user enters</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello</span> Ranjit!</span></code></pre></div>
+<p>We can use the following sub-recipes</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | read and return a line from stdin as String</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getLine</span><span class="ot">  ::</span> <span class="dt">Recipe</span> <span class="dt">String</span>       </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- take a string s, return a recipe that prints  s </span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">putStrLn</span><span class="ot"> ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Recipe</span> () </span></code></pre></div>
+<p>But how to</p>
+<ul>
+<li><em>Combine</em> the two sub-recipes while</li>
+<li><em>Passing</em> the result of the first sub-recipe to the second.</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="naming-recipe-results-via-assignment">Naming Recipe Results via “Assignment”</h2>
+<p>You can write</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> recipe</span></code></pre></div>
+<p>to <em>name</em> the result of executing <code class="sourceCode haskell">recipe</code></p>
+<ul>
+<li><code class="sourceCode haskell">x</code> can be used to refer to the result in <em>later</em> code</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="naming-recipe-results-via-assignment-1">Naming Recipe Results via “Assignment”</h2>
+<p>Lets, write a function that <em>asks</em> for the user’s name</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> ask </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ot">ask ::</span> <span class="dt">Recipe</span> ()</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>ask <span class="ot">=</span> <span class="kw">do</span> name <span class="ot">&lt;-</span> <span class="fu">getLine</span>; </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">putStrLn</span> (<span class="st">&quot;Hello &quot;</span> <span class="op">++</span> name <span class="op">++</span> <span class="st">&quot;!&quot;</span>)</span></code></pre></div>
+<p>Which produces the desired result</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Ranjit</span>             <span class="co"># user enters</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello</span> Ranjit!</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise">EXERCISE</h2>
+<p>Modify the above code so that the program <em>repeatedly</em>
+asks for the users’s name <em>until</em> they provide a <em>non-empty</em> string.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Hello.hs </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> repeatAsk</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ot">repeatAsk ::</span> <span class="dt">Recipe</span> ()</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>repeatAsk <span class="ot">=</span> _fill_this_in</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="ot">isEmpty ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>isEmpty s <span class="ot">=</span> <span class="fu">length</span> s <span class="op">==</span> <span class="dv">0</span></span></code></pre></div>
+<p>When you are done you should get the following behavior</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ghc <span class="at">--make</span> hello.hs</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># user hits return</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># user hits return</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># user hits return</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Ranjit</span>  <span class="co"># user enters</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello</span> Ranjit!</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-1">EXERCISE</h2>
+<p>Modify your code to <em>also</em> print out a <strong>count</strong> in the prompt</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ghc <span class="at">--make</span> hello.hs</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./hello</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">0</span><span class="kw">)</span> <span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># user hits return</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">1</span><span class="kw">)</span> <span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># user hits return</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">2</span><span class="kw">)</span> <span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># user hits return</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">3</span><span class="kw">)</span> <span class="ex">What</span> is your name<span class="pp">?</span> </span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Ranjit</span>                    <span class="co"># user enters</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello</span> Ranjit!</span></code></pre></div>
+<h2 id="thats-all-about-io">That’s all about IO</h2>
+<p>You should be able to implement <code class="sourceCode haskell">build</code> from <code class="sourceCode haskell">Directory.hs</code></p>
+<p>Using these library functions imported at the top of the file</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">System.FilePath</span>   (takeDirectory, takeFileName, (&lt;/&gt;))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">System.Directory</span>  (doesFileExist, listDirectory)</span></code></pre></div>
+<p>The functions are</p>
+<ul>
+<li><code class="sourceCode haskell">takeDirectory</code></li>
+<li><code class="sourceCode haskell">takeFileName</code></li>
+<li><code class="sourceCode haskell">(<span class="op">&lt;/&gt;</span>)</code></li>
+<li><code class="sourceCode haskell">doesFileExist</code></li>
+<li><code class="sourceCode haskell">listDirectory</code></li>
+</ul>
+<p><code class="sourceCode haskell">hoogle</code> the documentation to learn about how to use them.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<!-- 
+## QUIZ: Combining Recipes
+
+Next, lets write a program that prints multiple things:
+
+```haskell
+main :: IO ()
+main = combine (putStrLn "Hello,") (putStrLn "World!")
+
+-- putStrLn :: String -> Recipe ()
+-- combine  :: ???
+```
+
+What must the _type_ of `combine` be?
+
+```haskell
+{- A -} combine :: ()        -> ()        -> ()
+{- B -} combine :: Recipe    -> Recipe    -> Recipe ()
+{- C -} combine :: Recipe () -> Recipe () -> Recipe () 
+{- D -} combine :: Recipe a  -> Recipe a  -> Recipe a
+{- E -} combine :: Recipe a  -> Recipe b  -> Recipe b
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## Using Intermediate Results
+
+Next, lets write a program that
+
+1. **Asks** for the user's `name` using
+
+```haskell
+    getLine :: Recipe String
+```
+
+2. **Prints** out a greeting with that `name` using
+
+```haskell
+    putStrLn :: String -> Recipe ()
+```
+
+**Problem:** How to pass the **output** of _first_ recipe into the _second_ recipe?
+
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ: Using Yolks to Make Batter
+
+Suppose you have two recipes
+
+```haskell
+crack     :: Recipe Yolk
+eggBatter :: Yolk -> Recipe Batter
+```
+
+and we want to get 
+
+```haskell
+mkBatter :: Recipe Batter
+mkBatter = crack `combineWithResult` eggBatter
+```
+
+What must the type of `combineWithResult` be?
+
+```haskell
+{- A -} Yolk -> Batter -> Batter
+{- B -} Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe Batter
+{- C -} Recipe a    -> (a     -> Recipe a     ) -> Recipe a
+{- D -} Recipe a    -> (a     -> Recipe b     ) -> Recipe b
+{- E -} Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe ()
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## Looks Familar
+
+Wait a bit, the signature looks familiar!
+
+```haskell
+combineWithResult :: Recipe a -> (a -> Recipe b) -> Recipe b
+```
+
+Remember this
+
+```haskell
+(>>=)             :: Result a -> (a -> Result b) -> Result b
+```
+
+## `Recipe` is an instance of `Monad`
+
+In fact, in the standard library
+
+```haskell
+instance Monad Recipe where
+  (>>=) = {-... combineWithResult... -}
+```
+
+So we can put this together with `putStrLn` to get:
+
+```haskell
+main :: Recipe ()
+main = getLine >>= \name -> putStrLn ("Hello, " ++ name ++ "!")
+```
+
+or, using `do` notation the above becomes
+
+```haskell
+main :: Recipe ()
+main = do name <- getLine
+          putStrLn ("Hello, " ++ name ++ "!")
+```
+
+**Exercise** 
+
+1. _Compile_ and run to make sure its ok!
+2. _Modify_ the above to repeatedly ask for names.
+3. _Extend_ the above to print a "prompt" that tells you how many iterations have occurred.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Monads are Amazing
+
+Monads have had a _revolutionary_ influence in PL, well beyond Haskell, some recent examples
+
+- **Error handling** in `go` e.g. [1](https://speakerdeck.com/rebeccaskinner/monadic-error-handling-in-go)  and [2](https://www.innoq.com/en/blog/golang-errors-monads/)
+
+- **Asynchrony** in JavaScript e.g. [1](https://gist.github.com/MaiaVictor/bc0c02b6d1fbc7e3dbae838fb1376c80) and [2](https://medium.com/@dtipson/building-a-better-promise-3dd366f80c16)
+
+- **Big data** pipelines e.g. [LinQ](https://www.microsoft.com/en-us/research/project/dryadlinq/) and [TensorFlow](https://www.tensorflow.org/)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## A Silly App to End CSE 130
+
+Lets write an app called [moo](/static/raw/moo.hs) inspired by [cowsay](https://medium.com/@jasonrigden/cowsay-is-the-most-important-unix-like-command-ever-35abdbc22b7f)
+
+**A Command Line App**
+
+![`moo`](/static/img/moo1.png){#fig:types .align-center width=70%}
+
+**`moo` works with pipes**
+
+![Thanks, and good luck for the final!](/static/img/moo2.png){#fig:types .align-center width=70%}
+
+![](/static/img/moo3.png){#fig:types .align-center width=70%}
+
+```sh
+$ ./moo Jhala, y u no make final easy!
+
+ --------------------------------
+< Jhala, y u no make final easy! >
+ --------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+or even using unix pipes
+
+```txt
+$ ./moo Thats all folks, thanks!
+
+ ------------------------------------
+< 00-intro.pdf 01-lambda.pdf         >
+< 03-datatypes.pdf 04-hof.pdf        >
+< 05-environments.pdf 06-parsing.pdf >
+< 07-classes.pdf 08-monads.pdf       >
+ ------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+Thats all, folks.
+
+-->
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse230.github.io/fa23/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse230.github.io/fa23/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/bootstrap.min.js"></script>
+<!--
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/anim.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/scripts.js"></script>
+-->
+
+
+    </body>
+</html>

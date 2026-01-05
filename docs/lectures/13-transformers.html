@@ -1,0 +1,1230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 230">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse230.github.io/fa23/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse230</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse230.github.io/fa23/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 230" />
+    <meta property="og:site_name" content="UCSD CSE 230" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse230.github.io/fa23" id="blog-title-left-top">cse230</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://ucsd-cse230.github.io/fa23/calendar.html">Calendar</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/ln3oae6zy584n9" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/48988" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse230.github.io/fa23/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/ln3oae6zy584n9" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/48988" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse230.github.io/fa23/static/img/books.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Mixing Monads</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="monads-can-be-used-for-many-things">Monads Can Be Used for Many Things!</h2>
+<ul>
+<li>Partial Functions</li>
+<li>Global Variables</li>
+<li>Parsing</li>
+<li>Exceptions</li>
+<li>Test Generation</li>
+<li>Concurrency</li>
+<li>…</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exception-handling">Exception Handling</h2>
+<p>Recall our expressions with division</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">Number</span> <span class="dt">Int</span>            <span class="co">-- ^ 0,1,2,3,4</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Plus</span>   <span class="dt">Expr</span> <span class="dt">Expr</span>      <span class="co">-- ^ e1 + e2</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Div</span>    <span class="dt">Expr</span> <span class="dt">Expr</span>      <span class="co">-- ^ e1 / e2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p>We had a <strong>potentially crashing</strong> evaluator</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Number</span> n)    <span class="ot">=</span> n</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span>  e1 e2) <span class="ot">=</span> eval e1   <span class="op">+</span>   eval e2</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Div</span>   e1 e2) <span class="ot">=</span> eval e1 <span class="ot">`div`</span> eval e2</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; eval (Div (Val 10) (Plus (Number 5) (Number (-5))))</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- Exception: Divide by zero</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="we-defined-a-result-type">We defined a <code class="sourceCode haskell"><span class="dt">Result</span></code> type</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Result</span> a <span class="ot">=</span> <span class="dt">Ok</span> a <span class="op">|</span> <span class="dt">Err</span> <span class="dt">String</span></span></code></pre></div>
+<p>made it a <code class="sourceCode haskell"><span class="dt">Monad</span></code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Monad</span> <span class="dt">Result</span> <span class="kw">where</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> x      <span class="ot">=</span> <span class="dt">Ok</span> x</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">Ok</span> v)  <span class="op">&gt;&gt;=</span> f <span class="ot">=</span> f v</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">Err</span> s) <span class="op">&gt;&gt;=</span> _ <span class="ot">=</span> <span class="dt">Err</span> s</span></code></pre></div>
+<p>and then we can write</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Result</span> <span class="dt">Int</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Number</span> n)    <span class="ot">=</span> <span class="fu">return</span> n</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span>  e1 e2) <span class="ot">=</span> <span class="kw">do</span> {n1 <span class="ot">&lt;-</span> eval e1; n2 <span class="ot">&lt;-</span> eval e2; <span class="fu">return</span> (n1   <span class="op">+</span>   n2) } </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Div</span>   e1 e2) <span class="ot">=</span> <span class="kw">do</span> { n1 <span class="ot">&lt;-</span> eval e1; </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                          n2 <span class="ot">&lt;-</span> eval e2; </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">if</span> n2 <span class="op">/=</span> <span class="dv">0</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                            <span class="kw">then</span> <span class="fu">return</span> (n1 <span class="ot">`div`</span> n2) </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                            <span class="kw">else</span> <span class="dt">Err</span> (<span class="st">&quot;DBZ: &quot;</span> <span class="op">++</span> <span class="fu">show</span> e2)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                        }</span></code></pre></div>
+<p>which doesn’t crash but returns an <code class="sourceCode haskell"><span class="dt">Err</span></code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> eval (<span class="dt">Div</span> (<span class="dt">Number</span> <span class="dv">10</span>) (<span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> (<span class="op">-</span><span class="dv">5</span>))))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Err</span> <span class="st">&quot;DBZ: Plus (Number 5) (Number (-5))&quot;</span></span></code></pre></div>
+<p>and when it succeeds it returns an <code class="sourceCode haskell"><span class="dt">Ok</span></code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> eval (<span class="dt">Div</span> (<span class="dt">Number</span> <span class="dv">10</span>) (<span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> (<span class="op">-</span><span class="dv">5</span>))))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Ok</span> <span class="dv">1</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="generalizing-result-to-either">Generalizing <code class="sourceCode haskell"><span class="dt">Result</span></code> to <code class="sourceCode haskell"><span class="dt">Either</span></code></h2>
+<p>The <em>standard library</em> generalizes the <code class="sourceCode haskell"><span class="dt">Result</span></code> type to <code class="sourceCode haskell"><span class="dt">Either</span></code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Result</span>   a <span class="ot">=</span> <span class="dt">Err</span> <span class="dt">String</span> <span class="op">|</span> <span class="dt">Ok</span> a </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Either</span> e a <span class="ot">=</span> <span class="dt">Left</span> e     <span class="op">|</span> <span class="dt">Right</span> a</span></code></pre></div>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">Err</span> s</code> becomes <code class="sourceCode haskell"><span class="dt">Left</span> s</code></li>
+<li><code class="sourceCode haskell"><span class="dt">Ok</span> v</code> becomes <code class="sourceCode haskell"><span class="dt">Right</span> v</code></li>
+<li><code class="sourceCode haskell"><span class="dt">Result</span> a</code> becomes <code class="sourceCode haskell"><span class="dt">Either</span> <span class="dt">String</span> a</code></li>
+</ul>
+<p>(But we can data <em>other</em> than <code class="sourceCode haskell"><span class="dt">String</span></code> in the <code class="sourceCode haskell"><span class="dt">Left</span></code> values)</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-generalizing-result-monad-to-either-monad">EXERCISE: Generalizing <code class="sourceCode haskell"><span class="dt">Result</span></code> Monad to <code class="sourceCode haskell"><span class="dt">Either</span></code> Monad</h2>
+<p>Lets translate the old <code class="sourceCode haskell"><span class="dt">Monad</span></code> instance for <code class="sourceCode haskell"><span class="dt">Result</span></code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Monad</span> <span class="dt">Result</span> <span class="kw">where</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- return :: a -&gt; Result a</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> x      <span class="ot">=</span> <span class="dt">Ok</span> x</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- (&gt;&gt;=) :: Result a -&gt; (a -&gt; Result b) -&gt; Result b</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">Ok</span> v)  <span class="op">&gt;&gt;=</span> f <span class="ot">=</span> f v</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">Err</span> s) <span class="op">&gt;&gt;=</span> _ <span class="ot">=</span> s</span></code></pre></div>
+<p>into a <code class="sourceCode haskell"><span class="dt">Monad</span></code> instance for <code class="sourceCode haskell"><span class="dt">Either</span></code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Monad</span> (<span class="dt">Either</span> e) <span class="kw">where</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- return :: a -&gt; Either e a</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> x        <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- (&gt;&gt;=) :: Either e a -&gt; (a -&gt; Either e b) -&gt; Either e b</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">Right</span> v) <span class="op">&gt;&gt;=</span> f <span class="ot">=</span> <span class="op">???</span>  </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">Left</span>  s) <span class="op">&gt;&gt;=</span> _ <span class="ot">=</span> <span class="op">???</span> </span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>We can rewrite <code class="sourceCode haskell">eval</code> to return an <code class="sourceCode haskell"><span class="dt">Either</span></code></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Either</span> <span class="dt">Expr</span> <span class="dt">Int</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Number</span> n)    <span class="ot">=</span> <span class="fu">return</span> n</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span>  e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">return</span> (n1<span class="op">+</span>n2)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Div</span>   e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                        <span class="kw">if</span> n2 <span class="op">/=</span> <span class="dv">0</span> </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">then</span> <span class="fu">return</span> (n1 <span class="ot">`div`</span> n2) </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">else</span> <span class="dt">Left</span> e2</span></code></pre></div>
+<p>What does <code class="sourceCode haskell">quiz</code> evaluate to?</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> eval (<span class="dt">Div</span> (<span class="dt">Val</span> <span class="dv">10</span>) (<span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> (<span class="op">-</span><span class="dv">5</span>))))</span></code></pre></div>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Err</span> <span class="st">&quot;DBZ: Plus (Number 5) (Number (-5))&quot;</span></code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Left</span> <span class="st">&quot;DBZ: Plus (Number 5) (Number (-5))&quot;</span></code></p>
+<p><strong>C.</strong> Run-time Exception</p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> (<span class="op">-</span><span class="dv">5</span>))</code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Left</span> (<span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> (<span class="op">-</span><span class="dv">5</span>)))</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="either-is-an-exception-monad"><code class="sourceCode haskell"><span class="dt">Either</span></code> is an <strong>Exception</strong> Monad!</h2>
+<p>What can you do with exceptions?</p>
+<ol type="1">
+<li><p><code class="sourceCode haskell">throwError</code> an exception (with some value) …</p></li>
+<li><p><code class="sourceCode haskell">catchError</code> an exception (and use its value) …</p></li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="throwing-an-exception">1. <code class="sourceCode haskell">throw</code>ing an Exception</h2>
+<p>We can simply define</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ot">throw ::</span> e <span class="ot">-&gt;</span> <span class="dt">Either</span> e a</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>throw exn <span class="ot">=</span> <span class="dt">Left</span> exn</span></code></pre></div>
+<p>and now <em>voila</em></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Either</span> <span class="dt">Expr</span> <span class="dt">Int</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Number</span> n)    <span class="ot">=</span> <span class="fu">return</span> n</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span>  e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">return</span> (n1 <span class="op">+</span> n2)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Div</span>   e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                        <span class="kw">if</span> n2 <span class="op">/=</span> <span class="dv">0</span> </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">then</span> <span class="fu">return</span> (n1 <span class="ot">`div`</span> n2) </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">else</span> throw e2</span></code></pre></div>
+<p><em>Exactly</em> the same evaluator</p>
+<ul>
+<li><p>Result is a <code class="sourceCode haskell"><span class="dt">Left</span></code> ==&gt; an <em>exception</em> came all the way to the top.</p></li>
+<li><p><code class="sourceCode haskell"><span class="dt">Either</span></code> monad ensures the “exception” shoots to the top!</p></li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> eval (<span class="dt">Div</span> (<span class="dt">Numer</span> <span class="dv">10</span>) (<span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> (<span class="op">-</span><span class="dv">5</span>))))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Left</span> (<span class="dt">Minus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> <span class="dv">5</span>))</span></code></pre></div>
+<p>No further evaluation happens after a <code class="sourceCode haskell">throw</code> because ???</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="catching-an-exception"><code class="sourceCode haskell"><span class="fu">catch</span></code>ing an exception</h2>
+<p>How to <em>catch</em> an exception?</p>
+<p>Lets change our <code class="sourceCode haskell"><span class="dt">Expr</span></code> type to</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">Number</span>  <span class="dt">Int</span>            <span class="co">-- ^ 0,1,2,3,4</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Plus</span>    <span class="dt">Expr</span> <span class="dt">Expr</span>      <span class="co">-- ^ e1 + e2</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Div</span>     <span class="dt">Expr</span> <span class="dt">Expr</span>      <span class="co">-- ^ e1 / e2</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Try</span>     <span class="dt">Expr</span> <span class="dt">Int</span>       <span class="co">-- ^ try e1 n</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p>Informally, <code class="sourceCode haskell">try e n</code> evaluates to <code class="sourceCode haskell">e</code> but</p>
+<ul>
+<li><p><strong>if</strong> <code class="sourceCode haskell">e</code> is undefined due to <em>divide-by-zero</em></p></li>
+<li><p><strong>then</strong> evaluate to <code class="sourceCode haskell">n</code></p></li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Either</span> <span class="dt">Expr</span> <span class="dt">Int</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Number</span> n)    <span class="ot">=</span> <span class="fu">return</span> n</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span>  e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">return</span> (n1<span class="op">+</span>n2)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Div</span>   e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                        <span class="kw">if</span> n2 <span class="op">/=</span> <span class="dv">0</span> </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">then</span> <span class="fu">return</span> (n1 <span class="ot">`div`</span> n2) </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">else</span> throw e2</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Try</span> e n)     <span class="ot">=</span> <span class="fu">catch</span> (eval e) (\_ <span class="ot">-&gt;</span> <span class="fu">return</span> n)</span></code></pre></div>
+<h2 id="quiz-1">QUIZ</h2>
+<p>What should the <em>type</em> of <code class="sourceCode haskell"><span class="fu">catch</span></code> be?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Either</span> e a <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> <span class="dt">Either</span> e b) <span class="ot">-&gt;</span> <span class="dt">Either</span> e b</code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Either</span> e a <span class="ot">-&gt;</span> (e <span class="ot">-&gt;</span> <span class="dt">Either</span> e b) <span class="ot">-&gt;</span> <span class="dt">Either</span> e b</code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dt">Either</span> e a <span class="ot">-&gt;</span> (e <span class="ot">-&gt;</span> <span class="dt">Either</span> e a) <span class="ot">-&gt;</span> <span class="dt">Either</span> e a</code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Either</span> e a <span class="ot">-&gt;</span> <span class="dt">Either</span> e a <span class="ot">-&gt;</span> <span class="dt">Either</span> e a</code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Either</span> e a <span class="ot">-&gt;</span> <span class="dt">Either</span> e b <span class="ot">-&gt;</span> <span class="dt">Either</span> e b</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="implementing-catch">Implementing <code class="sourceCode haskell"><span class="fu">catch</span></code></h2>
+<p>Lets implement the <code class="sourceCode haskell"><span class="fu">catch</span></code> function!</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">catch</span><span class="ot"> ::</span> <span class="dt">Either</span> e a <span class="ot">-&gt;</span> (e <span class="ot">-&gt;</span> <span class="dt">Either</span> e a) <span class="ot">-&gt;</span> <span class="dt">Either</span> e a</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">catch</span> (<span class="dt">Left</span>  e) handler <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">catch</span> (<span class="dt">Right</span> a) handler <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-2">QUIZ</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">catch</span><span class="ot"> ::</span> <span class="dt">Either</span> e a <span class="ot">-&gt;</span> (e <span class="ot">-&gt;</span> <span class="dt">Either</span> e a) <span class="ot">-&gt;</span> <span class="dt">Either</span> e a</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">catch</span> (<span class="dt">Left</span>  e) handle  <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">catch</span> (<span class="dt">Right</span> a) handler <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Either</span> <span class="dt">Expr</span> <span class="dt">Int</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Number</span> n)    <span class="ot">=</span> <span class="fu">return</span> n</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span>  e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">return</span> (n1<span class="op">+</span>n2)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Div</span>   e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                        <span class="kw">if</span> n2 <span class="op">/=</span> <span class="dv">0</span> </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">then</span> <span class="fu">return</span> (n1 <span class="ot">`div`</span> n2) </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">else</span> throw e2</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Try</span> e n)     <span class="ot">=</span> <span class="fu">catch</span> (eval e) (\_ <span class="ot">-&gt;</span> <span class="fu">return</span> n)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>e1  <span class="ot">=</span> <span class="dt">Div</span> (<span class="dt">Number</span> <span class="dv">10</span>) (<span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> (<span class="op">-</span><span class="dv">5</span>)))</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>e1' <span class="ot">=</span> <span class="dt">Try</span> e1 <span class="dv">7</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> eval (<span class="dt">Try</span> e1 <span class="dv">7</span>)</span></code></pre></div>
+<p>What does <code class="sourceCode haskell">quiz</code> evaluate to?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Right</span> <span class="dv">7</span></code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Left</span> <span class="dv">7</span></code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dt">Right</span> <span class="dv">0</span></code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Left</span> <span class="dv">0</span></code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Left</span> (<span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> (<span class="op">-</span><span class="dv">5</span>)))</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="either-is-an-exception-monad-1"><code class="sourceCode haskell"><span class="dt">Either</span></code> is an <strong>Exception</strong> Monad!</h2>
+<ol type="1">
+<li><p><code class="sourceCode haskell">throw</code> an exception (with some value) …</p></li>
+<li><p><code class="sourceCode haskell"><span class="fu">catch</span></code> an exception (and use its value) …</p></li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ot">throw ::</span> e <span class="ot">-&gt;</span> <span class="dt">Either</span> e a</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>throw e <span class="ot">=</span> <span class="dt">Left</span> e</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">catch</span><span class="ot"> ::</span> <span class="dt">Either</span> e a <span class="ot">-&gt;</span> (e <span class="ot">-&gt;</span> <span class="dt">Either</span> e a) <span class="ot">-&gt;</span> <span class="dt">Either</span> e a</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">catch</span> (<span class="dt">Left</span>  e) handle <span class="ot">=</span> handle e</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">catch</span> (<span class="dt">Right</span> e) _      <span class="ot">=</span> <span class="dt">Right</span>  e</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="monads-can-be-used-for-many-things-1">Monads Can Be Used for Many Things!</h2>
+<ul>
+<li>Partial Functions</li>
+<li>Global State</li>
+<li>Parsing</li>
+<li>Exceptions</li>
+<li>Test Generation</li>
+<li>Concurrency</li>
+<li>…</li>
+</ul>
+<p>… but what if I want <em>Exceptions</em> <strong>and</strong> <em>Global State</em> ?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="mixing-monads">Mixing Monads</h2>
+<p>What if I want <em>Exceptions</em> <strong>and</strong> <em>Global State</em> ?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="profiling-with-the-st-monad">Profiling with the ST Monad</h2>
+<p>Lets implement a <em>profiling</em> monad that counts the number of operations</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- A State-Transformer with a &quot;global&quot; `Int` counter </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Profile</span> a <span class="ot">=</span> <span class="dt">State</span> <span class="dt">Int</span> a</span></code></pre></div>
+<p>We can write a <code class="sourceCode haskell">runProfile</code> that</p>
+<ul>
+<li>executes the transformer from <code class="sourceCode haskell"><span class="dv">0</span></code></li>
+<li>and renders the result</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ot">runProfile ::</span> (<span class="dt">Show</span> a) <span class="ot">=&gt;</span> <span class="dt">Profile</span> a <span class="ot">-&gt;</span> <span class="dt">String</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>runProfile st <span class="ot">=</span> showValCount (runState st <span class="dv">0</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ot">showValCount ::</span> (<span class="dt">Show</span> v, <span class="dt">Show</span> c) <span class="ot">=&gt;</span> (v, c) <span class="ot">-&gt;</span> <span class="dt">String</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>showValCount (val, count) <span class="ot">=</span> <span class="st">&quot;value: &quot;</span> <span class="op">++</span> <span class="fu">show</span> val <span class="op">++</span> <span class="st">&quot;, count: &quot;</span> <span class="op">++</span> <span class="fu">show</span> count</span></code></pre></div>
+<p>A function to <em>increment</em> the counter</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ot">count ::</span> <span class="dt">Profile</span> ()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>count <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> get</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  put (n<span class="op">+</span><span class="dv">1</span>)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-profiling-evaluator">A Profiling Evaluator</h2>
+<p>We can use <code class="sourceCode haskell">count</code> to write a <em>profiling</em> evaluator</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ot">evalProf ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Profile</span> <span class="dt">Int</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>evalProf <span class="ot">=</span> eval </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    eval (<span class="dt">Number</span> n)    <span class="ot">=</span> <span class="fu">return</span> n</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    eval (<span class="dt">Plus</span>  e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                            n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                            count</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">return</span> (n1<span class="op">+</span>n2)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    eval (<span class="dt">Div</span>   e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>                            n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>                            count</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">return</span> (n1 <span class="ot">`div`</span> n2) </span></code></pre></div>
+<p>And now, as there are <em>two</em> operations, we get</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> e1</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Div</span> (<span class="dt">Number</span> <span class="dv">10</span>) (<span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> <span class="dv">5</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runProfile (evalProf e1)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;value: 1, count: 2&quot;</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="but-what-about-divide-by-zero">But what about Divide-by-Zero?</h2>
+<p>Bad things happen…</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> e2</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Div</span> (<span class="dt">Number</span> <span class="dv">10</span>) (<span class="dt">Plus</span> (<span class="dt">Number</span> <span class="dv">5</span>) (<span class="dt">Number</span> (<span class="op">-</span><span class="dv">5</span>)))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runProfile (evalProf e2)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="op">***</span> <span class="dt">Exception</span><span class="op">:</span> divide by zero</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;value: </span></span></code></pre></div>
+<p><strong>Problem:</strong> How to get <em>global state</em> AND <em>exception handling</em> ?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="mixing-monads-with-transformers">Mixing Monads with Transformers</h2>
+<h3 id="start-with-a-basic-monad">Start with a <em>Basic</em> Monad</h3>
+<p><img src="../static/img/mtrans_0.png" id="fig:Basic-Monad" class="align-right" style="width:80.0%" /></p>
+<p><code class="sourceCode haskell">m</code> implements</p>
+<ul>
+<li><em>no</em> special operations</li>
+</ul>
+<h3 id="transform-it-to-add-some-capabilities">Transform it to add some <em>Capabilities</em></h3>
+<p><img src="../static/img/mtrans_1.png" id="fig:Add-Capabilities" class="align-right" style="width:80.0%" /></p>
+<p><code class="sourceCode haskell"><span class="dt">Transform1</span> m</code> implements</p>
+<ul>
+<li><code class="sourceCode haskell">m</code> operations <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform1</span></code></li>
+</ul>
+<h3 id="transform-again-to-add-more-capabilities">Transform again to add <em>more</em> Capabilities</h3>
+<p><img src="../static/img/mtrans_2.png" id="fig:More-Capabilities" class="align-right" style="width:80.0%" /></p>
+<p><code class="sourceCode haskell"><span class="dt">Transform2</span> (<span class="dt">Transform1</span> m)</code> implements</p>
+<ul>
+<li><code class="sourceCode haskell">m</code> operations <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform1</span></code> <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform2</span></code></li>
+</ul>
+<h3 id="and-so-on">… And so on</h3>
+<p><img src="../static/img/mtrans_3.png" id="fig:More-Capabilities" class="align-right" style="width:80.0%" /></p>
+<p><code class="sourceCode haskell"><span class="dt">Transform3</span> (<span class="dt">Transform2</span> (<span class="dt">Transform1</span> m))</code> implements</p>
+<ul>
+<li><code class="sourceCode haskell">m</code> operations <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform1</span></code> <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform2</span></code> <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform3</span></code> …</li>
+</ul>
+<p>Reminiscent of the <a href="http://oreilly.com/catalog/hfdesignpat/chapter/ch03.pdf">Decorator Design Pattern</a> or <a href="http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators">Python’s Decorators</a>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="mixing-monads-with-transformers-1">Mixing Monads with Transformers</h2>
+<ul>
+<li><p>Step 1: <strong>Specifying</strong> Monads with Extra Features</p></li>
+<li><p>Step 2: <strong>Implementing</strong> Monads with Extra Features</p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="specifying-monads-with-extra-features">Specifying Monads with Extra Features</h2>
+<p>First, instead of using <em>concrete</em> monads</p>
+<ul>
+<li>e.g. <code class="sourceCode haskell"><span class="dt">Profile</span></code> or <code class="sourceCode haskell"><span class="dt">Either</span></code></li>
+</ul>
+<p>We will use <strong>type-classes</strong> to <em>abstractly</em> specify a monad’s <em>capabilities</em></p>
+<ul>
+<li>e.g. <code class="sourceCode haskell"><span class="dt">MonadState</span> s m</code> or <code class="sourceCode haskell"><span class="dt">MonadError</span> e m</code></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-class-for-state-transformers-monads">A Class for State-Transformers Monads</h2>
+<p>The class <code class="sourceCode haskell"><span class="dt">MonadState</span> s m</code> defined in the <a href="http://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Except.html"><code class="sourceCode haskell"><span class="dt">Control.Monad.State</span></code></a> says</p>
+<ul>
+<li><code class="sourceCode haskell">m</code> is a <em>State-Transformer</em> monad with state type <code class="sourceCode haskell">s</code></li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Monad</span> m <span class="ot">=&gt;</span> <span class="dt">MonadState</span> s m <span class="kw">where</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  get ::</span> m s</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  put ::</span> s <span class="ot">-&gt;</span> m ()</span></code></pre></div>
+<p>That is to say, <code class="sourceCode haskell">m</code> implements</p>
+<ul>
+<li><p><code class="sourceCode haskell"><span class="op">&gt;&gt;=</span></code> and <code class="sourceCode haskell"><span class="fu">return</span></code> operations specified by <code class="sourceCode haskell"><span class="dt">Monad</span></code> <em>and</em></p></li>
+<li><p><code class="sourceCode haskell">get</code> and <code class="sourceCode haskell">put</code> operations specified by <code class="sourceCode haskell"><span class="dt">MonadState</span></code>!</p></li>
+</ul>
+<h3 id="generalize-types-to-use-classes">Generalize Types to use Classes</h3>
+<p>So we can <em>generalize</em> the type of <code class="sourceCode haskell">count</code> to use <code class="sourceCode haskell"><span class="dt">MonadState</span> <span class="dt">Int</span> m</code></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ot">count ::</span> (<span class="dt">MonadState</span> <span class="dt">Int</span> m) <span class="ot">=&gt;</span> m ()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>count <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> get</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  put (n<span class="op">+</span><span class="dv">1</span>)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-class-for-exception-handling-monads">A Class for Exception Handling Monads</h2>
+<p>The class <code class="sourceCode haskell"><span class="dt">MonadError</span> e m</code> defined in [<code class="sourceCode haskell"><span class="dt">Control.Monad.Except</span></code>][6] says</p>
+<ul>
+<li><code class="sourceCode haskell">m</code> is a <em>Exception-Handling</em> monad with exception type <code class="sourceCode haskell">e</code></li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Monad</span> m <span class="ot">=&gt;</span> <span class="dt">MonadError</span> e m <span class="kw">where</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  throwError ::</span> e <span class="ot">-&gt;</span> m a</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  catchError ::</span> m a <span class="ot">-&gt;</span> (e <span class="ot">-&gt;</span> m a) <span class="ot">-&gt;</span> m a</span></code></pre></div>
+<p>That is to say, <code class="sourceCode haskell">m</code> implements</p>
+<ul>
+<li><p><code class="sourceCode haskell"><span class="op">&gt;&gt;=</span></code> and <code class="sourceCode haskell"><span class="fu">return</span></code> operations specified by <code class="sourceCode haskell"><span class="dt">Monad</span></code> <em>and</em></p></li>
+<li><p><code class="sourceCode haskell">throwError</code> and <code class="sourceCode haskell">catchError</code> operations specified by <code class="sourceCode haskell"><span class="dt">MonadError</span></code>!</p></li>
+</ul>
+<h3 id="generalize-types-to-use-classes-1">Generalize Types to use Classes</h3>
+<p>So we can <em>generalize</em> the type of <code class="sourceCode haskell">tryCatch</code> to use <code class="sourceCode haskell"><span class="dt">MonadError</span> e m</code></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ot">tryCatch ::</span> (<span class="dt">MonadError</span> e m) <span class="ot">=&gt;</span> m a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> m a  </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>tryCatch m def <span class="ot">=</span> catchError m (\_ <span class="ot">-&gt;</span> <span class="fu">return</span> def)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="generalize-eval-to-use-constraints">Generalize <code class="sourceCode haskell">eval</code> to use Constraints</h2>
+<p>We can now <em>specify</em> that <code class="sourceCode haskell">eval</code> uses a monad <code class="sourceCode haskell">m</code> that implements</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">MonadState</span> <span class="dt">Int</span></code> <strong>and</strong> <code class="sourceCode haskell"><span class="dt">MonadError</span> <span class="dt">Expr</span></code></li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ot">eval ::</span> (<span class="dt">MonadState</span> <span class="dt">Int</span> m, <span class="dt">MonadError</span> <span class="dt">Expr</span> m) <span class="ot">=&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> m <span class="dt">Int</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Number</span> n)    <span class="ot">=</span> <span class="fu">return</span> n</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Plus</span>  e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                        count</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">return</span> (n1 <span class="op">+</span> n2)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Div</span>   e1 e2) <span class="ot">=</span> <span class="kw">do</span> n1 <span class="ot">&lt;-</span> eval e1 </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>                        n2 <span class="ot">&lt;-</span> eval e2</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>                        count</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                        <span class="kw">if</span> (n2 <span class="op">/=</span> <span class="dv">0</span>) </span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">then</span> <span class="fu">return</span> (n1 <span class="ot">`div`</span> n2) </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">else</span> throwError e2</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>eval (<span class="dt">Try</span> e n)     <span class="ot">=</span> tryCatch (eval e) n</span></code></pre></div>
+<p>Lets try to run it!</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> e1</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> evalMix e1</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="op">...</span> <span class="dt">GHC</span> yells <span class="st">&quot;please IMPLEMENT this MAGIC monad that implements BOTH features&quot;</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="mixing-monads-with-transformers-2">Mixing Monads with Transformers</h2>
+<ul>
+<li><p>Step 1: <strong>Specifying</strong> Monads with Extra Features</p></li>
+<li><p>Step 2: <strong>Implementing</strong> Monads with Extra Features</p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="implementing-monads-with-extra-features">Implementing Monads with <strong>Extra Features</strong></h2>
+<p><img src="../static/img/mtrans_2.png" id="fig:More-Capabilities" class="align-right" style="width:80.0%" /></p>
+<p><code class="sourceCode haskell"><span class="dt">Transform2</span> (<span class="dt">Transform1</span> m)</code> implements</p>
+<ul>
+<li><code class="sourceCode haskell">m</code> operations <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform1</span></code> <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform2</span></code></li>
+</ul>
+<p>We require</p>
+<ul>
+<li>A <em>basic</em> monad <code class="sourceCode haskell">m</code></li>
+<li>A <em>Transform1</em> that adds <code class="sourceCode haskell"><span class="dt">State</span></code> capabilities</li>
+<li>A <em>Transform2</em> that adds <code class="sourceCode haskell"><span class="dt">Exception</span></code> capabilities</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-basic-monad">A Basic Monad</h2>
+<p>First, lets make a <strong>basic</strong> monad</p>
+<ul>
+<li>only implements <code class="sourceCode haskell"><span class="op">&gt;&gt;=</span></code> and <code class="sourceCode haskell"><span class="fu">return</span></code></li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Identity</span> a <span class="ot">=</span> <span class="dt">Id</span> a</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Monad</span> <span class="dt">Identity</span> <span class="kw">where</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> a     <span class="ot">=</span> <span class="dt">Id</span> a</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">Id</span> a) <span class="op">&gt;&gt;=</span> f <span class="ot">=</span> f a</span></code></pre></div>
+<p>A very <em>basic</em> monad: just a <strong>wrapper</strong> (<code class="sourceCode haskell"><span class="dt">Id</span></code>) around the value (<code class="sourceCode haskell">a</code>)</p>
+<ul>
+<li><em>No</em> extra features</li>
+</ul>
+<p><img src="../static/img/mtrans_id.png" /></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-transform-that-adds-state-capabilities">A Transform that adds <code class="sourceCode haskell"><span class="dt">State</span></code> Capabilities</h2>
+<p>The transformer <code class="sourceCode haskell"><span class="dt">StateT</span> s m</code> defined in the <code class="sourceCode haskell"><span class="dt">Control.Monad.State</span></code> <a href="http://hackage.haskell.org/package/mtl-2.2.2/docs/Control-Monad-Except.html">module</a>
+- <em>takes</em> as input monad <code class="sourceCode haskell">m</code> and</p>
+<ul>
+<li><em>transforms</em> it into a new monad <code class="sourceCode haskell">m'</code></li>
+</ul>
+<p>such that <code class="sourceCode haskell">m'</code> implements</p>
+<ul>
+<li><p>all the operations that <code class="sourceCode haskell">m</code> implements</p></li>
+<li><p><em>and adds</em> State-transformer capabilities</p></li>
+</ul>
+<p><code class="sourceCode haskell"><span class="dt">StateT</span> s m</code> satisfies the constraint <code class="sourceCode haskell">(<span class="dt">MonadState</span> s (<span class="dt">StateT</span> s m))</code></p>
+<h3 id="a-state-transformer-over-int-states">A <em>State-transformer over <code class="sourceCode haskell"><span class="dt">Int</span></code> states</em></h3>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Prof</span> <span class="ot">=</span> <span class="dt">StateT</span> <span class="dt">Int</span> <span class="dt">Identity</span> </span></code></pre></div>
+<p><img src="../static/img/mtrans_state_id.png" /></p>
+<p>We can go back and give <code class="sourceCode haskell">evalProf</code> the type</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ot">evalProf ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Prof</span> <span class="dt">Int</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-transform-that-adds-exception-capabilities">A Transform that adds <code class="sourceCode haskell"><span class="dt">Except</span></code>ion Capabilities</h2>
+<p>The transformer <code class="sourceCode haskell"><span class="dt">ExceptT</span> e m</code></p>
+<ul>
+<li>takes as <em>input</em> a monad <code class="sourceCode haskell">m</code> and</li>
+<li><em>transforms</em> it into a new monad <code class="sourceCode haskell">m'</code></li>
+</ul>
+<p>such that <code class="sourceCode haskell">m'</code> implements</p>
+<ul>
+<li><p>all the operations that <code class="sourceCode haskell">m</code> implements</p></li>
+<li><p><em>and adds</em> Exception-handling capabilities</p></li>
+</ul>
+<p><code class="sourceCode haskell"><span class="dt">ExceptT</span> e m</code> satisfies the constraint <code class="sourceCode haskell">(<span class="dt">MonadError</span> e (<span class="dt">ExceptT</span> e m))</code></p>
+<h3 id="an-exception-handler-monad-with-expr-typed-exceptions">An Exception Handler Monad with <code class="sourceCode haskell"><span class="dt">Expr</span></code>-typed exceptions</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Exn</span> <span class="ot">=</span> <span class="dt">ExceptT</span> <span class="dt">Expr</span> <span class="dt">Identity</span> </span></code></pre></div>
+<p><img src="../static/img/mtrans_except_id.png" /></p>
+<p>We can go back and give <code class="sourceCode haskell">evalThrowCatch</code> the type</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ot">evalThrowCatch ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Exn</span> <span class="dt">Int</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="composing-transformers">Composing Transformers</h2>
+<p>We can use <em>both</em> transformers to get <em>both</em> powers!</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">ExnProf</span> a <span class="ot">=</span> <span class="dt">ExceptT</span> <span class="dt">Expr</span> (<span class="dt">StateT</span> <span class="dt">Int</span> (<span class="dt">Identity</span>)) a</span></code></pre></div>
+<p><img src="../static/img/mtrans_except_state_id.png" /></p>
+<p><code class="sourceCode haskell"><span class="dt">ExnProf</span></code> implements <em>State-transformer-over</em> <code class="sourceCode haskell"><span class="dt">Int</span></code> <strong>and</strong> <em>Exception-handling-over-<code class="sourceCode haskell"><span class="dt">Expr</span></code></em></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-executing-the-combined-transformer">EXERCISE: Executing the Combined Transformer</h2>
+<p>Recall that</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">ExnProf</span> a <span class="ot">=</span> <span class="dt">ExceptT</span> <span class="dt">Expr</span> (<span class="dt">StateT</span> <span class="dt">Int</span> (<span class="dt">Identity</span>)) a</span></code></pre></div>
+<p>Lets write a function</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ot">runExnProf ::</span> (<span class="dt">Show</span> a) <span class="ot">=&gt;</span> <span class="dt">ExnProf</span> a <span class="ot">-&gt;</span> <span class="dt">String</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>runExnProf epm <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p>such that</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runExnProf (eval e1) </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;value: 1, count: 2&quot;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runExnProf (eval e2) </span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Plus (Number 5) (Number (-5)) after 2 operations&quot;</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<!--
+
+```haskell
+runExnProf :: (Show a) => ExnProf a -> String
+runExnProf m = case runIdentity (runStateT (runExceptT m) 0) of
+                 (Right v, c) -> showValCount (v, c)
+                 (Left e, c)  -> show e ++ " after " ++ show c ++ " operations"
+```
+
+-->
+<h2 id="try-at-home-combining-in-a-different-order">TRY AT HOME: Combining in a Different Order</h2>
+<p>We can also combine the transformers in a <em>different</em> order</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">ProfExn</span> a <span class="ot">=</span> <span class="dt">StateT</span> <span class="dt">Int</span> (<span class="dt">ExceptT</span> <span class="dt">Expr</span> (<span class="dt">Identity</span>)) a</span></code></pre></div>
+<p><img src="../static/img/mtrans_state_except_id.png" /></p>
+<p><code class="sourceCode haskell"><span class="dt">ExnProf</span></code> implements <em>State-transformer-over</em> <code class="sourceCode haskell"><span class="dt">Int</span></code> <strong>and</strong> <em>Exception-handling-over-<code class="sourceCode haskell"><span class="dt">Expr</span></code></em></p>
+<p>Can you implement the function</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ot">runProfExn ::</span> (<span class="dt">Show</span> a) <span class="ot">=&gt;</span> <span class="dt">ProfExn</span> a <span class="ot">-&gt;</span> <span class="dt">String</span></span></code></pre></div>
+<p>such that when you are done, we can get the following behavior?</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runProfExn (eval e1) </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;value: 1, count: 2&quot;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> runProfExn (eval e2) </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Left (Plus (Number 5) (Number (-5)))&quot;</span></span></code></pre></div>
+<!--
+runProfExn :: (Show a) => ProfExn a -> String
+runProfExn st = case (runIdentity (runExceptT (runStateT st 0))) of
+  Right vc -> showValCount vc
+  e        -> show e
+-->
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="summary-mixing-monads-with-many-features">Summary: Mixing Monads with Many Features</h2>
+<h3 id="transformers-add-capabilities-to-monads">1. Transformers add capabilities to Monads</h3>
+<p><img src="../static/img/mtrans_3.png" id="fig:More-Capabilities" class="align-right" style="width:80.0%" /></p>
+<p><code class="sourceCode haskell"><span class="dt">Transform2</span> (<span class="dt">Transform1</span> m)</code> implements</p>
+<ul>
+<li><code class="sourceCode haskell">m</code> operations <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform1</span></code> <strong>and</strong></li>
+<li>operations added by <code class="sourceCode haskell"><span class="dt">Transform2</span></code></li>
+</ul>
+<h3 id="statet-and-exceptt-add-state-and-exceptions">2. <code class="sourceCode haskell"><span class="dt">StateT</span></code> and <code class="sourceCode haskell"><span class="dt">ExceptT</span></code> add State and Exceptions</h3>
+<ul>
+<li>Start with a <em>basic</em> monad <code class="sourceCode haskell"><span class="dt">Identity</span></code></li>
+<li>Use <code class="sourceCode haskell"><span class="dt">StateT</span> <span class="dt">Int</span></code> to add global-<code class="sourceCode haskell"><span class="dt">Int</span></code> <em>state-update</em> capabilities</li>
+<li>Use <code class="sourceCode haskell"><span class="dt">ExceptT</span> <span class="dt">Expr</span></code> to add <em>exception-handling</em> capabilities</li>
+</ul>
+<p>Play around with this in your homework assignment!</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse230.github.io/fa23/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse230.github.io/fa23/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/bootstrap.min.js"></script>
+<!--
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/anim.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/scripts.js"></script>
+-->
+
+
+    </body>
+</html>

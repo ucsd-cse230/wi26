@@ -1,0 +1,442 @@
+
+{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# LANGUAGE FlexibleInstances #-} 
+{-# LANGUAGE TypeSynonymInstances #-}
+
+module Testing where 
+
+import Test.QuickCheck hiding ((===))
+import Control.Monad
+import Data.List
+import qualified Data.Map as M 
+import Control.Monad.State hiding (when)
+import Control.Applicative ((<$>))
+
+
+incr :: Int -> Int
+incr x = x + 1
+
+prop_revapp :: [Int] -> [Int] -> Bool
+prop_revapp xs ys = reverse (xs ++ ys) == reverse xs ++ reverse ys
+
+-- >>> quickCheck prop_revapp
+-- *** Failed! Falsifiable (after 6 tests and 9 shrinks):
+-- [0]
+-- [1]
+--
+prop_revapp' :: [Int] -> [Int] -> Bool
+prop_revapp' xs ys = reverse (xs ++ ys) == reverse ys ++ reverse xs
+
+-- >>> quickCheckN 500 prop_revapp'
+-- +++ OK, passed 500 tests.
+--
+
+quickCheckN n = quickCheckWith (stdArgs { maxSuccess = n } )
+
+
+qsort        :: (Ord a) => [a] -> [a]
+qsort []     = []
+qsort (x:xs) = qsort ls ++ [x] ++ qsort rs
+  where 
+    ls       = [y | y <- xs, y < x]  -- elems in xs < x 
+    rs       = [z | z <- xs, z > x]  -- elems in xs > x
+
+ls :: [Int]
+ls = [1,3..19] ++ [2,4..20]
+
+-- >>> ls
+-- [1,3,5,7,9,11,13,15,17,19,2,4,6,8,10,12,14,16,18,20]
+-- >>> qsort ls
+-- [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
+isOrdered :: (Ord a) => [a] -> Bool
+isOrdered (x:y:zs) = x <= y && isOrdered (y:zs)
+isOrdered _        = True
+
+prop_qsort_isOrdered :: [Int] -> Bool
+prop_qsort_isOrdered xs = isOrdered (qsort xs)
+
+-- >>> quickCheckN 1000 prop_qsort_isOrdered 
+-- +++ OK, passed 1000 tests.
+--
+
+
+prop_qsort_min :: [Int] -> Bool
+prop_qsort_min xs = head (qsort xs) == minimum xs
+
+-- >>> quickCheck prop_qsort_min
+-- *** Failed! Exception: 'Prelude.head: empty list' (after 1 test):
+-- []
+--
+
+prop_qsort_nn_min    :: [Int] -> Property
+prop_qsort_nn_min xs =
+  not (null xs) ==> head (qsort xs) == minimum xs
+
+-- >>> quickCheck prop_qsort_nn_min
+-- +++ OK, passed 100 tests.
+--
+
+prop_qsort_sort    :: [Int] -> Bool
+prop_qsort_sort xs =  qsort xs == sort xs
+
+-- >>> quickCheck prop_qsort_sort
+-- *** Failed! Falsifiable (after 6 tests and 3 shrinks):
+-- [-3,-3]
+
+noDuplicates ::(Eq a) => [a] -> Bool
+noDuplicates (x:xs) = not (x `elem` xs) && noDuplicates xs
+noDuplicates _      = True
+
+prop_qsort_distinct :: [Int] -> Bool 
+prop_qsort_distinct xs = noDuplicates (qsort xs)  
+
+-- >>> quickCheck prop_qsort_distinct
+-- +++ OK, passed 100 tests.
+--
+
+prop_qsort_distinct_sort :: [Int] -> Property 
+prop_qsort_distinct_sort xs = (noDuplicates xs) ==> (qsort xs == sort xs)
+
+-- >>> quickCheck prop_qsort_distinct_sort
+-- +++ OK, passed 10000 tests.
+--
+-- >>> quickCheck prop_qsort_sort
+-- *** Failed! Falsifiable (after 6 tests and 2 shrinks):
+-- [5,5]
+-- >>> quickCheck prop_qsort_sort
+-- *** Failed! Falsifiable (after 4 tests and 1 shrink):
+-- [1,1]
+--
+
+
+-- >>> sample' (choose (0, 5))
+-- [4,2,5,3,2,2,2,3,0,0,0]
+--
+
+pos = choose (0, 100)
+
+posPair = do
+  x1 <- pos
+  x2 <- pos
+  return (x1, x2)
+
+-- >>> sample' posPair
+-- [(29,71),(48,74),(89,53),(73,93),(0,40),(71,35),(23,69),(93,49),(59,58),(27,32),(88,45)]
+--
+
+
+-- Gen a
+-- choose :: (Int, Int) -> Gen Int
+-- choose (lo, hi)
+
+gen_0_10 :: Gen Int
+gen_0_10 = choose (0, 10)
+
+gen_string :: Gen String
+gen_string = arbitrary
+
+-- >>> sample' gen_string 
+-- ["","E~","`p","\SUB\141090","+\a\DC2","<Ps{Bp\51890\1083467","",":f\992651\958198\769921\297364|b\832419H\EOT\US","~iD\51186\tqM:","\502537\727673","z\288782.\SOHk\n|\DEL\625295\DEL\FST"]
+--
+
+
+-- >>> sample' (genBal 3 0 1)
+-- [Node 1 "" (Node 0 "" (Node 0 "" Leaf Leaf) (Node 1 "" Leaf Leaf)) (Node 2 "" (Node 2 "" Leaf Leaf) (Node 2 "" Leaf Leaf)),Node 0 "-\202175" (Node 0 "\SYN" (Node (-1) "\369825" Leaf Leaf) (Node 0 "" Leaf Leaf)) (Node 1 "\DLEp" (Node 0 "Nj" Leaf Leaf) (Node 1 "j" Leaf Leaf)),Node 1 "\769031" (Node 0 "\\\SI\vP" (Node 0 "\DEL\905926L" Leaf Leaf) (Node 0 "\DC3" Leaf Leaf)) (Node 1 "4\SUB" (Node 0 "\18707 \271608" Leaf Leaf) (Node 2 "_" Leaf Leaf)),Node 0 "@\179693" (Node 0 "\237548" (Node 0 "f\by" Leaf Leaf) (Node 0 "\SO" Leaf Leaf)) (Node 1 "\DEL\DLE" (Node 1 ":" Leaf Leaf) (Node 2 "\SIZn\187608" Leaf Leaf)),Node 0 "\811791" (Node (-1) "6\150786c" (Node 0 "%\GSCR" Leaf Leaf) (Node 0 "\833204'\417964\455947ur\1026027" Leaf Leaf)) (Node 1 "zG\f\87417%\659926W" (Node 0 "5!122&hp" Leaf Leaf) (Node 2 "" Leaf Leaf)),Node 1 "\NAK\CAN7Q3W" (Node 0 "5l0hN;" (Node (-1) "Z>" Leaf Leaf) (Node 1 "\202584\538948" Leaf Leaf)) (Node 1 "\649717P\754639\807427\60643" (Node 2 "F^\NUL$\456882\1055169 nJ$" Leaf Leaf) (Node 2 "\1024964]Bm\CAN\SOH" Leaf Leaf)),Node 1 "" (Node 0 "" (Node (-1) ")qcP*\43642JI-`\ETX" Leaf Leaf) (Node 1 "$\f" Leaf Leaf)) (Node 1 "g#\EMi9s\DC4G+Jz" (Node 0 "\185769@" Leaf Leaf) (Node 2 "\296258" Leaf Leaf)),Node 1 "\226406\a4" (Node 0 "(V\45110>g\a\367145*I\b" (Node 0 "C\GS" Leaf Leaf) (Node 1 "ZTb\799779^BD\148988\ETXW" Leaf Leaf)) (Node 1 ":\b" (Node 0 "sm\483386\ENQ6" Leaf Leaf) (Node 1 "BW6=\SUBX\108947;aDR" Leaf Leaf)),Node 1 "5\204491\SI\1003307A\101697|b\bd\f" (Node 0 "\768985\FS\509931b\1029399\382231L;\97655" (Node (-1) "{8Q\698958\166969^\355968Y6Z\rz\FS" Leaf Leaf) (Node 0 "\SOH34_;\"\142171\DC2\795849\b\1078092\893096," Leaf Leaf)) (Node 2 "\187463\DC4)\676354vH\EOT\f\675712\382164\571519{" (Node 2 "\702592S`|\274328\&3(" Leaf Leaf) (Node 2 "\815926',nU\NAKx\833704\180474\ENQA0U-\SYNJ" Leaf Leaf)),Node 0 "(^F'\EOT\161639(\SI|/h\352771\1081084/kic" (Node (-1) "\EOTz<\DC210\DC2" (Node 0 "\ESC\648005\&9\763800\1023640PU0}" Leaf Leaf) (Node (-1) "J" Leaf Leaf)) (Node 1 "UNc\1044756\350931\1005936V<;\ESC" (Node 1 "\rc!_-\229557\f\293409" Leaf Leaf) (Node 1 "\n\936201)\21430VE\572767f" Leaf Leaf)),Node 0 "\263811\423058\601454W\ETXL)wI\871942J;" (Node (-1) "L\983067\USu7\160661 " (Node (-1) "L\SOH\ETXI\967090\&7\n`\31197\769729]|;z" Leaf Leaf) (Node (-1) "\1055109\DC3<\747492KC1$\v\ETB4\r\NUL\742352\1042269\1088005" Leaf Leaf)) (Node 1 "q" (Node 0 "\580129\n@>\735351a\FS\NUL" Leaf Leaf) (Node 2 "\141509`!Qn" Leaf Leaf))]
+--
+-- >>> sample' (choose (0, 0-5))
+-- [-1,0,0,-2,-1,-3,-4,-3,-5,-4,-1]
+--
+
+-- >>> sample' gen_0_10
+-- [9,9,8,8,10,7,2,3,9,0,8]
+--
+
+
+
+
+
+
+oneOf :: [Gen a] -> Gen a
+oneOf gs = do
+  g <- elements gs
+  x <- g
+  return x
+
+-- >>> sample' (oneOf [choose (0,2), choose (10,12)])
+-- [2,2,1,1,12,10,2,2,11,0,11]
+--
+
+randomThings :: (Arbitrary a) => IO [a]
+randomThings = sample' arbitrary
+
+-- >>> randomThings :: IO [[Int]]
+-- [[],[],[-4,-1],[5,1,0,3,4,3],[0,8,2,3,8,4,3],[-6,-1,8,1,-5,-10,7,2],[-10,11,-6,-6,-12],[5,13,-8,-14,0,-1,-14,-9,10,-10,12,0,14,-4],[-5,8,-9,-12],[-8,-3,-2,12,7,-1,6,3,17,-14,12],[]]
+--
+-- >>> randomThings :: IO [Bool]
+-- [True,True,False,True,False,True,True,True,True,True,True]
+--
+
+-- >>> randomThings :: IO [String]
+-- ["","\a","\f","\779257W\SUBA","\84573","D\ACK\365059S","9W\554735G","g\SYN~W\62120\&4&[","\NULsc\18427fy(","Q`TI \n/TH","\461027\ESCZ`u\783094\&4B\SOHT\424692"]
+--
+
+
+-- >>> randomThings :: IO [(Int, Bool)] 
+-- [(0,True),(1,True),(0,True),(6,False),(-5,True),(4,False),(-12,False),(-8,False),(5,False),(-9,False),(-7,False)]
+--
+
+data Variable 
+  = V String 
+  deriving (Eq, Ord)
+
+data Value 
+  = IntVal Int
+  | BoolVal Bool
+  deriving (Eq, Ord)
+
+data Expression 
+  = Var   Variable
+  | Val   Value
+  | Plus  Expression Expression
+  | Minus Expression Expression
+
+data Statement
+  = Assign   Variable   Expression
+  | If       Expression Statement  Statement
+  | While    Expression Statement
+  | Sequence Statement  Statement
+  | Skip
+
+type WState = M.Map Variable Value
+
+instance Arbitrary Variable where
+  arbitrary = do
+    x <- elements ['A'..'Z'] 
+    return (V [x])
+
+-- >>> randomThings :: IO [Variable]
+-- [V "X",V "V",V "W",V "C",V "J",V "G",V "H",V "I",V "D",V "T",V "R"]
+--
+
+instance Arbitrary Value where
+  arbitrary = oneOf [ do {n <- arbitrary; return (IntVal n) }
+                    , do {b <- arbitrary; return (BoolVal b)} 
+                    ]
+
+instance Arbitrary Expression where
+  arbitrary = expr
+
+  -- shrink :: Expression -> [Expression]
+  shrink (Plus e1 e2)  = [e1, e2]
+  shrink (Minus e1 e2) = [e1, e2]
+  shrink _             = []
+
+
+expr :: Gen Expression
+expr     = oneof [baseE, binE] 
+
+binE :: Gen Expression
+binE  = do 
+  o  <- elements [Plus, Minus]
+  e1 <- expr
+  e2 <- expr 
+  return (o e1 e2)
+
+baseE :: Gen Expression
+baseE = oneOf 
+  [ do {x <- arbitrary; return (Var x) }
+  , do {v <- arbitrary; return (Val v)} 
+  ]
+
+
+-- >>> randomThings :: IO [WState]
+-- [fromList [],fromList [(V "P",IntVal 0)],fromList [(V "M",IntVal 0),(V "Z",IntVal 1)],fromList [(V "E",BoolVal False),(V "J",BoolVal False),(V "X",IntVal 6)],fromList [(V "J",IntVal (-8)),(V "U",IntVal 3),(V "Z",BoolVal True)],fromList [(V "A",BoolVal False),(V "I",BoolVal False),(V "J",BoolVal False)],fromList [(V "H",BoolVal True),(V "J",IntVal (-9)),(V "K",IntVal (-12)),(V "L",BoolVal True),(V "U",BoolVal False),(V "V",IntVal (-4)),(V "W",IntVal (-9))],fromList [(V "A",BoolVal True),(V "C",BoolVal False),(V "E",IntVal 1),(V "K",BoolVal False),(V "N",IntVal (-7)),(V "P",BoolVal True),(V "R",IntVal (-2)),(V "T",BoolVal True),(V "V",IntVal (-1)),(V "Z",BoolVal True)],fromList [(V "A",BoolVal True),(V "M",BoolVal True),(V "O",BoolVal True),(V "S",IntVal 14),(V "W",IntVal 3)],fromList [(V "D",BoolVal True),(V "E",IntVal (-5)),(V "F",BoolVal True),(V "L",BoolVal False),(V "M",IntVal (-13)),(V "T",BoolVal True),(V "V",IntVal (-3)),(V "Z",BoolVal True)],fromList [(V "D",IntVal 13),(V "F",IntVal 16),(V "I",IntVal (-14)),(V "M",IntVal 11),(V "O",BoolVal True),(V "P",BoolVal False),(V "Q",BoolVal False),(V "R",BoolVal False),(V "S",BoolVal False),(V "U",BoolVal True),(V "Y",IntVal 15)]]
+--
+
+execute ::  WState -> Statement -> WState
+execute s0 stmt = execState (evalS stmt) s0
+
+(===) ::  Statement -> Statement -> Property
+p1 === p2 = forAll arbitrary (\st -> execute st p1 == execute st p2)
+
+
+-- X := 10; Y := 20
+prog1 = Sequence 
+  (Assign (V "X") (Val (IntVal 10)))
+  (Assign (V "Y") (Val (IntVal 20)))
+
+--  Y := 20; X := 10
+prog2 = Sequence 
+  (Assign (V "Y") (Val (IntVal 20)))
+  (Assign (V "X") (Val (IntVal 10)))
+
+--  Y := 20; X := 20
+prog3 = Sequence 
+  (Assign (V "Y") (Val (IntVal 20)))
+  (Assign (V "X") (Val (IntVal 20)))
+
+-- >>> quickCheck (prog1 === prog2)
+
+-- >>> quickCheck (prog1 === prog3)
+
+prop_add_zero_elim :: Variable -> Expression -> Property
+prop_add_zero_elim x e = 
+   (x `Assign` (e `Plus` Val (IntVal 0))) === (x `Assign` e) 
+
+prop_sub_zero_elim :: Variable -> Expression -> Property
+prop_sub_zero_elim x e =
+  (x `Assign` (e `Minus` Val (IntVal 0))) === (x `Assign` e)
+
+-- >>> quickCheck prop_add_zero_elim
+-- *** Failed! Falsifiable (after 1 test):
+-- W
+-- True
+-- fromList []
+--
+
+p1  = (V "W") `Assign` (Val (BoolVal True))
+p2  = (V "W") `Assign` ((Val (BoolVal True) `Plus` Val (IntVal 0)))
+st0 = M.fromList []
+
+-- >>> execute st0 p1
+-- fromList [(W,True)]
+--
+
+-- >>> execute st0 p2
+-- fromList [(W,0)]
+--
+
+exprI :: Gen Expression
+exprI = oneof [baseI, binE] 
+
+baseI :: Gen Expression
+baseI = oneOf 
+  [ do {x <- arbitrary; return (Var x) }
+  , do {n <- arbitrary; return (Val (IntVal n)) } 
+  ]
+
+binI :: Gen Expression
+binI  = do 
+  o  <- elements [Plus, Minus]
+  e1 <- exprI
+  e2 <- exprI 
+  return (o e1 e2)
+
+prop_add_zero_elim'   :: Variable -> Property
+prop_add_zero_elim' x = 
+  forAll exprI (\e -> (x `Assign` (e `Plus` Val (IntVal 0))) === (x `Assign` e))
+
+
+-- >>> quickCheck prop_add_zero_elim'
+-- *** Failed! Falsifiable (after 11 tests):
+-- Z
+-- G
+-- fromList [(B,False),(F,-4),(G,True),(K,8),(M,True),(N,False),(R,3),(T,False),(V,True)]
+--
+
+
+prop_const_prop :: Variable -> Variable -> Expression -> Property
+prop_const_prop x y e = 
+  ((x `Assign` e) `Sequence` (y `Assign` e))
+  ===
+  ((x `Assign` e) `Sequence` (y `Assign` Var x))
+
+
+-- >>> quickCheck prop_const_prop 
+
+
+
+-------------------------------------------------------------------------------------------
+-- HINT FOR HW
+-------------------------------------------------------------------------------------------
+
+data BST k v = Node k v (BST k v) (BST k v) | Leaf
+  deriving (Show)
+
+
+genBal :: Int -> Int -> Int -> Gen (BST Int String)
+genBal 0 lo hi = 
+  return Leaf
+genBal n lo hi = do
+  key   <- choose (lo, hi)
+  val   <- arbitrary
+  left  <- genBal (n-1) lo (key - 1)
+  right <- genBal (n-1) (key + 1) hi
+  return (Node key val left right)
+
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+
+evalE :: Expression -> State WState Value
+evalE (Var x)       = get >>= return . M.findWithDefault (IntVal 0) x
+evalE (Val v)       = return v
+evalE (Plus e1 e2)  = return (intOp (+) 0 IntVal) `ap` evalE e1 `ap` evalE e2
+evalE (Minus e1 e2) = return (intOp (-) 0 IntVal) `ap` evalE e1 `ap` evalE e2
+
+evalS :: Statement -> State WState ()
+evalS w@(While e s)    = evalS (If e (Sequence s w) Skip)
+evalS Skip             = return ()
+evalS (Sequence s1 s2) = evalS s1 >> evalS s2
+evalS (Assign x e )    = do v <- evalE e
+                            m <- get
+                            put $ M.insert x v m
+                            return ()
+evalS (If e s1 s2)     = do v <- evalE e
+                            case v of 
+                              BoolVal True  -> evalS s1
+                              BoolVal False -> evalS s2
+                              _             -> return ()
+
+
+intOp :: (Int -> Int -> a) -> a -> (a -> Value) -> Value -> Value -> Value
+intOp op _ c (IntVal x) (IntVal y) = c $ x `op` y
+intOp _  d c _          _          = c d 
+
+
+blank   :: Int -> String 
+blank n = replicate n ' '
+
+instance Show Variable where
+  show (V x) = x
+
+instance Show Value where
+  show (IntVal  i) = show i
+  show (BoolVal b) = show b
+
+instance Show Expression where
+  show (Var v)       = show v
+  show (Val v)       = show v
+  show (Plus e1 e2)  = show e1 ++ " + " ++ show e2
+  show (Minus e1 e2) = show e1 ++ " + " ++ show e2
+
+instance Show Statement where
+  show = showi 0
+
+showi :: Int -> Statement -> String 
+showi n (Skip)       = blank n ++ "skip"
+showi n (Assign x e) = blank n ++ show x ++ " := " ++ show e
+showi n (If e s1 s2) = blank n ++ "if " ++ show e ++ " then\n" ++ 
+                       showi (n+2) s1 ++
+                       blank n ++ "else\n" ++ showi (n+2) s2 ++ blank n ++ "endif"
+
+showi n (While e s)  = blank n ++ "while " ++ show e ++ " do\n" ++ 
+                       showi (n+2) s
+showi n (Sequence s1 s2) = showi n s1 ++ "\n" ++ showi n s2 
+
+instance Arbitrary Statement where
+  arbitrary = oneof [ liftM2 Assign   arbitrary arbitrary
+                    , liftM3 If       arbitrary arbitrary arbitrary
+                    , liftM2 While    arbitrary arbitrary
+              , liftM2 Sequence arbitrary arbitrary
+                    , return Skip ]
+

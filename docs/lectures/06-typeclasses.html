@@ -1,0 +1,1357 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 230">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse230.github.io/fa23/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse230</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse230.github.io/fa23/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 230" />
+    <meta property="og:site_name" content="UCSD CSE 230" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse230.github.io/fa23" id="blog-title-left-top">cse230</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://ucsd-cse230.github.io/fa23/calendar.html">Calendar</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse230.github.io/fa23/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/ln3oae6zy584n9" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/48988" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse230.github.io/fa23/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/fa23/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/ln3oae6zy584n9" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/48988" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse230.github.io/fa23/static/img/books.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Typeclasses</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="overloading-operators-arithmetic">Overloading Operators: Arithmetic</h2>
+<p>The <code class="sourceCode haskell"><span class="op">+</span></code> operator works for a bunch of different types.</p>
+<p>For <code class="sourceCode haskell"><span class="dt">Integer</span></code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span></span></code></pre></div>
+<p>for <code class="sourceCode haskell"><span class="dt">Double</span></code> precision floats:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fl">2.9</span> <span class="op">+</span> <span class="fl">3.5</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fl">6.4</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="overloading-comparisons">Overloading Comparisons</h2>
+<p>Similarly we can <em>compare</em> different types of values</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">3</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">False</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span>  [<span class="fl">2.9</span>, <span class="fl">3.5</span>] <span class="op">==</span> [<span class="fl">2.9</span>, <span class="fl">3.5</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="st">&quot;cat&quot;</span>, <span class="dv">10</span>) <span class="op">&lt;</span> (<span class="st">&quot;cat&quot;</span>, <span class="dv">2</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="dt">False</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> (<span class="st">&quot;cat&quot;</span>, <span class="dv">10</span>) <span class="op">&lt;</span> (<span class="st">&quot;cat&quot;</span>, <span class="dv">20</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="ad-hoc-overloading">Ad-Hoc Overloading</h2>
+<p>Seems unremarkable?</p>
+<p>Languages since the dawn of time have supported “operator overloading”</p>
+<ul>
+<li><p>To support this kind of <strong>ad–hoc polymorphism</strong></p></li>
+<li><p>Ad-hoc: “created or done for a particular purpose as necessary.”</p></li>
+</ul>
+<p>You really <strong>need</strong> to <em>add</em> and <em>compare</em> values of <em>multiple</em> types!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="haskell-has-no-caste-system">Haskell has no caste system</h2>
+<p>No distinction between <strong>operators</strong> and <strong>functions</strong></p>
+<ul>
+<li>All are first class citizens!</li>
+</ul>
+<p>But then, what type do we give to <em>functions</em> like <code class="sourceCode haskell"><span class="op">+</span></code> and <code class="sourceCode haskell"><span class="op">==</span></code> ?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>Which of the following would be appropriate types for <code class="sourceCode haskell">(<span class="op">+</span>)</code> ?</p>
+<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="ot">(+) ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span></code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="ot">(+) ::</span> <span class="dt">Double</span>  <span class="ot">-&gt;</span> <span class="dt">Double</span>  <span class="ot">-&gt;</span> <span class="dt">Double</span></code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="ot">(+) ::</span> a       <span class="ot">-&gt;</span> a       <span class="ot">-&gt;</span> a</code></p>
+<p><strong>(D)</strong> <em>All</em> of the above</p>
+<p><strong>(E)</strong> <em>None</em> of the above</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p><code class="sourceCode haskell"><span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span></code> is bad because?</p>
+<ul>
+<li>Then we cannot add <code class="sourceCode haskell"><span class="dt">Double</span></code>s!</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p><code class="sourceCode haskell"><span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></code> is bad because?</p>
+<ul>
+<li>Then we cannot add <code class="sourceCode haskell"><span class="dt">Double</span></code>s!</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p><code class="sourceCode haskell">a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</code> is bad because?</p>
+<ul>
+<li>That doesn’t make sense, e.g. to add two <code class="sourceCode haskell"><span class="dt">Bool</span></code> or two <code class="sourceCode haskell">[<span class="dt">Int</span>]</code> or two functions!</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="type-classes-for-ad-hoc-polymorphism">Type Classes for Ad Hoc Polymorphism</h2>
+<p>Haskell solves this problem with <strong>typeclasses</strong></p>
+<ul>
+<li>Introduced by <a href="http://portal.acm.org/citation.cfm?id=75283">Wadler and Blott</a></li>
+</ul>
+<p><img src="../static/img/blott-wadler.png" id="fig:types" class="align-center" style="width:60.0%" /></p>
+<p><strong>BTW:</strong> The paper is one of the clearest examples of academic writing I have seen.
+The next time you hear a curmudgeon say all the best CS was done in the 60s or 70s
+just point them to the above.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="qualified-types">Qualified Types</h2>
+<p>To see the right type, lets ask:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> (<span class="op">+</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ot">(+) ::</span> (<span class="dt">Num</span> a) <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span></code></pre></div>
+<p>We call the above a <strong>qualified type</strong>. Read it as <code class="sourceCode haskell"><span class="op">+</span></code></p>
+<ul>
+<li>takes in two <code class="sourceCode haskell">a</code> values and returns an <code class="sourceCode haskell">a</code> value</li>
+</ul>
+<p>for any type <code class="sourceCode haskell">a</code> that</p>
+<ul>
+<li><em>is a</em> <code class="sourceCode haskell"><span class="dt">Num</span></code> or</li>
+<li><em>implements</em> the <code class="sourceCode haskell"><span class="dt">Num</span></code> interface or</li>
+<li><em>is an instance of</em> a <code class="sourceCode haskell"><span class="dt">Num</span></code>.</li>
+</ul>
+<p>The name <code class="sourceCode haskell"><span class="dt">Num</span></code> can be thought of as a <em>predicate</em> or <em>constraint</em> over types.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="some-types-are-nums">Some types <em>are</em> <code class="sourceCode haskell"><span class="dt">Num</span></code>s</h2>
+<p>Examples include <code class="sourceCode haskell"><span class="dt">Integer</span></code>, <code class="sourceCode haskell"><span class="dt">Double</span></code> etc</p>
+<ul>
+<li>Any such values of those types can be passed to <code class="sourceCode haskell"><span class="op">+</span></code>.</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="other-types-are-not-nums">Other types <em>are not</em> <code class="sourceCode haskell"><span class="dt">Num</span></code>s</h2>
+<p>Examples include <code class="sourceCode haskell"><span class="dt">Char</span></code>, <code class="sourceCode haskell"><span class="dt">String</span></code>, functions etc,</p>
+<ul>
+<li>Values of those types <em>cannot</em> be passed to <code class="sourceCode haskell"><span class="op">+</span></code>.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dt">True</span> <span class="op">+</span> <span class="dt">False</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>interactive<span class="op">&gt;:</span><span class="dv">15</span><span class="op">:</span><span class="dv">6</span><span class="op">:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">No</span> <span class="kw">instance</span> for (<span class="dt">Num</span> <span class="dt">Bool</span>) arising from a use <span class="kw">of</span> ‘<span class="op">+</span>’</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">In</span> the expression<span class="op">:</span> <span class="dt">True</span> <span class="op">+</span> <span class="dt">False</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">In</span> an equation for ‘it’<span class="op">:</span> it <span class="ot">=</span> <span class="dt">True</span> <span class="op">+</span> <span class="dt">False</span></span></code></pre></div>
+<p><strong>Aha!</strong> <em>Now</em> those <code class="sourceCode haskell">no <span class="kw">instance</span> for</code> error messages should make sense!</p>
+<ul>
+<li>Haskell is complaining that <code class="sourceCode haskell"><span class="dt">True</span></code> and <code class="sourceCode haskell"><span class="dt">False</span></code> are of type <code class="sourceCode haskell"><span class="dt">Bool</span></code></li>
+<li>and that <code class="sourceCode haskell"><span class="dt">Bool</span></code> is <em>not</em> an instance of <code class="sourceCode haskell"><span class="dt">Num</span></code>.</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="type-class-is-a-set-of-operations">Type Class is a Set of Operations</h2>
+<p>A typeclass is a collection of operations (functions)
+that must exist for the underlying type.</p>
+<ul>
+<li><a href="https://www.parsonsmatt.org/2017/01/07/how_do_type_classes_differ_from_interfaces.html">Similar but different to Java interfaces</a></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-eq-type-class">The <code class="sourceCode haskell"><span class="dt">Eq</span></code> Type Class</h2>
+<p>The simplest typeclass is perhaps, <code class="sourceCode haskell"><span class="dt">Eq</span></code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span></code></pre></div>
+<p>A type <code class="sourceCode haskell">a</code> is <em>an instance of</em> <code class="sourceCode haskell"><span class="dt">Eq</span></code> if there are two functions</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="op">==</span></code> and <code class="sourceCode haskell"><span class="op">/=</span></code></li>
+</ul>
+<p>That determine if two <code class="sourceCode haskell">a</code> values are respectively <em>equal</em> or <em>disequal</em>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-show-type-class">The <code class="sourceCode haskell"><span class="dt">Show</span></code> Type Class</h2>
+<p>The typeclass <code class="sourceCode haskell"><span class="dt">Show</span></code> requires that instances be convertible to <code class="sourceCode haskell"><span class="dt">String</span></code>
+(which can then be printed out)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span>  <span class="dt">Show</span> a  <span class="kw">where</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  show ::</span> a <span class="ot">-&gt;</span> <span class="dt">String</span></span></code></pre></div>
+<p>Indeed, we can test this on different (built-in) types</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fu">show</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;2&quot;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fu">show</span> <span class="fl">3.14</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;3.14&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="fu">show</span> (<span class="dv">1</span>, <span class="st">&quot;two&quot;</span>, ([],[],[]))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;(1,\&quot;two\&quot;,([],[],[]))&quot;</span></span></code></pre></div>
+<p>(Hey, whats up with the funny <code class="sourceCode haskell">\<span class="st">&quot;</span></code>?)</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="unshowable-types">Unshowable Types</h2>
+<p>When we type an expression into <code class="sourceCode haskell">ghci</code>,</p>
+<ul>
+<li>it computes the value,</li>
+<li>then calls <code class="sourceCode haskell"><span class="fu">show</span></code> on the result.</li>
+</ul>
+<p>Thus, if we create a <em>new</em> type by</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Unshowable</span> <span class="ot">=</span> <span class="dt">A</span> <span class="op">|</span> <span class="dt">B</span> <span class="op">|</span> <span class="dt">C</span></span></code></pre></div>
+<p>and then create values of the type,</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> x <span class="ot">=</span> <span class="dt">A</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> x</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ot">x ::</span> <span class="dt">Unshowable</span></span></code></pre></div>
+<p>but then we <strong>cannot view</strong> them</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> x</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>interactive<span class="op">&gt;:</span><span class="dv">1</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">No</span> <span class="kw">instance</span> for (<span class="dt">Show</span> <span class="dt">Unshowable</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      arising from a use <span class="kw">of</span> <span class="ot">`print' at &lt;interactive&gt;:1:0</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    Possible fix: add an instance declaration for (Show Unshowable)</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    In a stmt of a 'do' expression: print it</span></span></code></pre></div>
+<p>and we <strong>cannot compare</strong> them!</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> x <span class="op">==</span> x</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>interactive<span class="op">&gt;:</span><span class="dv">1</span><span class="op">:</span><span class="dv">0</span><span class="op">:</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">No</span> <span class="kw">instance</span> for (<span class="dt">Eq</span> <span class="dt">Unshowable</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      arising from a use <span class="kw">of</span> <span class="ot">`==' at &lt;interactive&gt;:1:0-5</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ot">    Possible fix: add an instance declaration for (Eq Unshowable)</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ot">    In the expression: x == x</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="ot">    In the definition of `</span>it'<span class="op">:</span> it <span class="ot">=</span> x <span class="op">==</span> x</span></code></pre></div>
+<p>Again, the previously incomprehensible type error message should
+make sense to you.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="creating-instances">Creating Instances</h2>
+<p>Tell Haskell how to show or compare values of type <code class="sourceCode haskell"><span class="dt">Unshowable</span></code></p>
+<p>By <strong>creating instances</strong> of <code class="sourceCode haskell"><span class="dt">Eq</span></code> and <code class="sourceCode haskell"><span class="dt">Show</span></code> for that type:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Eq</span> <span class="dt">Unshowable</span> <span class="kw">where</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">A</span> <span class="dt">A</span> <span class="ot">=</span> <span class="dt">True</span>           <span class="co">-- True if both inputs are A</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">B</span> <span class="dt">B</span> <span class="ot">=</span> <span class="dt">True</span>           <span class="co">-- ...or B</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) <span class="dt">C</span> <span class="dt">C</span> <span class="ot">=</span> <span class="dt">True</span>           <span class="co">-- .. or C</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  (<span class="op">==</span>) _ _ <span class="ot">=</span> <span class="dt">False</span>          <span class="co">-- otherwise</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  (<span class="op">/=</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">==</span> y)   <span class="co">-- Test if `x == y` and negate result!</span></span></code></pre></div>
+<h2 id="exercise">EXERCISE</h2>
+<p>Lets <em>create</em> an <code class="sourceCode haskell"><span class="kw">instance</span></code> for <code class="sourceCode haskell"><span class="dt">Show</span> <span class="dt">Unshowable</span></code></p>
+<p>When you are done we should get the following behavior</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> x <span class="ot">=</span> [<span class="dt">A</span>, <span class="dt">B</span>, <span class="dt">C</span>]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>[<span class="dt">A</span>, <span class="dt">B</span>, <span class="dt">C</span>]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="automatic-derivation">Automatic Derivation</h2>
+<p>We <em>should</em> be able to compare and view <code class="sourceCode haskell"><span class="dt">Unshowble</span></code> <strong>automatically”</strong></p>
+<p>Haskell lets us <em>automatically derive</em> implementations for some standard classes</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Showable</span> <span class="ot">=</span> <span class="dt">A'</span> <span class="op">|</span> <span class="dt">B'</span> <span class="op">|</span> <span class="dt">C'</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>) <span class="co">-- tells Haskell to automatically generate instances</span></span></code></pre></div>
+<p>Now we have</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> x' <span class="ot">=</span> <span class="dt">A'</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> x'</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ot">x' ::</span> <span class="dt">Showable</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> x'</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="dt">A'</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> x' <span class="op">==</span> x'</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> x' <span class="op">==</span> <span class="dt">B'</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="dt">False</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-num-typeclass">The <code class="sourceCode haskell"><span class="dt">Num</span></code> typeclass</h2>
+<p>Let us now peruse the definition of the <code class="sourceCode haskell"><span class="dt">Num</span></code> typeclass.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span>info <span class="dt">Num</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> (<span class="dt">Eq</span> a, <span class="dt">Show</span> a) <span class="ot">=&gt;</span> <span class="dt">Num</span> a <span class="kw">where</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  (+) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (*) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  (-) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  negate ::</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  abs ::</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  signum ::</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="ot">  fromInteger ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> a</span></code></pre></div>
+<p>A type <code class="sourceCode haskell">a</code> <em>is an instance of</em> (i.e. <em>implements</em>) <code class="sourceCode haskell"><span class="dt">Num</span></code> if</p>
+<ol type="1">
+<li>The type is <em>also</em> an instance of <code class="sourceCode haskell"><span class="dt">Eq</span></code> and <code class="sourceCode haskell"><span class="dt">Show</span></code>, and</li>
+<li>There are functions to add, multiply, etc. values <strong>of that type</strong>.</li>
+</ol>
+<p>That is, we can do <em>comparisons</em> and <em>arithmetic</em> on the values.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="standard-typeclass-hierarchy">Standard Typeclass Hierarchy</h2>
+<p>Haskell comes equipped with a rich set of built-in classes.</p>
+<figure>
+<img src="../static/img/haskell98-classes.png" alt="Standard Typeclass Hierarchy" />
+<figcaption aria-hidden="true">Standard Typeclass Hierarchy</figcaption>
+</figure>
+<p>In the above picture, there is an edge from <code class="sourceCode haskell"><span class="dt">Eq</span></code> and <code class="sourceCode haskell"><span class="dt">Show</span></code> to <code class="sourceCode haskell"><span class="dt">Num</span></code>
+because for something to be a <code class="sourceCode haskell"><span class="dt">Num</span></code> it must also be an <code class="sourceCode haskell"><span class="dt">Eq</span></code> and <code class="sourceCode haskell"><span class="dt">Show</span></code>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-ord-typeclass">The <code class="sourceCode haskell"><span class="dt">Ord</span></code> Typeclass</h2>
+<p>Another typeclass you’ve used already is the one for <code class="sourceCode haskell"><span class="dt">Ord</span></code>ering values:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span>info (<span class="op">&lt;</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> <span class="dt">Ord</span> a <span class="kw">where</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  (&lt;) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span></span></code></pre></div>
+<p>For example:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dv">2</span> <span class="op">&lt;</span> <span class="dv">3</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="st">&quot;cat&quot;</span> <span class="op">&lt;</span> <span class="st">&quot;dog&quot;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="dt">True</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-1">QUIZ</h2>
+<p>Recall the datatype:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Showable</span> <span class="ot">=</span> <span class="dt">A'</span> <span class="op">|</span> <span class="dt">B'</span> <span class="op">|</span> <span class="dt">C'</span> <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>)</span></code></pre></div>
+<p>What is the result of:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="dt">A'</span> <span class="op">&lt;</span> <span class="dt">B'</span></span></code></pre></div>
+<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dt">True</span></code>
+<strong>(B)</strong> <code class="sourceCode haskell"><span class="dt">False</span></code>
+<strong>(C)</strong> Type error
+<strong>(D)</strong> Run-time exception</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="using-typeclasses">Using Typeclasses</h2>
+<p>Typeclasses integrate with the rest of Haskell’s type system.</p>
+<p>Lets build a small library for <em>Environments</em> mapping keys <code class="sourceCode haskell">k</code> to values <code class="sourceCode haskell">v</code></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Table</span> k v</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">Def</span>  v                <span class="co">-- default value `v` to be used for &quot;missing&quot; keys</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Bind</span> k v (<span class="dt">Table</span> k v)  <span class="co">-- bind key `k` to the value `v`</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-2">QUIZ</h2>
+<p>What is the type of <code class="sourceCode haskell">keys</code></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>keys (<span class="dt">Def</span> _)         <span class="ot">=</span> []</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>keys (<span class="dt">Bind</span> k _ rest) <span class="ot">=</span> k <span class="op">:</span> keys rest</span></code></pre></div>
+<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> k</code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> [k]</code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> [(k, v)]</code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> [v]</code></p>
+<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> v</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="an-api-for-table">An API for <code class="sourceCode haskell"><span class="dt">Table</span></code></h2>
+<p>Lets write a small API for <code class="sourceCode haskell"><span class="dt">Table</span></code></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; let env0 = set &quot;cat&quot; 10.0 (set &quot;dog&quot; 20.0 (Def 0))</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; set &quot;cat&quot; env0</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- 10</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; get &quot;dog&quot; env0</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- 20</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- &gt;&gt;&gt; get &quot;horse&quot; env0</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co">-- 0</span></span></code></pre></div>
+<p>Ok, lets implement!</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'add key val env' returns a new env that additionally maps `key` to `val`</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ot">set ::</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Table</span> k v <span class="ot">-&gt;</span> <span class="dt">Table</span> k v</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>set key val env <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- | 'get key env' returns the value of `key` and the &quot;default&quot; if no value is found</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> k <span class="ot">-&gt;</span> <span class="dt">Table</span> k v <span class="ot">-&gt;</span> v</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>get key env <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br></p>
+<p>Oops, y u no check?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="constraint-propagation">Constraint Propagation</h2>
+<p>Lets <em>delete</em> the types of <code class="sourceCode haskell">set</code> and <code class="sourceCode haskell">get</code></p>
+<ul>
+<li>to see what Haskell says their types are!</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> get</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> (<span class="dt">Eq</span> k) <span class="ot">=&gt;</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Table</span> k v <span class="ot">-&gt;</span> <span class="dt">Table</span> k v</span></code></pre></div>
+<p>We can use <em>any</em> <code class="sourceCode haskell">k</code> value as a <em>key</em>
+- if <code class="sourceCode haskell">k</code> is an instance of i.e. “implements” the <code class="sourceCode haskell"><span class="dt">Eq</span></code> typeclass.</p>
+<p>How, did GHC figure this out?</p>
+<ul>
+<li>If you look at the code for <code class="sourceCode haskell">get</code> you’ll see that we check if two keys <em>are equal</em>!</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="homework">HOMEWORK</h2>
+<p>Write an optimized version of</p>
+<ul>
+<li><code class="sourceCode haskell">set</code> that ensures the keys are in <em>increasing</em> order,</li>
+<li><code class="sourceCode haskell">get</code> that gives up and returns the “default” the moment
+we see a key thats larger than the one we’re looking for.</li>
+</ul>
+<p><em>(How) do you need to change the type of <code class="sourceCode haskell"><span class="dt">Table</span></code> ?</em></p>
+<p><em>(How) do you need to change the types of <code class="sourceCode haskell">get</code> and <code class="sourceCode haskell">set</code> ?</em></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="explicit-signatures">Explicit Signatures</h2>
+<p>Sometimes the use of type classes requires explicit annotations</p>
+<ul>
+<li>which affect the code’s behavior</li>
+</ul>
+<p><code class="sourceCode haskell"><span class="dt">Read</span></code> is a standard typeclass that is the “opposite” of <code class="sourceCode haskell"><span class="dt">Show</span></code></p>
+<ul>
+<li>where any instance <code class="sourceCode haskell">a</code> of<code class="sourceCode haskell"><span class="dt">Read</span></code> has a “parsing” function</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read</span><span class="ot"> ::</span> (<span class="dt">Read</span> a) <span class="ot">=&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> a</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-3">QUIZ</h2>
+<p>What does the expression <code class="sourceCode haskell"><span class="fu">read</span> <span class="st">&quot;2&quot;</span></code> evaluate to?</p>
+<p><strong>(A)</strong> compile time error</p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="st">&quot;2&quot;</span><span class="ot"> ::</span> <span class="dt">String</span></code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="dv">2</span><span class="ot">   ::</span> <span class="dt">Integer</span></code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell"><span class="fl">2.0</span><span class="ot"> ::</span> <span class="dt">Double</span></code></p>
+<p><strong>(E)</strong> run-time exception</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="compiler-is-puzzled">Compiler is puzzled!</h2>
+<p>Doesn’t know <em>what type</em> to convert the string to!</p>
+<p>Doesn’t know <em>which</em> of the <code class="sourceCode haskell"><span class="fu">read</span></code> functions to run!</p>
+<ul>
+<li>Did we want an <code class="sourceCode haskell"><span class="dt">Int</span></code> or a <code class="sourceCode haskell"><span class="dt">Double</span></code> or maybe something else altogether?</li>
+</ul>
+<p><strong>Explicit Type Annotation</strong></p>
+<ul>
+<li>needed to tell Haskell what to convert the string to:</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Int</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Float</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fl">2.0</span></span></code></pre></div>
+<p>Note the different results due to the different types.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="creating-typeclasses">Creating Typeclasses</h2>
+<p>Typeclasses are useful for <em>many</em> different things.</p>
+<p>We will see some of those over the next few lectures.</p>
+<p>Lets conclude today’s class with a quick example that provides a small taste.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="json">JSON</h2>
+<p><em>JavaScript Object Notation</em> or <a href="http://www.json.org/">JSON</a></p>
+<ul>
+<li>is a simple format for transferring data around.</li>
+</ul>
+<p>Here is an example:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;name&quot;</span>    <span class="fu">:</span> <span class="st">&quot;Ranjit&quot;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;age&quot;</span>     <span class="fu">:</span> <span class="fl">44.0</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;likes&quot;</span>   <span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;guacamole&quot;</span><span class="ot">,</span> <span class="st">&quot;coffee&quot;</span><span class="ot">,</span> <span class="st">&quot;tacos&quot;</span><span class="ot">]</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;hates&quot;</span>   <span class="fu">:</span> <span class="ot">[</span> <span class="st">&quot;waiting&quot;</span> <span class="ot">,</span> <span class="st">&quot;spiders&quot;</span><span class="ot">]</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;lunches&quot;</span> <span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;monday&quot;</span><span class="fu">,</span>    <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;zanzibar&quot;</span><span class="fu">}</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;tuesday&quot;</span><span class="fu">,</span>   <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;farmers market&quot;</span><span class="fu">}</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;wednesday&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;harekrishna&quot;</span><span class="fu">}</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;thursday&quot;</span><span class="fu">,</span>  <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;faculty club&quot;</span><span class="fu">}</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;friday&quot;</span><span class="fu">,</span>    <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;coffee cart&quot;</span><span class="fu">}</span> <span class="ot">]</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>In brief, each JSON object is either</p>
+<ul>
+<li><p>a <em>base</em> value like a string, a number or a boolean,</p></li>
+<li><p>an (ordered) <em>array</em> of objects, or</p></li>
+<li><p>a set of <em>string-object</em> pairs.</p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="a-json-datatype">A JSON Datatype</h2>
+<p>We can represent (a subset of) JSON values with the Haskell datatype</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">JVal</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">JStr</span>  <span class="dt">String</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JNum</span>  <span class="dt">Double</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JBool</span> <span class="dt">Bool</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JObj</span>  [(<span class="dt">String</span>, <span class="dt">JVal</span>)]</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">JArr</span>  [<span class="dt">JVal</span>]</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Ord</span>, <span class="dt">Show</span>)</span></code></pre></div>
+<p>Thus, the above JSON value would be represented by the <code class="sourceCode haskell"><span class="dt">JVal</span></code></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ot">js1 ::</span> <span class="dt">JVal</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>js1 <span class="ot">=</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">JObj</span> [(<span class="st">&quot;name&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;Ranjit&quot;</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;age&quot;</span>,  <span class="dt">JNum</span> <span class="fl">44.0</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;likes&quot;</span>,   <span class="dt">JArr</span> [ <span class="dt">JStr</span> <span class="st">&quot;guacamole&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;coffee&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;bacon&quot;</span>])</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;hates&quot;</span>,   <span class="dt">JArr</span> [ <span class="dt">JStr</span> <span class="st">&quot;waiting&quot;</span>  , <span class="dt">JStr</span> <span class="st">&quot;grapefruit&quot;</span>])</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>       ,(<span class="st">&quot;lunches&quot;</span>, <span class="dt">JArr</span> [ <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;zanzibar&quot;</span>)]</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;tuesday&quot;</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;farmers market&quot;</span>)]</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;wednesday&quot;</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;hare krishna&quot;</span>)]</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;thursday&quot;</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;faculty club&quot;</span>)]</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>                         , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;friday&quot;</span>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>                                ,(<span class="st">&quot;loc&quot;</span>,  <span class="dt">JStr</span> <span class="st">&quot;coffee cart&quot;</span>)]</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>                         ])</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>       ]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="serializing-haskell-values-to-json">Serializing Haskell Values to JSON</h2>
+<p>Lets write a small library to <em>serialize</em> Haskell values as JSON.</p>
+<p>We could write a bunch of functions like</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ot">doubleToJSON ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>doubleToJSON <span class="ot">=</span> <span class="dt">JNum</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ot">stringToJSON ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>stringToJSON <span class="ot">=</span> <span class="dt">JStr</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="ot">boolToJSON   ::</span> <span class="dt">Bool</span> <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>boolToJSON   <span class="ot">=</span> <span class="dt">JBool</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="serializing-collections">Serializing Collections</h2>
+<p>But what about collections, namely <em>lists</em> of things?</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ot">doublesToJSON    ::</span> [<span class="dt">Double</span>] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>doublesToJSON xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> doubleToJSON xs)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="ot">boolsToJSON      ::</span> [<span class="dt">Bool</span>] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>boolsToJSON xs   <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> boolToJSON xs)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="ot">stringsToJSON    ::</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>stringsToJSON xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> stringToJSON xs)</span></code></pre></div>
+<p>This is <strong>getting rather tedious</strong></p>
+<ul>
+<li>We are rewriting the same code :(</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="serializing-collections-refactored-with-hofs">Serializing Collections (refactored with HOFs)</h2>
+<p>You could abstract by making the <em>individual-element-converter</em> a parameter</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ot">xsToJSON ::</span> (a <span class="ot">-&gt;</span> <span class="dt">JVal</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>xsToJSON f xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> f xs)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ot">xysToJSON ::</span> (a <span class="ot">-&gt;</span> <span class="dt">JVal</span>) <span class="ot">-&gt;</span> [(<span class="dt">String</span>, a)] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>xysToJSON f kvs <span class="ot">=</span> <span class="dt">JObj</span> (<span class="fu">map</span> (\(k, v) <span class="ot">-&gt;</span> (k, f v)) kvs) </span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="serializing-collections-still-tedious">Serializing Collections Still Tedious</h2>
+<p>As we have to specify the individual data converter (yuck!)</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> doubleToJSON <span class="dv">4</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JNum</span> <span class="fl">4.0</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> xsToJSON stringToJSON [<span class="st">&quot;coffee&quot;</span>, <span class="st">&quot;guacamole&quot;</span>, <span class="st">&quot;bacon&quot;</span>]</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;coffee&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;guacamole&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;bacon&quot;</span>]</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> xysToJSON stringToJSON [(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;monday&quot;</span>), (<span class="st">&quot;loc&quot;</span>, <span class="st">&quot;zanzibar&quot;</span>)]</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>),(<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;zanzibar&quot;</span>)]</span></code></pre></div>
+<p>This gets <em>awful</em> when you have richer objects like</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>lunches <span class="ot">=</span> [ [(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;monday&quot;</span>),    (<span class="st">&quot;loc&quot;</span>, <span class="st">&quot;zanzibar&quot;</span>)]</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>          , [(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;tuesday&quot;</span>),   (<span class="st">&quot;loc&quot;</span>, <span class="st">&quot;farmers market&quot;</span>)]</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>          ]</span></code></pre></div>
+<p>because we have to go through gymnastics like</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> xsToJSON (xysToJSON stringToJSON) lunches</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [ <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>)   ,(<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;zanzibar&quot;</span>)]</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;tuesday&quot;</span>)  ,(<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;farmers market&quot;</span>)]</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>     ]</span></code></pre></div>
+<p>Yikes. So much for <em>readability</em></p>
+<p>Is it too much to ask for a magical <code class="sourceCode haskell">toJSON</code> that <em>just works?</em></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="typeclasses-to-the-rescue">Typeclasses To The Rescue</h2>
+<p>Lets <em>define</em> a typeclass that describes types <code class="sourceCode haskell">a</code> that can be converted to JSON.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">JSON</span> a <span class="kw">where</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  toJSON ::</span> a <span class="ot">-&gt;</span> <span class="dt">JVal</span></span></code></pre></div>
+<p>Now, just make all the above instances of <code class="sourceCode haskell"><span class="dt">JSON</span></code> like so</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> <span class="dt">Double</span> <span class="kw">where</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  toJSON <span class="ot">=</span> <span class="dt">JNum</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> <span class="dt">Bool</span> <span class="kw">where</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  toJSON <span class="ot">=</span> <span class="dt">JBool</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> <span class="dt">String</span> <span class="kw">where</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  toJSON <span class="ot">=</span> <span class="dt">JStr</span></span></code></pre></div>
+<p>This lets us uniformly write</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON <span class="dv">4</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JNum</span> <span class="fl">4.0</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON <span class="dt">True</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JBool</span> <span class="dt">True</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON <span class="st">&quot;guacamole&quot;</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="dt">JStr</span> <span class="st">&quot;guacamole&quot;</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="bootstrapping-instances">Bootstrapping Instances</h2>
+<p>Haskell can <em>automatically bootstrap</em> the above to <em>lists</em> and <em>tables</em>!</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> a <span class="ot">=&gt;</span> <span class="dt">JSON</span> [a] <span class="kw">where</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  toJSON xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> toJSON xs)</span></code></pre></div>
+<ul>
+<li>if <code class="sourceCode haskell">a</code> is an instance of <code class="sourceCode haskell"><span class="dt">JSON</span></code>,</li>
+<li>then here’s how to convert <em>lists</em> of <code class="sourceCode haskell">a</code> to <code class="sourceCode haskell"><span class="dt">JSON</span></code>.</li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON [<span class="dt">True</span>, <span class="dt">False</span>, <span class="dt">True</span>]</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JBln</span> <span class="dt">True</span>, <span class="dt">JBln</span> <span class="dt">False</span>, <span class="dt">JBln</span> <span class="dt">True</span>]</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON [<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;Mouse&quot;</span>]</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;cat&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;dog&quot;</span>, <span class="dt">JStr</span> <span class="st">&quot;Mouse&quot;</span>]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="bootstrapping-lists-of-lists">Bootstrapping Lists of Lists!</h2>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON [[<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>], [<span class="st">&quot;mouse&quot;</span>, <span class="st">&quot;rabbit&quot;</span>]]</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [<span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;cat&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;dog&quot;</span>],<span class="dt">JArr</span> [<span class="dt">JStr</span> <span class="st">&quot;mouse&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;rabbit&quot;</span>]]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="bootstrapping-key-value-tables">Bootstrapping Key-Value Tables</h2>
+<p>We can pull the same trick with key-value lists</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a) <span class="ot">=&gt;</span> <span class="dt">JSON</span> [(<span class="dt">String</span>, a)] <span class="kw">where</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  toJSON kvs <span class="ot">=</span> <span class="dt">JObj</span> (<span class="fu">map</span> (\(k, v) <span class="ot">-&gt;</span> (k, toJSON v)) kvs) </span></code></pre></div>
+<p>after which, we are all set!</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON lunches</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [ <span class="dt">JObj</span> [ (<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>), (<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;zanzibar&quot;</span>)]</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>     , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;tuesday&quot;</span>), (<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;farmers market&quot;</span>)]</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>     ]</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="bootstrapping-tuples">Bootstrapping Tuples</h2>
+<p>Lets bootstrap the serialization for tuples (upto some fixed size)</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b)) <span class="kw">where</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2)) <span class="ot">=</span> <span class="dt">JObj</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    [ (k1, toJSON v1)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    , (k2, toJSON v2)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c)) <span class="kw">where</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3)) <span class="ot">=</span> <span class="dt">JObj</span> </span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    [ (k1, toJSON v1)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    , (k2, toJSON v2)</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    , (k3, toJSON v3)</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c, <span class="dt">JSON</span> d) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c), (<span class="dt">String</span>,d)) <span class="kw">where</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4)) <span class="ot">=</span> <span class="dt">JObj</span> </span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    [ (k1, toJSON v1)</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>    , (k2, toJSON v2)</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    , (k3, toJSON v3)</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>    , (k4, toJSON v4)</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c, <span class="dt">JSON</span> d, <span class="dt">JSON</span> e) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c), (<span class="dt">String</span>,d), (<span class="dt">String</span>, e)) <span class="kw">where</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4), (k5, v5)) <span class="ot">=</span> <span class="dt">JObj</span> </span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>    [ (k1, toJSON v1)</span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>    , (k2, toJSON v2)</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>    , (k3, toJSON v3)</span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>    , (k4, toJSON v4)</span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>    , (k5, toJSON v5)</span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div>
+<p>Now, we can simply write</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>hs <span class="ot">=</span> ((<span class="st">&quot;name&quot;</span>   , <span class="st">&quot;Ranjit&quot;</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;age&quot;</span>    , <span class="fl">41.0</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;likes&quot;</span>  , [<span class="st">&quot;guacamole&quot;</span>, <span class="st">&quot;coffee&quot;</span>, <span class="st">&quot;bacon&quot;</span>])</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;hates&quot;</span>  , [<span class="st">&quot;waiting&quot;</span>, <span class="st">&quot;grapefruit&quot;</span>])</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>     ,(<span class="st">&quot;lunches&quot;</span>, lunches)</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
+<p>which is a Haskell value that describes our running JSON example,
+and can convert it directly like so</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>js2 <span class="ot">=</span> toJSON hs</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="exercise-serializing-tables">EXERCISE: Serializing Tables</h2>
+<p>To wrap everything up, lets write a routine to serialize our <code class="sourceCode haskell"><span class="dt">Table</span></code></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">JSON</span> (<span class="dt">Table</span> k v) <span class="kw">where</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  toJSON env <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p>and presto! our serializer <em>just works</em></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> env0</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Bind</span> <span class="st">&quot;cat&quot;</span> <span class="fl">10.0</span> (<span class="dt">Bind</span> <span class="st">&quot;dog&quot;</span> <span class="fl">20.0</span> (<span class="dt">Def</span> <span class="dv">0</span>))</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> toJSON env0</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="dt">JObj</span> [ (<span class="st">&quot;cat&quot;</span>, <span class="dt">JNum</span> <span class="fl">10.0</span>)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>     , (<span class="st">&quot;dog&quot;</span>, <span class="dt">JNum</span> <span class="fl">20.0</span>)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>     , (<span class="st">&quot;def&quot;</span>, <span class="dt">JNum</span> <span class="fl">0.0</span>)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>     ]</span></code></pre></div>
+<p>Thats it for today.</p>
+<p>We will see much more typeclass awesomeness in the next few lectures…</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse230.github.io/fa23/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse230.github.io/fa23/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/bootstrap.min.js"></script>
+<!--
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/anim.js"></script>
+<script src="https://ucsd-cse230.github.io/fa23/static/js/scripts.js"></script>
+-->
+
+
+    </body>
+</html>

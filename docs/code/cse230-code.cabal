@@ -1,0 +1,38 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 07db201eb98ab28418f800237489d7a408a462f2a73aaad76dea8b72ad1813bf
+
+name:           cse230-code
+version:        0.1.0.0
+homepage:       https://github.com/ucsd-cse230/web#readme
+bug-reports:    https://github.com/ucsd-cse230/web/issues
+author:         Ranjit Jhala
+maintainer:     jhala@cs.ucsd.edu
+copyright:      2020 Ranjit Jhala
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/ucsd-cse230/web
+
+library
+  other-modules:
+      Paths_cse230_code
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , directory
+    , filepath
+    , mtl
+    , process
+    , unordered-containers
+  default-language: Haskell2010

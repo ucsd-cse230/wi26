@@ -1,0 +1,82 @@
+cabal-version: 2.4
+
+name:           cse230-code
+version:        0.1.0.0
+homepage:       https://github.com/ucsd-cse230/fa23#readme
+bug-reports:    https://github.com/ucsd-cse230/fa23/issues
+author:         Ranjit Jhala
+maintainer:     jhala@cs.ucsd.edu
+copyright:      2023 Ranjit Jhala
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/ucsd-cse230/fa23
+
+library
+  other-modules:
+      Lec_10_10_23
+      Lec_10_12_23
+      Lec_10_17_23
+      Lec_10_24_23
+      Lec_10_26_23
+      Lec_10_31_23
+      Lec_11_14_23
+      Lec_11_16_23
+      Lec_11_21_23
+      Lec_11_28_23
+
+  hs-source-dirs:
+      src
+  build-depends:
+      HTTP
+    , QuickCheck
+    , base >=4.9.1.0 && <5
+    , bytestring
+    , containers
+    , directory
+    , filepath
+    , mtl
+    , network-uri
+    , process
+    , random
+    , stm
+    , time
+    , unordered-containers
+    , vector
+    , text
+  default-language: Haskell2010
+  ghc-options:
+    -Wall
+    -O2
+    -Werror
+    -Wno-type-defaults
+    -fno-warn-missing-signatures
+
+
+executable stm
+  main-is: stm.lhs
+  other-modules:
+      Paths_cse230_code
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HTTP
+    , QuickCheck
+    , base >=4.9.1.0 && <5
+    , bytestring
+    , containers
+    , directory
+    , filepath
+    , mtl
+    , network-uri
+    , process
+    , random
+    , stm
+    , time
+    , unordered-containers
+  default-language: Haskell2010
