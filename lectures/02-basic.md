@@ -3,30 +3,13 @@ title: Haskell Crash Course Part I
 headerImg: sea.jpg
 ---
 
-## From the Lambda Calculus to Haskell
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 ## Programming in Haskell
 
 **Computation by Calculation**
 
 <br>
 
-*Substituting equals by equals*
+_Substituting equals by equals_
 
 <br>
 <br>
@@ -69,7 +52,6 @@ headerImg: sea.jpg
 <br>
 
 **Equality-Substitution** enables **Abstraction** via **Pattern Recognition**
-
 
 <br>
 <br>
@@ -132,7 +114,7 @@ _Substitute Equals by Equals_
 <br>
 <br>
 
-Thats it! (*Do not* think of registers, stacks, frames etc.)
+Thats it! (_Do not_ think of registers, stacks, frames etc.)
 
 <br>
 <br>
@@ -150,10 +132,10 @@ Thats it! (*Do not* think of registers, stacks, frames etc.)
 - Every _valid_ expression has a **type** (determined at compile-time)
 - Every _valid_ expression reduces to a _value_ (computed at run-time)
 
-**Ill-typed** expressions are rejected at *compile-time* before execution
+**Ill-typed** expressions are rejected at _compile-time_ before execution
 
-- *like*    in Java
-- *not like* $\lambda$-calculus or Python ...
+- _like_ in Java
+- _not like_ $\lambda$-calculus or Python ...
 
 <br>
 <br>
@@ -204,9 +186,9 @@ $ stack ghci
 
 A sequence of **top-level definitions** `x1`, `x2`, ...
 
-- Each has *type* `type_1`, `type_2`, ...
+- Each has _type_ `type_1`, `type_2`, ...
 
-- Each defined by *expression* `expr_1`, `expr_2`, ...
+- Each defined by _expression_ `expr_1`, `expr_2`, ...
 
 ```haskell
 x_1 :: type_1
@@ -231,7 +213,6 @@ x_2 = expr_2
 <br>
 
 ## Basic Types
-
 
 ```haskell
 ex1 :: Int
@@ -275,7 +256,7 @@ quiz :: ???
 quiz = if ex8 then ex6 else ex7
 ```
 
-What is the *type* of `quiz`?
+What is the _type_ of `quiz`?
 
 **A.** `Int`
 
@@ -308,7 +289,7 @@ quiz :: ???
 quiz = if ex8 then ex6 else ex7
 ```
 
-What is the *value* of `quiz`?
+What is the _value_ of `quiz`?
 
 **A.** `9`
 
@@ -325,7 +306,6 @@ What is the *value* of `quiz`?
 <br>
 <br>
 
-
 ## Function Types
 
 In Haskell, a **function is a value** that has a type
@@ -336,8 +316,8 @@ A -> B
 
 A function that
 
-- takes *input* of type `A`
-- returns *output* of type `B`
+- takes _input_ of type `A`
+- returns _output_ of type `B`
 
 For example
 
@@ -365,7 +345,6 @@ isPos n = (x > 0)
 <br>
 <br>
 <br>
-
 
 ## Multiple Argument Functions
 
@@ -400,7 +379,6 @@ pat x y z = x * (y + z)
 <br>
 <br>
 <br>
-
 
 ## QUIZ
 
@@ -457,7 +435,6 @@ False
 <br>
 <br>
 
-
 ## Multiple Argument Calls
 
 With multiple arguments, just pass them in one by one, e.g.
@@ -473,7 +450,6 @@ For example
 3038
 ```
 
-
 <br>
 <br>
 <br>
@@ -485,7 +461,7 @@ For example
 
 ## EXERCISE
 
-Write a function `myMax` that returns the *maximum* of two inputs
+Write a function `myMax` that returns the _maximum_ of two inputs
 
 ```haskell
 myMax :: Int -> Int -> Int
@@ -511,10 +487,7 @@ When you are done you should see the following behavior:
 <br>
 <br>
 
-
 ## How to Return Multiple Outputs?
-
-
 
 <br>
 <br>
@@ -561,7 +534,6 @@ tup3 :: ???
 tup3 = ((7, 5.2), True)
 ```
 
-
 **A.** `(Int, Bool)`
 
 **B.** `(Int, Double, Bool)`
@@ -571,7 +543,6 @@ tup3 = ((7, 5.2), True)
 **D.** `((Int, Double), Bool)`
 
 **E.** `(Tuple, Bool)`
-
 
 <br>
 <br>
@@ -910,9 +881,9 @@ When we are done you should get the behavior
 
 ## Functions Consuming Lists
 
-So far: how to *produce* lists.
+So far: how to _produce_ lists.
 
-**Next** how to *consume* lists!
+**Next** how to _consume_ lists!
 
 <br>
 <br>
@@ -921,7 +892,6 @@ So far: how to *produce* lists.
 <br>
 <br>
 <br>
-
 
 <br>
 <br>
@@ -1029,13 +999,12 @@ When you are done you should get the following behavior:
 - Every _valid_ expression has a **type** (determined at compile-time)
 - Every _valid_ expression reduces to a _value_ (computed at run-time)
 
-
 **Execution**
 
 - Basic values & operators
 
-- Execution / Function Calls just *substitute equals by equals*
+- Execution / Function Calls just _substitute equals by equals_
 
-- Pack data into *tuples* & *lists*
+- Pack data into _tuples_ & _lists_
 
-- Unpack data via *pattern-matching*
+- Unpack data via _pattern-matching_
