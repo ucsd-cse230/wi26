@@ -1,0 +1,12 @@
+name: homepage
+version: 0.1.0.0
+
+executables:
+  homepage:
+    main: site.hs
+    dependencies:
+      - base
+      - hakyll
+      - pandoc
+      - pandoc-types
+

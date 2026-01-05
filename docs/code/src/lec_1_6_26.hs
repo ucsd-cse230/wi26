@@ -1,4 +1,4 @@
-module Lec_10_10_23 where
+module Lec_1_6_26 where
 import Data.Time.Format.ISO8601 (yearFormat)
 
 -- >>> 1 + 2

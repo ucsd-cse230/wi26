@@ -6,7 +6,6 @@ import Data.List
 import Hakyll
 import Text.Pandoc
 import Text.Pandoc.Walk (walk)
-import qualified Data.Map as M
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -66,7 +65,7 @@ postCtx =
 siteCtx :: Context String
 siteCtx =
     constField "cssUrl"             "https://ucsd-cse230.github.io/sp20"      `mappend`
-    constField "baseUrl"            "https://ucsd-cse230.github.io/fa23"      `mappend`
+    constField "baseUrl"            "https://ucsd-cse230.github.io/wi26"      `mappend`
     constField "site_name"          "cse230"                                  `mappend`
     constField "site_description"   "UCSD CSE 230"                            `mappend`
     constField "site_username"      "Ranjit Jhala"                            `mappend`
@@ -74,18 +73,17 @@ siteCtx =
     constField "github_username"    "ranjitjhala"                             `mappend`
     constField "google_username"    "rjhala@ucsd.edu"                         `mappend`
     constField "google_userid"      "u/0/104385825850161331469"               `mappend`
-    constField "piazza_classid"     "class/ln3oae6zy584n9"		      `mappend`
-    constField "canvasUrl"          "https://canvas.ucsd.edu/courses/48988"   `mappend`
+    constField "piazza_classid"     "class/mk1dl38l7yg690#"                   `mappend`
+    constField "canvasUrl"          "https://canvas.ucsd.edu/courses/72285"   `mappend`
     defaultContext
 
 tops =
   [ "index.md"
+  , "contact.md"
   , "grades.md"
   , "lectures.md"
   , "links.md"
   , "assignments.md"
-  , "calendar.md"
-  , "contact.md"
   , "project.md"
   ]
 

@@ -4,7 +4,8 @@ headerImg: sea.jpg
 ---
 
 The below is a tiny fraction of what is available online;
-for more, start at [haskell.org](http://haskell.org).
+for more, start at [haskell.org](http://haskell.org) and
+[rust-lang.org](http://rust-lang.org).
 
 ## Cheat Sheet
 
@@ -61,5 +62,4 @@ for more, start at [haskell.org](http://haskell.org).
 - Haskell modes:
   [Vim](http://projects.haskell.org/haskellmode-vim/)
   [Emacs](http://www.haskell.org/haskellwiki/Haskell_mode_for_Emacs)
-
 - [ThreadScope](http://www.haskell.org/haskellwiki/ThreadScope)

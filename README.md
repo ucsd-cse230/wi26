@@ -51,7 +51,7 @@ git push origin main
 
 ## To build Lecture Versions
 
-To build the "lecture" version of all the html i.e. *without*
+To build the "lecture" version of all the html i.e. _without_
 the answers to quizzes and other questions, replace the
 following in `Site.hs`
 
@@ -82,24 +82,20 @@ originally published by Lucas Gatsas.
 ## New Class Checklist
 
 - [*] site.hs
-- [*] index.md
 - [*] links.md
 - [*] contact.md
-- [*] calendar.md
+- [*] lectures.md
+- [*] assignments.md
+- [*] project.md
 - [*] grades.md
-- [?] lectures.md
-- [*] CANVAS
-- [?] assignments.md
-	- TODO: link github accounts/form
-- [?] 00-lambda
-	- [] Github
-	- [] Canvas
+- [*] link github accounts/form
+- [*] 01-trees
+- [*] canvas
+- [*] Piazza
+- [*] index.md/policies
+- [ ] lecture/01-intro.md
 
-## Spring 2020
-
-- [Roster](https://docs.google.com/spreadsheets/d/1DqB98XNyDpqsL1FWyReTOecj8GFD6KXVnkjM6iI2Lrs/edit?usp=sharing)
-
-## ieng6 Setup
+# ieng6 Setup
 
 1. Set the `stack-root`
 
@@ -118,12 +114,12 @@ cd /software/CSE/cse130/.stack && chmod -R a+rx *
 
 3. For each assignment,
 
-	- `git clone` it to download assignment as instructor
-	- `stack test` it to get the relevant libs added to the stack-path
-	- `./fixpaths.sh` to allow everyone else to read the libraries
+   - `git clone` it to download assignment as instructor
+   - `stack test` it to get the relevant libs added to the stack-path
+   - `./fixpaths.sh` to allow everyone else to read the libraries
 
 4. For each assignment,
-	- login as student to make sure that you can `git clone` and then run `stack test`
+   - login as student to make sure that you can `git clone` and then run `stack test`
 
 ## Private Stuff
 

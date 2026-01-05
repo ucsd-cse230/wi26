@@ -3,23 +3,38 @@ title: Grading
 headerImg: beach.jpg
 ---
 
-- **Homework Assignments (40%)** :
-  Five programming assignments, done in groups of 1-2.
-  Will be assigned approximately every two weeks,
-  and instructions on turning them in will be posted with
-  each assignment. You have a total of *four late days*
-  that you can use throughout the quarter as you need them,
-  where a late day means anything between 1 second and 23
-  hours 59 minutes and 59 seconds past a deadline.
+Your final grade will be computed as follows.
 
-- **Midterm Exams (30%)** :
-  There will be **two** closed-book pencil-and-paper midterm exams,
-  each worth 15% of the grade -- to be held during lecture on
-  **Thu Nov 2** and **Thu Dec 7** respectively.
+### Worksheets (20%)
 
-- **Project (30%)** :
-  A [project](project.html) that will be completed **in a group of 4** 
-  and demo-ed and evaluated during the final exam block on **Fri 12/15 11:30a – 2:30p**.
+We will have an "in class" worksheetshanded out in each
+lecture and which is to be turned in at the end of the lecture.
+Turn in 75% of the worksheets to get full credit.
+Responses will be graded on participation (not correctness).
 
-- **Piazza (5%)** :
-  Extra credit for top-15 best participants on Piazza.
+### Programming Assignments (20%)
+
+**Four** programming assignments, done individually.
+Will be assigned approximately every two weeks,
+and instructions on turning them in will be posted with
+each assignment. You have a total of _four late days_
+that you can use throughout the quarter as you need them,
+where a late day means anything between 1 second and 23
+hours 59 minutes and 59 seconds past a deadline.
+
+### Midterm Exams (40%)
+
+There will be **two** closed-book pencil-and-paper midterm exams,
+each worth 20% of the grade -- to be held during lecture on
+**Th 2/5** and **Thu 3/10** respectively. You may bring a
+letter-sized **"notes sheet"** of paper to help you during
+the exam (feel free to use both sides, if you wish.)
+
+### Project (20%)
+
+A [project](project.html) that will be completed **in a group of 2-3**
+and demo-ed and evaluated during the final exam block on **Thu 03/19 8:00a – 11:00a**.
+
+### Piazza (5% EC)
+
+Extra credit for top-5 best participants on Piazza.
