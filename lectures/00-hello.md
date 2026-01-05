@@ -1,0 +1,322 @@
+# Hello, World!
+
+Welcome to CSE 230!
+
+**Principles of Programming Languages**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Name this Computer Scientist (1)
+
+![](/static/img/dijkstra.jpg){#fig:types .align-center width=60%}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Esger Dijkstra "On the foolishness of natural language programming", 1978
+
+![](/static/img/dijkstra.jpg){#fig:types .align-center width=60%}
+
+> From one gut feeling I derive much consolation: I suspect that machines to be programmed in our native tongues — be it Dutch, English, American, French, German, or Swahili— are as damned difficult to make as they would be to use.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Fifty years later ...
+
+![the elephant in the room](/static/img/elephant-in-room.webp){#fig:types .align-center width=60%}
+
+... Won't LLMs like `ChatGPT`, `Claude`, `Grok`, ... let us **vibe code** all the programs?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## ... why bother with Programming Languages?
+
+**Computation is _specified_ by Programming Languages**
+
+Increased dependence implies increased need for _getting code right_
+
+- **Safety** Will this code _crash_?
+
+- **Security** Will this code broadcast my _social security number_?
+
+- **Performance** Will this code run in the appropriate time/space _constraints_?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Name this Computer Scientist (2)
+
+![](/static/img/hoare.jpg){#fig:types .align-center width=60%}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Sir Tony Hoare
+
+![](/static/img/hoare.jpg){#fig:types .align-center width=60%}
+
+> There are two ways of constructing a software design: One way is to make it so simple that there are **obviously no deficiencies**, and the other way is to make it so complicated that there are **no obvious deficiencies.**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## How to ensure **obviously no deficiencies** ?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## How to ensure **obviously no deficiencies** ?
+
+![](/static/img/dijkstra.jpg){#fig:types .align-center width=60%}
+
+> The virtue of formal texts is that their manipulations, in order to be legitimate, **need to satisfy only a few simple rules;** they are, when you come to think of it, an amazingly effective tool for ruling out all sorts of nonsense that, when we use our native tongues, are almost impossible to avoid.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Name this Computer Scientist (3)
+
+![](/static/img/brockman.jpg){#fig:types .align-center width=60%}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Greg Brockman, President, CTO & Co-Founder, OpenAI
+
+![](/static/img/brockman-rust.png){#fig:types .align-center width=90%}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Learning Goals for CSE 230
+
+**Abstraction:** Intellectual and Algorithmic tools for reasoning about program behavior
+
+- How to specify what a program **does**?
+
+- How to be sure of what a program **does not**?
+
+- How to ensure _"if it compiles, it is ~correct"_?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Back to Esger Dijkstra...
+
+![](/static/img/dijkstra.jpg){#fig:types .align-center width=60%}
+
+> "The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be **absolutely precise**."
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Course Outline
+
+**Part I: Haskell**
+
+How to create abstractions via types and equational reasoning
+
+- Algebraic Data & Functions
+- Type classes
+- Effects via Monads and Transformers
+
+**Part II: Rust**
+
+How to enable zero-cost abstractions via ownership
+
+- Effects via Ownership & Borrowing
+- Data Parallelism
+- Concurrency
+- Property based Testing & Verification
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- ##
+
+![](/static/img/simon-peyton-jones.jpg){#fig:types .align-center width=60%}
+
+> When the limestone of imperative programming has worn away, the granite of functional programming will be revealed underneath -->
+
+## Logistics!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Course Staff
+
+**Instructor**
+
+- [Ranjit Jhala](https://ranjitjhala.github.io)
+
+**Teaching Assistants**
+
+- [Kyle Thompson](mailto:r7thompson@ucsd.edu)
+- [Aronya Baksy](mailto:abaksy@ucsd.edu)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Grading
+
+- **Worksheets (20%)**
+
+- **Programming Assignments x 4 (20%)**
+
+- **Midterms x 2 (40%)**
+
+- **Project (20%)**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Worksheets (20%)
+
+## Programming Assignments (20%)
+
+- You can work with a partner, but **submit individually**
+- Github Classroom + Codespaces
+
+**Assignment 0**
+Fill out [this form to link UCSD ID and Github](https://forms.gle/RaMSzzKCkgDYfKQYA)
+
+## Midterms x 2 (40%)
+
+## Project (20%)
+
+## Policies
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+And now, let the games begin...!
