@@ -1,3 +1,8 @@
+---
+title: Hello, world!
+headerImg: sea.jpg
+---
+
 # Hello, World!
 
 Welcome to CSE 230!
@@ -158,6 +163,21 @@ Increased dependence implies increased need for _getting code right_
 <br>
 <br>
 
+## Not just OpenAI...
+
+![](/static/img/rust-android.png){#fig:types .align-center width=90%}
+
+... similar stories from Microsoft, Meta, Amazon, etc.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Learning Goals for CSE 230
 
 **Abstraction:** Intellectual and Algorithmic tools for reasoning about program behavior
@@ -196,7 +216,7 @@ Increased dependence implies increased need for _getting code right_
 
 ## Course Outline
 
-**Part I: Haskell**
+**Part I: Abstraction Foundations in Haskell**
 
 How to create abstractions via types and equational reasoning
 
@@ -204,7 +224,7 @@ How to create abstractions via types and equational reasoning
 - Type classes
 - Effects via Monads and Transformers
 
-**Part II: Rust**
+**Part II: Zero-Cost Abstractions in Rust**
 
 How to enable zero-cost abstractions via ownership
 
@@ -267,7 +287,7 @@ How to enable zero-cost abstractions via ownership
 
 ## Grading
 
-- **Worksheets (20%)**
+- **Class participation/worksheets (20%)**
 
 - **Programming Assignments x 4 (20%)**
 
@@ -285,24 +305,87 @@ How to enable zero-cost abstractions via ownership
 <br>
 <br>
 
-## Worksheets (20%)
+## Class participation (20%)
+
+- "In class" worksheets handed out each lecture
+
+- Handed in at the end of the lecture
+
+- Turn in 75% of the worksheets to get full credit
+
+- Responses will be graded on participation (not correctness)
 
 ## Programming Assignments (20%)
 
-- You can work with a partner, but **submit individually**
-- Github Classroom + Codespaces
+- **Four** assignments released [online](assignments.html)
+- At least a week before due date
+- Via github classroom + codespaces
+- **Submitted individually** via github
+- Ok to discuss with classmates, but solution must be your own
+- Four **late days** used as **whole unit**
+- AI use is ok ... but ...
 
-**Assignment 0**
-Fill out [this form to link UCSD ID and Github](https://forms.gle/RaMSzzKCkgDYfKQYA)
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Midterms x 2 (40%)
 
+- Must be done at allotted time and location,
+
+- **Two** midterms (each 20%)
+
+- Closed-book, pencil-and-paper midterm exams,
+
+- During lecture on **Th 2/5** and **Thu 3/10** respectively
+
+- May use a letter-sized **"notes sheet"** of paper
+
+**Will heavily test understanding of assignments...**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Project (20%)
+
+- Implement a **concurrent**, **real-time**, **multiplayer** game
+- Using `tokio` + `ratatui` (terminal UI library)
+- **In a group of 2-3**, in the _second half_ of the quarter.
+- Evaluated with **live demo and Q&A** ...
+- ... during the final exam block on **Thu 03/19 8:00a – 11:00a**.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Policies
 
-<br>
-<br>
+- No podcasting.
+
+- No screens (phones, laptops) in lecture.
+
+- Yes attendance & class participation (worksheets).
+
+- Yes exams must be done at allotted time and location.
+
+- Yes you may use AI tools for assignments ... but ...
+
 <br>
 <br>
 <br>
@@ -312,11 +395,4 @@ Fill out [this form to link UCSD ID and Github](https://forms.gle/RaMSzzKCkgDYfK
 <br>
 <br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-And now, let the games begin...!
+## And now, lets begin...!

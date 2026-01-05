@@ -7,7 +7,7 @@ headerImg: books.jpg
 
 | **Date** | **Topic**      | **Notes**        | **Markup**    | **Code**         |
 | :------: | :------------- | :--------------- | :------------ | :--------------- |
-|  _1/6_   | Intro          | [html][01-intro] |               |                  |
+|  _1/6_   | Intro          | [html][00-hello] |               |                  |
 |          | Haskell Basics | [html][02-basic] | [pdf][02-pdf] | [code][code-1-6] |
 |  _2/5_   | Midterm 1      |                  |               |                  |
 |  _3/10_  | Midterm 2      |                  |               |
@@ -43,6 +43,7 @@ headerImg: books.jpg
 [code-1-6]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_1_6_26.hs
 [00-intro]: static/raw/lec-intro.pdf
 [01-lambda]: lectures/01-lambda.html
+[00-hello]: lectures/00-hello.html
 [02-basic]: lectures/02-basic.html
 [03-adt]: lectures/03-adt.html
 [04-hof]: lectures/04-hof.html
