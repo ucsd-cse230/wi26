@@ -74,19 +74,13 @@ _Substituting equals by equals_
                 90 * (68 + 12)
 ```
 
-**Recognize Pattern as $\lambda$-function**
-
-```
-pat = \x y z -> x  * ( y + z )
-```
-
-**Equivalent Haskell Definition**
+**Recognize Pattern as a _Function Definition_**
 
 ```
 pat   x y z =  x  * ( y + z )
 ```
 
-**Function Call is Pattern Instance**
+**Instantiate Pattern as a _Function Call_**
 
 ```
 pat 31 42 56 =*> 31 * (42 + 56) =*> 31 * 98  =*> 3038
@@ -135,7 +129,8 @@ Thats it! (_Do not_ think of registers, stacks, frames etc.)
 **Ill-typed** expressions are rejected at _compile-time_ before execution
 
 - _like_ in Java
-- _not like_ $\lambda$-calculus or Python ...
+
+- _not like_ Python ...
 
 <br>
 <br>
