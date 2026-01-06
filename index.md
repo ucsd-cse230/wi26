@@ -7,7 +7,7 @@ headerImg: angles.jpg
 
 - _Instructor:_ Ranjit Jhala `(rjhala@ucsd.edu)`
 - _TA:_ Kyle Thompson `(r7thompson@ucsd.edu)`
-- _TA:_ Aron Baksy `(abaksy@ucsd.edu)`
+- _TA:_ Aronya Baksy `(abaksy@ucsd.edu)`
 
 ## Co-ordinates
 

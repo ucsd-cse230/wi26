@@ -31,7 +31,7 @@ Welcome to CSE 230!
 <br>
 <br>
 
-## Esger Dijkstra "On the foolishness of natural language programming", 1978
+## Edsger Dijkstra "On the foolishness of natural language programming", 1978
 
 ![](/static/img/dijkstra.jpg){#fig:types .align-center width=60%}
 
@@ -113,6 +113,13 @@ Increased dependence implies increased need for _getting code right_
 
 ## How to ensure **obviously no deficiencies** ?
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -229,8 +236,7 @@ How to create abstractions via types and equational reasoning
 How to enable zero-cost abstractions via ownership
 
 - Effects via Ownership & Borrowing
-- Data Parallelism
-- Concurrency
+- "Fearless" Parallelism & Concurrency
 - Property based Testing & Verification
 
 <br>
@@ -285,15 +291,36 @@ How to enable zero-cost abstractions via ownership
 <br>
 <br>
 
+## Policies
+
+- No podcasting.
+
+- No screens (phones, laptops) in lecture.
+
+- Yes attendance & class participation (worksheets).
+
+- Yes exams must be done at allotted time and location.
+
+- Yes you may use AI tools for assignments ...
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Grading
 
-- **Class participation/worksheets (20%)**
+- Class participation/worksheets (20%)
 
-- **Programming Assignments x 4 (20%)**
+- Programming Assignments x 4 (20%)
 
-- **Midterms x 2 (40%)**
+- Midterms x 2 (40%)
 
-- **Project (20%)**
+- Project (20%)
 
 <br>
 <br>
@@ -315,14 +342,29 @@ How to enable zero-cost abstractions via ownership
 
 - Responses will be graded on participation (not correctness)
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Programming Assignments (20%)
 
 - **Four** assignments released [online](assignments.html)
+
 - At least a week before due date
+
 - Via github classroom + codespaces
+
 - **Submitted individually** via github
+
 - Ok to discuss with classmates, but solution must be your own
+
 - Four **late days** used as **whole unit**
+
 - AI use is ok ... but ...
 
 <br>
@@ -360,31 +402,14 @@ How to enable zero-cost abstractions via ownership
 ## Project (20%)
 
 - Implement a **concurrent**, **real-time**, **multiplayer** game
+
 - Using `tokio` + `ratatui` (terminal UI library)
+
 - **In a group of 2-3**, in the _second half_ of the quarter.
+
 - Evaluated with **live demo and Q&A** ...
+
 - ... during the final exam block on **Thu 03/19 8:00a – 11:00a**.
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Policies
-
-- No podcasting.
-
-- No screens (phones, laptops) in lecture.
-
-- Yes attendance & class participation (worksheets).
-
-- Yes exams must be done at allotted time and location.
-
-- Yes you may use AI tools for assignments ... but ...
 
 <br>
 <br>
