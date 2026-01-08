@@ -1,4 +1,4 @@
-cabal-version: 2.4
+cabal-version: 3.14
 
 name:           cse230-code
 version:        0.1.0.0
@@ -18,16 +18,8 @@ source-repository head
 
 library
   other-modules:
-      Lec_10_10_23
-      Lec_10_12_23
-      Lec_10_17_23
-      Lec_10_24_23
-      Lec_10_26_23
-      Lec_10_31_23
-      Lec_11_14_23
-      Lec_11_16_23
-      Lec_11_21_23
-      Lec_11_28_23
+      Lec_1_6_26
+      Lec_1_8_26
 
   hs-source-dirs:
       src

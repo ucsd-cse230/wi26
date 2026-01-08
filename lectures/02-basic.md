@@ -562,13 +562,16 @@ tup = (e1, e2, e3)
 
 ```haskell
 fst3 :: (t1, t2, t3) -> t1
-fst3 (x1, x2, x3) = x1
+fst3 x = case x of
+           (x1, x2, x3) -> x1
 
 snd3 :: (t1, t2, t3) -> t2
-snd3 (x1, x2, x3) = x2
+snd3 x = case x of
+           (x1, x2, x3) -> x2
 
 thd3 :: (t1, t2, t3) -> t3
-thd3 (x1, x2, x3) = x3
+thd3 x = case x of
+           (x1, x2, x3) -> x3
 ```
 
 <br>
@@ -589,7 +592,8 @@ tup2 :: (Char, Double, Int)
 tup2 = ('a', 5.2, 7)
 
 snd3 :: (t1, t2, t3) -> t2
-snd3 (x1, x2, x3) = x2
+snd3 x = case x of
+           (x1, x2, x3) -> x2
 
 quiz = snd3 tup2
 ```
