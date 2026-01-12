@@ -517,7 +517,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="function-calls">Function Calls</h2>
-<p>A function call is <em>exactly</em> like in the <span class="math inline"><em>λ</em></span>-calculus</p>
+<p>A function call is of the form</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>e1 e2</span></code></pre></div>
 <p>where <code class="sourceCode haskell">e1</code> is a function and <code class="sourceCode haskell">e2</code> is the argument. For example</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> isPos <span class="dv">12</span></span>
@@ -614,16 +614,13 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p>… but how to <strong>extract</strong> the values from this tuple?</p>
 <p><strong>Pattern Matching</strong></p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ot">fst3 ::</span> (t1, t2, t3) <span class="ot">-&gt;</span> t1</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fst3 x <span class="ot">=</span> <span class="kw">case</span> x <span class="kw">of</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>           (x1, x2, x3) <span class="ot">-&gt;</span> x1</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="ot">snd3 ::</span> (t1, t2, t3) <span class="ot">-&gt;</span> t2</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>snd3 x <span class="ot">=</span> <span class="kw">case</span> x <span class="kw">of</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>           (x1, x2, x3) <span class="ot">-&gt;</span> x2</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="ot">thd3 ::</span> (t1, t2, t3) <span class="ot">-&gt;</span> t3</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>thd3 x <span class="ot">=</span> <span class="kw">case</span> x <span class="kw">of</span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>           (x1, x2, x3) <span class="ot">-&gt;</span> x3</span></code></pre></div>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fst3 (x1, x2, x3) <span class="ot">=</span> x1</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="ot">snd3 ::</span> (t1, t2, t3) <span class="ot">-&gt;</span> t2</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>snd3 (x1, x2, x3) <span class="ot">=</span> x2</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="ot">thd3 ::</span> (t1, t2, t3) <span class="ot">-&gt;</span> t3</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>thd3 (x1, x2, x3) <span class="ot">=</span> x3</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -638,10 +635,9 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>tup2 <span class="ot">=</span> (<span class="ch">'a'</span>, <span class="fl">5.2</span>, <span class="dv">7</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ot">snd3 ::</span> (t1, t2, t3) <span class="ot">-&gt;</span> t2</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>snd3 x <span class="ot">=</span> <span class="kw">case</span> x <span class="kw">of</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>           (x1, x2, x3) <span class="ot">-&gt;</span> x2</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> snd3 tup2</span></code></pre></div>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>snd3 (x1, x2, x3) <span class="ot">=</span> x2</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>quiz <span class="ot">=</span> snd3 tup2</span></code></pre></div>
 <p><strong>A.</strong> <code class="sourceCode haskell"><span class="ch">'a'</span></code></p>
 <p><strong>B.</strong> <code class="sourceCode haskell"><span class="fl">5.2</span></code></p>
 <p><strong>C.</strong> <code class="sourceCode haskell"><span class="dv">7</span></code></p>
