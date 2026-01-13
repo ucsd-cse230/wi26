@@ -8,8 +8,8 @@ headerImg: books.jpg
 | **Date** | **Topic**      | **Notes**        | **Markup** | **Code**          |
 | :------: | :------------- | :--------------- | :--------- | :---------------- |
 |  _1/6_   | Intro          | [html][00-hello] |            | [code][code-1-6]  |
-|  _1/8_   | Haskell Basics | [html][02-basic] |            | [code][code-1-8]  |
-|  _1/13_  | Algebraic Data | [html][03-adt]   |            | [code][code-1-13] |
+|  _1/8_   | Haskell Basics | [html][02-basic] | [pdf][02-pdf]           | [code][code-1-8]  |
+|  _1/13_  | Algebraic Data | [html][03-adt]   |  [pdf][03-pdf]          | [code][code-1-13] |
 |  _2/5_   | Midterm 1      |                  |            |                   |
 |  _3/10_  | Midterm 2      |                  |            |
 
