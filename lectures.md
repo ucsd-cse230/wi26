@@ -45,6 +45,7 @@ headerImg: books.jpg
 [code-1-8]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_1_8_26.hs
 [code-1-13]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_1_13_26.hs
 [code-1-15]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_1_15_26.hs
+
 [00-intro]: static/raw/lec-intro.pdf
 [01-lambda]: lectures/01-lambda.html
 [00-hello]: lectures/00-hello.html
