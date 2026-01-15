@@ -122,6 +122,13 @@ ex0 = 5 > 4
 thing1 :: Integer
 thing1 = 2 * (5 + 6)
 
+thing11 :: Int
+thing11 = 2 * (5 + 6)
+
+-- >>> thing1
+-- 22
+
+
 -- quiz = if ex0 then thing1 else 20
 
 --  Type_of_INPUT -> Type_of_OUTPUT
