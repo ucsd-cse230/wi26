@@ -22,6 +22,8 @@ library
       Lec_1_8_26
       Lec_1_13_26
       Lec_1_15_26
+      Lec_1_20_26
+      Hello
 
   hs-source-dirs:
       src

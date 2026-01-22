@@ -18,6 +18,6 @@ headerImg: world-map.jpg
 
 |              | **Staff**                                     | **Office Hours**                                                     |
 | :----------- | :-------------------------------------------- | :------------------------------------------------------------------- |
-| _Instructor_ | [Ranjit Jhala](https://ranjitjhala.github.io) | Tu, Th 12:30-1:30pm, (Outside CENTER 109)                            |
+| _Instructor_ | [Ranjit Jhala](https://ranjitjhala.github.io) | Tu, Th 12:30-1:30pm, (CSE 3110)                            |
 | _TA_         | [Kyle Thompson](mailto:r7thompson@ucsd.edu)   | M (4pm - 5pm) (B240A), W(4:30pm - 5:30pm) (B215) F(1pm - 2pm) (B215) |
 | _TA_         | [Aronya Baksy](mailto:abaksy@ucsd.edu)        | Tu (B270A), Th(B215) 3:00-4:00p                                      |

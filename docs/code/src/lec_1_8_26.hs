@@ -1,4 +1,5 @@
 {- HLINT ignore "Eta reduce" -}
+{- HLINT ignore "Redundant bracket" -}
 module Lec_1_8_26 where
 
 bob :: (Int, Bool)
@@ -67,8 +68,8 @@ foo n  = [n-1, n, n+1]
 -- /Users/rjhala/teaching/230-wi26/static/code/src/lec_1_8_26.hs:(47,1)-(50,29): Non-exhaustive patterns in function clone
 
 
-clone 0 _   = []
-clone n cat = cat: clone (n-1) cat
+clone 0 _ = []
+clone n x = x : ( clone (n-1) x )
 
 
 -- >>> range 0 2
@@ -78,8 +79,8 @@ clone n cat = cat: clone (n-1) cat
 -- >>> range 10 20
 -- [10,11,12,13,14,15,16,17,18,19,20]
 
--- >>> getElem (range 10 20) 35
--- 13
+-- >>> getElem (range 10 20) 3055
+-- 3065
 
 
 range :: Int -> Int -> [Int]
@@ -214,3 +215,46 @@ volume (l, b, h) = l * b * h
 -- tuesday :: Integer
 -- tuesday = 99
 -- tuesday = 46
+
+{-
+
+WHY is
+
+       [ [1], [2,3], [3,4,5] ]
+
+of TYPE
+
+       [ [ Int ] ]
+
+INSTEAD OF
+
+       [ [Int], [Int], [Int] ]
+
+
+       [ TY ]
+-}
+
+blooh :: [ ([Int], [Int], [Int]) ]
+blooh =        [ ([1], [2,3], [3,4,5]) ]
+
+-- >>> show 3.4
+-- "3.4"
+
+
+blahah :: Int -> Int
+blahah n = n + 1
+
+-- >>> suffix1
+-- Variable not in scope: suffix1
+
+-- >>> blah "dog"
+-- "dogcoffeeatu"
+
+blah :: String -> String
+blah s =
+  let suffix1 = "mug"
+      suffix2 = "atu"
+  in
+       let s = "coffee"
+       in
+              s ++ suffix1 ++ suffix2

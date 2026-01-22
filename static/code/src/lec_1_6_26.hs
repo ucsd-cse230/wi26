@@ -125,8 +125,11 @@ thing1 = 2 * (5 + 6)
 thing11 :: Int
 thing11 = 2 * (5 + 6)
 
--- >>> thing1
--- 22
+-- >>> thing1 == thing11
+-- Couldn't match expected type `Integer' with actual type `Int'
+-- In the second argument of `(==)', namely `thing11'
+-- In the expression: thing1 == thing11
+-- In an equation for `it_agpj': it_agpj = thing1 == thing11
 
 
 -- quiz = if ex0 then thing1 else 20

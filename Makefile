@@ -1,6 +1,6 @@
 site:
-	stack build
-	stack exec -- homepage rebuild
+	cabal build
+	cabal run -- homepage rebuild
 
 upload:
 	cp -r _site/* docs/ 

@@ -294,9 +294,9 @@ add3 xs    = bob (\x -> x+3) xs
 -- lengths Nil = Nil
 -- lengths (Cons x xs) = Cons (length x) (lengths xs)
 
-add3 :: List Int -> List Int
-add3 Nil         = Nil
-add3 (Cons x xs) = Cons (x + 3) (add3 xs)
+-- add3 :: List Int -> List Int
+-- add3 Nil         = Nil
+-- add3 (Cons x xs) = Cons (x + 3) (add3 xs)
 
 {-
 

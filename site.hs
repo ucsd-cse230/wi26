@@ -43,7 +43,7 @@ toggleMode mode (OrderedList (_, UpperRoman, _) items) = select items
   where
     select ([Para [Str key], payload] : rest) =
       if key == mode then payload else select rest
-    select _ = Null
+    select _ = HorizontalRule -- Null
 toggleMode _ b = b
 
 -- | Make inline code Haskell by default

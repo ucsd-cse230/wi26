@@ -11,11 +11,11 @@ headerImg: books.jpg
 |  _1/8_   | Haskell Basics   | [html][02-basic] | [pdf][02-pdf] | [code][code-1-8]  |
 |  _1/13_  | Algebraic Data   | [html][03-adt]   | [pdf][03-pdf] | [code][code-1-13] |
 |  _1/15_  | Higher-order Fun | [html][04-hof]   | [pdf][04-pdf] | [code][code-1-15] |
+|  _1/17_  | IO               | [html][05-io]    | [pdf][05-pdf] | [code][code-1-17] |
 |  _2/5_   | Midterm 1        |                  |               |                   |
 |  _3/10_  | Midterm 2        |                  |               |
 
 <!--
-| *10/19*    | IO                              | [html][05-io]             | [pdf][05-pdf]        | [code][code-10-19] |
 | *10/24*    | Type Classes 		       | [html][06-typeclasses]    | [pdf][06-pdf]        | [code][code-10-24] |
 | *10/26*    | Functors                        | [html][07-functors]       | [pdf][07-pdf]        | [code][code-10-26] |
 | *10/31*    | Monads                          | [html][08-monads]         | [pdf][08-pdf]        | [code][code-10-31] |
@@ -45,7 +45,6 @@ headerImg: books.jpg
 [code-1-8]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_1_8_26.hs
 [code-1-13]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_1_13_26.hs
 [code-1-15]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_1_15_26.hs
-
 [00-intro]: static/raw/lec-intro.pdf
 [01-lambda]: lectures/01-lambda.html
 [00-hello]: lectures/00-hello.html

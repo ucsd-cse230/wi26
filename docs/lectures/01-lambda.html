@@ -268,8 +268,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <h2 id="what-is-computable">What is computable?</h2>
 <h3 id="before-1930s">Before 1930s</h3>
 <p>Informal notion of an <strong>effectively calculable</strong> function:</p>
-<figure>
-<img src="https://oercommons.s3.amazonaws.com/media/courseware/assets/G06/06-math-math-06-9780328761197-math-9780328761197-ah-studio-images-ip3-mth-6-2-8-2-1_mw-4x3_dividehandwritten-ip3.png" id="fig:pen-and-paper" class="align-center" style="width:40.0%" alt="can be computed by a human with pen and paper, following an algorithm" />
+<figure id="fig:pen-and-paper">
+<img src="https://oercommons.s3.amazonaws.com/media/courseware/assets/G06/06-math-math-06-9780328761197-math-9780328761197-ah-studio-images-ip3-mth-6-2-8-2-1_mw-4x3_dividehandwritten-ip3.png" class="align-center" style="width:40.0%" alt="can be computed by a human with pen and paper, following an algorithm" />
 <figcaption aria-hidden="true">can be computed by a human with pen and paper, following an algorithm</figcaption>
 </figure>
 <p><br>
@@ -278,16 +278,18 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h3 id="formalization">1936: Formalization</h3>
 <p>What is the <strong>smallest universal language</strong>?</p>
-<figure>
-<img src="https://upload.wikimedia.org/wikipedia/id/c/c8/Alan_Turing_photo.jpg" id="fig:turing" class="align-center" style="width:40.0%" alt="Alan Turing" />
+<figure id="fig:turing">
+<img src="https://upload.wikimedia.org/wikipedia/id/c/c8/Alan_Turing_photo.jpg" class="align-center" style="width:40.0%" alt="Alan Turing" />
 <figcaption aria-hidden="true">Alan Turing</figcaption>
 </figure>
+<hr />
 <p><br>
 <br></p>
-<figure>
-<img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg" id="fig:church" class="align-center" style="width:40.0%" alt="Alonzo Church" />
+<figure id="fig:church">
+<img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg" class="align-center" style="width:40.0%" alt="Alonzo Church" />
 <figcaption aria-hidden="true">Alonzo Church</figcaption>
 </figure>
+<hr />
 <p><br>
 <br>
 <br>
@@ -302,8 +304,8 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="the-next-700-languages">The Next 700 Languages</h2>
-<figure>
-<img src="https://upload.wikimedia.org/wikipedia/en/f/f9/Peter_Landin.png" id="fig:landin" class="align-center" style="width:40.0%" alt="Peter Landin" />
+<figure id="fig:landin">
+<img src="https://upload.wikimedia.org/wikipedia/en/f/f9/Peter_Landin.png" class="align-center" style="width:40.0%" alt="Peter Landin" />
 <figcaption aria-hidden="true">Peter Landin</figcaption>
 </figure>
 <blockquote>
@@ -468,6 +470,7 @@ of one of three kinds:</p>
 <p><strong>D.</strong> A and C</p>
 <p><strong>E.</strong> all of the above</p>
 <p><br></p>
+<hr />
 <p><br>
 <br>
 <br>
@@ -552,21 +555,21 @@ of one of three kinds:</p>
 <br></p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: left;">instead of</th>
 <th style="text-align: left;">we write</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: left;"><code class="sourceCode haskell">\x <span class="ot">-&gt;</span> (\y <span class="ot">-&gt;</span> (\z <span class="ot">-&gt;</span> e))</code></td>
 <td style="text-align: left;"><code class="sourceCode haskell">\x <span class="ot">-&gt;</span> \y <span class="ot">-&gt;</span> \z <span class="ot">-&gt;</span> e</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;"><code class="sourceCode haskell">\x <span class="ot">-&gt;</span> \y <span class="ot">-&gt;</span> \z <span class="ot">-&gt;</span> e</code></td>
 <td style="text-align: left;"><code class="sourceCode haskell">\x y z <span class="ot">-&gt;</span> e</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: left;"><code class="sourceCode haskell">(((e1 e2) e3) e4)</code></td>
 <td style="text-align: left;"><code class="sourceCode haskell">e1 e2 e3 e4</code></td>
 </tr>
@@ -693,6 +696,7 @@ is <code class="sourceCode haskell">x</code> <em>bound</em> or <em>free</em>?</p
 <p><strong>C.</strong> first occurrence is free, second is bound</p>
 <p><strong>D.</strong> first occurrence is free, second is free</p>
 <p><br></p>
+<hr />
 <p><br>
 <br>
 <br>
@@ -731,6 +735,7 @@ is <code class="sourceCode haskell">x</code> <em>bound</em> or <em>free</em>?</p
 <p><br>
 <br></p>
 <p>What is the shortest closed expression?</p>
+<hr />
 <p><br>
 <br>
 <br>
@@ -841,6 +846,7 @@ replace all free occurrences of the <em>formal</em> by that <em>argument</em></p
 <p><strong>D.</strong> <code class="sourceCode haskell">\y <span class="ot">-&gt;</span> y</code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> y</code></p>
 <p><br></p>
+<hr />
 <p><br>
 <br>
 <br>
@@ -881,6 +887,7 @@ replace all free occurrences of the <em>formal</em> by that <em>argument</em></p
 <p><strong>D.</strong> <code class="sourceCode haskell">apple</code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> x</code></p>
 <p><br></p>
+<hr />
 <p><br>
 <br>
 <br>
@@ -971,6 +978,7 @@ replace all free occurrences of the <em>formal</em> by that <em>argument</em></p
 <ul>
 <li>i.e. if <code class="sourceCode haskell">\y <span class="ot">-&gt;</span> <span class="op">...</span></code> may <em>capture</em> those free variables?</li>
 </ul>
+<hr />
 <p><br>
 <br>
 <br>
@@ -1021,8 +1029,10 @@ replace all free occurrences of the <em>formal</em> by that <em>argument</em></p
 <p>What’s wrong with these?</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- (A)</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>\f <span class="ot">-&gt;</span> f x    <span class="ot">=</span>a<span class="op">&gt;</span>   \x <span class="ot">-&gt;</span> x x</span></code></pre></div>
+<hr />
 <div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- (B)</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>(\x <span class="ot">-&gt;</span> \y <span class="ot">-&gt;</span> y) y   <span class="ot">=</span>a<span class="op">&gt;</span>   (\x <span class="ot">-&gt;</span> \z <span class="ot">-&gt;</span> z) z</span></code></pre></div>
+<hr />
 <p><br>
 <br>
 <br>
@@ -1086,6 +1096,7 @@ To avoid getting confused,</p>
 <p><strong>C.</strong> <code class="sourceCode haskell">(\x <span class="ot">-&gt;</span> x) y</code></p>
 <p><strong>D.</strong> <code class="sourceCode haskell">x (\y <span class="ot">-&gt;</span> y)</code></p>
 <p><strong>E.</strong> C and D</p>
+<hr />
 <p><br>
 <br>
 <br>
@@ -1467,6 +1478,7 @@ with the <span class="math inline"><em>λ</em></span>-calculus.</p>
 <p>How can we implement a record that contains <strong>three</strong> values?</p>
 <p>ELSA: https://goto.ucsd.edu/elsa/index.html</p>
 <p><a href="https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585434814_24436.lc">Click here to try this exercise</a></p>
+<hr />
 <div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dt">TRIPLE</span> <span class="ot">=</span> \x y z <span class="ot">-&gt;</span> <span class="op">???</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dt">FST3</span>   <span class="ot">=</span> \t <span class="ot">-&gt;</span> <span class="op">???</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="dt">SND3</span>   <span class="ot">=</span> \t <span class="ot">-&gt;</span> <span class="op">???</span></span>
@@ -1483,6 +1495,7 @@ with the <span class="math inline"><em>λ</em></span>-calculus.</p>
 <span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>eval ex3<span class="op">:</span></span>
 <span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">THD3</span> (<span class="dt">TRIPLE</span> apple banana orange)</span>
 <span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">=*&gt;</span> orange</span></code></pre></div>
+<hr />
 <p><br>
 <br>
 <br>
@@ -1591,10 +1604,12 @@ is encoded as a combinator that
 <li><p><strong>D</strong>: <code class="sourceCode haskell"><span class="kw">let</span> <span class="dt">ZERO</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x</code></p></li>
 <li><p><strong>E</strong>: None of the above</p></li>
 </ul>
+<hr />
 <p><br>
 <br>
 <br></p>
 <p>Does this function look familiar?</p>
+<hr />
 <p><br>
 <br>
 <br>
@@ -1674,6 +1689,7 @@ is encoded as a combinator that
 <p><strong>C.</strong> <code class="sourceCode haskell"><span class="kw">let</span> <span class="dt">ADD</span> <span class="ot">=</span> \n m <span class="ot">-&gt;</span> n m <span class="dt">INC</span></code></p>
 <p><strong>D.</strong> <code class="sourceCode haskell"><span class="kw">let</span> <span class="dt">ADD</span> <span class="ot">=</span> \n m <span class="ot">-&gt;</span> n (m <span class="dt">INC</span>)</code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell"><span class="kw">let</span> <span class="dt">ADD</span> <span class="ot">=</span> \n m <span class="ot">-&gt;</span> n (<span class="dt">INC</span> m)</code></p>
+<hr />
 <p><br>
 <br>
 <br>
@@ -1715,6 +1731,7 @@ is encoded as a combinator that
 <p><strong>C.</strong> <code class="sourceCode haskell"><span class="kw">let</span> <span class="dt">MULT</span> <span class="ot">=</span> \n m <span class="ot">-&gt;</span> m (<span class="dt">ADD</span> n) <span class="dt">ZERO</span></code></p>
 <p><strong>D.</strong> <code class="sourceCode haskell"><span class="kw">let</span> <span class="dt">MULT</span> <span class="ot">=</span> \n m <span class="ot">-&gt;</span> n (<span class="dt">ADD</span> m <span class="dt">ZERO</span>)</code></p>
 <p><strong>E.</strong> <code class="sourceCode haskell"><span class="kw">let</span> <span class="dt">MULT</span> <span class="ot">=</span> \n m <span class="ot">-&gt;</span> (n <span class="dt">ADD</span> m) <span class="dt">ZERO</span></code></p>
+<hr />
 <p><br>
 <br>
 <br>
