@@ -11,7 +11,8 @@ headerImg: books.jpg
 |  _1/8_   | Haskell Basics   | [html][02-basic] | [pdf][02-pdf] | [code][code-1-8]  |
 |  _1/13_  | Algebraic Data   | [html][03-adt]   | [pdf][03-pdf] | [code][code-1-13] |
 |  _1/15_  | Higher-order Fun | [html][04-hof]   | [pdf][04-pdf] | [code][code-1-15] |
-|  _1/17_  | IO               | [html][05-io]    | [pdf][05-pdf] | [code][code-1-17] |
+|  _1/20_  | contd.           |                  |               | [code][code-1-20] |
+|  _1/22_  | IO               | [html][05-io]    | [pdf][05-pdf] | [code][code-1-22] |
 |  _2/5_   | Midterm 1        |                  |               |                   |
 |  _3/10_  | Midterm 2        |                  |               |
 
