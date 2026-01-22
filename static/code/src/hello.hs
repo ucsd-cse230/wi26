@@ -1,3 +1,5 @@
+{- HLINT ignore "Use const" -}
+{- HLINT ignore "Redundant lambda" -}
 module Main where
 
 type Recipe a = IO a
@@ -40,6 +42,17 @@ combineListRecipes :: [Recipe a] -> Recipe a
 combineListRecipes [r]    = r
 combineListRecipes (r:rs) = do { r ; combineListRecipes rs }
 combineListRecipes _      = error "DEATHU"
+
+-- You can use `_` whenever you "don't care" about
+-- the value being "defined" or "named" at a definition site,
+-- e.g. pattern match, function argument, `let` etc.
+getFst :: (a, b) -> a
+getFst tup = case tup of
+                (x1, _ ) -> x1
+
+silly1 = \_ -> 0
+
+silly2 _ = 0
 
 {-
 
