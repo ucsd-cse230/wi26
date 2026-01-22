@@ -26,7 +26,7 @@ hours 59 minutes and 59 seconds past a deadline.
 
 There will be **two** closed-book pencil-and-paper midterm exams,
 each worth 20% of the grade -- to be held during lecture on
-**Th 2/5** and **Thu 3/10** respectively. You may bring a
+**Th 2/5** and **Tu 3/10** respectively. You may bring a
 letter-sized **"notes sheet"** of paper to help you during
 the exam (feel free to use both sides, if you wish.)
 

@@ -385,7 +385,7 @@ How to enable zero-cost abstractions via ownership
 
 - Closed-book, pencil-and-paper midterm exams,
 
-- During lecture on **Th 2/5** and **Thu 3/10** respectively
+- During lecture on **Th 2/5** and **Tu 3/10** respectively
 
 - May use a letter-sized **"notes sheet"** of paper
 
