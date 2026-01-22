@@ -27,7 +27,7 @@ for the programming assignments!
 | **HW-link**    | **Name**  | **Deadline (23:59:59pm)** |
 | :------------- | :-------- | :------------------------ |
 | [HW #id][hwid] | Github ID | Fri 1/16                  |
-| [HW #1][hw1]   | 01-trees  | Thu 1/22                  |
+| [HW #1][hw1]   | 01-trees  | Fri 1/23                  |
 
 [hwid]: https://forms.gle/MHTgynyHP7W6v8Di9
 [hw1]: https://classroom.github.com/a/J8ITHQa6
