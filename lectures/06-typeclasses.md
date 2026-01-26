@@ -73,7 +73,6 @@ Languages since the dawn of time have supported "operator overloading"
 
 You really **need** to _add_ and _compare_ values of _multiple_ types!
 
-
 <br>
 <br>
 <br>
@@ -85,7 +84,6 @@ You really **need** to _add_ and _compare_ values of _multiple_ types!
 <br>
 <br>
 <br>
-
 
 ## Haskell has no caste system
 
@@ -93,7 +91,7 @@ No distinction between **operators** and **functions**
 
 - All are first class citizens!
 
-But then, what type do we give to *functions* like `+` and `==` ?
+But then, what type do we give to _functions_ like `+` and `==` ?
 
 <br>
 <br>
@@ -162,12 +160,10 @@ Which of the following would be appropriate types for `(+)` ?
 <br>
 <br>
 
-
 `a -> a -> a` is bad because?
 
 - That doesn't make sense, e.g. to add two `Bool` or two `[Int]` or two functions!
 
-
 <br>
 <br>
 <br>
@@ -180,12 +176,11 @@ Which of the following would be appropriate types for `(+)` ?
 <br>
 <br>
 
-
-## Type Classes for Ad Hoc Polymorphism 
+## Type Classes for Ad Hoc Polymorphism
 
 Haskell solves this problem with **typeclasses**
 
-- Introduced by [Wadler and Blott](http://portal.acm.org/citation.cfm?id=75283) 
+- Introduced by [Wadler and Blott](http://portal.acm.org/citation.cfm?id=75283)
 
 ![](/static/img/blott-wadler.png){#fig:types .align-center width=60%}
 
@@ -208,7 +203,6 @@ just point them to the above.
 <br>
 <br>
 
-
 ## Qualified Types
 
 To see the right type, lets ask:
@@ -222,13 +216,13 @@ We call the above a **qualified type**. Read it as `+`
 
 - takes in two `a` values and returns an `a` value
 
-for any type `a` that 
+for any type `a` that
 
 - _is a_ `Num` or
 - _implements_ the `Num` interface or
 - _is an instance of_ a `Num`.
 
-The name `Num` can be thought of as a _predicate_  or _constraint_ over types.
+The name `Num` can be thought of as a _predicate_ or _constraint_ over types.
 
 <br>
 <br>
@@ -245,13 +239,11 @@ The name `Num` can be thought of as a _predicate_  or _constraint_ over types.
 <br>
 <br>
 
-
-
-## Some types _are_ `Num`s 
+## Some types _are_ `Num`s
 
 Examples include `Integer`, `Double` etc
 
-- Any such values of those types can be passed to `+`. 
+- Any such values of those types can be passed to `+`.
 
 <br>
 <br>
@@ -268,12 +260,9 @@ Examples include `Integer`, `Double` etc
 <br>
 <br>
 
+## Other types _are not_ `Num`s
 
-
-
-## Other types _are not_ `Num`s 
-
-Examples include `Char`, `String`, functions etc, 
+Examples include `Char`, `String`, functions etc,
 
 - Values of those types _cannot_ be passed to `+`.
 
@@ -288,7 +277,7 @@ Examples include `Char`, `String`, functions etc,
 
 **Aha!** _Now_ those `no instance for` error messages should make sense!
 
-- Haskell is complaining that `True` and `False` are of type `Bool` 
+- Haskell is complaining that `True` and `False` are of type `Bool`
 - and that `Bool` is _not_ an instance of `Num`.
 
 <br>
@@ -306,12 +295,9 @@ Examples include `Char`, `String`, functions etc,
 <br>
 <br>
 
-
-
-
 ## Type Class is a Set of Operations
 
-A typeclass is a collection of operations (functions) 
+A typeclass is a collection of operations (functions)
 that must exist for the underlying type.
 
 - [Similar but different to Java interfaces](https://www.parsonsmatt.org/2017/01/07/how_do_type_classes_differ_from_interfaces.html)
@@ -354,12 +340,9 @@ That determine if two `a` values are respectively _equal_ or _disequal_.
 <br>
 <br>
 
-
-
-
 ## The `Show` Type Class
 
-The typeclass `Show` requires  that instances be convertible to `String`
+The typeclass `Show` requires that instances be convertible to `String`
 (which can then be printed out)
 
 ```haskell
@@ -397,14 +380,14 @@ Indeed, we can test this on different (built-in) types
 <br>
 <br>
 
-## Unshowable Types 
+## Unshowable Types
 
-When we type an expression into `ghci`, 
+When we type an expression into `ghci`,
 
-- it computes the value, 
-- then calls `show` on the result. 
+- it computes the value,
+- then calls `show` on the result.
 
-Thus, if we create a *new* type by
+Thus, if we create a _new_ type by
 
 ```haskell
 data Unshowable = A | B | C
@@ -461,8 +444,6 @@ make sense to you.
 <br>
 <br>
 
-
-
 ## Creating Instances
 
 Tell Haskell how to show or compare values of type `Unshowable`
@@ -481,7 +462,7 @@ instance Eq Unshowable where
 
 ## EXERCISE
 
-Lets *create* an `instance` for `Show Unshowable`
+Lets _create_ an `instance` for `Show Unshowable`
 
 When you are done we should get the following behavior
 
@@ -504,7 +485,6 @@ When you are done we should get the following behavior
 <br>
 <br>
 <br>
-
 
 ## Automatic Derivation
 
@@ -550,8 +530,6 @@ False
 <br>
 <br>
 
-
-
 ## The `Num` typeclass
 
 Let us now peruse the definition of the `Num` typeclass.
@@ -570,10 +548,10 @@ class (Eq a, Show a) => Num a where
 
 A type `a` _is an instance of_ (i.e. _implements_) `Num` if
 
-1. The type is *also* an instance of `Eq` and `Show`, and
+1. The type is _also_ an instance of `Eq` and `Show`, and
 2. There are functions to add, multiply, etc. values **of that type**.
 
-That is, we can do *comparisons* and *arithmetic* on the values.
+That is, we can do _comparisons_ and _arithmetic_ on the values.
 
 <br>
 <br>
@@ -589,8 +567,6 @@ That is, we can do *comparisons* and *arithmetic* on the values.
 <br>
 <br>
 <br>
-
-
 
 ## Standard Typeclass Hierarchy
 
@@ -615,8 +591,6 @@ because for something to be a `Num` it must also be an `Eq` and `Show`.
 <br>
 <br>
 <br>
-
-
 
 ## The `Ord` Typeclass
 
@@ -655,10 +629,7 @@ True
 <br>
 <br>
 
-
-
-
-## QUIZ 
+## QUIZ
 
 Recall the datatype:
 
@@ -692,19 +663,14 @@ What is the result of:
 <br>
 <br>
 
-
-
-
 ## Using Typeclasses
 
 Typeclasses integrate with the rest of Haskell's type system.
 
-Lets build a small library for *Environments* mapping keys `k` to values `v`
+Lets build a small library for _lookup tables_ that map keys `k` to values `v`
 
 ```haskell
-data Table k v
-  = Def  v                -- default value `v` to be used for "missing" keys
-  | Bind k v (Table k v)  -- bind key `k` to the value `v`
+data Table k v = MkTable { def :: v, bindings :: [(k, v)] }
   deriving (Show)
 ```
 
@@ -720,26 +686,19 @@ data Table k v
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
-What is the type of `keys`
+Let's write a function that returns the `keys` of the `Table`
 
 ```haskell
-keys (Def _)         = []
-keys (Bind k _ rest) = k : keys rest
+keys :: Table k v -> [k]
+keys  _____________________________________________
+
+      _____________________________________________
+
+      _____________________________________________
 ```
 
-**A.** `Table k v -> k`
-
-**B.** `Table k v -> [k]`
-
-**C.** `Table k v -> [(k, v)]`
-
-**D.** `Table k v -> [v]`
-
-**E.** `Table k v -> v`
-
-
 <br>
 <br>
 <br>
@@ -752,10 +711,9 @@ keys (Bind k _ rest) = k : keys rest
 <br>
 <br>
 
+## An API for `Table`
 
-## An API for `Table` 
-
-Lets write a small API for `Table` 
+Lets write a small API for `Table`
 
 ```haskell
 -- >>> let env0 = set "cat" 10.0 (set "dog" 20.0 (Def 0))
@@ -801,24 +759,22 @@ Oops, y u no check?
 <br>
 <br>
 
-
-
-
 ## Constraint Propagation
 
-Lets _delete_ the types of `set`  and `get` 
+Lets _delete_ the types of `set` and `get`
 
-- to see what Haskell says their types are! 
+- to see what Haskell says their types are!
 
 ```haskell
 λ> :type get
 get :: (Eq k) => k -> v -> Table k v -> Table k v
 ```
 
-We can use *any* `k` value as a *key*
-  - if `k` is an instance of i.e. "implements" the `Eq` typeclass.
+We can use _any_ `k` value as a _key_
 
-How, did GHC figure this out? 
+- if `k` is an instance of i.e. "implements" the `Eq` typeclass.
+
+How, did GHC figure this out?
 
 - If you look at the code for `get` you'll see that we check if two keys _are equal_!
 
@@ -836,14 +792,13 @@ How, did GHC figure this out?
 <br>
 <br>
 
-
 ## HOMEWORK
 
 Write an optimized version of
 
-- `set`  that ensures the keys are in _increasing_ order,
+- `set` that ensures the keys are in _increasing_ order,
 - `get` that gives up and returns the "default" the moment
-   we see a key thats larger than the one we're looking for.
+  we see a key thats larger than the one we're looking for.
 
 _(How) do you need to change the type of `Table` ?_
 
@@ -862,17 +817,15 @@ _(How) do you need to change the types of `get` and `set` ?_
 <br>
 <br>
 
-
-
 ## Explicit Signatures
 
-Sometimes the use of type classes requires explicit annotations 
+Sometimes the use of type classes requires explicit annotations
 
-  - which affect the code's behavior
+- which affect the code's behavior
 
-`Read` is a standard typeclass that is the "opposite" of `Show` 
+`Read` is a standard typeclass that is the "opposite" of `Show`
 
-  - where any instance `a` of`Read` has a "parsing" function
+- where any instance `a` of`Read` has a "parsing" function
 
 ```haskell
 read :: (Read a) => String -> a
@@ -923,9 +876,9 @@ Doesn't know _which_ of the `read` functions to run!
 
 - Did we want an `Int` or a `Double` or maybe something else altogether?
 
-**Explicit Type Annotation** 
+**Explicit Type Annotation**
 
-- needed to tell Haskell what to convert the string to: 
+- needed to tell Haskell what to convert the string to:
 
 ```haskell
 >>> (read "2") :: Int
@@ -950,14 +903,13 @@ Note the different results due to the different types.
 <br>
 <br>
 
-
 ## Creating Typeclasses
 
-Typeclasses are useful for *many* different things.
+Typeclasses are useful for _many_ different things.
 
 We will see some of those over the next few lectures.
 
-Lets conclude today's class with a quick example that provides a small taste. 
+Lets conclude today's class with a quick example that provides a small taste.
 
 <br>
 <br>
@@ -971,36 +923,38 @@ Lets conclude today's class with a quick example that provides a small taste.
 <br>
 <br>
 <br>
-
 
 ## JSON
 
-*JavaScript Object Notation* or [JSON](http://www.json.org/) 
+_JavaScript Object Notation_ or [JSON](http://www.json.org/)
 
-- is a simple format for transferring data around. 
+- is a simple format for transferring data around.
 
 Here is an example:
 
 ```json
-{ "name"    : "Ranjit"
-, "age"     : 44.0
-, "likes"   : ["guacamole", "coffee", "tacos"]
-, "hates"   : [ "waiting" , "spiders"]
-, "lunches" : [ {"day" : "monday",    "loc" : "zanzibar"}
-              , {"day" : "tuesday",   "loc" : "farmers market"}
-              , {"day" : "wednesday", "loc" : "harekrishna"}
-              , {"day" : "thursday",  "loc" : "faculty club"}
-              , {"day" : "friday",    "loc" : "coffee cart"} ]
+{
+  "name": "Ranjit",
+  "age": 44.0,
+  "likes": ["guacamole", "coffee", "tacos"],
+  "hates": ["waiting", "spiders"],
+  "lunches": [
+    { "day": "monday", "loc": "zanzibar" },
+    { "day": "tuesday", "loc": "farmers market" },
+    { "day": "wednesday", "loc": "harekrishna" },
+    { "day": "thursday", "loc": "faculty club" },
+    { "day": "friday", "loc": "coffee cart" }
+  ]
 }
 ```
 
 In brief, each JSON object is either
 
-- a *base* value like a string, a number or a boolean,
+- a _base_ value like a string, a number or a boolean,
 
-- an (ordered) *array* of objects, or
+- an (ordered) _array_ of objects, or
 
-- a set of *string-object* pairs.
+- a set of _string-object_ pairs.
 
 <br>
 <br>
@@ -1014,10 +968,6 @@ In brief, each JSON object is either
 <br>
 <br>
 <br>
-
-
-
-
 
 ## A JSON Datatype
 
@@ -1069,13 +1019,9 @@ js1 =
 <br>
 <br>
 
-
-
-
-
 ## Serializing Haskell Values to JSON
 
-Lets write a small library to _serialize_ Haskell values as JSON. 
+Lets write a small library to _serialize_ Haskell values as JSON.
 
 We could write a bunch of functions like
 
@@ -1102,10 +1048,6 @@ boolToJSON   = JBool
 <br>
 <br>
 <br>
-
-
-
-
 
 ## Serializing Collections
 
@@ -1135,16 +1077,15 @@ This is **getting rather tedious**
 
 ## Serializing Collections (refactored with HOFs)
 
-You could abstract by making the *individual-element-converter* a parameter
+You could abstract by making the _individual-element-converter_ a parameter
 
 ```haskell
 xsToJSON :: (a -> JVal) -> [a] -> JVal
 xsToJSON f xs = JArr (map f xs)
 
 xysToJSON :: (a -> JVal) -> [(String, a)] -> JVal
-xysToJSON f kvs = JObj (map (\(k, v) -> (k, f v)) kvs) 
+xysToJSON f kvs = JObj (map (\(k, v) -> (k, f v)) kvs)
 ```
-
 
 <br>
 <br>
@@ -1168,7 +1109,7 @@ JArr [JStr "coffee",JStr "guacamole",JStr "bacon"]
 JObj [("day",JStr "monday"),("loc",JStr "zanzibar")]
 ```
 
-This gets *awful* when you have richer objects like
+This gets _awful_ when you have richer objects like
 
 ```haskell
 lunches = [ [("day", "monday"),    ("loc", "zanzibar")]
@@ -1189,7 +1130,6 @@ Yikes. So much for _readability_
 
 Is it too much to ask for a magical `toJSON` that _just works?_
 
-
 <br>
 <br>
 <br>
@@ -1202,10 +1142,6 @@ Is it too much to ask for a magical `toJSON` that _just works?_
 <br>
 <br>
 <br>
-
-
-
-
 
 ## Typeclasses To The Rescue
 
@@ -1242,7 +1178,6 @@ JBool True
 JStr "guacamole"
 ```
 
-
 <br>
 <br>
 <br>
@@ -1255,23 +1190,18 @@ JStr "guacamole"
 <br>
 <br>
 <br>
-
-
-
-
-
 
 ## Bootstrapping Instances
 
-Haskell can *automatically bootstrap* the above to *lists* and *tables*!
+Haskell can _automatically bootstrap_ the above to _lists_ and _tables_!
 
 ```haskell
 instance JSON a => JSON [a] where
   toJSON xs = JArr (map toJSON xs)
 ```
 
-- if `a` is an instance of `JSON`, 
-- then here's how to convert *lists* of `a` to `JSON`.
+- if `a` is an instance of `JSON`,
+- then here's how to convert _lists_ of `a` to `JSON`.
 
 ```haskell
 λ> toJSON [True, False, True]
@@ -1294,9 +1224,7 @@ JArr [JStr "cat", JStr "dog", JStr "Mouse"]
 <br>
 <br>
 
-
-## Bootstrapping Lists of Lists! 
-
+## Bootstrapping Lists of Lists!
 
 ```haskell
 λ> toJSON [["cat", "dog"], ["mouse", "rabbit"]]
@@ -1316,15 +1244,13 @@ JArr [JArr [JStr "cat",JStr "dog"],JArr [JStr "mouse",JStr "rabbit"]]
 <br>
 <br>
 
-
-
 ## Bootstrapping Key-Value Tables
 
 We can pull the same trick with key-value lists
 
 ```haskell
 instance (JSON a) => JSON [(String, a)] where
-  toJSON kvs = JObj (map (\(k, v) -> (k, toJSON v)) kvs) 
+  toJSON kvs = JObj (map (\(k, v) -> (k, toJSON v)) kvs)
 ```
 
 after which, we are all set!
@@ -1349,30 +1275,26 @@ JArr [ JObj [ ("day",JStr "monday"), ("loc",JStr "zanzibar")]
 <br>
 <br>
 
-
-
-
 ## Bootstrapping Tuples
 
-Lets bootstrap the serialization for tuples (upto some fixed size) 
-
+Lets bootstrap the serialization for tuples (upto some fixed size)
 
 ```haskell
 instance (JSON a, JSON b) => JSON ((String, a), (String, b)) where
-  toJSON ((k1, v1), (k2, v2)) = JObj 
+  toJSON ((k1, v1), (k2, v2)) = JObj
     [ (k1, toJSON v1)
     , (k2, toJSON v2)
     ]
 
 instance (JSON a, JSON b, JSON c) => JSON ((String, a), (String, b), (String, c)) where
-  toJSON ((k1, v1), (k2, v2), (k3, v3)) = JObj 
+  toJSON ((k1, v1), (k2, v2), (k3, v3)) = JObj
     [ (k1, toJSON v1)
     , (k2, toJSON v2)
     , (k3, toJSON v3)
     ]
 
 instance (JSON a, JSON b, JSON c, JSON d) => JSON ((String, a), (String, b), (String, c), (String,d)) where
-  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4)) = JObj 
+  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4)) = JObj
     [ (k1, toJSON v1)
     , (k2, toJSON v2)
     , (k3, toJSON v3)
@@ -1380,14 +1302,14 @@ instance (JSON a, JSON b, JSON c, JSON d) => JSON ((String, a), (String, b), (St
     ]
 
 instance (JSON a, JSON b, JSON c, JSON d, JSON e) => JSON ((String, a), (String, b), (String, c), (String,d), (String, e)) where
-  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4), (k5, v5)) = JObj 
+  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4), (k5, v5)) = JObj
     [ (k1, toJSON v1)
     , (k2, toJSON v2)
     , (k3, toJSON v3)
     , (k4, toJSON v4)
     , (k5, toJSON v5)
     ]
-``` 
+```
 
 Now, we can simply write
 
@@ -1400,7 +1322,7 @@ hs = (("name"   , "Ranjit")
      )
 ```
 
-which is a Haskell value that describes our running JSON example, 
+which is a Haskell value that describes our running JSON example,
 and can convert it directly like so
 
 ```haskell
@@ -1420,17 +1342,16 @@ js2 = toJSON hs
 <br>
 <br>
 
-
 ## EXERCISE: Serializing Tables
 
-To wrap everything up, lets write a routine to serialize our `Table` 
+To wrap everything up, lets write a routine to serialize our `Table`
 
 ```haskell
 instance JSON (Table k v) where
   toJSON env = ???
 ```
 
-and presto! our serializer *just works*
+and presto! our serializer _just works_
 
 ```haskell
 >>> env0

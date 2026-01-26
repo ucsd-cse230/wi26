@@ -17,7 +17,6 @@ a.k.a. **Dont Repeat Yourself**
 <br>
 <br>
 
-
 ### Lists
 
 ```haskell
@@ -34,8 +33,6 @@ data List a
 <br>
 <br>
 <br>
-
-
 
 ### Rendering the Values of a List
 
@@ -56,8 +53,6 @@ showList (n:ns) =  show n : showList ns
 <br>
 <br>
 <br>
-
-
 
 ### Squaring the values of a list
 
@@ -108,7 +103,6 @@ sqrList  xs = map (\n -> n ^ 2)  xs
 <br>
 <br>
 
-
 ## Trees
 
 Same "pattern" occurs in other structures!
@@ -128,10 +122,7 @@ data Tree a
 <br>
 <br>
 
-
-
-### Incrementing the values of a Tree
-
+### String Converting the values of a Tree
 
 ```haskell
 -- >>> showTree (Node 2 (Node 1 Leaf Leaf) (Node 3 Leaf Leaf))
@@ -150,8 +141,6 @@ showTree (Node v l r) = ???
 <br>
 <br>
 <br>
-
-
 
 ### Squaring the values of a Tree
 
@@ -215,7 +204,6 @@ mapTree f (Node v l r) = ???
 <br>
 <br>
 <br>
-
 
 ## QUIZ
 
@@ -284,8 +272,6 @@ And now we can do
 <br>
 <br>
 
-
-
 ## A Type to Represent Expressions
 
 ```haskell
@@ -325,7 +311,6 @@ e4 = Div  e3 (Number 3)             -- ((2 + 3) * (10 - 4)) / 3
 <br>
 <br>
 
-
 ## EXERCISE: An Evaluator for Expressions
 
 Fill in an implementation of `eval`
@@ -356,7 +341,6 @@ so that when you're done we get
 <br>
 <br>
 <br>
-
 
 ## QUIZ
 
