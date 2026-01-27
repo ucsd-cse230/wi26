@@ -14,15 +14,26 @@ type Int0 = ()
 (++@++) :: Int -> Int -> Int
 (++@++) x y = x + y
 
-main :: Recipe ()
-main = queryLoop 0
+-- >>> mousify "Ranjit"
+-- "Ranjit Mouse"
+
+mousify :: String -> String
+mousify name = name ++ " Mouse"
+
+main :: Recipe Int
+main = do
+    name <- pure "Mickey"
+    let fullName = mousify name
+    putStrLn ("hello, " ++ fullName)
+    pure 7
+-- main = queryLoop 0
 
 queryLoop :: Int -> Recipe ()
 queryLoop counter = do
     putStrLn (show counter ++ " who are youuu???")
     n <- getLine
     if n == "exit"
-        then putStrLn "Goodbye!!!"
+        then pure () -- putStrLn "Goodbye!!!"
         else do { putStrLn ("hello " ++ n); queryLoop (counter + 1) }
 
 -- (>>=) e1 (\x -> e2)
