@@ -746,11 +746,9 @@ because for something to be a <code class="sourceCode haskell"><span class="dt">
 <br></p>
 <h2 id="using-typeclasses">Using Typeclasses</h2>
 <p>Typeclasses integrate with the rest of Haskell’s type system.</p>
-<p>Lets build a small library for <em>Environments</em> mapping keys <code class="sourceCode haskell">k</code> to values <code class="sourceCode haskell">v</code></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Table</span> k v</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> <span class="dt">Def</span>  v                <span class="co">-- default value `v` to be used for &quot;missing&quot; keys</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Bind</span> k v (<span class="dt">Table</span> k v)  <span class="co">-- bind key `k` to the value `v`</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p>Lets build a small library for <em>lookup tables</em> that map keys <code class="sourceCode haskell">k</code> to values <code class="sourceCode haskell">v</code></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Table</span> k v <span class="ot">=</span> <span class="dt">MkTable</span> {<span class="ot"> def ::</span> v,<span class="ot"> bindings ::</span> [(k, v)] }</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -763,14 +761,13 @@ because for something to be a <code class="sourceCode haskell"><span class="dt">
 <br>
 <br></p>
 <h2 id="quiz-2">QUIZ</h2>
-<p>What is the type of <code class="sourceCode haskell">keys</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>keys (<span class="dt">Def</span> _)         <span class="ot">=</span> []</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>keys (<span class="dt">Bind</span> k _ rest) <span class="ot">=</span> k <span class="op">:</span> keys rest</span></code></pre></div>
-<p><strong>A.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> k</code></p>
-<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> [k]</code></p>
-<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> [(k, v)]</code></p>
-<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> [v]</code></p>
-<p><strong>E.</strong> <code class="sourceCode haskell"><span class="dt">Table</span> k v <span class="ot">-&gt;</span> v</code></p>
+<p>Let’s write a function that returns the <code class="sourceCode haskell">keys</code> of the <code class="sourceCode haskell"><span class="dt">Table</span></code></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ot">keys ::</span> <span class="dt">Table</span> k v <span class="ot">-&gt;</span> [k]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>keys  _____________________________________________</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>      _____________________________________________</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      _____________________________________________</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -825,8 +822,10 @@ because for something to be a <code class="sourceCode haskell"><span class="dt">
 </ul>
 <div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> get</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ot">get ::</span> (<span class="dt">Eq</span> k) <span class="ot">=&gt;</span> k <span class="ot">-&gt;</span> v <span class="ot">-&gt;</span> <span class="dt">Table</span> k v <span class="ot">-&gt;</span> <span class="dt">Table</span> k v</span></code></pre></div>
-<p>We can use <em>any</em> <code class="sourceCode haskell">k</code> value as a <em>key</em>
-- if <code class="sourceCode haskell">k</code> is an instance of i.e. “implements” the <code class="sourceCode haskell"><span class="dt">Eq</span></code> typeclass.</p>
+<p>We can use <em>any</em> <code class="sourceCode haskell">k</code> value as a <em>key</em></p>
+<ul>
+<li>if <code class="sourceCode haskell">k</code> is an instance of i.e. “implements” the <code class="sourceCode haskell"><span class="dt">Eq</span></code> typeclass.</li>
+</ul>
 <p>How, did GHC figure this out?</p>
 <ul>
 <li>If you look at the code for <code class="sourceCode haskell">get</code> you’ll see that we check if two keys <em>are equal</em>!</li>
@@ -953,16 +952,19 @@ we see a key thats larger than the one we’re looking for.</li>
 <li>is a simple format for transferring data around.</li>
 </ul>
 <p>Here is an example:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;name&quot;</span>    <span class="fu">:</span> <span class="st">&quot;Ranjit&quot;</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;age&quot;</span>     <span class="fu">:</span> <span class="fl">44.0</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;likes&quot;</span>   <span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;guacamole&quot;</span><span class="ot">,</span> <span class="st">&quot;coffee&quot;</span><span class="ot">,</span> <span class="st">&quot;tacos&quot;</span><span class="ot">]</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;hates&quot;</span>   <span class="fu">:</span> <span class="ot">[</span> <span class="st">&quot;waiting&quot;</span> <span class="ot">,</span> <span class="st">&quot;spiders&quot;</span><span class="ot">]</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">,</span> <span class="dt">&quot;lunches&quot;</span> <span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;monday&quot;</span><span class="fu">,</span>    <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;zanzibar&quot;</span><span class="fu">}</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;tuesday&quot;</span><span class="fu">,</span>   <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;farmers market&quot;</span><span class="fu">}</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;wednesday&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;harekrishna&quot;</span><span class="fu">}</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;thursday&quot;</span><span class="fu">,</span>  <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;faculty club&quot;</span><span class="fu">}</span></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>              <span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;day&quot;</span> <span class="fu">:</span> <span class="st">&quot;friday&quot;</span><span class="fu">,</span>    <span class="dt">&quot;loc&quot;</span> <span class="fu">:</span> <span class="st">&quot;coffee cart&quot;</span><span class="fu">}</span> <span class="ot">]</span></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Ranjit&quot;</span><span class="fu">,</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;age&quot;</span><span class="fu">:</span> <span class="fl">44.0</span><span class="fu">,</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;likes&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;guacamole&quot;</span><span class="ot">,</span> <span class="st">&quot;coffee&quot;</span><span class="ot">,</span> <span class="st">&quot;tacos&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;hates&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;waiting&quot;</span><span class="ot">,</span> <span class="st">&quot;spiders&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;lunches&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">&quot;day&quot;</span><span class="fu">:</span> <span class="st">&quot;monday&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span><span class="fu">:</span> <span class="st">&quot;zanzibar&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">&quot;day&quot;</span><span class="fu">:</span> <span class="st">&quot;tuesday&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span><span class="fu">:</span> <span class="st">&quot;farmers market&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">&quot;day&quot;</span><span class="fu">:</span> <span class="st">&quot;wednesday&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span><span class="fu">:</span> <span class="st">&quot;harekrishna&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">&quot;day&quot;</span><span class="fu">:</span> <span class="st">&quot;thursday&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span><span class="fu">:</span> <span class="st">&quot;faculty club&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">&quot;day&quot;</span><span class="fu">:</span> <span class="st">&quot;friday&quot;</span><span class="fu">,</span> <span class="dt">&quot;loc&quot;</span><span class="fu">:</span> <span class="st">&quot;coffee cart&quot;</span> <span class="fu">}</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>In brief, each JSON object is either</p>
 <ul>
 <li><p>a <em>base</em> value like a string, a number or a boolean,</p></li>
@@ -1070,7 +1072,7 @@ we see a key thats larger than the one we’re looking for.</li>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>xsToJSON f xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> f xs)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ot">xysToJSON ::</span> (a <span class="ot">-&gt;</span> <span class="dt">JVal</span>) <span class="ot">-&gt;</span> [(<span class="dt">String</span>, a)] <span class="ot">-&gt;</span> <span class="dt">JVal</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>xysToJSON f kvs <span class="ot">=</span> <span class="dt">JObj</span> (<span class="fu">map</span> (\(k, v) <span class="ot">-&gt;</span> (k, f v)) kvs) </span></code></pre></div>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>xysToJSON f kvs <span class="ot">=</span> <span class="dt">JObj</span> (<span class="fu">map</span> (\(k, v) <span class="ot">-&gt;</span> (k, f v)) kvs)</span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -1187,7 +1189,7 @@ we see a key thats larger than the one we’re looking for.</li>
 <h2 id="bootstrapping-key-value-tables">Bootstrapping Key-Value Tables</h2>
 <p>We can pull the same trick with key-value lists</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a) <span class="ot">=&gt;</span> <span class="dt">JSON</span> [(<span class="dt">String</span>, a)] <span class="kw">where</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  toJSON kvs <span class="ot">=</span> <span class="dt">JObj</span> (<span class="fu">map</span> (\(k, v) <span class="ot">-&gt;</span> (k, toJSON v)) kvs) </span></code></pre></div>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  toJSON kvs <span class="ot">=</span> <span class="dt">JObj</span> (<span class="fu">map</span> (\(k, v) <span class="ot">-&gt;</span> (k, toJSON v)) kvs)</span></code></pre></div>
 <p>after which, we are all set!</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>λ<span class="op">&gt;</span> toJSON lunches</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="dt">JArr</span> [ <span class="dt">JObj</span> [ (<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>), (<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;zanzibar&quot;</span>)]</span>
@@ -1208,20 +1210,20 @@ we see a key thats larger than the one we’re looking for.</li>
 <h2 id="bootstrapping-tuples">Bootstrapping Tuples</h2>
 <p>Lets bootstrap the serialization for tuples (upto some fixed size)</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b)) <span class="kw">where</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2)) <span class="ot">=</span> <span class="dt">JObj</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2)) <span class="ot">=</span> <span class="dt">JObj</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    [ (k1, toJSON v1)</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    , (k2, toJSON v2)</span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c)) <span class="kw">where</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3)) <span class="ot">=</span> <span class="dt">JObj</span> </span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3)) <span class="ot">=</span> <span class="dt">JObj</span></span>
 <span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    [ (k1, toJSON v1)</span>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    , (k2, toJSON v2)</span>
 <span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    , (k3, toJSON v3)</span>
 <span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c, <span class="dt">JSON</span> d) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c), (<span class="dt">String</span>,d)) <span class="kw">where</span></span>
-<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4)) <span class="ot">=</span> <span class="dt">JObj</span> </span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4)) <span class="ot">=</span> <span class="dt">JObj</span></span>
 <span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    [ (k1, toJSON v1)</span>
 <span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>    , (k2, toJSON v2)</span>
 <span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    , (k3, toJSON v3)</span>
@@ -1229,7 +1231,7 @@ we see a key thats larger than the one we’re looking for.</li>
 <span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b, <span class="dt">JSON</span> c, <span class="dt">JSON</span> d, <span class="dt">JSON</span> e) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b), (<span class="dt">String</span>, c), (<span class="dt">String</span>,d), (<span class="dt">String</span>, e)) <span class="kw">where</span></span>
-<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4), (k5, v5)) <span class="ot">=</span> <span class="dt">JObj</span> </span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>  toJSON ((k1, v1), (k2, v2), (k3, v3), (k4, v4), (k5, v5)) <span class="ot">=</span> <span class="dt">JObj</span></span>
 <span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>    [ (k1, toJSON v1)</span>
 <span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>    , (k2, toJSON v2)</span>
 <span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>    , (k3, toJSON v3)</span>

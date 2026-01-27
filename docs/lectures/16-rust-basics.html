@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 230">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse230.github.io/wi26/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse230</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse230.github.io/wi26/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 230" />
+    <meta property="og:site_name" content="UCSD CSE 230" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse230.github.io/wi26" id="blog-title-left-top">cse230</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- <li><a href="https://ucsd-cse230.github.io/wi26/calendar.html">Calendar</a></li> -->
+                <li><a href="https://ucsd-cse230.github.io/wi26/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/mk1dl38l7yg690#" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/72285" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse230.github.io/wi26/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/mk1dl38l7yg690#" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/72285" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse230.github.io/wi26/static/img/sea.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Rust Basics</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="managed-vs-unmanaged-languages">Managed vs Unmanaged Languages</h2>
+<p>Programs want to build and manipulate <strong>data in memory</strong></p>
+<ul>
+<li>Arrays, Lists, Trees, Graphs, etc.</li>
+</ul>
+<p>But you can quickly “run out of space” …</p>
+<h3 id="manual-memory-management"><em>Manual</em> Memory Management</h3>
+<p>Unmanaged languages (e.g., <code class="sourceCode haskell"><span class="dt">C</span></code>, <code class="sourceCode haskell"><span class="dt">C</span><span class="op">++</span></code>)</p>
+<ul>
+<li><strong>You write</strong> <code class="sourceCode haskell">alloc</code> and <code class="sourceCode haskell">free</code> in their code</li>
+<li><strong>Pro</strong>: More control over memory usage and performance</li>
+<li><strong>Con</strong>: Bugs! Leaks, dangling pointers, buffer overflows, use-after frees, etc.
+<ul>
+<li>Memory bugs are 70%+ of security vulnerabilities
+reported by <a href="https://www.microsoft.com/en-us/msrc/blog/2019/07/a-proactive-approach-to-more-secure-code">Microsoft</a>
+and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Google Chromium</a></li>
+</ul></li>
+</ul>
+<figure>
+<img src="../static/img/google-bugs.png" alt="Google Chromium Bugs" />
+<figcaption aria-hidden="true">Google Chromium Bugs</figcaption>
+</figure>
+<h3 id="automatic-memory-management"><em>Automatic</em> Memory Management</h3>
+<p>Managed languages (e.g., Python, Java, Haskell) have garbage collection</p>
+<ul>
+<li><strong>The runtime</strong> automatically finds and reclaims unused memory</li>
+<li><strong>Pro</strong>: Easier to write correct code; just create data, forget about it</li>
+<li><strong>Con</strong>: Performance overhead; unpredictable pauses for GC</li>
+</ul>
+<p>Performance overhead precludes systems like browsers, OS kernels, drivers, etc.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="automatic-memory-management-without-garbage-collection">Automatic Memory Management without Garbage Collection?</h2>
+<figure>
+<img src="../static/img/rust-logo.png" alt="Rust" />
+<figcaption aria-hidden="true">Rust</figcaption>
+</figure>
+<p>Based on a long history of how to track pointers …</p>
+<ul>
+<li><p>Linear Types can Change the World!, <a href="https://homepages.inf.ed.ac.uk/wadler/papers/linear/linear.pdf">Wadler 1990</a></p></li>
+<li><p>Region-based Memory Management, <a href="https://www.sciencedirect.com/science/article/pii/S0890540196926139">Tofte and Talpin 1997</a></p></li>
+<li><p>Ownership types for flexible alias protection: Clark, Potter, Noble, Vitek 1998 <a href="https://link.springer.com/chapter/10.1007/BFb0054091">ECOOP98</a>, <a href="https://dl.acm.org/doi/10.1145/286936.286947">OOPSLA98</a></p></li>
+<li><p>Region-based Memory Management in Cyclone: Grossman, Morrissett, Jim, Hicks, Wang, Cheney <a href="https://dl.acm.org/doi/10.1145/543552.512563">PLDI02</a></p></li>
+<li><p>Lots of Haskell/FP inspired features …</p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="rust-is-widely-used">Rust is Widely Used …</h2>
+<figure>
+<img src="../static/img/rust-logo.png" alt="Rust" />
+<figcaption aria-hidden="true">Rust</figcaption>
+</figure>
+<ul>
+<li><p>Systems code: Microsoft, Google, Facebook, Amazon, Dropbox, Cloudflare, etc.</p></li>
+<li><p>Python ecosystem: <code class="sourceCode haskell">uv</code>, <code class="sourceCode haskell">polars</code> …</p></li>
+<li><p><a href="https://rust-for-linux.github.io/">Rust for Linux</a></p></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-rust-basics">Goal Today: Rust Basics</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Programs</label></li>
+<li><label><input type="checkbox" />Basic Types</label></li>
+<li><label><input type="checkbox" />Variables</label></li>
+<li><label><input type="checkbox" />Expressions</label></li>
+<li><label><input type="checkbox" />Functions</label></li>
+<li><label><input type="checkbox" />Control Flow</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="starting-a-project-with-cargo">Starting a Project with <code class="sourceCode haskell">cargo</code></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cargo new rust-230</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd rust-230</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> more src/main.rs</span></code></pre></div>
+<p>Generates a <code class="sourceCode haskell">Cargo.toml</code> file for managing dependencies and a <code class="sourceCode haskell">src<span class="op">/</span>main<span class="op">.</span>rs</code> file</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Hello, world!&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Compile with <code class="sourceCode haskell">cargo build</code>, run with <code class="sourceCode haskell">cargo run</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">$</span> cargo run</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">Compiling</span> rust<span class="op">-</span><span class="dv">230</span> v0<span class="op">.</span><span class="fl">1.0</span> (<span class="op">/</span><span class="dt">Users</span><span class="op">/</span>rjhala<span class="op">/</span>teaching<span class="op">/</span><span class="dv">230</span><span class="op">-</span>wi26<span class="op">/</span>static<span class="op">/</span>rust<span class="op">/</span>rust<span class="op">-</span><span class="dv">230</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Finished</span> <span class="ot">`dev`</span> profile [unoptimized <span class="op">+</span> debuginfo] target(s) <span class="kw">in</span> <span class="fl">0.72</span>s</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="dt">Running</span> <span class="ot">`target/debug/rust-230`</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Hello</span>, world<span class="op">!</span></span></code></pre></div>
+<h2 id="goal-today-rust-basics-1">Goal Today: Rust Basics</h2>
+<ul>
+<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
+<li><label><input type="checkbox" />Basic Types</label></li>
+<li><label><input type="checkbox" />Expressions</label></li>
+<li><label><input type="checkbox" />Variables</label></li>
+<li><label><input type="checkbox" />Functions</label></li>
+<li><label><input type="checkbox" />Control Flow</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="basic-types-variables-expressions">Basic Types, Variables, Expressions</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Hello, world!&quot;</span>)<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// signed 32-bit int</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x<span class="op">:</span> <span class="dt">i32</span> <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 64-bit (double precision float)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> y<span class="op">:</span> <span class="dt">f64</span> <span class="op">=</span> <span class="dv">3.14</span><span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// boolean</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> z <span class="op">=</span> <span class="cn">true</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// tuple</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> tup <span class="op">=</span> (x <span class="op">+</span> x<span class="op">,</span> y <span class="op">*</span> y<span class="op">,</span> z <span class="op">||</span> <span class="cn">false</span>)<span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;tup = {:?}&quot;</span><span class="op">,</span> tup)<span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>When you run it you get</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">$</span> cargo run</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">Compiling</span> rust<span class="op">-</span><span class="dv">230</span> v0<span class="op">.</span><span class="fl">1.0</span> (<span class="op">/</span><span class="dt">Users</span><span class="op">/</span>rjhala<span class="op">/</span>teaching<span class="op">/</span><span class="dv">230</span><span class="op">-</span>wi26<span class="op">/</span>static<span class="op">/</span>rust<span class="op">/</span>rust<span class="op">-</span><span class="dv">230</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Finished</span> <span class="ot">`dev`</span> profile [unoptimized <span class="op">+</span> debuginfo] target(s) <span class="kw">in</span> <span class="fl">0.42</span>s</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="dt">Running</span> <span class="ot">`target/debug/rust-230`</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Hello</span>, world<span class="op">!</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>tup <span class="ot">=</span> (<span class="dv">42</span>, <span class="fl">3.14</span>, <span class="st">&quot;world&quot;</span>)</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-rust-basics-2">Goal Today: Rust Basics</h2>
+<ul>
+<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
+<li>[+] Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</li>
+<li>[+] Expressions</li>
+<li><label><input type="checkbox" />Functions</label></li>
+<li><label><input type="checkbox" />Variables</label></li>
+<li><label><input type="checkbox" />Control Flow</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="functions">Functions</h2>
+<p>Here’s a really simple function that computes the <code class="sourceCode haskell">n</code>th Fibonacci number</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> fib(n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        n</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        fib(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> fib(n <span class="op">-</span> <span class="dv">2</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>NOTE</strong>: No <code class="sourceCode haskell"><span class="fu">return</span></code> keyword needed; last expression is the return value</p>
+<p>We can call it from <code class="sourceCode haskell">main</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> result <span class="op">=</span> fib(n)<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;fib({}) = {}&quot;</span><span class="op">,</span> n<span class="op">,</span> result)<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-rust-basics-3">Goal Today: Rust Basics</h2>
+<ul>
+<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
+<li>[+] Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</li>
+<li>[+] Expressions: arithmetic, boolean, tuples</li>
+<li>[+] Functions: <code class="sourceCode haskell">fn name(x1<span class="op">:</span>t1,<span class="op">...</span>,xn<span class="op">:</span>tn) <span class="ot">-&gt;</span> ret { <span class="op">&lt;</span>expr<span class="op">&gt;</span> }</code></li>
+<li><label><input type="checkbox" />Variables</label></li>
+<li><label><input type="checkbox" />Control Flow</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="using-variables-in-functions">Using Variables in Functions</h2>
+<p>We can use a local variable <code class="sourceCode haskell">res</code> to store intermediate results</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> fib(n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        n</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> res <span class="op">=</span> fib(n <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> res <span class="op">+</span> fib(n <span class="op">-</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        res</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>But…</p>
+<h2 id="variables-are-immutable-by-default">Variables are Immutable by Default</h2>
+<p>Cannot <strong>reassign</strong> to an immutable variable <code class="sourceCode haskell">res</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0384</span>]<span class="op">:</span> cannot assign twice to immutable variable <span class="ot">`res`</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">7</span><span class="op">:</span><span class="dv">9</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">|</span>         <span class="kw">let</span> res <span class="ot">=</span> fib(n <span class="op">-</span> <span class="dv">1</span>);</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>             <span class="co">--- first assignment to `res`</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="op">|</span>         res <span class="ot">=</span> res <span class="op">+</span> fib(n <span class="op">-</span> <span class="dv">2</span>);</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>         <span class="op">^^^^^^^^^^^^^^^^^^^^^^</span> cannot assign twice to immutable variable</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>help<span class="op">:</span> consider making this binding mutable</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">|</span>         <span class="kw">let</span> mut res <span class="ot">=</span> fib(n <span class="op">-</span> <span class="dv">1</span>);</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>             <span class="op">+++</span></span></code></pre></div>
+<p><strong>Fix</strong>: Declare <code class="sourceCode haskell">res</code> as mutable with <code class="sourceCode haskell">mut</code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> fib(n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">{</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        n</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> <span class="kw">mut</span> res <span class="op">=</span> fib(n <span class="op">-</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> res <span class="op">+</span> fib(n <span class="op">-</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        res</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-rust-basics-4">Goal Today: Rust Basics</h2>
+<ul>
+<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
+<li>[+] Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</li>
+<li>[+] Expressions: arithmetic, boolean, tuples</li>
+<li>[+] Functions: <code class="sourceCode haskell">fn name(x1<span class="op">:</span>t1,<span class="op">...</span>,xn<span class="op">:</span>tn) <span class="ot">-&gt;</span> ret { <span class="op">&lt;</span>expr<span class="op">&gt;</span> }</code></li>
+<li>[+] Variables: <code class="sourceCode haskell"><span class="kw">let</span></code> (immutable) vs <code class="sourceCode haskell"><span class="kw">let</span> mut</code> (mutable)</li>
+<li><label><input type="checkbox" />Control Flow</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="control-flow">Control Flow</h2>
+<p>Rust has the usual control flow constructs</p>
+<p><code class="sourceCode haskell"><span class="kw">if</span></code>, <code class="sourceCode haskell"><span class="kw">else</span> <span class="kw">if</span></code>, <code class="sourceCode haskell"><span class="kw">else</span></code></p>
+<p>which we say already used in <code class="sourceCode haskell">fib</code></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="control-flow-while-loops">Control Flow: <code class="sourceCode haskell">while</code> Loops</h2>
+<p>Plus also some usual ones for looping</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> fib_while(n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> a <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> b <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> i <span class="op">&lt;</span> n <span class="op">{</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> temp <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> b<span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> temp <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        i <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    a</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="control-flow-for-loops">Control Flow: <code class="sourceCode haskell">for</code> Loops</h2>
+<p>Plus also some usual ones for looping</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> fib_for(n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> a <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> b <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span>n <span class="op">{</span>     <span class="co">// </span><span class="al">NOTE</span><span class="co">: `i` is &quot;unused&quot;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> temp <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> b<span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> temp <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    a</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="control-flow-pattern-matching">Control Flow: Pattern Matching!</h2>
+<p>… and pattern matching!</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> fib_match(n<span class="op">:</span> <span class="dt">usize</span>) <span class="op">-&gt;</span> <span class="dt">usize</span> <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> n <span class="op">{</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">0</span> <span class="op">=&gt;</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span> <span class="op">=&gt;</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        _ <span class="op">=&gt;</span> fib_match(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> fib_match(n <span class="op">-</span> <span class="dv">2</span>)<span class="op">,</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-rust-basics-5">Goal Today: Rust Basics</h2>
+<ul>
+<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
+<li>[+] Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</li>
+<li>[+] Expressions: arithmetic, boolean, tuples</li>
+<li>[+] Functions: <code class="sourceCode haskell">fn name(x1<span class="op">:</span>t1,<span class="op">...</span>,xn<span class="op">:</span>tn) <span class="ot">-&gt;</span> ret { <span class="op">&lt;</span>expr<span class="op">&gt;</span> }</code></li>
+<li>[+] Variables: <code class="sourceCode haskell"><span class="kw">let</span></code> (immutable) vs <code class="sourceCode haskell"><span class="kw">let</span> mut</code> (mutable)</li>
+<li>[+] Control Flow: <code class="sourceCode haskell">for</code>, <code class="sourceCode haskell">while</code>, <code class="sourceCode haskell"><span class="kw">if</span></code>, <code class="sourceCode haskell">match</code></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz">QUIZ:</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz1() <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> x <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz2() <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> x <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz3() <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> x <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz4() <span class="op">{</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> ”🦀🦀🦀”<span class="op">;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> x)<span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz5(n<span class="op">:</span> <span class="dt">i64</span>) <span class="op">-&gt;</span> <span class="dt">i64</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="cn">true</span> <span class="op">{</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        n</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="cn">false</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse230.github.io/wi26/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse230.github.io/wi26/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/bootstrap.min.js"></script>
+<!--
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/anim.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/scripts.js"></script>
+-->
+
+
+    </body>
+</html>
