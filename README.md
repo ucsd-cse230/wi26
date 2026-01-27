@@ -124,3 +124,5 @@ cd /software/CSE/cse130/.stack && chmod -R a+rx *
 ## Private Stuff
 
 https://github.com/ucsd-cse130/grading/tree/main/assignments/
+
+## Rust Lectures

@@ -20,10 +20,10 @@ headerImg: books.jpg
 
 <!--
 | *10/31*    | Monads                          | [html][08-monads]         | [pdf][08-pdf]        | [code][code-10-31] |
-| *11/2*     | **First Midterm**               |                           |                      |                    |
 | *11/7*     |  Iteration and State            | [html-1][09-list] [html-2][10-state]   |  [pdf][10-pdf] | [code][code-11-7] |
 | *11/14*    | Parser Combinators              | [html][11-parsers]        |                      | [code][code-11-14] |
 | *11/21*    | Property-based Testing          | [html][14-testing]        |                      | [code][code-11-21] |
+
 | *11/28*    | Monad Transformers              | [html][13-transformers]   |                      | [code][code-11-28] |
 | *11/30*    | Refinement Types                | [1][lh1] [2][lh2] [3][lh3] [4][lh4]   |          |                    | -->
 
