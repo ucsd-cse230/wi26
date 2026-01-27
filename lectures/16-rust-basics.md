@@ -465,3 +465,21 @@ fn quiz5(n: i64) -> i64 {
     }
 }
 ```
+
+## Rust Recap: Statements vs Expressions
+
+- **Statements** perform an action but do not return a value
+
+  - e.g., `let x = 5` is a statement; binds `5` to `x`
+
+- **Expressions** return values
+
+  - e.g., `5 + 1` is an expression that evaluates to `6`
+
+- **Sequencing** `e1;e2;e3` is ALSO an expression
+
+  - whose value is that of the _last_ expression `e3`
+
+- **return** is an expression that returns a value from a function
+  - e.g., `return 5;` returns `5` from the current function
+  - rarely used: instead, the value of the _last_ expression

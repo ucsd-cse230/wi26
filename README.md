@@ -126,3 +126,29 @@ cd /software/CSE/cse130/.stack && chmod -R a+rx *
 https://github.com/ucsd-cse130/grading/tree/main/assignments/
 
 ## Rust Lectures
+
+- [+] [basics](lectures/16-rust-basics.md)
+
+  - `fn`, `match`, `if`, `let`, `mut`
+  - ch 2, ch 3
+
+- [ ] [borrowing & Lifetimes](lectures/17-rust-ownership.md)
+
+  - ch 4
+
+- [ ] `struct`, `enum`, generics, errors `?`
+
+  - ch 5, 6, 9, 10
+
+- [ ] traits, iteration, data-parallelism
+
+  - Traits: `trait` and `impl`; iterator?
+  - ch 10, 13
+  - [Matsakis Video](https://www.youtube.com/watch?v=gof_OEv71Aw)
+
+- [ ] Threads / Races / Locks / Message Passing
+
+  - ch 16
+
+- [ ] Async
+  - ch 17
