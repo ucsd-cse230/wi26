@@ -68,7 +68,7 @@
 
 
 
-#quiz(name: "Combine with Intermediate Result")[
+#quiz(name: "Key-Value Tables")[
 
   Suppose we have a _key-value table_ datatype defined as
 
