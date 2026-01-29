@@ -594,6 +594,26 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="cn">false</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="rust-recap-statements-vs-expressions">Rust Recap: Statements vs Expressions</h2>
+<ul>
+<li><p><strong>Statements</strong> perform an action but do not return a value</p>
+<ul>
+<li>e.g., <code class="sourceCode haskell"><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">5</span></code> is a statement; binds <code class="sourceCode haskell"><span class="dv">5</span></code> to <code class="sourceCode haskell">x</code></li>
+</ul></li>
+<li><p><strong>Expressions</strong> return values</p>
+<ul>
+<li>e.g., <code class="sourceCode haskell"><span class="dv">5</span> <span class="op">+</span> <span class="dv">1</span></code> is an expression that evaluates to <code class="sourceCode haskell"><span class="dv">6</span></code></li>
+</ul></li>
+<li><p><strong>Sequencing</strong> <code class="sourceCode haskell">e1;e2;e3</code> is ALSO an expression</p>
+<ul>
+<li>whose value is that of the <em>last</em> expression <code class="sourceCode haskell">e3</code></li>
+</ul></li>
+<li><p><strong>return</strong> is an expression that returns a value from a function</p>
+<ul>
+<li>e.g., <code class="sourceCode haskell"><span class="fu">return</span> <span class="dv">5</span>;</code> returns <code class="sourceCode haskell"><span class="dv">5</span></code> from the current function</li>
+<li>rarely used: instead, the value of the <em>last</em> expression</li>
+</ul></li>
+</ul>
                 <hr>
             </div>
         </div>

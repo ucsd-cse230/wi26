@@ -15,6 +15,7 @@ headerImg: books.jpg
 |  _1/22_  | IO               | [html][05-io]          | [pdf][05-pdf] | [code][code-1-22] |
 |  _1/27_  | Type Classes     | [html][06-typeclasses] | [pdf][06-pdf] | [code][code-1-27] |
 |  _1/29_  | Functors         | [html][07-functors]    | [pdf][07-pdf] | [code][code-1-29] |
+|          | Monads           | [html][08-monads]      | [pdf][08-pdf] |                   |
 |  _2/5_   | Midterm 1        |                        |               |                   |
 |  _3/10_  | Midterm 2        |                        |               |
 

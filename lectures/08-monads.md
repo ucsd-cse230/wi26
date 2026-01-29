@@ -4,8 +4,6 @@ date: 2023-10-31
 headerImg: books.jpg
 ---
 
-
-
 ## A Type to Represent Expressions
 
 ```haskell
@@ -43,7 +41,6 @@ e4 = Div  e3 (Number 3)             -- ((2 + 3) * (10 - 4)) / 3
 <br>
 <br>
 
-
 ## EXERCISE: An Evaluator for Expressions
 
 Fill in an implementation of `eval`
@@ -75,8 +72,6 @@ so that when you're done we get
 <br>
 <br>
 
-
-
 ## QUIZ
 
 What does the following evaluate to?
@@ -106,8 +101,6 @@ quiz = eval (Div (Number 60) (Minus (Number 5) (Number 5)))
 <br>
 <br>
 
-
-
 ## To avoid crash, return a `Result`
 
 Lets make a data type that represents `Ok` or `Error`
@@ -129,8 +122,6 @@ data Result v
 <br>
 <br>
 <br>
-
-
 
 ## EXERCISE
 
@@ -163,19 +154,16 @@ When you're done you should see
 <br>
 <br>
 
-
-
 ## Evaluating without Crashing
 
-Instead of *crashing* we can make our `eval` return a `Result Int`
+Instead of _crashing_ we can make our `eval` return a `Result Int`
 
 ```haskell
 eval :: Expr -> Result Int
 ```
 
-- If a sub-expression has a *divide by zero* return `Error "..."`
-- If all sub-expressions are *safe* then return `Ok n`
-
+- If a sub-expression has a _divide by zero_ return `Error "..."`
+- If all sub-expressions are _safe_ then return `Ok n`
 
 <br>
 <br>
@@ -257,7 +245,7 @@ case e1 of
                   Ok    v1   -> Ok    (v1 + v2)
 ```
 
-but *look closer* ... both blocks have a **common pattern**
+but _look closer_ ... both blocks have a **common pattern**
 
 ```haskell
 case e of
@@ -305,7 +293,6 @@ return v = Ok v
 <br>
 <br>
 
-
 ## A Cleaned up Evaluator
 
 The magic bottle lets us clean up our `eval`
@@ -326,9 +313,9 @@ eval (Div e1 e2)  = eval e1 >>= \v1 ->
 
 **The gross _pattern matching_ is all hidden inside `>>=`**
 
-Notice the `>>=` takes *two* inputs of type:
+Notice the `>>=` takes _two_ inputs of type:
 
-- `Result Int`        (e.g. `eval e1` or `eval e2`)
+- `Result Int` (e.g. `eval e1` or `eval e2`)
 - `Int -> Result Int` (e.g. the _processor_ takes the `v` and does stuff with it)
 
 In the above, the processing functions are written using `\v1 -> ...` and `\v2 -> ...`
@@ -344,7 +331,6 @@ is doing, and why it is actually just a "shorter" version of the
 <br>
 <br>
 <br>
-
 
 ## A Class for `>>=`
 
@@ -393,10 +379,9 @@ instance Monad Result where
 <br>
 <br>
 
-
 ## Syntax for `>>=`
 
-In fact `>>=` is *so* useful there is special syntax for it.
+In fact `>>=` is _so_ useful there is special syntax for it.
 
 Instead of writing
 
@@ -431,7 +416,6 @@ do { v1 <- e1; v2 <- e2; v3 <- e3; e }
 <br>
 <br>
 
-
 ## Simplified Evaluator
 
 Thus, we can further simplify our `eval` to:
@@ -455,11 +439,6 @@ Which now produces the result
 >>> evalR exQuiz
 Error "yikes dbz:Minus (Number 5) (Number 5)"
 ```
-
-
-
-
-
 
 <br>
 <br>
