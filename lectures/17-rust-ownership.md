@@ -211,7 +211,7 @@ Ground can change beneath your feet!
 <br>
 <br>
 
-## Ownership: Rust's Secret Sauce: Ownership
+## Rust's Secret Sauce: Ownership
 
 The key idea in Rust's ownership system is in three rules:
 
@@ -431,9 +431,67 @@ let y = x;                     // x is moved into y
 println!("x is {x}");          // ERROR: `x` value is moved!
 ```
 
-## Re-Assignment
+## QUIZ
 
-What happens on re-assignment?
+What happens on assignment?
+
+```rust
+fn main() {
+    let s = String::from("hello");
+    s = String::from("ahoy");
+    println!("{s}, world!");
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Cannot Assign to Immutable Variable
+
+`let x` creates an **immutable** variable by default -- you cannot re-assign it!
+
+```rust
+fn main() {
+    let s = String::from("hello");  // s comes into scope
+    s = String::from("ahoy");       // ERROR: cannot assign twice to immutable variable
+}
+```
+
+Produces an error
+
+```
+error[E0384]: cannot assign twice to immutable variable `s`
+ --> src/main.rs:7:5
+  |
+6 |     let s = String::from("hello");
+  |         - first assignment to `s`
+7 |     s = String::from("ahoy");
+  |     ^ cannot assign twice to immutable variable
+  |
+help: consider making this binding mutable
+  |
+6 |     let mut s = String::from("hello");
+  |         +++
+```
+
+**Read the error message carefully!**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Re-assigning Variables
 
 ```rust
 fn main() {
@@ -443,6 +501,34 @@ fn main() {
     println!("{s}, world!");            // prints "ahoy, world!"
 }
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Mutating Data
+
+`String` can be **mutated** (i.e. _changed_)
+
+```rust
+fn main() {
+    let mut s = String::from("hello");
+    s.push_str(", world!");  // push_str() appends a literal to a String
+    println!("{s}");         // prints "hello, world!"
+}
+```
+
+**QUIZ** What happens if we replace `let mut` with just `let s`?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## QUIZ: Function Calls
 
@@ -652,7 +738,59 @@ fn main() {
 
 ## How to simplify `say_length`?
 
-What do we _want_ `say_length` to do instead?
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Rust's Secret Sauce: Ownership + Borrowing
+
+Unique value proposition: **memory safety without GC**
+
+1. Each value in Rust has an **owner**.
+2. There can only be a **single** owner at any time.
+3. Value is dropped (reclaimed) when owner **goes out of scope**.
+
+To "access" data, no need to _take ownership_, just **borrow**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Borrowing with References
+
+`&T` is a **reference** to a value of type `T`
+
+```rust
+fn say(z: &String) {    // L2 `z` is a reference to a String
+    let n = z.len();    //     get length of `z`
+    println!("length of z = {n}");
+}                       // `z` exits scope, but NOT DROPPED, `z` NOT-OWNER
+```
+
+So `say_length` takes a **reference** to a `String`
+
+```rust
+fn main() {
+    let s = read_file("moby_dick.txt"); // L1 read_file() moves its return into `s`
+    say(&s);                            // `s` BORROWED by say()
+                                        // L3 `s` RETURNED by say()
+}                                       // `s` exits scope, is DROPPED
+```
+
+You can **borrow** from the **owner** but you have to **give it back**
+
+![data can be borrowed](/static/img/string-borrow.png){#fig:types .align-center width=90%}
 
 <br>
 <br>
@@ -663,6 +801,229 @@ What do we _want_ `say_length` to do instead?
 <br>
 <br>
 <br>
+
+## Rust's Secret Sauce: Ownership + Borrowing
+
+Unique value proposition: **memory safety without GC**
+
+1. Each value in Rust has an **owner**.
+2. There can only be a **single** owner at any time.
+3. Value is dropped (reclaimed) when owner **goes out of scope**.
+
+To "access" data, no need to _take ownership_, just **borrow**
+
+- `&T` gives a _reference_ to a `T` i.e. lets you _borrow access_ to `T`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Mutating through References
+
+Recall that `String` can be **mutated** (i.e. _changed_) e.g.
+
+```rust
+fn main() {
+    let mut s = String::from("yo!");
+    s.push_str(", world!");
+    println!("{s}"); // prints out "yo!, world!"
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+What happens if we try
+
+```rust
+fn main() {
+    let mut s = String::from("yo!");
+    change(s);
+    println!("{s}");
+}
+
+fn change(z: &String) {
+    z.push_str(", world!");
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Mutating Requires Mutable References (Borrows)
+
+We can only _mutate_ data through a **mutable reference** `&mut T`
+
+```rust
+fn main() {
+    let mut s = String::from("yo!");
+    change(&mut s);
+    println!("{s}");
+}
+
+fn change(z: &mut String) {
+    z.push_str(", world!");
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+What about littled data? For example, what happens if we try
+
+```rust
+fn main() {
+    let x = 42;
+    say(&x);
+    println!("haha {x}");
+}
+
+fn say(z: &i32) {
+    println!("hoho {x}");
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Prints
+
+```
+hoho 42
+haha 42
+```
+
+## QUIZ
+
+What happens if we try
+
+```rust
+fn main() {
+    let x = 42;
+    change(&x);
+    println!("haha {x}");
+}
+
+fn change(z: &i32) {
+    z = z + 1;
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Compiler error!
+
+1. Can't do `z + 1` as `z` is a reference;
+2. Can't re-assign `z` as it is an immutable reference!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## (Re)-Assignment Requires Mutable References (Borrows)
+
+We can only _reassign_ data through a **mutable reference** `&mut T`
+
+```rust
+fn main() {
+    let mut x = 42;
+    change(&mut x);
+    println!("haha {x}");
+}
+
+fn change(z: &mut i32) {
+    *z = *z + 1;
+}
+```
+
+![Updating Data on Stack](/static/img/aqua-stack-update.png){#fig:types .align-center width=90%}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Rust's Secret Sauce: Ownership + Borrowing
+
+Unique value proposition: **memory safety without GC**
+
+1. Each value in Rust has an **owner**.
+2. There can only be a **single** owner at any time.
+3. Value is dropped (reclaimed) when owner **goes out of scope**.
+
+To "access" data, no need to _take ownership_, just **borrow**
+
+- `&T` gives a _reference_ to a `T` i.e. lets you _read access_ to `T`
+- `&mut T` gives a _mutable reference_ to a `T` i.e. lets you _borrow access and mutate_ `T`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## References are Read-Only
+
+## Mutable References
 
 ## Material Inspired by
 
