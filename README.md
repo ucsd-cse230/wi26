@@ -132,12 +132,13 @@ https://github.com/ucsd-cse130/grading/tree/main/assignments/
   - `fn`, `match`, `if`, `let`, `mut`
   - ch 2, ch 3
 
-- [ ] [borrowing & Lifetimes](lectures/17-rust-ownership.md)
+- [+] [borrowing & Lifetimes](lectures/17-rust-ownership.md)
 
   - ch 4
 
-- [ ] `struct`, `enum`, generics, errors `?`
+- [ ] [constructing types](lectures/18-rust-types.md)
 
+  - `generics`, lifetimes, `struct`, `enum`, errors `?`
   - ch 5, 6, 9, 10
 
 - [ ] traits, iteration, data-parallelism

@@ -3,10 +3,15 @@
 {- HLINT ignore "Use :" -}
 {- HLINT ignore "Use id" -}
 {-# LANGUAGE InstanceSigs #-}
+{-# LANGUAGE DeriveFunctor #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE UndecidableInstances #-}
+{- HLINT ignore "Avoid lambda" -}
+{- HLINT ignore "Use map" -}
 
 module Lec_1_27_26  where
+
+-- import Prelude hiding ((+))
 
 -- >>> :t (+)
 -- (+) :: Num a => a -> a -> a
@@ -86,7 +91,13 @@ class JSEq a where
   (=!=) :: a -> a -> Bool
   (=!=) x y = not (x === y)
 
+  {-# MINIMAL (===) | (=!=) #-}
+
 data Bab = A | B
+-- stack overflow
+
+-- >>> A === A
+
 
 instance JSEq Bab where
   (===) A A = True
@@ -95,7 +106,15 @@ instance JSEq Bab where
 
 
 -- >>> listA =!= listA
--- False
+
+-- >>> :i Eq
+-- type Eq :: * -> Constraint
+-- class Eq a where
+--   (==) :: a -> a -> Bool
+--   (/=) :: a -> a -> Bool
+--   {-# MINIMAL (==) | (/=) #-}
+--   	-- Defined in ‘GHC.Classes’
+
 
 
 -- >>> listA
@@ -163,8 +182,8 @@ myAdder x y = undefined
 -- True
 
 
-inc :: Int -> Int
-inc n = n + 1
+-- inc :: Int -> Int
+-- inc n = n + 1
 
 blah = do
   str <- getLine
@@ -184,6 +203,23 @@ table0 = MkTable { def = 6.5, bindings = [
 -- 6.5
 -- >>> get "espresso" table0
 -- 4.5
+
+instance Num [a] where
+  (+) xs ys = xs ++ ys
+
+-- >>> [1,2,3] + [4,5,6]
+-- [1,2,3,4,5,6]
+
+-- Ambiguous occurrence `+'.
+-- It could refer to
+--    either `Prelude.+',
+--           imported from `Prelude' at /Users/rjhala/teaching/230-wi26/static/code/src/lec_1_27_26.hs:9:8-18
+--           (and originally defined in `GHC.Internal.Num'),
+--        or `Lec_1_27_26.+',
+--           defined at /Users/rjhala/teaching/230-wi26/static/code/src/lec_1_27_26.hs:208:1.
+
+-- (+) :: [a] -> [a] -> [a]
+-- (+) xs ys = xs ++ ys
 
 get :: (Ord k) => k -> Table k v -> v
 get key (MkTable d binds) = loop binds
@@ -211,3 +247,190 @@ set key value (MkTable d bs) = MkTable d (loop bs)
 -- 4.5
 keys :: Table k v -> [k]
 keys t = map fst (bindings t)
+
+
+----------
+
+mapList :: (a -> b) -> [a] -> [b]
+mapList _ []     = []
+mapList f (x:xs) = f x : mapList f xs
+
+data Tree a
+  = Node (Tree a) (Tree a)
+  | Leaf a
+  deriving (Functor, Show)
+
+-- >>> :i map
+
+-- >>> fmap (\n -> n + 67) tree0
+-- Node (Leaf 77) (Node (Leaf 87) (Leaf 97))
+
+tree0 :: Tree Int
+tree0 = Node (Leaf 10) (Node (Leaf 20) (Leaf 30))
+
+class Mappable t where
+   gmap :: (a -> b) -> t a -> t b
+
+-- >>> :i Functor
+-- class Functor f where
+--   fmap :: (a -> b) -> f a -> f b
+
+
+instance Mappable Tree where
+  gmap f (Leaf x)   = Leaf (f x)
+  gmap f (Node l r) = Node (gmap f l) (gmap f r)
+
+instance Mappable [] where
+  gmap f []   = []
+  gmap f (x:xs) = f x : gmap f xs
+
+-- >>> gmap show        tree0
+-- >>> gmap (\n -> n*n) tree0
+-- >>> gmap show        list0
+-- >>> gmap (\n -> n*n) list0
+-- Node (Leaf "10") (Node (Leaf "20") (Leaf "30"))
+-- Node (Leaf 100) (Node (Leaf 400) (Leaf 900))
+-- ["10","20","30","40","50"]
+-- [100,400,900,1600,2500]
+
+{-
+
+
+mapList :: (a -> b) -> List a -> List b
+
+mapTree :: (a -> b) -> Tree a -> Tree b
+
+class Show t where
+  show :: t -> String
+
+showInt    :: Int -> String
+showBool   :: Bool -> String
+showString :: String -> String
+
+-}
+
+list0 :: [Integer]
+list0 = [10, 20, 30, 40, 50]
+
+
+
+
+-- Node (Leaf "10") (Node (Leaf "20") (Leaf "30"))
+-- Node (Leaf 100) (Node (Leaf 400) (Leaf 900))
+
+-- Node (Leaf "10") (Node (Leaf "20") (Leaf "30"))
+
+
+-----
+
+-- >>> (Add (Num 5) (Num 19))
+
+expr0 :: Expr
+expr0 = Bin Mul
+          (Bin Add (Num 2) (Num 3))
+          (Bin Div (Bin Sub (Num 5) (Num 4)) (Num 7))
+
+expr1 :: Expr
+expr1 = Bin Mul
+          (Bin Add (Num 2) (Num 3))
+          (Bin Div (Bin Add (Num 5) (Num 4))
+                   (Bin Sub (Num 3) (Bin Add (Num 1) (Num 2))))
+
+
+data Op
+  = Add | Sub | Mul | Div
+  deriving (Show)
+
+data Expr
+  = Num Int
+  | Bin Op Expr Expr
+  deriving (Show)
+
+-- >>> eval expr1
+-- divide by zero
+
+-- >>> evalR expr1
+-- Err "Uff, div by zero!"
+
+res0 :: [Result Int]
+res0 = [Ok 78, Err "aaarthgh", Err "dbz", Ok 9]
+
+data Result a = Ok a | Err String
+  deriving (Show)
+
+eval :: Expr -> Int
+eval (Num n)     = n
+eval (Bin o e1 e2) = evalOp o (eval e1) (eval e2)
+
+evalOp :: Op -> Int -> Int -> Int
+evalOp Add n1 n2 = n1 +     n2
+evalOp Sub n1 n2 = n1 -     n2
+evalOp Mul n1 n2 = n1 *     n2
+evalOp Div n1 n2 = n1 `div` n2
+
+
+evalOpR :: Op -> Int -> Int -> Result Int
+evalOpR Add n1 n2 = Ok (n1 +     n2)
+evalOpR Sub n1 n2 = Ok (n1 -     n2)
+evalOpR Mul n1 n2 = Ok (n1 *     n2)
+evalOpR Div _  0  = Err "Uff, div by zero!"
+evalOpR Div n1 n2 = Ok (n1 `div` n2)
+
+-- >>> evalR expr1
+-- Err "Uff, div by zero!"
+
+evalR :: Expr -> Result Int
+evalR (Num n)       = Ok n
+evalR (Bin o e1 e2) = do
+  n1 <- evalR e1
+  n2 <- evalR e2
+  evalOpR o n1 n2
+
+
+instance Functor Result where
+
+instance Applicative Result where
+instance Monad Result where
+  (>>=) = funkyOp
+
+-- >>> :i Monad
+-- class Applicative m => Monad m where
+--   (>>=) :: m a -> (a -> m b) -> m b
+--   return :: a -> m a
+
+  -- funkyOp (evalR e1) (\n1 ->
+  --   funkyOp (evalR e2) (\n2 ->
+  --     evalOpR o n1 n2
+  --   )
+  -- )
+
+-- combine :: Recipe t -> (t -> Recipe a) -> Recipe a
+funkyOp :: Result t -> (t -> Result a) -> Result a
+funkyOp r doStuff = case r of
+  Err msg -> Err msg
+  Ok n -> doStuff n
+
+
+
+-- evalR (Add e1 e2) = case evalR e1 of
+--                       Err msg -> Err msg
+--                       Ok n1   -> case evalR e2 of
+--                                    Err msg -> Err msg
+--                                    Ok n2   -> Ok (n1 + n2)
+-- evalR (Sub e1 e2) = case evalR e1 of
+--                       Err msg -> Err msg
+--                       Ok n1   -> case evalR e2 of
+--                                    Err msg -> Err msg
+--                                    Ok n2   -> Ok (n1 - n2)
+
+-- evalR (Mul e1 e2) = case evalR e1 of
+--                       Err msg -> Err msg
+--                       Ok n1   -> case evalR e2 of
+--                                    Err msg -> Err msg
+--                                    Ok n2   -> Ok (n1 * n2)
+-- evalR (Div e1 e2) = case evalR e1 of
+--                       Err msg -> Err msg
+--                       Ok n1   -> case evalR e2 of
+--                                    Err msg -> Err msg
+--                                    Ok 0    -> Err ("oh no DBZ because of:" ++ show e2)
+--                                    Ok n2   -> Ok (n1 `div` n2)

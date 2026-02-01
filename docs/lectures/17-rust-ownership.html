@@ -407,7 +407,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br>
 <br></p>
-<h2 id="ownership-rusts-secret-sauce-ownership">Ownership: Rust’s Secret Sauce: Ownership</h2>
+<h2 id="rusts-secret-sauce-ownership">Rust’s Secret Sauce: Ownership</h2>
 <p>The key idea in Rust’s ownership system is in three rules:</p>
 <ol type="1">
 <li>Each value in Rust has an <strong>owner</strong>.</li>
@@ -581,25 +581,87 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <div class="sourceCode" id="cb9"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> x <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span> <span class="co">// x comes into scope</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> y <span class="op">=</span> x<span class="op">;</span>                     <span class="co">// x is moved into y</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="pp">println!</span>(<span class="st">&quot;x is {x}&quot;</span>)<span class="op">;</span>          <span class="co">// ERROR: `x` value is moved!</span></span></code></pre></div>
-<h2 id="re-assignment">Re-Assignment</h2>
-<p>What happens on re-assignment?</p>
+<h2 id="quiz-1">QUIZ</h2>
+<p>What happens on assignment?</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span>  <span class="co">// s comes into scope</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;ahoy&quot;</span>)<span class="op">;</span>           <span class="co">// s is re-assigned</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                                        <span class="co">// old value DROPPED</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span>            <span class="co">// prints &quot;ahoy, world!&quot;</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;ahoy&quot;</span>)<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="cannot-assign-to-immutable-variable">Cannot Assign to Immutable Variable</h2>
+<p><code class="sourceCode haskell"><span class="kw">let</span> x</code> creates an <strong>immutable</strong> variable by default – you cannot re-assign it!</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span>  <span class="co">// s comes into scope</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;ahoy&quot;</span>)<span class="op">;</span>       <span class="co">// ERROR: cannot assign twice to immutable variable</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Produces an error</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0384</span>]<span class="op">:</span> cannot assign twice to immutable variable <span class="ot">`s`</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">7</span><span class="op">:</span><span class="dv">5</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">|</span>     <span class="kw">let</span> s <span class="ot">=</span> <span class="dt">String</span><span class="ot">::</span>from(<span class="st">&quot;hello&quot;</span>);</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>         <span class="op">-</span> first assignment to <span class="ot">`s`</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="op">|</span>     s <span class="ot">=</span> <span class="dt">String</span><span class="ot">::</span>from(<span class="st">&quot;ahoy&quot;</span>);</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>     <span class="op">^</span> cannot assign twice to immutable variable</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>help<span class="op">:</span> consider making this binding mutable</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">|</span>     <span class="kw">let</span> mut s <span class="ot">=</span> <span class="dt">String</span><span class="ot">::</span>from(<span class="st">&quot;hello&quot;</span>);</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>         <span class="op">+++</span></span></code></pre></div>
+<p><strong>Read the error message carefully!</strong></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="re-assigning-variables">Re-assigning Variables</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span>  <span class="co">// s comes into scope</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;ahoy&quot;</span>)<span class="op">;</span>           <span class="co">// s is re-assigned</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                                        <span class="co">// old value DROPPED</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span>            <span class="co">// prints &quot;ahoy, world!&quot;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="mutating-data">Mutating Data</h2>
+<p><code class="sourceCode haskell"><span class="dt">String</span></code> can be <strong>mutated</strong> (i.e. <em>changed</em>)</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    s<span class="op">.</span>push_str(<span class="st">&quot;, world!&quot;</span>)<span class="op">;</span>  <span class="co">// push_str() appends a literal to a String</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}&quot;</span>)<span class="op">;</span>         <span class="co">// prints &quot;hello, world!&quot;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>QUIZ</strong> What happens if we replace <code class="sourceCode haskell"><span class="kw">let</span> mut</code> with just <code class="sourceCode haskell"><span class="kw">let</span> s</code>?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="quiz-function-calls">QUIZ: Function Calls</h2>
 <p>What happens when we run?</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    call_me_string(s)<span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> call_me_string(x<span class="op">:</span> <span class="dt">String</span>) <span class="op">{</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Thanks for calling me with {x}!&quot;</span>)<span class="op">;</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    call_me_string(s)<span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> call_me_string(x<span class="op">:</span> <span class="dt">String</span>) <span class="op">{</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Thanks for calling me with {x}!&quot;</span>)<span class="op">;</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -609,15 +671,15 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="quiz-function-calls-1">QUIZ: Function Calls</h2>
 <p>What happens when we run?</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dv">42</span><span class="op">;</span>             <span class="co">// s comes into scope</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    call_me_i32(s)<span class="op">;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span>    <span class="co">// prints &quot;ahoy, world!&quot;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> call_me_i32(x<span class="op">:</span> <span class="dt">i32</span>) <span class="op">{</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Thanks for calling me with {x}!&quot;</span>)<span class="op">;</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dv">42</span><span class="op">;</span>             <span class="co">// s comes into scope</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    call_me_i32(s)<span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span>    <span class="co">// prints &quot;ahoy, world!&quot;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> call_me_i32(x<span class="op">:</span> <span class="dt">i32</span>) <span class="op">{</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Thanks for calling me with {x}!&quot;</span>)<span class="op">;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -627,15 +689,15 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="fn-parameters-little-data-copy">Fn Parameters: Little Data ==&gt; Copy</h2>
 <p>What happens when we run?</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    call_me_i32(s)<span class="op">;</span>             <span class="co">// `s` is COPY into `x`</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span>    <span class="co">// prints &quot;42, world!&quot;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> call_me_i32(x<span class="op">:</span> <span class="dt">i32</span>) <span class="op">{</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Thanks for calling me with {x}!&quot;</span>)<span class="op">;</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    call_me_i32(s)<span class="op">;</span>             <span class="co">// `s` is COPY into `x`</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span>    <span class="co">// prints &quot;42, world!&quot;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> call_me_i32(x<span class="op">:</span> <span class="dt">i32</span>) <span class="op">{</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Thanks for calling me with {x}!&quot;</span>)<span class="op">;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Try it out on <a href="https://cel.cs.brown.edu/aquascope/">aquascope</a></p>
 <ul>
 <li><code class="sourceCode haskell">s</code> is <strong>copied</strong> into parameter <code class="sourceCode haskell">x</code></li>
@@ -654,16 +716,16 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br></p>
 <h2 id="fn-parameters-big-data-move">Fn Parameters: Big Data ==&gt; Move</h2>
 <p>What happens when we run?</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span>  <span class="co">// s comes into scope</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    call_me_string(s)<span class="op">;</span>                  <span class="co">// s is MOVED into `x`</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span>            <span class="co">// compile-time error!</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> call_me_string(x<span class="op">:</span> <span class="dt">String</span>) <span class="op">{</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Thanks for calling me with {x}!&quot;</span>)<span class="op">;</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// x goes out of scope and is DROPPED</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span>  <span class="co">// s comes into scope</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    call_me_string(s)<span class="op">;</span>                  <span class="co">// s is MOVED into `x`</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}, world!&quot;</span>)<span class="op">;</span>            <span class="co">// compile-time error!</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> call_me_string(x<span class="op">:</span> <span class="dt">String</span>) <span class="op">{</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Thanks for calling me with {x}!&quot;</span>)<span class="op">;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// x goes out of scope and is DROPPED</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Try it out on <a href="https://cel.cs.brown.edu/aquascope/">aquascope</a></p>
 <ul>
 <li><code class="sourceCode haskell">s</code> is <strong>moved</strong> into parameter <code class="sourceCode haskell">x</code></li>
@@ -680,24 +742,24 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br>
 <br></p>
-<h2 id="quiz-1">QUIZ</h2>
+<h2 id="quiz-2">QUIZ</h2>
 <p>What happens when we run the following program?</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> burp() <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;burp&quot;</span>)<span class="op">;</span> <span class="co">// s comes into scope</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    s                             <span class="co">// s is moved out to the caller</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> say_length(z<span class="op">:</span> <span class="dt">String</span>) <span class="op">{</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> z<span class="op">.</span>len()<span class="op">;</span>              <span class="co">// get length of z</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;length of z = {n}&quot;</span>)<span class="op">;</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> burp()<span class="op">;</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(a) s1 is {s1}&quot;</span>)<span class="op">;</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    say_length(s1)<span class="op">;</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(b) s1 is {s1}&quot;</span>)<span class="op">;</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> burp() <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;burp&quot;</span>)<span class="op">;</span> <span class="co">// s comes into scope</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    s                             <span class="co">// s is moved out to the caller</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> say_length(z<span class="op">:</span> <span class="dt">String</span>) <span class="op">{</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> z<span class="op">.</span>len()<span class="op">;</span>              <span class="co">// get length of z</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;length of z = {n}&quot;</span>)<span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> burp()<span class="op">;</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(a) s1 is {s1}&quot;</span>)<span class="op">;</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    say_length(s1)<span class="op">;</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(b) s1 is {s1}&quot;</span>)<span class="op">;</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p><br>
 <br>
 <br>
@@ -708,23 +770,23 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="returns-copy-little-or-move-big-too">Returns Copy (Little) or Move (Big) Too!</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> burp() <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;burp&quot;</span>)<span class="op">;</span> <span class="co">// `s` comes into scope</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    s                             <span class="co">// `s` is moved out to the caller</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> say_length(z<span class="op">:</span> <span class="dt">String</span>) <span class="op">{</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> z<span class="op">.</span>len()<span class="op">;</span>              <span class="co">// get length of `z`</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;length of z = {n}&quot;</span>)<span class="op">;</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>                                 <span class="co">// `z` goes out of scope and is DROPPED</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> burp()<span class="op">;</span>             <span class="co">// burp() moves its return into s1</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(a) s1 is {s1}&quot;</span>)<span class="op">;</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    say_length(s1)<span class="op">;</span>              <span class="co">// s1 is moved into say_length()</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(b) s1 is {s1}&quot;</span>)<span class="op">;</span>  <span class="co">// ERROR: s1 value is MOVED!</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> burp() <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;burp&quot;</span>)<span class="op">;</span> <span class="co">// `s` comes into scope</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    s                             <span class="co">// `s` is moved out to the caller</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> say_length(z<span class="op">:</span> <span class="dt">String</span>) <span class="op">{</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> z<span class="op">.</span>len()<span class="op">;</span>              <span class="co">// get length of `z`</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;length of z = {n}&quot;</span>)<span class="op">;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>                                 <span class="co">// `z` goes out of scope and is DROPPED</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> burp()<span class="op">;</span>             <span class="co">// burp() moves its return into s1</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(a) s1 is {s1}&quot;</span>)<span class="op">;</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    say_length(s1)<span class="op">;</span>              <span class="co">// s1 is moved into say_length()</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(b) s1 is {s1}&quot;</span>)<span class="op">;</span>  <span class="co">// ERROR: s1 value is MOVED!</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p><strong>QUIZ</strong> How to <em>modify</em> <code class="sourceCode haskell">say_length</code> so we can print <code class="sourceCode haskell">s1</code> <strong>after the call</strong>?</p>
 <p><br>
 <br>
@@ -742,24 +804,465 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <img src="../static/img/drake-drop-return.png" class="align-center" style="width:90.0%" alt="Don’t drop, return" />
 <figcaption aria-hidden="true">Don’t drop, return</figcaption>
 </figure>
-<div class="sourceCode" id="cb17"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> say_length(z<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> z<span class="op">.</span>len()<span class="op">;</span>              <span class="co">// get length of `z`</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;length of z = {n}&quot;</span>)<span class="op">;</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    z                             <span class="co">// `z` MOVED to return value</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> burp()<span class="op">;</span>             <span class="co">// burp() moves its return into s1</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(a) s1 is {s1}&quot;</span>)<span class="op">;</span>  <span class="co">// prints &quot;(a) s1 is burp&quot;</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> say_length(s1)<span class="op">;</span>     <span class="co">// s1 is moved into say_length()</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(b) s1 is {s1}&quot;</span>)<span class="op">;</span>  <span class="co">// prints &quot;(b) s1 is burp&quot;</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> say_length(z<span class="op">:</span> <span class="dt">String</span>) <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> z<span class="op">.</span>len()<span class="op">;</span>              <span class="co">// get length of `z`</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;length of z = {n}&quot;</span>)<span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    z                             <span class="co">// `z` MOVED to return value</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> burp()<span class="op">;</span>             <span class="co">// burp() moves its return into s1</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(a) s1 is {s1}&quot;</span>)<span class="op">;</span>  <span class="co">// prints &quot;(a) s1 is burp&quot;</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> say_length(s1)<span class="op">;</span>     <span class="co">// s1 is moved into say_length()</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;(b) s1 is {s1}&quot;</span>)<span class="op">;</span>  <span class="co">// prints &quot;(b) s1 is burp&quot;</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>… but seriously, this is rather clunky!</p>
 <h2 id="how-to-simplify-say_length">How to simplify <code class="sourceCode haskell">say_length</code>?</h2>
-<p>What do we <em>want</em> <code class="sourceCode haskell">say_length</code> to do instead?</p>
 <p><br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="rusts-secret-sauce-ownership-borrowing">Rust’s Secret Sauce: Ownership + Borrowing</h2>
+<p>Unique value proposition: <strong>memory safety without GC</strong></p>
+<ol type="1">
+<li>Each value in Rust has an <strong>owner</strong>.</li>
+<li>There can only be a <strong>single</strong> owner at any time.</li>
+<li>Value is dropped (reclaimed) when owner <strong>goes out of scope</strong>.</li>
+</ol>
+<p>To “access” data, no need to <em>take ownership</em>, just <strong>borrow</strong></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="borrowing-with-references">Borrowing with References</h2>
+<p><code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code> is a <strong>reference</strong> to a value of type <code class="sourceCode haskell"><span class="dt">T</span></code></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> say(z<span class="op">:</span> <span class="op">&amp;</span><span class="dt">String</span>) <span class="op">{</span>    <span class="co">// L2 `z` is a reference to a String</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> z<span class="op">.</span>len()<span class="op">;</span>    <span class="co">//     get length of `z`</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;length of z = {n}&quot;</span>)<span class="op">;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>                       <span class="co">// `z` exits scope, but NOT DROPPED, `z` NOT-OWNER</span></span></code></pre></div>
+<p>So <code class="sourceCode haskell">say_length</code> takes a <strong>reference</strong> to a <code class="sourceCode haskell"><span class="dt">String</span></code></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> read_file(<span class="st">&quot;moby_dick.txt&quot;</span>)<span class="op">;</span> <span class="co">// L1 read_file() moves its return into `s`</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    say(<span class="op">&amp;</span>s)<span class="op">;</span>                            <span class="co">// `s` BORROWED by say()</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                        <span class="co">// L3 `s` RETURNED by say()</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>                                       <span class="co">// `s` exits scope, is DROPPED</span></span></code></pre></div>
+<p>You can <strong>borrow</strong> from the <strong>owner</strong> but you have to <strong>give it back</strong></p>
+<figure id="fig:types">
+<img src="../static/img/string-borrow.png" class="align-center" style="width:90.0%" alt="data can be borrowed" />
+<figcaption aria-hidden="true">data can be borrowed</figcaption>
+</figure>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="rusts-secret-sauce-ownership-borrowing-1">Rust’s Secret Sauce: Ownership + Borrowing</h2>
+<p>Unique value proposition: <strong>memory safety without GC</strong></p>
+<ol type="1">
+<li>Each value in Rust has an <strong>owner</strong>.</li>
+<li>There can only be a <strong>single</strong> owner at any time.</li>
+<li>Value is dropped (reclaimed) when owner <strong>goes out of scope</strong>.</li>
+</ol>
+<p>To “access” data, no need to <em>take ownership</em>, just <strong>borrow</strong></p>
+<ul>
+<li><code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code> gives a <em>reference</em> to a <code class="sourceCode haskell"><span class="dt">T</span></code> i.e. lets you <em>borrow access</em> to <code class="sourceCode haskell"><span class="dt">T</span></code></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="mutating-through-references">Mutating through References</h2>
+<p>Recall that <code class="sourceCode haskell"><span class="dt">String</span></code> can be <strong>mutated</strong> (i.e. <em>changed</em>) e.g.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;yo!&quot;</span>)<span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    s<span class="op">.</span>push_str(<span class="st">&quot;, world!&quot;</span>)<span class="op">;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}&quot;</span>)<span class="op">;</span> <span class="co">// prints out &quot;yo!, world!&quot;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-3">QUIZ</h2>
+<p>What happens if we try</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;yo!&quot;</span>)<span class="op">;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    change(s)<span class="op">;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}&quot;</span>)<span class="op">;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> change(z<span class="op">:</span> <span class="op">&amp;</span><span class="dt">String</span>) <span class="op">{</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    z<span class="op">.</span>push_str(<span class="st">&quot;, world!&quot;</span>)<span class="op">;</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="mutating-requires-mutable-references-borrows">Mutating Requires Mutable References (Borrows)</h2>
+<p>We can only <em>mutate</em> data through a <strong>mutable reference</strong> <code class="sourceCode haskell"><span class="op">&amp;</span>mut <span class="dt">T</span></code></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;yo!&quot;</span>)<span class="op">;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    change(<span class="op">&amp;</span><span class="kw">mut</span> s)<span class="op">;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{s}&quot;</span>)<span class="op">;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> change(z<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">String</span>) <span class="op">{</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    z<span class="op">.</span>push_str(<span class="st">&quot;, world!&quot;</span>)<span class="op">;</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-4">QUIZ</h2>
+<p>What about littled data? For example, what happens if we try</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    say(<span class="op">&amp;</span>x)<span class="op">;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;haha {x}&quot;</span>)<span class="op">;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> say(z<span class="op">:</span> <span class="op">&amp;</span><span class="dt">i32</span>) <span class="op">{</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;hoho {x}&quot;</span>)<span class="op">;</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p>Prints</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>hoho <span class="dv">42</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>haha <span class="dv">42</span></span></code></pre></div>
+<h2 id="quiz-5">QUIZ</h2>
+<p>What happens if we try</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    change(<span class="op">&amp;</span>x)<span class="op">;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;haha {x}&quot;</span>)<span class="op">;</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> change(z<span class="op">:</span> <span class="op">&amp;</span><span class="dt">i32</span>) <span class="op">{</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> z <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p>Compiler error!</p>
+<ol type="1">
+<li>Can’t do <code class="sourceCode haskell">z <span class="op">+</span> <span class="dv">1</span></code> as <code class="sourceCode haskell">z</code> is a reference;</li>
+<li>Can’t re-assign <code class="sourceCode haskell">z</code> as it is an immutable reference!</li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="re-assignment-requires-mutable-references-borrows">(Re)-Assignment Requires Mutable References (Borrows)</h2>
+<p>We can only <em>reassign</em> data through a <strong>mutable reference</strong> <code class="sourceCode haskell"><span class="op">&amp;</span>mut <span class="dt">T</span></code></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    change(<span class="op">&amp;</span><span class="kw">mut</span> x)<span class="op">;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;haha {x}&quot;</span>)<span class="op">;</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> change(z<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">i32</span>) <span class="op">{</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>z <span class="op">=</span> <span class="op">*</span>z <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<figure id="fig:types">
+<img src="../static/img/aqua-stack-update.png" class="align-center" style="width:90.0%" alt="Updating Data on Stack" />
+<figcaption aria-hidden="true">Updating Data on Stack</figcaption>
+</figure>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="rusts-secret-sauce-ownership-borrowing-2">Rust’s Secret Sauce: Ownership + Borrowing</h2>
+<p>Unique value proposition: <strong>memory safety without GC</strong></p>
+<ol type="1">
+<li>Each value in Rust has an <strong>owner</strong>.</li>
+<li>There can only be a <strong>single</strong> owner at any time.</li>
+<li>Value is dropped (reclaimed) when owner <strong>goes out of scope</strong>.</li>
+</ol>
+<p>To “access” data, no need to <em>take ownership</em>, just <strong>borrow</strong></p>
+<ul>
+<li><code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code> gives a <em>reference</em> to a <code class="sourceCode haskell"><span class="dt">T</span></code> i.e. lets you <em>read access</em> to <code class="sourceCode haskell"><span class="dt">T</span></code></li>
+<li><code class="sourceCode haskell"><span class="op">&amp;</span>mut <span class="dt">T</span></code> gives a <em>mutable reference</em> to a <code class="sourceCode haskell"><span class="dt">T</span></code> i.e. lets you <em>write access</em> to <code class="sourceCode haskell"><span class="dt">T</span></code></li>
+</ul>
+<p>Both references <strong>return ownership</strong> to whoever they “borrowed” from…</p>
+<p>But why <strong>two kinds</strong> of references?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-6">QUIZ</h2>
+<p>Why <strong>two kinds</strong> of references (<code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code> vs <code class="sourceCode haskell"><span class="op">&amp;</span>mut <span class="dt">T</span></code>)?</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quizA() <span class="op">{</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;yo!&quot;</span>)<span class="op">;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r1 <span class="op">=</span> <span class="op">&amp;</span>s<span class="op">;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r2 <span class="op">=</span> <span class="op">&amp;</span>s<span class="op">;</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{} and {}&quot;</span><span class="op">,</span> r1<span class="op">,</span> r2)<span class="op">;</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quizA() <span class="op">{</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;yo!&quot;</span>)<span class="op">;</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r1 <span class="op">=</span> <span class="op">&amp;</span>s<span class="op">;</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r2 <span class="op">=</span> <span class="op">&amp;</span><span class="kw">mut</span> s<span class="op">;</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{} and {}&quot;</span><span class="op">,</span> r1<span class="op">,</span> r2)<span class="op">;</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>What happens when you run <code class="sourceCode haskell">quizA</code> and <code class="sourceCode haskell">quizB</code>?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="shared-vs-mutable-borrows">Shared vs Mutable Borrows</h2>
+<p>At any given time, you can have <em>either</em></p>
+<ul>
+<li><p><strong>many shared</strong> references(<code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code>) or</p></li>
+<li><p><strong>single mutable</strong> reference (<code class="sourceCode haskell"><span class="op">&amp;</span>mut <span class="dt">T</span></code>)</p></li>
+</ul>
+<p>Often called the <strong>sharing XOR mutability</strong> rule</p>
+<p>But … why?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="mutation-can-invalidate-references">Mutation can Invalidate References</h2>
+<p>i.e. the “ground can change beneath your feet”</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quizA() <span class="op">{</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;yo!&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r <span class="op">=</span> <span class="op">&amp;</span>s<span class="op">;</span>         <span class="co">// shared borrow</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    change(<span class="op">&amp;</span><span class="kw">mut</span> s)<span class="op">;</span>     <span class="co">// mutable borrow</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> r)<span class="op">;</span>  <span class="co">// reuse shared borrow</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>What could <code class="sourceCode haskell">change</code> do to <code class="sourceCode haskell">s</code> that would make <code class="sourceCode haskell">r</code> invalid?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p>e.g. enlarge it, so it needs to be <em>shifted</em> in memory, or …</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="mutation-can-invalidate-references-1">Mutation can Invalidate References</h2>
+<p>i.e. the “ground can change beneath your feet”</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">;</span> <span class="co">// create a vector of 3 elements</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> last <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">2</span>]<span class="op">;</span>             <span class="co">// shared reference to last elem</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;last = {}&quot;</span><span class="op">,</span> <span class="op">*</span>last)<span class="op">;</span> <span class="co">// prints 30</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  change(<span class="op">&amp;</span><span class="kw">mut</span> v)<span class="op">;</span>               <span class="co">// mutate vector, removing last element!</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;last = {}&quot;</span><span class="op">,</span> <span class="op">*</span>last)<span class="op">;</span> <span class="co">// YIKES! what does this print?</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> change(z<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>) <span class="op">{</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    z<span class="op">.</span>pop()<span class="op">;</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>After <code class="sourceCode haskell">change</code>, the references <code class="sourceCode haskell"><span class="fu">last</span></code> refers to ???</p>
+<p>The reference is now <strong>dangling</strong> or <strong>invalid</strong></p>
+<p><strong>Sharing XOR Mutability</strong> rule prevents this!</p>
+<p>Multiple shared references are OK, as none of them can <em>change</em> the data!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-7">QUIZ</h2>
+<p>What happens when we run the following program?</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> r0 <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> r1 <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> r2 <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">2</span>]<span class="op">;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;elems are {:?}, {:?}, {:?}&quot;</span><span class="op">,</span> <span class="op">*</span>r0<span class="op">,</span> <span class="op">*</span>r1<span class="op">,</span> <span class="op">*</span>r2)<span class="op">;</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> mr <span class="op">=</span> <span class="op">&amp;</span><span class="kw">mut</span> v<span class="op">;</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  change(mr)<span class="op">;</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  change(mr)<span class="op">;</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;v is {:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> change(z<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>) <span class="op">{</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    z<span class="op">.</span>pop()<span class="op">;</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="sharing-xor-mutability">Sharing XOR Mutability</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> r0 <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> r1 <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> r2 <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">2</span>]<span class="op">;</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;elems are {:?}, {:?}, {:?}&quot;</span><span class="op">,</span> <span class="op">*</span>r0<span class="op">,</span> <span class="op">*</span>r1<span class="op">,</span> <span class="op">*</span>r2)<span class="op">;</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> mr <span class="op">=</span> <span class="op">&amp;</span><span class="kw">mut</span> v<span class="op">;</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  change(mr)<span class="op">;</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  change(mr)<span class="op">;</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;v is {:?}&quot;</span><span class="op">,</span> v)<span class="op">;</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> change(z<span class="op">:</span> <span class="op">&amp;</span><span class="kw">mut</span> <span class="dt">Vec</span><span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;</span>) <span class="op">{</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    z<span class="op">.</span>pop()<span class="op">;</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Q</strong> Why is programm <strong>accepted</strong> by compiler?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p><strong>A</strong> The <em>shared borrows</em> <code class="sourceCode haskell">r0</code>, <code class="sourceCode haskell">r1</code>, <code class="sourceCode haskell">r2</code> are <strong>unused</strong> after the first <code class="sourceCode haskell">println<span class="op">!</span></code>,
+so the compiler considers them <strong>out of scope</strong> before the mutable borrow <code class="sourceCode haskell">mr</code> is created!</p>
+<figure id="fig:types">
+<img src="../static/img/sharing-xor-mutability-safe.png" class="align-center" style="width:90.0%" alt="Sharing XOR Mutability" />
+<figcaption aria-hidden="true">Sharing XOR Mutability</figcaption>
+</figure>
+<h2 id="sharing-xor-mutability-1">Sharing XOR Mutability</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> r0 <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> r1 <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> r2 <span class="op">=</span> <span class="op">&amp;</span>v[<span class="dv">2</span>]<span class="op">;</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;elems are {:?}, {:?}, {:?}&quot;</span><span class="op">,</span> <span class="op">*</span>r0<span class="op">,</span> <span class="op">*</span>r1<span class="op">,</span> <span class="op">*</span>r2)<span class="op">;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> mr <span class="op">=</span> <span class="op">&amp;</span><span class="kw">mut</span> v<span class="op">;</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  change(mr)<span class="op">;</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  change(mr)<span class="op">;</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;r1 is {:?}&quot;</span><span class="op">,</span> <span class="op">*</span>r1)<span class="op">;</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Q</strong> Why is program <strong>rejected</strong> by compiler?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<p><strong>A</strong> The <em>shared borrows</em> <code class="sourceCode haskell">r1</code> <strong>overlaps</strong> with the mutable borrow <code class="sourceCode haskell">mr</code> because <code class="sourceCode haskell">r1</code> is <strong>used after <code class="sourceCode haskell">mr</code> is created</strong>!</p>
+<figure id="fig:types">
+<img src="../static/img/sharing-xor-mutability-unsafe.png" class="align-center" style="width:90.0%" alt="Sharing XOR Mutability" />
+<figcaption aria-hidden="true">Sharing XOR Mutability</figcaption>
+</figure>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="rusts-secret-sauce-ownership-borrowing-3">Rust’s Secret Sauce: Ownership + Borrowing</h2>
+<p>Unique value proposition: <strong>memory safety without GC</strong></p>
+<ol type="1">
+<li>Each value in Rust has an <strong>owner</strong>.</li>
+<li>There can only be a <strong>single</strong> owner at any time.</li>
+<li>Value is dropped (reclaimed) when owner <strong>goes out of scope</strong>.</li>
+</ol>
+<p>To “access” data, no need to <em>take ownership</em>, just <strong>borrow</strong></p>
+<ul>
+<li><code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code> gives a <em>reference</em> to a <code class="sourceCode haskell"><span class="dt">T</span></code> i.e. lets you <em>read access</em> to <code class="sourceCode haskell"><span class="dt">T</span></code></li>
+<li><code class="sourceCode haskell"><span class="op">&amp;</span>mut <span class="dt">T</span></code> gives a <em>mutable reference</em> to a <code class="sourceCode haskell"><span class="dt">T</span></code> i.e. lets you <em>write access</em> to <code class="sourceCode haskell"><span class="dt">T</span></code></li>
+<li>At any given time, you can have <strong>many shared</strong> or <strong>single mutable</strong> reference</li>
+</ul>
+<p><br>
 <br>
 <br>
 <br>
@@ -772,6 +1275,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>https://rust-book.cs.brown.edu/ch04-01-what-is-ownership.html</li>
 <li>https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html</li>
 </ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"></code></pre></div>
                 <hr>
             </div>
         </div>

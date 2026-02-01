@@ -1010,7 +1010,11 @@ Unique value proposition: **memory safety without GC**
 To "access" data, no need to _take ownership_, just **borrow**
 
 - `&T` gives a _reference_ to a `T` i.e. lets you _read access_ to `T`
-- `&mut T` gives a _mutable reference_ to a `T` i.e. lets you _borrow access and mutate_ `T`
+- `&mut T` gives a _mutable reference_ to a `T` i.e. lets you _write access_ to `T`
+
+Both references **return ownership** to whoever they "borrowed" from...
+
+But why **two kinds** of references?
 
 <br>
 <br>
@@ -1021,11 +1025,283 @@ To "access" data, no need to _take ownership_, just **borrow**
 <br>
 <br>
 
-## References are Read-Only
+## QUIZ
 
-## Mutable References
+Why **two kinds** of references (`&T` vs `&mut T`)?
+
+```rust
+fn quizA() {
+    let mut s = String::from("yo!");
+    let r1 = &s;
+    let r2 = &s;
+    println!("{} and {}", r1, r2);
+}
+
+fn quizA() {
+    let mut s = String::from("yo!");
+    let r1 = &s;
+    let r2 = &mut s;
+    println!("{} and {}", r1, r2);
+}
+```
+
+What happens when you run `quizA` and `quizB`?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Shared vs Mutable Borrows
+
+At any given time, you can have _either_
+
+- **many shared** references(`&T`) or
+
+- **single mutable** reference (`&mut T`)
+
+Often called the **sharing XOR mutability** rule
+
+But ... why?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Mutation can Invalidate References
+
+i.e. the "ground can change beneath your feet"
+
+```rust
+fn quizA() {
+    let mut s = String::from("yo!");
+    let r = &s;         // shared borrow
+    change(&mut s);     // mutable borrow
+    println!("{}", r);  // reuse shared borrow
+}
+```
+
+What could `change` do to `s` that would make `r` invalid?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+e.g. enlarge it, so it needs to be _shifted_ in memory, or ...
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Mutation can Invalidate References
+
+i.e. the "ground can change beneath your feet"
+
+```rust
+fn main() {
+  let mut v = vec![10, 20, 30]; // create a vector of 3 elements
+  let last = &v[2];             // shared reference to last elem
+  println!("last = {}", *last); // prints 30
+  change(&mut v);               // mutate vector, removing last element!
+  println!("last = {}", *last); // YIKES! what does this print?
+}
+
+fn change(z: &mut Vec<i32>) {
+    z.pop();
+}
+```
+
+After `change`, the references `last` refers to ???
+
+The reference is now **dangling** or **invalid**
+
+**Sharing XOR Mutability** rule prevents this!
+
+Multiple shared references are OK, as none of them can _change_ the data!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+What happens when we run the following program?
+
+```rust
+fn main() {
+  let mut v = vec![10, 20, 30];
+  let r0 = &v[0];
+  let r1 = &v[1];
+  let r2 = &v[2];
+  println!("elems are {:?}, {:?}, {:?}", *r0, *r1, *r2);
+  let mr = &mut v;
+  change(mr);
+  change(mr);
+  println!("v is {:?}", v);
+}
+
+fn change(z: &mut Vec<i32>) {
+    z.pop();
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Sharing XOR Mutability
+
+```rust
+fn main() {
+  let mut v = vec![10, 20, 30];
+  let r0 = &v[0];
+  let r1 = &v[1];
+  let r2 = &v[2];
+  println!("elems are {:?}, {:?}, {:?}", *r0, *r1, *r2);
+  let mr = &mut v;
+  change(mr);
+  change(mr);
+  println!("v is {:?}", v);
+}
+
+fn change(z: &mut Vec<i32>) {
+    z.pop();
+}
+```
+
+**Q** Why is programm **accepted** by compiler?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+**A** The _shared borrows_ `r0`, `r1`, `r2` are **unused** after the first `println!`,
+so the compiler considers them **out of scope** before the mutable borrow `mr` is created!
+
+![Sharing XOR Mutability](/static/img/sharing-xor-mutability-safe.png){#fig:types .align-center width=90%}
+
+## Sharing XOR Mutability
+
+```rust
+fn main() {
+  let mut v = vec![10, 20, 30];
+  let r0 = &v[0];
+  let r1 = &v[1];
+  let r2 = &v[2];
+  println!("elems are {:?}, {:?}, {:?}", *r0, *r1, *r2);
+  let mr = &mut v;
+  change(mr);
+  change(mr);
+  println!("r1 is {:?}", *r1);
+}
+```
+
+**Q** Why is program **rejected** by compiler?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+**A** The _shared borrows_ `r1` **overlaps** with the mutable borrow `mr` because `r1` is **used after `mr` is created**!
+
+![Sharing XOR Mutability](/static/img/sharing-xor-mutability-unsafe.png){#fig:types .align-center width=90%}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Rust's Secret Sauce: Ownership + Borrowing
+
+Unique value proposition: **memory safety without GC**
+
+1. Each value in Rust has an **owner**.
+2. There can only be a **single** owner at any time.
+3. Value is dropped (reclaimed) when owner **goes out of scope**.
+
+To "access" data, no need to _take ownership_, just **borrow**
+
+- `&T` gives a _reference_ to a `T` i.e. lets you _read access_ to `T`
+- `&mut T` gives a _mutable reference_ to a `T` i.e. lets you _write access_ to `T`
+- At any given time, you can have **many shared** or **single mutable** reference
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Material Inspired by
 
 - https://rust-book.cs.brown.edu/ch04-01-what-is-ownership.html
 - https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
+
+```
+
+```

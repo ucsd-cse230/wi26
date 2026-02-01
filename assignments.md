@@ -29,5 +29,9 @@ for the programming assignments!
 | [HW #id][hwid] | Github ID | Fri 1/16                  |
 | [HW #1][hw1]   | 01-trees  | Fri 1/23                  |
 
+## Sample Exam
+
+- [Fa23 Midterm](static/raw/sample-midterm.pdf)
+
 [hwid]: https://forms.gle/MHTgynyHP7W6v8Di9
 [hw1]: https://classroom.github.com/a/J8ITHQa6
