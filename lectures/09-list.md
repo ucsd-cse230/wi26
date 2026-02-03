@@ -11,7 +11,7 @@ headerImg: books.jpg
 ```haskell
 class Monad m where
   return :: a -> m a
-  (>>=)  :: m a -> (a -> m b) -> m 
+  (>>=)  :: m a -> (a -> m b) -> m
 ```
 
 <br>
@@ -28,8 +28,8 @@ class Monad m where
 We can define a `Maybe a` type to represent "maybe-null" values
 
 ```haskell
-data Maybe val 
-  = Just val        -- ^ "Just one value" :-) 
+data Maybe val
+  = Just val        -- ^ "Just one value" :-)
   | Nothing         -- ^ "No value" :-(
 ```
 
@@ -42,7 +42,6 @@ data Maybe val
 <br>
 <br>
 
-
 ## A the `Monad` instance for `Maybe`
 
 Can you help me fill this in?
@@ -53,17 +52,17 @@ instance Monad Maybe where
     Nothing    >>= _ = ???
     (Just v)   >>= f = ???
 
-    return :: a -> Result a
+    return :: a -> Maybe a
     return v = ???
 ```
 
-### `Maybe` represents computations that *may produce no value*
+### `Maybe` represents computations that _may produce no value_
 
-A value of type `Maybe a` is either 
+A value of type `Maybe a` is either
 
-- `Nothing` which we can think of as representing *failure*, or 
+- `Nothing` which we can think of as representing _failure_, or
 
-- `Just x` for some `x` of type `a`, which we can think of as *success*
+- `Just x` for some `x` of type `a`, which we can think of as _success_
 
 <br>
 <br>
@@ -74,10 +73,9 @@ A value of type `Maybe a` is either
 <br>
 <br>
 
+### Using `Maybe` for computations that _may produce no value_
 
-### Using `Maybe` for computations that *may produce no value*
-
-We saw how to write an `eval` function that *doesn't crash*
+We saw how to write an `eval` function that _doesn't crash_
 
 - But instead gracefully returns a `Nothing` (if there is a div-by-zero)
 
@@ -105,12 +103,12 @@ eval (Div e1 e2)  = do n1 <- eval e1
 
 ## Replacing Failure by a List of Successes
 
-Lets *generalize* the `Maybe` monad into a *List* monad!
+Lets _generalize_ the `Maybe` monad into a _List_ monad!
 
-- `Nothing` is the *empty list* `[]`
-- `Just v`  is the *singleton list* `[v]`
+- `Nothing` is the _empty list_ `[]`
+- `Just v` is the _singleton list_ `[v]`
 
-... but maybe there's something sensible for lists with *many* elements?
+... but maybe there's something sensible for lists with _many_ elements?
 
 <br>
 <br>
@@ -122,7 +120,7 @@ Lets *generalize* the `Maybe` monad into a *List* monad!
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
 Lets make lists an instance of `Monad` by:
 
@@ -131,7 +129,7 @@ class Monad m where
   return :: a -> m a
   (>>=)  :: m a -> (a -> m b) -> m b
 
-instance Monad [] where 
+instance Monad [] where
   return = returnForList
   (>>=)  = bindForList
 ```
@@ -158,7 +156,6 @@ What must the type of `returnForList` be ?
 <br>
 <br>
 
-
 ## A Monad Instance for Lists
 
 Lets implement the `Monad` instance for lists?
@@ -182,26 +179,23 @@ What's the only sensible implementation?
 <br>
 <br>
 
-
-
 ## QUIZ
 
 Lets make lists an instance of `Monad` by:
 
-~~~~~{.haskell}
-class Monad m where 
+```{.haskell}
+class Monad m where
   return :: a -> m a
   (>>=)  :: m a -> (a -> m b) -> m b
 
-instance Monad [] where 
+instance Monad [] where
   return = returnForList
   (>>=)  = bindForList
-~~~~~
-
+```
 
 What must the type of `bindForList` be?
 
-**A.** `[a] -> [b] -> [b]` 
+**A.** `[a] -> [b] -> [b]`
 
 **B.** `[a] -> (a -> b) -> [b]`
 
@@ -223,14 +217,12 @@ What must the type of `bindForList` be?
 <br>
 <br>
 
-
-
-## QUIZ 
+## QUIZ
 
 Which of the following is a valid
 
 ```haskell
-bindForList :: [a] -> (a -> [b]) -> [b] 
+bindForList :: [a] -> (a -> [b]) -> [b]
 bindForList = bfl
 
 -- a
@@ -266,17 +258,15 @@ bfl (x:xs) f = x : f xs
 <br>
 <br>
 
-
-## The List Monad 
+## The List Monad
 
 Lets "run" the `>>=` on some inputs to see how it behaves!
 
 ```haskell
 (>>=)  :: [a] -> (a -> [b]) -> [b]
-[]         >>= _ = [] 
-(x:xs)     >>= f = f x ++ (xs >>= f) 
+[]         >>= _ = []
+(x:xs)     >>= f = f x ++ (xs >>= f)
 ```
-
 
 ```haskell
 [] >>= f  ==> []
@@ -352,21 +342,21 @@ Now lets break up the evaluation
 
 ==>  ((\y -> [(x, y)]) 0) ++ ((\y -> [(x, y)]) 1)
 
-==> [(x, 0)] ++ [(x, 1)] 
+==> [(x, 0)] ++ [(x, 1)]
 
-==> [(x, 0), (x, 1)] 
+==> [(x, 0), (x, 1)]
 ```
 
-So 
+So
 
 ```haskell
 ["cat", "dog"] >>= (\x -> [(x, 0), (x, 1)])
 
 ==> (\x -> [(x, 0), (x, 1)]) "cat") ++ (\x -> [(x, 0), (x, 1)]) "dog")
 
-==> [("cat", 0), ("cat", 1)] ++ [("dog", 0), ("dog", 1)] 
+==> [("cat", 0), ("cat", 1)] ++ [("dog", 0), ("dog", 1)]
 
-==> [("cat", 0), ("cat", 1), ("dog", 0), ("dog", 1)] 
+==> [("cat", 0), ("cat", 1), ("dog", 0), ("dog", 1)]
 ```
 
 <br>
@@ -380,8 +370,7 @@ So
 <br>
 <br>
 
-
-## QUIZ 
+## QUIZ
 
 What does `quiz` evaluate to?
 
@@ -407,7 +396,7 @@ quiz = foo (\n -> n*n)  [0,1,2,3]
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
 What does the following evaluate to?
 
@@ -428,7 +417,7 @@ triples = do
 
 **D.** `[(0,10,100), (1,11,101)]`
 
-**E.** `[0,1,10,100,100,101]` 
+**E.** `[0,1,10,100,100,101]`
 
 <br>
 <br>
@@ -447,12 +436,12 @@ A **Pythagorean Triple** is a
 - triple of positive integers `a`, `b`, `c`
 - such that `a*a + b*b = c*c`
 
-Lets implement a function to return all triples where 
+Lets implement a function to return all triples where
 
-- `a`,`b`,`c` are between `0..n` 
+- `a`,`b`,`c` are between `0..n`
 
 ```haskell
-pyTriples :: Int -> [(Int, Int, Int)] 
+pyTriples :: Int -> [(Int, Int, Int)]
 pyTriples n = do
   a <- ???
   b <- ???
@@ -479,10 +468,9 @@ pyTriples n = do
 <br>
 <br>
 
-
 ## Using the List Monad
 
-So lets implement a function 
+So lets implement a function
 
 ```haskell
 bits :: Int -> [String]
@@ -491,20 +479,20 @@ bits :: Int -> [String]
 Such that
 
 ```haskell
->>> bits 0 
+>>> bits 0
 []
 >>> bits 1
 ["0", "1"]
->>> bits 2 
+>>> bits 2
 ["00", "01", "10", "11"]
 
->>> bits 3 
+>>> bits 3
 ["000", "001", "010", "011", "100", "101", "110", "111"]
 ```
 
-<!-- 
+<!--
 ```haskell
-bits 0 = return "" 
+bits 0 = return ""
 bits n = do { s <- bits (n-1); c <- ['0', '1']; return (c:s) }
 ```
 -->
@@ -521,21 +509,18 @@ bits n = do { s <- bits (n-1); c <- ['0', '1']; return (c:s) }
 <br>
 <br>
 
-
-
-
 ## Summary
 
-The `Maybe` or `Result` monad instance 
+The `Maybe` or `Result` monad instance
 
-- Conveniently work with computations that *may fail*
+- Conveniently work with computations that _may fail_
 
 Generalize to `List` monad instance
 
-- *empty list* is *failure*
-- *non-empty* list is *successes*
+- _empty list_ is _failure_
+- _non-empty_ list is _successes_
 
-Gives us a `for`-loop or iterator *for free*.
+Gives us a `for`-loop or iterator _for free_.
 
 <br>
 <br>
@@ -548,6 +533,3 @@ Gives us a `for`-loop or iterator *for free*.
 <br>
 <br>
 <br>
-
-
-

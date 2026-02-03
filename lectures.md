@@ -5,23 +5,23 @@ headerImg: books.jpg
 
 ## Topics, Notes and Code
 
-| **Date** | **Topic**        | **Notes**              | **Markup**    | **Code**          |
-| :------: | :--------------- | :--------------------- | :------------ | :---------------- |
-|  _1/6_   | Intro            | [html][00-hello]       |               | [code][code-1-6]  |
-|  _1/8_   | Haskell Basics   | [html][02-basic]       | [pdf][02-pdf] | [code][code-1-8]  |
-|  _1/13_  | Algebraic Data   | [html][03-adt]         | [pdf][03-pdf] | [code][code-1-13] |
-|  _1/15_  | Higher-order Fun | [html][04-hof]         | [pdf][04-pdf] | [code][code-1-15] |
-|  _1/20_  | contd.           |                        |               | [code][code-1-20] |
-|  _1/22_  | IO               | [html][05-io]          | [pdf][05-pdf] | [code][code-1-22] |
-|  _1/27_  | Type Classes     | [html][06-typeclasses] | [pdf][06-pdf] | [code][code-1-27] |
-|  _1/29_  | Functors         | [html][07-functors]    | [pdf][07-pdf] | [code][code-1-29] |
-|          | Monads           | [html][08-monads]      | [pdf][08-pdf] |                   |
-|  _2/5_   | Midterm 1        |                        |               |                   |
-|  _3/10_  | Midterm 2        |                        |               |
+| **Date** | **Topic**           | **Notes**                            | **Markup**    | **Code**          |
+| :------: | :------------------ | :----------------------------------- | :------------ | :---------------- |
+|  _1/6_   | Intro               | [html][00-hello]                     |               | [code][code-1-6]  |
+|  _1/8_   | Haskell Basics      | [html][02-basic]                     | [pdf][02-pdf] | [code][code-1-8]  |
+|  _1/13_  | Algebraic Data      | [html][03-adt]                       | [pdf][03-pdf] | [code][code-1-13] |
+|  _1/15_  | Higher-order Fun    | [html][04-hof]                       | [pdf][04-pdf] | [code][code-1-15] |
+|  _1/20_  | contd.              |                                      |               | [code][code-1-20] |
+|  _1/22_  | IO                  | [html][05-io]                        | [pdf][05-pdf] | [code][code-1-22] |
+|  _1/27_  | Type Classes        | [html][06-typeclasses]               | [pdf][06-pdf] | [code][code-1-27] |
+|  _1/29_  | Functors            | [html][07-functors]                  | [pdf][07-pdf] | [code][code-1-29] |
+|          | Monads              | [html][08-monads]                    | [pdf][08-pdf] |                   |
+|  _2/3_   | Iteration and State | [html-1][09-list] [html-2][10-state] | [pdf][10-pdf] |                   |
+|  _2/5_   | Midterm 1           |                                      |               |                   |
+|  _2/5_   | Midterm 1           |                                      |               |                   |
+|  _3/10_  | Midterm 2           |                                      |               |
 
 <!--
-| *10/31*    | Monads                          | [html][08-monads]         | [pdf][08-pdf]        | [code][code-10-31] |
-| *11/7*     |  Iteration and State            | [html-1][09-list] [html-2][10-state]   |  [pdf][10-pdf] | [code][code-11-7] |
 | *11/14*    | Parser Combinators              | [html][11-parsers]        |                      | [code][code-11-14] |
 | *11/21*    | Property-based Testing          | [html][14-testing]        |                      | [code][code-11-21] |
 
