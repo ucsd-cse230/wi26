@@ -29,6 +29,10 @@ for the programming assignments!
 | [HW #id][hwid] | Github ID | Fri 1/16                  |
 | [HW #1][hw1]   | 01-trees  | Fri 1/23                  |
 
+## Worksheets 
+
+- [Source code for worksheets](https://github.com/ucsd-cse230/wi26/tree/main/sheets)
+
 ## Sample Exam
 
 - [Fa23 Midterm](static/raw/sample-midterm.pdf)
