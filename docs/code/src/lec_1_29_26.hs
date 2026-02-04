@@ -284,14 +284,20 @@ instance Mappable [] where
   gmap f []   = []
   gmap f (x:xs) = f x : gmap f xs
 
--- >>> gmap show        tree0
--- >>> gmap (\n -> n*n) tree0
--- >>> gmap show        list0
--- >>> gmap (\n -> n*n) list0
+vlah = gmap {- @ Tree -} show tree0
+
+-- >>> gmap show tree0
 -- Node (Leaf "10") (Node (Leaf "20") (Leaf "30"))
+
+-- >>> gmap (\n -> n*n) tree0
 -- Node (Leaf 100) (Node (Leaf 400) (Leaf 900))
+
+-- >>> gmap show        list0
 -- ["10","20","30","40","50"]
+
+-- >>> gmap (\n -> n*n) list0
 -- [100,400,900,1600,2500]
+
 
 {-
 
