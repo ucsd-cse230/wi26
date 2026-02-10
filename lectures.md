@@ -41,7 +41,7 @@ headerImg: books.jpg
 [lh2]: http://ucsd-progsys.github.io/lh-workshop/02-refinements.html
 [lh3]: http://ucsd-progsys.github.io/lh-workshop/03-datatypes.html
 [lh4]: http://ucsd-progsys.github.io/lh-workshop/04-case-study-insertsort.html
-[TBD]: TBD
+[TBD]: ToBD
 [code]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src
 [code-1-6]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_1_6_26.hs
 [code-1-8]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_1_8_26.hs
