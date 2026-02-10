@@ -1,0 +1,1050 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 230">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse230.github.io/wi26/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse230</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse230.github.io/wi26/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 230" />
+    <meta property="og:site_name" content="UCSD CSE 230" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse230.github.io/wi26" id="blog-title-left-top">cse230</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- <li><a href="https://ucsd-cse230.github.io/wi26/calendar.html">Calendar</a></li> -->
+                <li><a href="https://ucsd-cse230.github.io/wi26/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/mk1dl38l7yg690#" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/72285" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse230.github.io/wi26/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/mk1dl38l7yg690#" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/72285" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse230.github.io/wi26/static/img/sea.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Lifetimes</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h1 id="lifetimes">Lifetimes</h1>
+<p>Ensuring references are valid</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="recap-ownership-borrowing">Recap: Ownership + Borrowing</h2>
+<ol type="1">
+<li>Each value in Rust has an <strong>owner</strong>.</li>
+<li>There can only be a <strong>single</strong> owner at any time.</li>
+<li>Value is dropped (reclaimed) when owner <strong>goes out of scope</strong>.</li>
+</ol>
+<p>To “access” data, no need to <em>take ownership</em>, just <strong>borrow</strong></p>
+<ul>
+<li><code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code> gives a <em>shared reference</em> (read access)</li>
+<li><code class="sourceCode haskell"><span class="op">&amp;</span>mut <span class="dt">T</span></code> gives a <em>mutable reference</em> (write access)</li>
+<li><strong>Sharing XOR Mutability</strong>: many <code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code> or single <code class="sourceCode haskell"><span class="op">&amp;</span>mut <span class="dt">T</span></code></li>
+</ul>
+<p>Today: how does Rust know when a borrow is <strong>valid</strong>?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-lifetimes">Goal Today: Lifetimes</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Dangling References</label></li>
+<li><label><input type="checkbox" />The Borrow Checker</label></li>
+<li><label><input type="checkbox" />Lifetime Annotations</label></li>
+<li><label><input type="checkbox" />Lifetimes in Functions</label></li>
+<li><label><input type="checkbox" />Lifetimes in Structs</label></li>
+<li><label><input type="checkbox" />Lifetime Elision</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>What happens when we run this code?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;r: {r}&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="dangling-references">Dangling References</h2>
+<p><code class="sourceCode haskell">x</code> goes out of scope <em>before</em> <code class="sourceCode haskell">r</code> is used!</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0597</span>]<span class="op">:</span> <span class="ot">`x`</span> does <span class="fu">not</span> live long enough</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">6</span><span class="op">:</span><span class="dv">13</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">|</span>         <span class="kw">let</span> x <span class="ot">=</span> <span class="dv">5</span>;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>             <span class="op">-</span> binding <span class="ot">`x`</span> declared here</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">|</span>         r <span class="ot">=</span> <span class="op">&amp;</span>x;</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>             <span class="op">^^</span> borrowed value does <span class="fu">not</span> live long enough</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="op">|</span>     }</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>     <span class="op">-</span> <span class="ot">`x`</span> dropped here while still borrowed</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="op">|</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span> <span class="op">|</span>     println<span class="op">!</span>(<span class="st">&quot;r: {r}&quot;</span>);</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>                   <span class="op">-</span> borrow later used here</span></code></pre></div>
+<p>If Rust allowed this, <code class="sourceCode haskell">r</code> would point to <strong>freed</strong> memory!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-lifetimes-1">Goal Today: Lifetimes</h2>
+<ul>
+<li>[+] Dangling References: references must not outlive the data they point to</li>
+<li><label><input type="checkbox" />The Borrow Checker</label></li>
+<li><label><input type="checkbox" />Lifetime Annotations</label></li>
+<li><label><input type="checkbox" />Lifetimes in Functions</label></li>
+<li><label><input type="checkbox" />Lifetimes in Structs</label></li>
+<li><label><input type="checkbox" />Lifetime Elision</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-borrow-checker">The Borrow Checker</h2>
+<p>How does Rust know the reference is invalid?</p>
+<p>The <strong>borrow checker</strong> compares the <em>lifetimes</em> (i.e. scopes) of references and the data they refer to.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r<span class="op">;</span>                <span class="co">// ---------+-- 'a</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                          <span class="co">//          |</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span>                     <span class="co">//          |</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>        <span class="co">// -+-- 'b  |</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>           <span class="co">//  |       |</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>                     <span class="co">// -+       |</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                          <span class="co">//          |</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;r: {r}&quot;</span>)<span class="op">;</span>   <span class="co">//          |</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>                         <span class="co">// ---------+</span></span></code></pre></div>
+<ul>
+<li><code class="sourceCode haskell">r</code> has lifetime <code class="sourceCode haskell">'a</code> (outer scope)</li>
+<li><code class="sourceCode haskell">x</code> has lifetime <code class="sourceCode haskell">'b</code> (inner scope)</li>
+<li><code class="sourceCode haskell">'b</code> is <strong>shorter</strong> than <code class="sourceCode haskell">'a</code> … so <code class="sourceCode haskell">r</code> could be a <strong>dangling reference</strong>!</li>
+</ul>
+<p>The borrow checker <strong>rejects</strong> the program.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="valid-reference-data-outlives-the-reference">Valid Reference: Data Outlives the Reference</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>            <span class="co">// ----------+-- 'b</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                           <span class="co">//           |</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>           <span class="co">// --+-- 'a  |</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                           <span class="co">//   |       |</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;r: {r}&quot;</span>)<span class="op">;</span>   <span class="co">//   |       |</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                           <span class="co">// --+       |</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>                          <span class="co">// ----------+</span></span></code></pre></div>
+<p>Here <code class="sourceCode haskell">x</code> has lifetime <code class="sourceCode haskell">'b</code> which is <strong>longer</strong> than <code class="sourceCode haskell">r</code>’s lifetime <code class="sourceCode haskell">'a</code>.</p>
+<p>The borrow checker <strong>accepts</strong> the program.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-lifetimes-2">Goal Today: Lifetimes</h2>
+<ul>
+<li>[+] Dangling References: references must not outlive the data they point to</li>
+<li>[+] The Borrow Checker: compares scopes to ensure borrows are valid</li>
+<li><label><input type="checkbox" />Lifetime Annotations</label></li>
+<li><label><input type="checkbox" />Lifetimes in Functions</label></li>
+<li><label><input type="checkbox" />Lifetimes in Structs</label></li>
+<li><label><input type="checkbox" />Lifetime Elision</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-1">QUIZ</h2>
+<p>Recall from last lecture: what happens when we compile this?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> longer(s1<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span><span class="op">,</span> s2<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s1<span class="op">.</span>len() <span class="op">&gt;=</span> s2<span class="op">.</span>len() <span class="op">{</span> s1 <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span> s2 <span class="op">}</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> text <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;bat man begins&quot;</span>)<span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> first <span class="op">=</span> <span class="op">&amp;</span>text[<span class="dv">0</span><span class="op">..</span><span class="dv">3</span>]<span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> last <span class="op">=</span> <span class="op">&amp;</span>text[<span class="dv">8</span><span class="op">..</span><span class="dv">14</span>]<span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> result <span class="op">=</span> longer(first<span class="op">,</span> last)<span class="op">;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;longer word: {result}&quot;</span>)<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="problem-which-reference-does-the-return-come-from">Problem: Which Reference Does the Return Come From?</h2>
+<p>The compiler doesn’t know if the return value comes from <code class="sourceCode haskell">s1</code> or <code class="sourceCode haskell">s2</code>!</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0106</span>]<span class="op">:</span> missing lifetime specifier</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">35</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">|</span> fn longer(s1<span class="op">:</span> <span class="op">&amp;</span>str, s2<span class="op">:</span> <span class="op">&amp;</span>str) <span class="ot">-&gt;</span> <span class="op">&amp;</span>str {</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>               <span class="co">----      ----     ^ expected named lifetime parameter</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span> help<span class="op">:</span> this function's <span class="fu">return</span> <span class="kw">type</span> contains a borrowed value,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>          but the signature does <span class="fu">not</span> say whether it is borrowed</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>          from <span class="ot">`s1`</span> <span class="fu">or</span> <span class="ot">`s2`</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>help<span class="op">:</span> consider introducing a named lifetime parameter</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">|</span> fn longer<span class="op">&lt;</span>'a<span class="op">&gt;</span>(s1<span class="op">:</span> <span class="op">&amp;</span>'a str, s2<span class="op">:</span> <span class="op">&amp;</span>'a str) <span class="ot">-&gt;</span> <span class="op">&amp;</span>'a str {</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>          <span class="op">++++</span>      <span class="op">++</span>           <span class="op">++</span>           <span class="op">++</span></span></code></pre></div>
+<p><strong>Read the error message!</strong> It tells us to add a <strong>lifetime parameter</strong> <code class="sourceCode haskell">'a</code>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="why-is-the-borrow-checker-confused">Why is the Borrow Checker Confused?</h2>
+<p>Consider two possible callers:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> test_ok() <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s2 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hi&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> result <span class="op">=</span> longer(<span class="op">&amp;</span>s1<span class="op">,</span> <span class="op">&amp;</span>s2)<span class="op">;</span>  <span class="co">// both live long enough</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{result}&quot;</span>)<span class="op">;</span>            <span class="co">// OK!</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> test_bad() <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> result<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> s2 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hi&quot;</span>)<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> longer(<span class="op">&amp;</span>s1<span class="op">,</span> <span class="op">&amp;</span>s2)<span class="op">;</span>   <span class="co">// s2 about to die!</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{result}&quot;</span>)<span class="op">;</span>             <span class="co">// YIKES: result might point to dead s2!</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The borrow checker can’t tell <em>from the function signature alone</em> how long the return value lives.</p>
+<p>We have to <strong>tell it</strong> using lifetime annotations!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="lifetime-annotation-syntax">Lifetime Annotation Syntax</h2>
+<p>Lifetime annotations describe <strong>relationships</strong> between lifetimes of references.</p>
+<ul>
+<li>Start with an apostrophe <code class="sourceCode haskell">'</code></li>
+<li>Usually short, lowercase: <code class="sourceCode haskell">'a</code>, <code class="sourceCode haskell">'b</code>, etc.</li>
+<li>Placed after the <code class="sourceCode haskell"><span class="op">&amp;</span></code> in a reference type</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&amp;</span><span class="dt">i32</span>            <span class="co">// a reference (implicit lifetime)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">i32</span>         <span class="co">// a reference with explicit lifetime 'a</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="op">&amp;</span><span class="ot">'a</span> <span class="kw">mut</span> <span class="dt">i32</span>     <span class="co">// a mutable reference with explicit lifetime 'a</span></span></code></pre></div>
+<p><strong>Note</strong>: Annotations don’t <em>change</em> how long a reference lives.
+They just <strong>describe</strong> the relationships between lifetimes.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-lifetimes-3">Goal Today: Lifetimes</h2>
+<ul>
+<li>[+] Dangling References: references must not outlive the data they point to</li>
+<li>[+] The Borrow Checker: compares scopes to ensure borrows are valid</li>
+<li>[+] Lifetime Annotations: <code class="sourceCode haskell"><span class="op">&amp;</span>'a <span class="dt">T</span></code> to describe relationships between lifetimes</li>
+<li><label><input type="checkbox" />Lifetimes in Functions</label></li>
+<li><label><input type="checkbox" />Lifetimes in Structs</label></li>
+<li><label><input type="checkbox" />Lifetime Elision</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="lifetime-annotations-in-functions">Lifetime Annotations in Functions</h2>
+<p>Add a <strong>generic lifetime parameter</strong> <code class="sourceCode haskell">'a</code> to the function signature</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> longer<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span>(s1<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span><span class="op">,</span> s2<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s1<span class="op">.</span>len() <span class="op">&gt;=</span> s2<span class="op">.</span>len() <span class="op">{</span> s1 <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span> s2 <span class="op">}</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This signature says:</p>
+<ul>
+<li>For some lifetime <code class="sourceCode haskell">'a</code>,</li>
+<li>both <code class="sourceCode haskell">s1</code> and <code class="sourceCode haskell">s2</code> must live <strong>at least</strong> as long as <code class="sourceCode haskell">'a</code>,</li>
+<li>and the returned reference also lives <strong>at least</strong> as long as <code class="sourceCode haskell">'a</code>.</li>
+</ul>
+<p>In practice: <code class="sourceCode haskell">'a</code> is the <strong>shorter</strong> of the two input lifetimes.</p>
+<h3 id="haskell-comparison">Haskell Comparison</h3>
+<p>There’s no equivalent in Haskell because Haskell has GC!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-2">QUIZ</h2>
+<p>Does this code compile and run?</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> longer<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span>(s1<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span><span class="op">,</span> s2<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s1<span class="op">.</span>len() <span class="op">&gt;=</span> s2<span class="op">.</span>len() <span class="op">{</span> s1 <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span> s2 <span class="op">}</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;long string is long&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> s2 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;xyz&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> result <span class="op">=</span> longer(s1<span class="op">.</span>as_str()<span class="op">,</span> s2<span class="op">.</span>as_str())<span class="op">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;The longer string is: {result}&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="yes-both-references-are-valid-when-used">Yes! Both References Are Valid When Used</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;long string is long&quot;</span>)<span class="op">;</span> <span class="co">// ---+-- 'a</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span>                                               <span class="co">//    |</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> s2 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;xyz&quot;</span>)<span class="op">;</span>              <span class="co">// -+-|-- 'b</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> result <span class="op">=</span> longer(                       <span class="co">//  | |</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>            s1<span class="op">.</span>as_str()<span class="op">,</span>                           <span class="co">//  | |</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            s2<span class="op">.</span>as_str()                            <span class="co">//  | |</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        )<span class="op">;</span>                                         <span class="co">//  | |</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;longer: {result}&quot;</span>)<span class="op">;</span>              <span class="co">//  | |  OK!</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>                                               <span class="co">// -+ |</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>                                                   <span class="co">// ---+</span></span></code></pre></div>
+<p><code class="sourceCode haskell">result</code> is used <em>inside</em> the inner scope where <strong>both</strong> <code class="sourceCode haskell">s1</code> and <code class="sourceCode haskell">s2</code> are alive.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-3">QUIZ</h2>
+<p>What about this code?</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> longer<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span>(s1<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span><span class="op">,</span> s2<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s1<span class="op">.</span>len() <span class="op">&gt;=</span> s2<span class="op">.</span>len() <span class="op">{</span> s1 <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span> s2 <span class="op">}</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s1 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;long string is long&quot;</span>)<span class="op">;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> result<span class="op">;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> s2 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;xyz&quot;</span>)<span class="op">;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> longer(s1<span class="op">.</span>as_str()<span class="op">,</span> s2<span class="op">.</span>as_str())<span class="op">;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;The longer string is: {result}&quot;</span>)<span class="op">;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="no-result-might-point-to-dead-data">No! <code class="sourceCode haskell">result</code> Might Point to Dead Data</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0597</span>]<span class="op">:</span> <span class="ot">`s2`</span> does <span class="fu">not</span> live long enough</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">6</span><span class="op">:</span><span class="dv">44</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">|</span>         <span class="kw">let</span> s2 <span class="ot">=</span> <span class="dt">String</span><span class="ot">::</span>from(<span class="st">&quot;xyz&quot;</span>);</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>             <span class="co">-- binding `s2` declared here</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">|</span>         result <span class="ot">=</span> longer(s1<span class="op">.</span>as_str(), s2<span class="op">.</span>as_str());</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>                                      <span class="op">^^</span> borrowed value does <span class="fu">not</span> live long enough</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="op">|</span>     }</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>     <span class="op">-</span> <span class="ot">`s2`</span> dropped here while still borrowed</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="op">|</span>     println<span class="op">!</span>(<span class="st">&quot;The longer string is: {result}&quot;</span>);</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>                                       <span class="co">------ borrow later used here</span></span></code></pre></div>
+<p>Even though <code class="sourceCode haskell">longer</code> would return <code class="sourceCode haskell">s1</code> (which is longer), the compiler
+doesn’t know that! The signature says <code class="sourceCode haskell">result</code> lives as long as the <strong>shorter</strong> lifetime.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="thinking-in-terms-of-lifetimes">Thinking in Terms of Lifetimes</h2>
+<p>The lifetime parameters depend on what the function <strong>does</strong>.</p>
+<p>If <code class="sourceCode haskell">longer</code> <em>always</em> returned the first argument, we’d only need:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> longer<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span>(s1<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span><span class="op">,</span> s2<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    s1</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>No need to relate the lifetime of <code class="sourceCode haskell">s2</code> to the return value!</p>
+<p><strong>Key idea</strong>: annotate the <em>relationships</em> between the inputs and outputs that actually exist.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-4">QUIZ</h2>
+<p>What happens when we compile this?</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> longer<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span>(s1<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span><span class="op">,</span> s2<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> result <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;really long string&quot;</span>)<span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    result<span class="op">.</span>as_str()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="cannot-return-a-reference-to-a-local-variable">Cannot Return a Reference to a Local Variable!</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0515</span>]<span class="op">:</span> cannot <span class="fu">return</span> value referencing local variable <span class="ot">`result`</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">3</span><span class="op">:</span><span class="dv">5</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  <span class="op">|</span>     result<span class="op">.</span>as_str()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>     <span class="op">------^^^^^^^^^</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>     <span class="op">|</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>     returns a value referencing <span class="kw">data</span> owned by the current function</span></code></pre></div>
+<p><code class="sourceCode haskell">result</code> is <strong>dropped</strong> when <code class="sourceCode haskell">longer</code> returns, so we’d get a dangling reference.</p>
+<p><strong>Fix</strong>: return an <em>owned</em> value instead of a reference</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> longer(s1<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span><span class="op">,</span> s2<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="dt">String</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> result <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;really long string&quot;</span>)<span class="op">;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    result    <span class="co">// ownership transferred to caller</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-lifetimes-4">Goal Today: Lifetimes</h2>
+<ul>
+<li>[+] Dangling References: references must not outlive the data they point to</li>
+<li>[+] The Borrow Checker: compares scopes to ensure borrows are valid</li>
+<li>[+] Lifetime Annotations: <code class="sourceCode haskell"><span class="op">&amp;</span>'a <span class="dt">T</span></code> to describe relationships between lifetimes</li>
+<li>[+] Lifetimes in Functions: <code class="sourceCode haskell">fn foo<span class="op">&lt;</span>'a<span class="op">&gt;</span>(x<span class="op">:</span> <span class="op">&amp;</span>'a <span class="dt">T</span>, <span class="op">...</span>) <span class="ot">-&gt;</span> <span class="op">&amp;</span>'a <span class="dt">T</span></code></li>
+<li><label><input type="checkbox" />Lifetimes in Structs</label></li>
+<li><label><input type="checkbox" />Lifetime Elision</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="lifetimes-in-structs">Lifetimes in Structs</h2>
+<p>What if a <code class="sourceCode haskell">struct</code> holds a <strong>reference</strong>?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>derive<span class="at">(</span><span class="bu">Debug</span><span class="at">)]</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Excerpt <span class="op">{</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    part<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span><span class="op">,</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Compiler error!</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0106</span>]<span class="op">:</span> missing lifetime specifier</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a> <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">3</span><span class="op">:</span><span class="dv">11</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="op">|</span>     part<span class="op">:</span> <span class="op">&amp;</span>str,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>           <span class="op">^</span> expected named lifetime parameter</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>help<span class="op">:</span> consider introducing a named lifetime parameter</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">~</span> struct <span class="dt">Excerpt</span><span class="op">&lt;</span>'a<span class="op">&gt;</span> {</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="op">~</span>     part<span class="op">:</span> <span class="op">&amp;</span>'a str,</span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="lifetimes-in-structs-the-fix">Lifetimes in Structs: the Fix</h2>
+<p>The struct must <strong>declare</strong> the lifetime of its reference fields</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>derive<span class="at">(</span><span class="bu">Debug</span><span class="at">)]</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Excerpt<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    part<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span><span class="op">,</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This says: an <code class="sourceCode haskell"><span class="dt">Excerpt</span></code> cannot <strong>outlive</strong> the reference it holds in <code class="sourceCode haskell">part</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> novel <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;Call me Ishmael. Some years ago...&quot;</span>)<span class="op">;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> first_sentence <span class="op">=</span> novel<span class="op">.</span>split(<span class="ch">'.'</span>)<span class="op">.</span>next()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> exc <span class="op">=</span> Excerpt <span class="op">{</span> part<span class="op">:</span> first_sentence <span class="op">};</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> exc)<span class="op">;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Here <code class="sourceCode haskell">novel</code> outlives <code class="sourceCode haskell">exc</code>, so the reference is valid.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-5">QUIZ</h2>
+<p>What happens when we compile this?</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="at">#[</span>derive<span class="at">(</span><span class="bu">Debug</span><span class="at">)]</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Excerpt<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    part<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span><span class="op">,</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> exc<span class="op">;</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> novel <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;Call me Ishmael.&quot;</span>)<span class="op">;</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        exc <span class="op">=</span> Excerpt <span class="op">{</span> part<span class="op">:</span> <span class="op">&amp;</span>novel <span class="op">};</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{:?}&quot;</span><span class="op">,</span> exc)<span class="op">;</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="struct-cannot-outlive-its-reference">Struct Cannot Outlive its Reference!</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0597</span>]<span class="op">:</span> <span class="ot">`novel`</span> does <span class="fu">not</span> live long enough</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">9</span><span class="op">:</span><span class="dv">33</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>  <span class="op">|</span>         <span class="kw">let</span> novel <span class="ot">=</span> <span class="dt">String</span><span class="ot">::</span>from(<span class="st">&quot;Call me Ishmael.&quot;</span>);</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>             <span class="co">----- binding `novel` declared here</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  <span class="op">|</span>         exc <span class="ot">=</span> <span class="dt">Excerpt</span> { part<span class="op">:</span> <span class="op">&amp;</span>novel };</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>                                <span class="op">^^^^^</span> borrowed value does <span class="fu">not</span> live long enough</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">|</span>     }</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>     <span class="op">-</span> <span class="ot">`novel`</span> dropped here while still borrowed</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="dv">11</span> <span class="op">|</span>     println<span class="op">!</span>(<span class="st">&quot;{:?}&quot;</span>, exc);</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>                      <span class="co">--- borrow later used here</span></span></code></pre></div>
+<p><code class="sourceCode haskell">novel</code> is dropped at end of inner scope, but <code class="sourceCode haskell">exc</code> lives longer, so the reference is <strong>invalid</strong>.</p>
+<p>Same idea as with function lifetimes: the borrow checker ensures the data <strong>outlives</strong> the struct.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-lifetimes-5">Goal Today: Lifetimes</h2>
+<ul>
+<li>[+] Dangling References: references must not outlive the data they point to</li>
+<li>[+] The Borrow Checker: compares scopes to ensure borrows are valid</li>
+<li>[+] Lifetime Annotations: <code class="sourceCode haskell"><span class="op">&amp;</span>'a <span class="dt">T</span></code> to describe relationships between lifetimes</li>
+<li>[+] Lifetimes in Functions: <code class="sourceCode haskell">fn foo<span class="op">&lt;</span>'a<span class="op">&gt;</span>(x<span class="op">:</span> <span class="op">&amp;</span>'a <span class="dt">T</span>, <span class="op">...</span>) <span class="ot">-&gt;</span> <span class="op">&amp;</span>'a <span class="dt">T</span></code></li>
+<li>[+] Lifetimes in Structs: <code class="sourceCode haskell">struct <span class="dt">Foo</span><span class="op">&lt;</span>'a<span class="op">&gt;</span> { field<span class="op">:</span> <span class="op">&amp;</span>'a <span class="dt">T</span> }</code></li>
+<li><label><input type="checkbox" />Lifetime Elision</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="lifetime-elision">Lifetime Elision</h2>
+<p>Hang on … we wrote functions with <code class="sourceCode haskell"><span class="op">&amp;</span></code> references <em>before</em> and never needed lifetimes!</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> first_word_str(s<span class="op">:</span> <span class="op">&amp;</span><span class="dt">String</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Why didn’t the compiler complain?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="lifetime-elision-rules">Lifetime Elision Rules</h2>
+<p>The compiler applies <strong>elision rules</strong> to infer lifetimes automatically.</p>
+<p><strong>Rule 1</strong>: Each reference parameter gets its own lifetime parameter.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> foo(x<span class="op">:</span> <span class="op">&amp;</span><span class="dt">i32</span>)              <span class="co">// ==&gt; fn foo&lt;'a&gt;(x: &amp;'a i32)</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> foo(x<span class="op">:</span> <span class="op">&amp;</span><span class="dt">i32</span><span class="op">,</span> y<span class="op">:</span> <span class="op">&amp;</span><span class="dt">i32</span>)     <span class="co">// ==&gt; fn foo&lt;'a, 'b&gt;(x: &amp;'a i32, y: &amp;'b i32)</span></span></code></pre></div>
+<p><strong>Rule 2</strong>: If there’s <em>exactly one</em> input lifetime, it’s assigned to all outputs.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> foo(x<span class="op">:</span> <span class="op">&amp;</span><span class="dt">i32</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="dt">i32</span>      <span class="co">// ==&gt; fn foo&lt;'a&gt;(x: &amp;'a i32) -&gt; &amp;'a i32</span></span></code></pre></div>
+<p><strong>Rule 3</strong>: If one of the inputs is <code class="sourceCode haskell"><span class="op">&amp;</span>self</code> or <code class="sourceCode haskell"><span class="op">&amp;</span>mut self</code>, the lifetime of <code class="sourceCode haskell">self</code> is assigned to all outputs.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="elision-example-1-single-reference-parameter">Elision Example 1: Single Reference Parameter</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> first_word_str(s<span class="op">:</span> <span class="op">&amp;</span><span class="dt">String</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="dt">str</span> <span class="op">{</span> <span class="op">...</span> <span class="op">}</span></span></code></pre></div>
+<p>Applying the rules:</p>
+<ol type="1">
+<li><strong>Rule 1</strong>: <code class="sourceCode haskell">s</code> gets lifetime <code class="sourceCode haskell">'a</code> ==&gt; <code class="sourceCode haskell">fn first_word_str<span class="op">&lt;</span>'a<span class="op">&gt;</span>(s<span class="op">:</span> <span class="op">&amp;</span>'a <span class="dt">String</span>) <span class="ot">-&gt;</span> <span class="op">&amp;</span>str</code></li>
+<li><strong>Rule 2</strong>: one input lifetime, assign to output ==&gt; <code class="sourceCode haskell">fn first_word_str<span class="op">&lt;</span>'a<span class="op">&gt;</span>(s<span class="op">:</span> <span class="op">&amp;</span>'a <span class="dt">String</span>) <span class="ot">-&gt;</span> <span class="op">&amp;</span>'a str</code></li>
+</ol>
+<p>All output lifetimes resolved! No explicit annotations needed.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="elision-example-2-two-reference-parameters">Elision Example 2: Two Reference Parameters</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> longer(s1<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span><span class="op">,</span> s2<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="dt">str</span> <span class="op">{</span> <span class="op">...</span> <span class="op">}</span></span></code></pre></div>
+<p>Applying the rules:</p>
+<ol type="1">
+<li><strong>Rule 1</strong>: each gets a lifetime ==&gt; <code class="sourceCode haskell">fn longer<span class="op">&lt;</span>'a, 'b<span class="op">&gt;</span>(s1<span class="op">:</span> <span class="op">&amp;</span>'a str, s2<span class="op">:</span> <span class="op">&amp;</span>'b str) <span class="ot">-&gt;</span> <span class="op">&amp;</span>str</code></li>
+<li><strong>Rule 2</strong>: does NOT apply (two input lifetimes, not one)</li>
+<li><strong>Rule 3</strong>: does NOT apply (not a method)</li>
+</ol>
+<p>Output lifetime is <strong>unresolved</strong> … compiler <strong>requires</strong> annotation!</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> longer<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span>(s1<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span><span class="op">,</span> s2<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span> <span class="op">...</span> <span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-6">QUIZ</h2>
+<p>Does this need explicit lifetime annotations?</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> say(z<span class="op">:</span> <span class="op">&amp;</span><span class="dt">String</span>) <span class="op">{</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> n <span class="op">=</span> z<span class="op">.</span>len()<span class="op">;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;length of z = {n}&quot;</span>)<span class="op">;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="no-no-output-references">No! No Output References</h2>
+<p><code class="sourceCode haskell">say</code> returns nothing (no output references), so no lifetime annotations are needed.</p>
+<p>Rule 1 assigns <code class="sourceCode haskell">'a</code> to <code class="sourceCode haskell">z</code>, but there’s no output to annotate.</p>
+<p><strong>Lifetimes are only needed when the function <em>returns</em> a reference</strong> (or when a struct <em>holds</em> a reference).</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="the-static-lifetime">The <code class="sourceCode haskell">'static</code> Lifetime</h2>
+<p>One special lifetime: <code class="sourceCode haskell">'static</code> means the reference lives for the <strong>entire program</strong>.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> s<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'static</span> <span class="dt">str</span> <span class="op">=</span> <span class="st">&quot;I have a static lifetime.&quot;</span><span class="op">;</span></span></code></pre></div>
+<p>All string <em>literals</em> have the <code class="sourceCode haskell">'static</code> lifetime because they are baked into the binary.</p>
+<p><strong>Warning</strong>: Don’t use <code class="sourceCode haskell">'static</code> as a band-aid to fix lifetime errors!</p>
+<p>If the compiler suggests <code class="sourceCode haskell">'static</code>, it usually means there’s a real bug – fix the underlying problem instead.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-lifetimes-6">Goal Today: Lifetimes</h2>
+<ul>
+<li>[+] Dangling References: references must not outlive the data they point to</li>
+<li>[+] The Borrow Checker: compares scopes to ensure borrows are valid</li>
+<li>[+] Lifetime Annotations: <code class="sourceCode haskell"><span class="op">&amp;</span>'a <span class="dt">T</span></code> to describe relationships between lifetimes</li>
+<li>[+] Lifetimes in Functions: <code class="sourceCode haskell">fn foo<span class="op">&lt;</span>'a<span class="op">&gt;</span>(x<span class="op">:</span> <span class="op">&amp;</span>'a <span class="dt">T</span>, <span class="op">...</span>) <span class="ot">-&gt;</span> <span class="op">&amp;</span>'a <span class="dt">T</span></code></li>
+<li>[+] Lifetimes in Structs: <code class="sourceCode haskell">struct <span class="dt">Foo</span><span class="op">&lt;</span>'a<span class="op">&gt;</span> { field<span class="op">:</span> <span class="op">&amp;</span>'a <span class="dt">T</span> }</code></li>
+<li>[+] Lifetime Elision: compiler infers lifetimes in common cases</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-7">QUIZ</h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz1<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span>(x<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    x</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz2<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span>(x<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    s<span class="op">.</span>as_str()</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz3<span class="op">&lt;</span><span class="ot">'a</span><span class="op">&gt;</span>(x<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span><span class="op">,</span> y<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">.</span>len() <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">{</span> x <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span> y <span class="op">}</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz4<span class="op">&lt;</span><span class="ot">'a</span><span class="op">,</span> <span class="ot">'b</span><span class="op">&gt;</span>(x<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span><span class="op">,</span> y<span class="op">:</span> <span class="op">&amp;</span><span class="ot">'b</span> <span class="dt">str</span>) <span class="op">-&gt;</span> <span class="op">&amp;</span><span class="ot">'a</span> <span class="dt">str</span> <span class="op">{</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    x</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Which of these compile?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="answers">Answers</h2>
+<ul>
+<li><code class="sourceCode haskell">quiz1</code>: <strong>compiles</strong> – returns <code class="sourceCode haskell">x</code> which has lifetime <code class="sourceCode haskell">'a</code></li>
+<li><code class="sourceCode haskell">quiz2</code>: <strong>error</strong> – returns reference to local <code class="sourceCode haskell">s</code> which is dropped!</li>
+<li><code class="sourceCode haskell">quiz3</code>: <strong>compiles</strong> – both <code class="sourceCode haskell">x</code> and <code class="sourceCode haskell">y</code> have lifetime <code class="sourceCode haskell">'a</code>, return has lifetime <code class="sourceCode haskell">'a</code></li>
+<li><code class="sourceCode haskell">quiz4</code>: <strong>compiles</strong> – always returns <code class="sourceCode haskell">x</code> with lifetime <code class="sourceCode haskell">'a</code>, <code class="sourceCode haskell">y</code>’s lifetime <code class="sourceCode haskell">'b</code> is unrelated</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="summary-lifetimes">Summary: Lifetimes</h2>
+<p>Lifetimes are Rust’s way of ensuring <strong>memory safety at compile time</strong></p>
+<ul>
+<li><strong>Dangling references</strong> are prevented by the <strong>borrow checker</strong></li>
+<li>The borrow checker compares <strong>scopes</strong> to validate borrows</li>
+<li><strong>Lifetime annotations</strong> (<code class="sourceCode haskell">'a</code>) describe relationships between reference lifetimes</li>
+<li>The compiler uses <strong>elision rules</strong> to infer lifetimes in common cases</li>
+<li><code class="sourceCode haskell">'static</code> is a special lifetime for data that lives the entire program</li>
+</ul>
+<p>All of this happens at <strong>compile time</strong> – zero runtime overhead!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="material-inspired-by">Material Inspired by</h2>
+<ul>
+<li>https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html</li>
+<li>https://rust-book.cs.brown.edu/ch04-01-what-is-ownership.html</li>
+</ul>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse230.github.io/wi26/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse230.github.io/wi26/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/bootstrap.min.js"></script>
+<!--
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/anim.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/scripts.js"></script>
+-->
+
+
+    </body>
+</html>

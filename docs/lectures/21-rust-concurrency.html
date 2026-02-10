@@ -1,0 +1,1136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 230">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse230.github.io/wi26/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse230</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse230.github.io/wi26/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 230" />
+    <meta property="og:site_name" content="UCSD CSE 230" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse230.github.io/wi26" id="blog-title-left-top">cse230</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- <li><a href="https://ucsd-cse230.github.io/wi26/calendar.html">Calendar</a></li> -->
+                <li><a href="https://ucsd-cse230.github.io/wi26/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse230.github.io/wi26/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/mk1dl38l7yg690#" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/72285" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse230.github.io/wi26/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse230.github.io/wi26/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/mk1dl38l7yg690#" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/72285" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse230.github.io/wi26/static/img/sea.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Concurrency</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h1 id="fearless-concurrency">Fearless Concurrency</h1>
+<p>Safe concurrent programming with Rust</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="why-concurrency">Why Concurrency?</h2>
+<p>Modern hardware has many cores – we want to use them all!</p>
+<p>But concurrent programming is <strong>notoriously hard</strong>:</p>
+<ul>
+<li><strong>Data races</strong>: two threads access shared data at the same time</li>
+<li><strong>Deadlocks</strong>: two threads wait for each other forever</li>
+<li><strong>Hard to reproduce</strong>: bugs depend on scheduling, appear randomly</li>
+</ul>
+<p>In most languages, these bugs show up <strong>at runtime</strong> (if you’re lucky).</p>
+<p>In Rust, the compiler catches them <strong>at compile time</strong>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today">Goal Today</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Threads</label></li>
+<li><label><input type="checkbox" />Message Passing (Channels)</label></li>
+<li><label><input type="checkbox" />Shared State (Mutex)</label></li>
+<li><label><input type="checkbox" />Send and Sync</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="creating-threads">Creating Threads</h2>
+<p>Use <code class="sourceCode haskell"><span class="ot">thread::</span>spawn</code> with a closure</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::time::</span>Duration<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="op">||</span> <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">1</span><span class="op">..</span><span class="dv">5</span> <span class="op">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="pp">println!</span>(<span class="st">&quot;spawned: {i}&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="pp">thread::</span>sleep(<span class="pp">Duration::</span>from_millis(<span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">1</span><span class="op">..</span><span class="dv">3</span> <span class="op">{</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;main: {i}&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="pp">thread::</span>sleep(<span class="pp">Duration::</span>from_millis(<span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Output (varies each run!):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>main<span class="op">:</span> <span class="dv">1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spawned<span class="op">:</span> <span class="dv">1</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>main<span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>spawned<span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>spawned<span class="op">:</span> <span class="dv">3</span></span></code></pre></div>
+<p><strong>Problem</strong>: when <code class="sourceCode haskell">main</code> ends, spawned threads are <strong>killed</strong> – even if unfinished!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="waiting-for-threads-with-join">Waiting for Threads with <code class="sourceCode haskell">join</code></h2>
+<p><code class="sourceCode haskell"><span class="ot">thread::</span>spawn</code> returns a <code class="sourceCode haskell"><span class="dt">JoinHandle</span></code>; calling <code class="sourceCode haskell"><span class="op">.</span>join()</code> <strong>waits</strong> for the thread to finish</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::time::</span>Duration<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> handle <span class="op">=</span> <span class="pp">thread::</span>spawn(<span class="op">||</span> <span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">1</span><span class="op">..</span><span class="dv">5</span> <span class="op">{</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="pp">println!</span>(<span class="st">&quot;spawned: {i}&quot;</span>)<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="pp">thread::</span>sleep(<span class="pp">Duration::</span>from_millis(<span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="dv">1</span><span class="op">..</span><span class="dv">3</span> <span class="op">{</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;main: {i}&quot;</span>)<span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="pp">thread::</span>sleep(<span class="pp">Duration::</span>from_millis(<span class="dv">1</span>))<span class="op">;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    handle<span class="op">.</span>join()<span class="op">.</span>unwrap()<span class="op">;</span>  <span class="co">// wait for spawned thread to finish</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Now all spawned thread iterations complete before the program exits.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>What happens when we compile this?</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> handle <span class="op">=</span> <span class="pp">thread::</span>spawn(<span class="op">||</span> <span class="op">{</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;Here's a vector: {v:?}&quot;</span>)<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    handle<span class="op">.</span>join()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="threads-and-ownership-the-problem">Threads and Ownership: The Problem</h2>
+<p>The closure <strong>borrows</strong> <code class="sourceCode haskell">v</code>, but the spawned thread might outlive <code class="sourceCode haskell">main</code>!</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0373</span>]<span class="op">:</span> closure may outlive the current function,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>              but it borrows <span class="ot">`v`</span>, which is owned by the current function</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">6</span><span class="op">:</span><span class="dv">32</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">|</span>     <span class="kw">let</span> handle <span class="ot">= thread::</span>spawn(<span class="op">||</span> {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>                                <span class="op">^^</span> may outlive borrowed value <span class="ot">`v`</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="op">|</span>         println<span class="op">!</span>(<span class="st">&quot;Here's a vector: {v:?}&quot;</span>);</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>                                     <span class="op">-</span> <span class="ot">`v`</span> is borrowed here</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>help<span class="op">:</span> to force the closure to <span class="fu">take</span> ownership <span class="kw">of</span> <span class="ot">`v`</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      use the <span class="ot">`move`</span> keyword</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">|</span>     <span class="kw">let</span> handle <span class="ot">= thread::</span>spawn(move <span class="op">||</span> {</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span>                                <span class="op">++++</span></span></code></pre></div>
+<p>What if <code class="sourceCode haskell">main</code> dropped <code class="sourceCode haskell">v</code> before the thread used it? <strong>Dangling reference</strong>!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="fix-move-closures">Fix: <code class="sourceCode haskell">move</code> Closures</h2>
+<p>Use <code class="sourceCode haskell">move</code> to <strong>transfer ownership</strong> of <code class="sourceCode haskell">v</code> into the thread</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> handle <span class="op">=</span> <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;Here's a vector: {v:?}&quot;</span>)<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    handle<span class="op">.</span>join()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Now the thread <strong>owns</strong> <code class="sourceCode haskell">v</code>. Main can no longer use it.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-1">QUIZ</h2>
+<p>What happens here?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> handle <span class="op">=</span> <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;Here's a vector: {v:?}&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;v is: {v:?}&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    handle<span class="op">.</span>join()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="cannot-use-v-after-move">Cannot Use <code class="sourceCode haskell">v</code> After Move!</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0382</span>]<span class="op">:</span> borrow <span class="kw">of</span> moved value<span class="op">:</span> <span class="ot">`v`</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">10</span><span class="op">:</span><span class="dv">22</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  <span class="op">|</span>     <span class="kw">let</span> v <span class="ot">=</span> vec<span class="op">!</span>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>];</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>         <span class="op">-</span> move occurs because <span class="ot">`v`</span> has <span class="kw">type</span> <span class="ot">`Vec&lt;i32&gt;`</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>              which does <span class="fu">not</span> implement the <span class="ot">`Copy`</span> trait</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>  <span class="op">|</span>     <span class="kw">let</span> handle <span class="ot">= thread::</span>spawn(move <span class="op">||</span> {</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>                                <span class="co">------- value moved into closure here</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>  <span class="op">|</span>         println<span class="op">!</span>(<span class="st">&quot;Here's a vector: {v:?}&quot;</span>);</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>                                     <span class="op">-</span> variable moved due to use <span class="kw">in</span> closure</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">|</span>     println<span class="op">!</span>(<span class="st">&quot;v is: {v:?}&quot;</span>);</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>                      <span class="op">^</span> value borrowed here after move</span></code></pre></div>
+<p>The ownership rules we already know prevent sharing data unsafely between threads!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-1">Goal Today</h2>
+<ul>
+<li>[+] Threads: <code class="sourceCode haskell"><span class="ot">thread::</span>spawn</code>, <code class="sourceCode haskell">move</code> closures, <code class="sourceCode haskell">join()</code></li>
+<li><label><input type="checkbox" />Message Passing (Channels)</label></li>
+<li><label><input type="checkbox" />Shared State (Mutex)</label></li>
+<li><label><input type="checkbox" />Send and Sync</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="message-passing-with-channels">Message Passing with Channels</h2>
+<p>“Do not communicate by sharing memory; instead, share memory by communicating.” – Go proverb</p>
+<p>A <strong>channel</strong> has two ends:</p>
+<ul>
+<li><strong>Transmitter</strong> (<code class="sourceCode haskell">tx</code>): sends data</li>
+<li><strong>Receiver</strong> (<code class="sourceCode haskell">rx</code>): receives data</li>
+</ul>
+<p>The channel is <strong>closed</strong> when either end is dropped.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="creating-a-channel">Creating a Channel</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::sync::</span>mpsc<span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> (tx<span class="op">,</span> rx) <span class="op">=</span> <span class="pp">mpsc::</span>channel()<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> msg <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        tx<span class="op">.</span>send(msg)<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> received <span class="op">=</span> rx<span class="op">.</span>recv()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Got: {received}&quot;</span>)<span class="op">;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Got</span><span class="op">:</span> hello</span></code></pre></div>
+<ul>
+<li><code class="sourceCode haskell">mpsc</code> = <strong>multiple producer, single consumer</strong></li>
+<li><code class="sourceCode haskell">tx<span class="op">.</span>send(msg)</code> sends a value (transfers ownership!)</li>
+<li><code class="sourceCode haskell">rx<span class="op">.</span>recv()</code> <strong>blocks</strong> until a value arrives</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-2">QUIZ</h2>
+<p>What happens here?</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::sync::</span>mpsc<span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> (tx<span class="op">,</span> rx) <span class="op">=</span> <span class="pp">mpsc::</span>channel()<span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> msg <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        tx<span class="op">.</span>send(msg)<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;sent: {msg}&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> received <span class="op">=</span> rx<span class="op">.</span>recv()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Got: {received}&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="send-transfers-ownership"><code class="sourceCode haskell">send</code> Transfers Ownership!</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0382</span>]<span class="op">:</span> borrow <span class="kw">of</span> moved value<span class="op">:</span> <span class="ot">`msg`</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">10</span><span class="op">:</span><span class="dv">27</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span> <span class="op">|</span>         <span class="kw">let</span> msg <span class="ot">=</span> <span class="dt">String</span><span class="ot">::</span>from(<span class="st">&quot;hello&quot;</span>);</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>             <span class="co">--- move occurs because `msg` has type `String`,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                  which does <span class="fu">not</span> implement the <span class="ot">`Copy`</span> trait</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span> <span class="op">|</span>         tx<span class="op">.</span>send(msg)<span class="op">.</span>unwrap();</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>                 <span class="co">--- value moved here</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">|</span>         println<span class="op">!</span>(<span class="st">&quot;sent: {msg}&quot;</span>);</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>                          <span class="op">^^^</span> value borrowed here after move</span></code></pre></div>
+<p><code class="sourceCode haskell">send</code> takes <strong>ownership</strong> of <code class="sourceCode haskell">msg</code> – you can’t use it afterwards.</p>
+<p>This prevents the sender from modifying data while the receiver reads it!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="sending-multiple-values">Sending Multiple Values</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::sync::</span>mpsc<span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::time::</span>Duration<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> (tx<span class="op">,</span> rx) <span class="op">=</span> <span class="pp">mpsc::</span>channel()<span class="op">;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> msgs <span class="op">=</span> <span class="pp">vec!</span>[<span class="st">&quot;hi&quot;</span><span class="op">,</span> <span class="st">&quot;from&quot;</span><span class="op">,</span> <span class="st">&quot;the&quot;</span><span class="op">,</span> <span class="st">&quot;thread&quot;</span>]<span class="op">;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> msg <span class="kw">in</span> msgs <span class="op">{</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>            tx<span class="op">.</span>send(<span class="dt">String</span><span class="pp">::</span>from(msg))<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>            <span class="pp">thread::</span>sleep(<span class="pp">Duration::</span>from_millis(<span class="dv">500</span>))<span class="op">;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> received <span class="kw">in</span> rx <span class="op">{</span>         <span class="co">// rx works as an iterator!</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;Got: {received}&quot;</span>)<span class="op">;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Got</span><span class="op">:</span> hi</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">Got</span><span class="op">:</span> from</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Got</span><span class="op">:</span> the</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Got</span><span class="op">:</span> thread</span></code></pre></div>
+<p>The <code class="sourceCode haskell">for</code> loop over <code class="sourceCode haskell">rx</code> blocks waiting for values and stops when the channel closes.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="multiple-producers">Multiple Producers</h2>
+<p>Clone <code class="sourceCode haskell">tx</code> to send from <strong>multiple</strong> threads to the <strong>same</strong> receiver</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::sync::</span>mpsc<span class="op">;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> (tx<span class="op">,</span> rx) <span class="op">=</span> <span class="pp">mpsc::</span>channel()<span class="op">;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> tx1 <span class="op">=</span> tx<span class="op">.</span>clone()<span class="op">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        tx1<span class="op">.</span>send(<span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hi from thread 1&quot;</span>))<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        tx<span class="op">.</span>send(<span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;hi from thread 2&quot;</span>))<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> received <span class="kw">in</span> rx <span class="op">{</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        <span class="pp">println!</span>(<span class="st">&quot;Got: {received}&quot;</span>)<span class="op">;</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Output order is <strong>nondeterministic</strong> – depends on scheduling!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-2">Goal Today</h2>
+<ul>
+<li>[+] Threads: <code class="sourceCode haskell"><span class="ot">thread::</span>spawn</code>, <code class="sourceCode haskell">move</code> closures, <code class="sourceCode haskell">join()</code></li>
+<li>[+] Message Passing: <code class="sourceCode haskell"><span class="ot">mpsc::</span>channel()</code>, <code class="sourceCode haskell">send</code>, <code class="sourceCode haskell">recv</code>, multiple producers</li>
+<li><label><input type="checkbox" />Shared State (Mutex)</label></li>
+<li><label><input type="checkbox" />Send and Sync</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="shared-state-mutex">Shared State: Mutex</h2>
+<p>Sometimes threads need to <strong>share</strong> data (not just pass messages).</p>
+<p>A <strong>Mutex</strong> (mutual exclusion) guards shared data:</p>
+<ol type="1">
+<li><strong>Lock</strong> the mutex before accessing data</li>
+<li>Use the data</li>
+<li><strong>Unlock</strong> when done (happens automatically!)</li>
+</ol>
+<p>Like a microphone at a panel discussion – only one speaker at a time.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="using-mutext">Using <code class="sourceCode haskell"><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code></h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::sync::</span>Mutex<span class="op">;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> m <span class="op">=</span> <span class="pp">Mutex::</span>new(<span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> <span class="kw">mut</span> num <span class="op">=</span> m<span class="op">.</span>lock()<span class="op">.</span>unwrap()<span class="op">;</span> <span class="co">// acquire lock</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>num <span class="op">=</span> <span class="dv">6</span><span class="op">;</span>                        <span class="co">// mutate the data</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>                                    <span class="co">// lock released automatically!</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;m = {:?}&quot;</span><span class="op">,</span> m)<span class="op">;</span> <span class="co">// m = Mutex { data: 6 }</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">Mutex</span><span class="ot">::</span>new(<span class="dv">5</span>)</code> wraps the value <code class="sourceCode haskell"><span class="dv">5</span></code> in a mutex</li>
+<li><code class="sourceCode haskell"><span class="op">.</span>lock()</code> blocks until the lock is acquired; returns a <code class="sourceCode haskell"><span class="dt">MutexGuard</span></code></li>
+<li><code class="sourceCode haskell"><span class="dt">MutexGuard</span></code> auto-unlocks when it goes <strong>out of scope</strong> (like <code class="sourceCode haskell"><span class="dt">Drop</span></code>)</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-3">QUIZ</h2>
+<p>What happens here?</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::sync::</span>Mutex<span class="op">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> counter <span class="op">=</span> <span class="pp">Mutex::</span>new(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> handles <span class="op">=</span> <span class="pp">vec!</span>[]<span class="op">;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span><span class="dv">10</span> <span class="op">{</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> handle <span class="op">=</span> <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> <span class="kw">mut</span> num <span class="op">=</span> counter<span class="op">.</span>lock()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">*</span>num <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        handles<span class="op">.</span>push(handle)<span class="op">;</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> handle <span class="kw">in</span> handles <span class="op">{</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>        handle<span class="op">.</span>join()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Result: {}&quot;</span><span class="op">,</span> <span class="op">*</span>counter<span class="op">.</span>lock()<span class="op">.</span>unwrap())<span class="op">;</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="cannot-move-counter-into-multiple-threads">Cannot Move <code class="sourceCode haskell">counter</code> Into Multiple Threads!</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0382</span>]<span class="op">:</span> borrow <span class="kw">of</span> moved value<span class="op">:</span> <span class="ot">`counter`</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">15</span><span class="op">:</span><span class="dv">29</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  <span class="op">|</span>     <span class="kw">let</span> counter <span class="ot">=</span> <span class="dt">Mutex</span><span class="ot">::</span>new(<span class="dv">0</span>);</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>         <span class="co">------- move occurs because `counter` has type `Mutex&lt;i32&gt;`,</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                     which does <span class="fu">not</span> implement the <span class="ot">`Copy`</span> trait</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  <span class="op">|</span>         <span class="kw">let</span> handle <span class="ot">= thread::</span>spawn(move <span class="op">||</span> {</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>                                    <span class="co">------- value moved into closure here</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">|</span>             <span class="kw">let</span> mut num <span class="ot">=</span> counter<span class="op">.</span>lock()<span class="op">.</span>unwrap();</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>   <span class="op">|</span>                           <span class="co">------- use occurs due to use in closure</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
+<p><code class="sourceCode haskell">counter</code> gets moved into the <strong>first</strong> thread’s closure.
+The second iteration tries to move it again – but it’s already gone!</p>
+<p>We need <strong>multiple ownership</strong> across threads.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="attempt-rcmutext">Attempt: <code class="sourceCode haskell"><span class="dt">Rc</span><span class="op">&lt;</span><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;&gt;</span></code>?</h2>
+<p>Maybe <code class="sourceCode haskell"><span class="dt">Rc</span></code> (reference counting) can give us multiple owners?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::rc::</span>Rc<span class="op">;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::sync::</span>Mutex<span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> counter <span class="op">=</span> <span class="pp">Rc::</span>new(<span class="pp">Mutex::</span>new(<span class="dv">0</span>))<span class="op">;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> handles <span class="op">=</span> <span class="pp">vec!</span>[]<span class="op">;</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span><span class="dv">10</span> <span class="op">{</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> counter <span class="op">=</span> <span class="pp">Rc::</span>clone(<span class="op">&amp;</span>counter)<span class="op">;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> handle <span class="op">=</span> <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> <span class="kw">mut</span> num <span class="op">=</span> counter<span class="op">.</span>lock()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">*</span>num <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>        handles<span class="op">.</span>push(handle)<span class="op">;</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ...</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="rc-is-not-thread-safe"><code class="sourceCode haskell"><span class="dt">Rc</span></code> is NOT Thread-Safe!</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0277</span>]<span class="op">:</span> <span class="ot">`Rc&lt;Mutex&lt;i32&gt;&gt;`</span> cannot be sent between threads safely</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>   <span class="op">--&gt;</span> src<span class="op">/</span>main<span class="op">.</span>rs<span class="op">:</span><span class="dv">11</span><span class="op">:</span><span class="dv">36</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="dv">11</span>  <span class="op">|</span>         <span class="kw">let</span> handle <span class="ot">= thread::</span>spawn(move <span class="op">||</span> {</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span>                      <span class="co">------------- ^------</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span>                      <span class="op">|</span>             <span class="op">|</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span>                      <span class="op">|</span>             <span class="ot">`Rc&lt;Mutex&lt;i32&gt;&gt;`</span> cannot be sent</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span>                      <span class="op">|</span>              between threads safely</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span>                      required by a bound introduced by this call</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">=</span> help<span class="op">:</span> the trait <span class="ot">`Send`</span> is <span class="fu">not</span> implemented for <span class="ot">`Rc&lt;Mutex&lt;i32&gt;&gt;`</span></span></code></pre></div>
+<p><code class="sourceCode haskell"><span class="dt">Rc</span></code> updates its reference count <strong>without</strong> thread-safe synchronization.
+Two threads incrementing the count at the same time could corrupt it!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="solution-arct-atomic-reference-counting">Solution: <code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> (Atomic Reference Counting)</h2>
+<p><code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> is like <code class="sourceCode haskell"><span class="dt">Rc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> but uses <strong>atomic</strong> operations – safe across threads!</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::sync::</span><span class="op">{</span>Arc<span class="op">,</span> Mutex<span class="op">};</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> counter <span class="op">=</span> <span class="pp">Arc::</span>new(<span class="pp">Mutex::</span>new(<span class="dv">0</span>))<span class="op">;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> handles <span class="op">=</span> <span class="pp">vec!</span>[]<span class="op">;</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="dv">0</span><span class="op">..</span><span class="dv">10</span> <span class="op">{</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> counter <span class="op">=</span> <span class="pp">Arc::</span>clone(<span class="op">&amp;</span>counter)<span class="op">;</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> handle <span class="op">=</span> <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="op">{</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> <span class="kw">mut</span> num <span class="op">=</span> counter<span class="op">.</span>lock()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">*</span>num <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span>)<span class="op">;</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>        handles<span class="op">.</span>push(handle)<span class="op">;</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> handle <span class="kw">in</span> handles <span class="op">{</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>        handle<span class="op">.</span>join()<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Result: {}&quot;</span><span class="op">,</span> <span class="op">*</span>counter<span class="op">.</span>lock()<span class="op">.</span>unwrap())<span class="op">;</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">Result</span><span class="op">:</span> <span class="dv">10</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="arc-mutex-the-pattern"><code class="sourceCode haskell"><span class="dt">Arc</span></code> + <code class="sourceCode haskell"><span class="dt">Mutex</span></code>: The Pattern</h2>
+<table>
+<thead>
+<tr>
+<th>Single-threaded</th>
+<th>Multi-threaded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="sourceCode haskell"><span class="dt">Rc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code></td>
+<td><code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code></td>
+</tr>
+<tr>
+<td><code class="sourceCode haskell"><span class="dt">RefCell</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code></td>
+<td><code class="sourceCode haskell"><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code></td>
+</tr>
+<tr>
+<td><code class="sourceCode haskell"><span class="dt">Rc</span><span class="op">&lt;</span><span class="dt">RefCell</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;&gt;</span></code></td>
+<td><code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">Arc</span></code> gives multiple ownership across threads</li>
+<li><code class="sourceCode haskell"><span class="dt">Mutex</span></code> gives interior mutability (only one writer at a time)</li>
+<li>Together: <strong>shared mutable state</strong> that is safe</li>
+</ul>
+<p><strong>Note</strong>: <code class="sourceCode haskell"><span class="dt">Arc</span></code> has a performance cost (atomic operations). Use <code class="sourceCode haskell"><span class="dt">Rc</span></code> in single-threaded code.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-3">Goal Today</h2>
+<ul>
+<li>[+] Threads: <code class="sourceCode haskell"><span class="ot">thread::</span>spawn</code>, <code class="sourceCode haskell">move</code> closures, <code class="sourceCode haskell">join()</code></li>
+<li>[+] Message Passing: <code class="sourceCode haskell"><span class="ot">mpsc::</span>channel()</code>, <code class="sourceCode haskell">send</code>, <code class="sourceCode haskell">recv</code>, multiple producers</li>
+<li>[+] Shared State: <code class="sourceCode haskell"><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code>, <code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code>, <code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;&gt;</span></code></li>
+<li><label><input type="checkbox" />Send and Sync</label></li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="send-and-sync-traits"><code class="sourceCode haskell"><span class="dt">Send</span></code> and <code class="sourceCode haskell"><span class="dt">Sync</span></code> Traits</h2>
+<p>How does Rust <strong>know</strong> what’s safe to use across threads?</p>
+<p>Two <strong>marker traits</strong> (no methods, just labels):</p>
+<ul>
+<li><strong><code class="sourceCode haskell"><span class="dt">Send</span></code></strong>: ownership of a value can be <strong>transferred</strong> to another thread</li>
+<li><strong><code class="sourceCode haskell"><span class="dt">Sync</span></code></strong>: a value can be <strong>referenced</strong> from multiple threads (<code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code> is <code class="sourceCode haskell"><span class="dt">Send</span></code>)</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="send-safe-to-transfer-between-threads"><code class="sourceCode haskell"><span class="dt">Send</span></code>: Safe to Transfer Between Threads</h2>
+<p>Almost all types are <code class="sourceCode haskell"><span class="dt">Send</span></code>. Notable exceptions:</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">Rc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> is <strong>not</strong> <code class="sourceCode haskell"><span class="dt">Send</span></code> (reference count is not atomic)</li>
+<li>Raw pointers are <strong>not</strong> <code class="sourceCode haskell"><span class="dt">Send</span></code></li>
+</ul>
+<p><code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> <strong>is</strong> <code class="sourceCode haskell"><span class="dt">Send</span></code> – that’s why it works with <code class="sourceCode haskell"><span class="ot">thread::</span>spawn</code>.</p>
+<p><code class="sourceCode haskell"><span class="ot">thread::</span>spawn</code> <strong>requires</strong> its closure to be <code class="sourceCode haskell"><span class="dt">Send</span></code>:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">// simplified signature</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">pub</span> <span class="kw">fn</span> spawn<span class="op">&lt;</span>F<span class="op">&gt;</span>(f<span class="op">:</span> F) <span class="op">-&gt;</span> JoinHandle<span class="op">&lt;</span>T<span class="op">&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    F<span class="op">:</span> <span class="bu">FnOnce</span>() <span class="op">-&gt;</span> T <span class="op">+</span> <span class="bu">Send</span> <span class="op">+</span> <span class="ot">'static</span><span class="op">,</span></span></code></pre></div>
+<p>If you try to send a non-<code class="sourceCode haskell"><span class="dt">Send</span></code> type to another thread, the <strong>compiler rejects it</strong>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="sync-safe-to-share-between-threads"><code class="sourceCode haskell"><span class="dt">Sync</span></code>: Safe to Share Between Threads</h2>
+<p>A type <code class="sourceCode haskell"><span class="dt">T</span></code> is <code class="sourceCode haskell"><span class="dt">Sync</span></code> if <code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">T</span></code> is <code class="sourceCode haskell"><span class="dt">Send</span></code> (i.e., safe to share a reference across threads).</p>
+<p>Notable types that are <strong>not</strong> <code class="sourceCode haskell"><span class="dt">Sync</span></code>:</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">Rc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> – not safe to share</li>
+<li><code class="sourceCode haskell"><span class="dt">RefCell</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> – runtime borrow checking is not thread-safe</li>
+<li><code class="sourceCode haskell"><span class="dt">Cell</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> – interior mutation without synchronization</li>
+</ul>
+<p><code class="sourceCode haskell"><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> <strong>is</strong> <code class="sourceCode haskell"><span class="dt">Sync</span></code> – that’s the whole point!</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="send-and-sync-are-automatic"><code class="sourceCode haskell"><span class="dt">Send</span></code> and <code class="sourceCode haskell"><span class="dt">Sync</span></code> are Automatic</h2>
+<p>You (almost) never implement these traits manually.</p>
+<p>A type is <code class="sourceCode haskell"><span class="dt">Send</span></code> if <strong>all</strong> its fields are <code class="sourceCode haskell"><span class="dt">Send</span></code>.</p>
+<p>A type is <code class="sourceCode haskell"><span class="dt">Sync</span></code> if <strong>all</strong> its fields are <code class="sourceCode haskell"><span class="dt">Sync</span></code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> MyData <span class="op">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    name<span class="op">:</span> <span class="dt">String</span><span class="op">,</span>       <span class="co">// String is Send + Sync</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    count<span class="op">:</span> <span class="dt">i32</span><span class="op">,</span>         <span class="co">// i32 is Send + Sync</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">// MyData is automatically Send + Sync!</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> NotThreadSafe <span class="op">{</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">:</span> Rc<span class="op">&lt;</span><span class="dt">i32</span><span class="op">&gt;,</span>      <span class="co">// Rc is NOT Send, NOT Sync</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">// NotThreadSafe is NOT Send, NOT Sync!</span></span></code></pre></div>
+<p>The compiler figures this out automatically – no annotations needed.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="quiz-4">QUIZ</h2>
+<p>Which of these compile?</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">// (A)</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz_a() <span class="op">{</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="pp">println!</span>(<span class="st">&quot;{x}&quot;</span>))<span class="op">;</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">// (B)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::rc::</span>Rc<span class="op">;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz_b() <span class="op">{</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x <span class="op">=</span> <span class="pp">Rc::</span>new(<span class="dv">42</span>)<span class="op">;</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="pp">println!</span>(<span class="st">&quot;{x}&quot;</span>))<span class="op">;</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">// (C)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::</span>thread<span class="op">;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="pp">std::sync::</span>Arc<span class="op">;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz_c() <span class="op">{</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x <span class="op">=</span> <span class="pp">Arc::</span>new(<span class="dv">42</span>)<span class="op">;</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> y <span class="op">=</span> <span class="pp">Arc::</span>clone(<span class="op">&amp;</span>x)<span class="op">;</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="pp">thread::</span>spawn(<span class="kw">move</span> <span class="op">||</span> <span class="pp">println!</span>(<span class="st">&quot;{y}&quot;</span>))<span class="op">;</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{x}&quot;</span>)<span class="op">;</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="answers">Answers</h2>
+<ul>
+<li><strong>(A) Compiles</strong>: <code class="sourceCode haskell">i32</code> is <code class="sourceCode haskell"><span class="dt">Send</span></code>; <code class="sourceCode haskell">move</code> transfers ownership to the thread.</li>
+<li><strong>(B) Error</strong>: <code class="sourceCode haskell"><span class="dt">Rc</span><span class="op">&lt;</span>i32<span class="op">&gt;</span></code> is <strong>not</strong> <code class="sourceCode haskell"><span class="dt">Send</span></code>; the compiler rejects it.</li>
+<li><strong>(C) Compiles</strong>: <code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span>i32<span class="op">&gt;</span></code> is <code class="sourceCode haskell"><span class="dt">Send</span></code>; <code class="sourceCode haskell">y</code> is moved to the thread, <code class="sourceCode haskell">x</code> stays in <code class="sourceCode haskell">main</code>.</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="goal-today-4">Goal Today</h2>
+<ul>
+<li>[+] Threads: <code class="sourceCode haskell"><span class="ot">thread::</span>spawn</code>, <code class="sourceCode haskell">move</code> closures, <code class="sourceCode haskell">join()</code></li>
+<li>[+] Message Passing: <code class="sourceCode haskell"><span class="ot">mpsc::</span>channel()</code>, <code class="sourceCode haskell">send</code>, <code class="sourceCode haskell">recv</code>, multiple producers</li>
+<li>[+] Shared State: <code class="sourceCode haskell"><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code>, <code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code>, <code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;&gt;</span></code></li>
+<li>[+] Send and Sync: compiler-checked thread safety</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="summary-fearless-concurrency">Summary: Fearless Concurrency</h2>
+<p>Rust prevents concurrency bugs <strong>at compile time</strong> using the same tools we already know:</p>
+<ul>
+<li><strong>Ownership</strong> prevents data races (only one owner)</li>
+<li><strong>Borrowing</strong> prevents dangling references across threads</li>
+<li><strong><code class="sourceCode haskell"><span class="dt">Send</span></code>/<code class="sourceCode haskell"><span class="dt">Sync</span></code> traits</strong> prevent non-thread-safe types from crossing thread boundaries</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="sourceCode haskell"><span class="ot">thread::</span>spawn</code></td>
+<td>create a new thread</td>
+</tr>
+<tr>
+<td><code class="sourceCode haskell">move</code> closures</td>
+<td>transfer ownership into a thread</td>
+</tr>
+<tr>
+<td><code class="sourceCode haskell"><span class="ot">mpsc::</span>channel</code></td>
+<td>send data between threads (ownership transfer)</td>
+</tr>
+<tr>
+<td><code class="sourceCode haskell"><span class="dt">Mutex</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code></td>
+<td>shared mutable access with locking</td>
+</tr>
+<tr>
+<td><code class="sourceCode haskell"><span class="dt">Arc</span><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code></td>
+<td>thread-safe reference counting</td>
+</tr>
+<tr>
+<td><code class="sourceCode haskell"><span class="dt">Send</span></code> / <code class="sourceCode haskell"><span class="dt">Sync</span></code></td>
+<td>compile-time thread safety checks</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="material-inspired-by">Material Inspired by</h2>
+<ul>
+<li>https://doc.rust-lang.org/book/ch16-01-threads.html</li>
+<li>https://doc.rust-lang.org/book/ch16-02-message-passing.html</li>
+<li>https://doc.rust-lang.org/book/ch16-03-shared-state.html</li>
+<li>https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html</li>
+</ul>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse230.github.io/wi26/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse230.github.io/wi26/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/bootstrap.min.js"></script>
+<!--
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/anim.js"></script>
+<script src="https://ucsd-cse230.github.io/wi26/static/js/scripts.js"></script>
+-->
+
+
+    </body>
+</html>

@@ -60,7 +60,7 @@ charT = Node
 
 ## Lets Work it Out!
 
-Write a function to add a *distinct* label to each *leaf*
+Write a function to add a **distinct** label to each *leaf*
 
 ```haskell
 label :: Tree a -> Tree (a, Int)
