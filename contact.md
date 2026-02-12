@@ -12,7 +12,7 @@ headerImg: world-map.jpg
 - **Lectures:** Tu,Th 9:30a-10:50a at CENTER 109
 - **Midterm 1:** Th _2/5/2026_, 9:30a-10:50p at CENTER 109
 - **Midterm 2:** Tu _3/10/2026_, 9:30a-10:50p at CENTER 109
-- **Project Demo:** Th _03/19/2026_, 8:00am-11:00a location TBA
+- **Project Demo:** Tu _03/17/2026_, 8:00am-11:00a location TBA
 
 ## Office Hours
 

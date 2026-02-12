@@ -2,7 +2,7 @@
 title: Parser Combinators
 date: 2020-05-22
 headerImg: books.jpg
---- 
+---
 
 <br>
 <br>
@@ -20,13 +20,11 @@ headerImg: books.jpg
 <br>
 <br>
 
+## Before we continue ...
 
+A Word from the Sponsor!
 
-## Before we continue ... 
-
-A Word from the Sponsor! 
-
-			Don't Fear Monads
+    		Don't Fear Monads
 
 They are just a versatile abstraction, like `map` or `fold`.
 
@@ -45,11 +43,11 @@ They are just a versatile abstraction, like `map` or `fold`.
 <br>
 <br>
 
-## Parsers 
+## Parsers
 
-A _parser_ is a function that 
+A _parser_ is a function that
 
-- converts _unstructured_ data (e.g. `String`, array of `Byte`,...) 
+- converts _unstructured_ data (e.g. `String`, array of `Byte`,...)
 - into _structured_ data (e.g. JSON object, Markdown, Video...)
 
 ```haskell
@@ -70,15 +68,14 @@ type Parser = String -> StructuredObject
 
 ## Every large software system contains a Parser
 
-
-| **System**    | **Parses**            |
-|:--------------|:----------------------|
-| Shell Scripts | Command-line options  |
-| Browsers      | HTML                  |
-| Games         | Level descriptors     |
-| Routers       | Packets               |
-| Netflix       | Video                 | 
-| Spotify       | Audio, Playlists...   | 
+| **System**    | **Parses**           |
+| :------------ | :------------------- |
+| Shell Scripts | Command-line options |
+| Browsers      | HTML                 |
+| Games         | Level descriptors    |
+| Routers       | Packets              |
+| Netflix       | Video                |
+| Spotify       | Audio, Playlists...  |
 
 <br>
 <br>
@@ -94,16 +91,16 @@ type Parser = String -> StructuredObject
 
 ## How to build Parsers?
 
-Two standard methods 
+Two standard methods
 
-### Regular Expressions 
+### Regular Expressions
 
-- Doesn't really scale beyond simple things 
+- Doesn't really scale beyond simple things
 - No nesting, recursion
 
-### Parser Generators 
+### Parser Generators
 
-1. Specify *grammar* via rules
+1. Specify _grammar_ via rules
 
 ```haskell
 Expr : Var            { EVar $1       }
@@ -113,8 +110,9 @@ Expr : Var            { EVar $1       }
      ;
 ```
 
-2. Tools like `yacc`, `bison`, `antlr`, `happy` 
-  - convert *grammar* into *executable function* 
+2. Tools like `yacc`, `bison`, `antlr`, `happy`
+
+- convert _grammar_ into _executable function_
 
 <br>
 <br>
@@ -135,23 +133,22 @@ Expr : Var            { EVar $1       }
 <br>
 <br>
 
+## Grammars Don't Compose!
 
-## Grammars Don't Compose! 
-
-If we have *two* kinds of structured objects `Thingy` and `Whatsit`. 
+If we have _two_ kinds of structured objects `Thingy` and `Whatsit`.
 
 ```haskell
-Thingy : rule 	{ action } 
+Thingy : rule 	{ action }
 ;
 
 Whatsit : rule  { action }
 ;
-``` 
+```
 
-To parse *sequences* of `Thingy` and `Whatsit` we must *duplicate* the rules
+To parse _sequences_ of `Thingy` and `Whatsit` we must _duplicate_ the rules
 
 ```haskell
-Thingies : Thingy Thingies  { ... } 
+Thingies : Thingy Thingies  { ... }
            EmptyThingy      { ... }
 ;
 
@@ -177,7 +174,7 @@ No nice way to _reuse_ the sub-parsers for `Whatsit` and `Thingy` :-(
 
 ## A New Hope: Parsers as Functions
 
-Lets think of parsers directly **as functions** that 
+Lets think of parsers directly **as functions** that
 
 - **Take** as input a `String`
 - **Convert** a part of the input into a `StructuredObject`
@@ -187,10 +184,10 @@ Lets think of parsers directly **as functions** that
 data Parser a = P (String -> (a, String))
 ```
 
-A `Parser a` 
+A `Parser a`
 
-- Converts a _prefix_ of a `String` 
-- Into a _structured_ object of type `a` and 
+- Converts a _prefix_ of a `String`
+- Into a _structured_ object of type `a` and
 - Returns the _suffix_ `String` unchanged
 
 <br>
@@ -238,9 +235,9 @@ data Parser a = P (String -> [(a, String)])
 <br>
 <br>
 
-## EXERCISE 
+## EXERCISE
 
-Given the definition 
+Given the definition
 
 ```haskell
 data Parser a = P (String -> [(a, String)])
@@ -251,7 +248,7 @@ Implement a function
 ```haskell
 runParser :: Parser a -> String -> [(a, String)]
 runParser p s = ???
-``` 
+```
 
 <br>
 <br>
@@ -265,9 +262,9 @@ runParser p s = ???
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
-Given the definition 
+Given the definition
 
 ```haskell
 data Parser a = P (String -> [(a, String)])
@@ -282,8 +279,8 @@ that returns the **first** `Char` from a string (if one exists)
 oneChar = P (\cs -> head cs)
 
 -- B
-oneChar = P (\cs -> case cs of 
-                      []   -> [('', [])] 
+oneChar = P (\cs -> case cs of
+                      []   -> [('', [])]
                       c:cs -> [c, cs])
 
 -- C
@@ -294,7 +291,7 @@ oneChar = P (\cs -> [(head cs, tail cs)])
 
 -- E
 oneChar = P (\cs -> case cs of
-                      [] -> [] 
+                      [] -> []
                       cs -> [(head cs, tail cs)])
 ```
 
@@ -339,13 +336,13 @@ oneChar = P (\cs -> case cs of
 <br>
 <br>
 
-## EXERCISE 
+## EXERCISE
 
-Your turn: Write a parser to grab **first two chars** 
+Your turn: Write a parser to grab **first two chars**
 
 ```haskell
 twoChar :: Parser (Char, Char)
-twoChar = P (\cs -> ???) 
+twoChar = P (\cs -> ???)
 ```
 
 When you are done, we should get
@@ -358,7 +355,6 @@ When you are done, we should get
 []
 ```
 
-
 <br>
 <br>
 <br>
@@ -372,37 +368,36 @@ When you are done, we should get
 <br>
 <br>
 <br>
-
 
 ## QUIZ
 
-Ok, so recall 
+Ok, so recall
 
 ```haskell
 twoChar :: Parser (Char, Char)
 twoChar  = P (\cs -> case cs of
                        c1:c2:cs' -> [((c1, c2), cs')]
                        _         -> [])
-``` 
+```
 
-Suppose we had some `foo` such that `twoChar'` was equivalent to `twoChar`  
+Suppose we had some `foo` such that `twoChar'` was equivalent to `twoChar`
 
 ```haskell
 twoChar' :: Parser (Char, Char)
-twoChar' = foo oneChar oneChar 
+twoChar' = foo oneChar oneChar
 ```
 
 What must the type of `foo` be?
 
-**A.** `Parser (Char, Char)` 
+**A.** `Parser (Char, Char)`
 
 **B.** `Parser Char -> Parser (Char, Char)`
 
-**C.** `Parser a -> Parser a -> Parser (a, a)` 
+**C.** `Parser a -> Parser a -> Parser (a, a)`
 
-**D.** `Parser a -> Parser b -> Parser (a, b)` 
+**D.** `Parser a -> Parser b -> Parser (a, b)`
 
-**E.** `Parser a -> Parser (a, a)` 
+**E.** `Parser a -> Parser (a, a)`
 
 <br>
 <br>
@@ -443,14 +438,14 @@ such that we get the following behavior
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
 What does `quiz` evaluate to?
 
 ```haskell
-quiz = forEach [10, 20, 30] (\i -> 
-         forEach [0, 1, 2] (\j -> 
-           [i + j] 
+quiz = forEach [10, 20, 30] (\i ->
+         forEach [0, 1, 2] (\j ->
+           [i + j]
          )
        )
 ```
@@ -473,24 +468,23 @@ quiz = forEach [10, 20, 30] (\i ->
 <br>
 <br>
 
-
 ## A `pairP` Combinator
 
 Lets implement the above as `pairP`
 
 ```haskell
 forEach :: [a] -> (a -> [b]) -> [b]
-forEach xs f = concatMap f xs 
+forEach xs f = concatMap f xs
 
 pairP :: Parser a -> Parser b -> Parser (a, b)
 pairP aP bP = P (\s -> forEach (runParser aP s) (\(a, s') ->
-                         forEach (runParser bP s') (\(b, s'') -> 
+                         forEach (runParser bP s') (\(b, s'') ->
                            ((a, b), s'')
                        )
-                ) 
+                )
 ```
 
-Now we can write 
+Now we can write
 
 ```haskell
 twoChar = pairP oneChar oneChar
@@ -505,15 +499,14 @@ twoChar = pairP oneChar oneChar
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
 What does `quiz` evaluate to?
 
-
 ```haskell
 twoChar = pairP oneChar oneChar
 
-quiz    = runParser twoChar "h" 
+quiz    = runParser twoChar "h"
 ```
 
 **A.** `[((`h`, `h`), "")]`
@@ -615,9 +608,9 @@ returnP a = P (\s -> [(s, a)])    -- E
 <br>
 <br>
 
-**HINT:** `return a` should just 
+**HINT:** `return a` should just
 
-- "produce" the parse result `a` and 
+- "produce" the parse result `a` and
 - leave the string unconsumed.
 
 <br>
@@ -634,31 +627,30 @@ returnP a = P (\s -> [(s, a)])    -- E
 <br>
 <br>
 
-## Bind 
+## Bind
 
-Next, lets implement `bindP` 
+Next, lets implement `bindP`
 
-  - we almost saw it as `pairP`
+- we almost saw it as `pairP`
 
 ```haskell
 bindP :: Parser a -> (a -> Parser b) -> Parser b
-bindP aP fbP = P (\s -> 
-  forEach (runParser aP s) (\(a, s') -> 
+bindP aP fbP = P (\s ->
+  forEach (runParser aP s) (\(a, s') ->
     forEach (runParser (fbP a) s') (\(b, s'') ->
       [(b, s'')]
-    )   
+    )
   )
 )
 ```
 
-The function 
+The function
 
 - Builds the `a` values out of `aP` (using `runParser`)
-- Builds the `b` values by calling `fbP a` on the _remainder_ string `s'` 
-- Returns `b` values and the remainder string `s''` 
+- Builds the `b` values by calling `fbP a` on the _remainder_ string `s'`
+- Returns `b` values and the remainder string `s''`
 
 ![](/static/img/bind-0.png)
-
 
 ## The `Parser` Monad
 
@@ -672,7 +664,7 @@ instance Monad Parser where
 
 ![](https://www.artgroup.com/assets/img/products/WDC44013)
 
-And now, let the *wild rumpus start!*
+And now, let the _wild rumpus start!_
 
 <br>
 <br>
@@ -691,13 +683,13 @@ And now, let the *wild rumpus start!*
 
 ## Parser Combinators
 
-Lets write lots of *high-level* operators to **combine** parsers!
+Lets write lots of _high-level_ operators to **combine** parsers!
 
-Here's a cleaned up `pairP` 
+Here's a cleaned up `pairP`
 
 ```haskell
 pairP :: Parser a -> Parser b -> Parser (a, b)
-pairP aP bP = do 
+pairP aP bP = do
   a <- aP
   b <- bP
   return (a, b)
@@ -719,9 +711,9 @@ pairP aP bP = do
 
 ## Failures are the Pillars of Success!
 
-Surprisingly useful, always _fails_ 
+Surprisingly useful, always _fails_
 
-- i.e. returns `[]` no successful parses 
+- i.e. returns `[]` no successful parses
 
 ```haskell
 failP :: Parser a
@@ -741,11 +733,11 @@ failP = P (\_ -> [])
 
 ## QUIZ
 
-Consider the parser 
+Consider the parser
 
 ```haskell
 satP :: (Char -> Bool) -> Parser Char
-satP p = do 
+satP p = do
   c <- oneChar
   if p c then return c else failP
 ```
@@ -757,14 +749,13 @@ quiz1 = runParser (satP (\c -> c == 'h')) "hellow"
 quiz2 = runParser (satP (\c -> c == 'h')) "yellow"
 ```
 
-|       | `quiz1`           | `quiz2`              | 
-|------:|------------------:|---------------------:| 
-| **A** | `[]`              | `[]`                 |
-| **B** | `[('h', "ellow")]`| `[('y', "ellow")]`   |
-| **C** | `[('h', "ellow")]`| `[]`                 |
-| **D** | `[]`              | `[('y', "ellow")]`   |
+|       |            `quiz1` |            `quiz2` |
+| ----: | -----------------: | -----------------: |
+| **A** |               `[]` |               `[]` |
+| **B** | `[('h', "ellow")]` | `[('y', "ellow")]` |
+| **C** | `[('h', "ellow")]` |               `[]` |
+| **D** |               `[]` | `[('y', "ellow")]` |
 
-
 <br>
 <br>
 <br>
@@ -776,16 +767,16 @@ quiz2 = runParser (satP (\c -> c == 'h')) "yellow"
 <br>
 <br>
 
-## Parsing Alphabets and Numerics 
+## Parsing Alphabets and Numerics
 
-We can now use `satP` to write 
+We can now use `satP` to write
 
 ```haskell
 -- parse ONLY the Char c
 char :: Parser Char
 char c = satP (\c' -> c == c')
 
--- parse ANY ALPHABET 
+-- parse ANY ALPHABET
 alphaCharP :: Parser Char
 alphaCharP = satP isAlpha
 
@@ -807,7 +798,7 @@ digitChar = satP isDigit
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
 We can parse a single `Int` digit
 
@@ -818,19 +809,19 @@ digitInt = do
   return (read [c])   -- convert Char to Int
 ```
 
-What is the result of 
+What is the result of
 
 ```haskell
 quiz1 = runParser digitInt "92"
 quiz2 = runParser digitInt "cat"
 ```
 
-|       | `quiz1`           | `quiz2`          | 
-|------:|------------------:|-----------------:| 
-| **A** | `[]`              | `[]`             |
-| **B** | `[('9', "2")]`    | `[('c', "at")]`  |
-| **C** | `[(9, "2")]`      | `[]`             |
-| **D** | `[]`              | `[('c', "at")]`  |
+|       |        `quiz1` |         `quiz2` |
+| ----: | -------------: | --------------: |
+| **A** |           `[]` |            `[]` |
+| **B** | `[('9', "2")]` | `[('c', "at")]` |
+| **C** |   `[(9, "2")]` |            `[]` |
+| **D** |           `[]` | `[('c', "at")]` |
 
 <br>
 <br>
@@ -845,15 +836,14 @@ quiz2 = runParser digitInt "cat"
 
 ## EXERCISE
 
-Write a function 
+Write a function
 
-```haskell 
-strP :: String -> Parser String 
+```haskell
+strP :: String -> Parser String
 strP s = -- parses EXACTLY the String s and nothing else
 ```
 
 when you are done, we should get the following behavior
-
 
 ```haskell
 >>> dogeP = strP "doge"
@@ -880,9 +870,9 @@ when you are done, we should get the following behavior
 
 ## A Choice Combinator
 
-Lets write a combinator `orElse p1 p2` such that 
+Lets write a combinator `orElse p1 p2` such that
 
-- returns the results of `p1` 
+- returns the results of `p1`
 
 **or, else** _if those are empty_
 
@@ -901,7 +891,7 @@ alphaNumChar :: Parser Char
 alphaNumChar = alphaChar `orElse` digitChar
 ```
 
-Which should produce 
+Which should produce
 
 ```haskell
 >>> runParser alphaNumChar "cat"
@@ -930,7 +920,7 @@ Which should produce
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
 ```haskell
 orElse :: Parser a -> Parser a -> Parser a
@@ -941,26 +931,26 @@ orElse p1 p2 = -- produce results of `p1` if non-empty
 Which of the following implements `orElse`?
 
 ```haskell
--- a 
-orElse p1 p2 = do 
+-- a
+orElse p1 p2 = do
   r1s <- p1
   r2s <- p2
-  return (r1s ++ r2s) 
+  return (r1s ++ r2s)
 
 -- b
-orElse p1 p2 = do 
-  r1s <- p1 
-  case r1s of 
-    [] -> p2 
+orElse p1 p2 = do
+  r1s <- p1
+  case r1s of
+    [] -> p2
     _  -> return r1s
 
 -- c
-orElse p1 p2 = P (\cs -> 
+orElse p1 p2 = P (\cs ->
   runParser p1 cs ++ runParser p2 cs
   )
 
 -- d
-orElse p1 p2 = P (\cs -> 
+orElse p1 p2 = P (\cs ->
   case runParser p1 cs of
     []  -> runParser p2 cs
     r1s -> r1s
@@ -978,7 +968,7 @@ orElse p1 p2 = P (\cs ->
 <br>
 <br>
 
-## An "Operator" for `orElse` 
+## An "Operator" for `orElse`
 
 It will be convenient to have a short "operator" for `orElse`
 
@@ -999,11 +989,11 @@ p1 <|> p2 = orElse p1 p2
 <br>
 <br>
 
-<!--  
+<!--
 ## QUIZ: A Choice Combinator
 
-Lets write an `orElse` combinator such that `orElse p1 p2` 
-- returns the results of `p1` 
+Lets write an `orElse` combinator such that `orElse p1 p2`
+- returns the results of `p1`
 
 **or, else** _if those are empty_
 
@@ -1012,7 +1002,7 @@ Lets write an `orElse` combinator such that `orElse p1 p2`
 
 ```haskell
 :: Parser a -> Parser a -> Parser a
-chooseP p1 p2 = -- produce non-empty results of `p1` 
+chooseP p1 p2 = -- produce non-empty results of `p1`
                 -- or-else results of `p2`
 ```
 
@@ -1023,7 +1013,7 @@ alphaNumChar :: Parser Char
 alphaNumChar = chooseP alphaChar digitChar
 ```
 
-Which should produce 
+Which should produce
 
 ```haskell
 >>> runParser alphaNumChar "cat"
@@ -1037,14 +1027,14 @@ Which should produce
 ```
 
 ```haskell
--- a 
+-- a
 chooseP p1 p2 = do xs <- p1
                    ys <- p2
-                   return (x1 ++ x2) 
+                   return (x1 ++ x2)
 -- b
-choose p1 p2  = do xs <- p1 
-                   case xs of 
-                     [] -> p2 
+choose p1 p2  = do xs <- p1
+                   case xs of
+                     [] -> p2
                      _  -> return xs
 
 -- c
@@ -1058,13 +1048,13 @@ chooseP p1 p2 = P (\cs -> case runParser p1 cs of
 
 
 
-## QUIZ 
+## QUIZ
 
 Here's a parser that grabs the first `n` characters
 
 ```haskell
 grabN :: Int -> Parser String
-grabN n 
+grabN n
   | n <= 0    = return ""
   | otherwise = do {c <- oneChar; cs <- grabN (n-1); return (c:cs) }
 
@@ -1131,10 +1121,10 @@ and only one result if thats possible
 Now, lets write a _tiny_ calculator!
 
 ```haskell
--- 1. First, parse the operator 
-intOp      :: Parser (Int -> Int -> Int) 
-intOp      = plus <|> minus <|> times <|> divide 
-  where 
+-- 1. First, parse the operator
+intOp      :: Parser (Int -> Int -> Int)
+intOp      = plus <|> minus <|> times <|> divide
+  where
     plus   = do { _ <- char '+'; return (+) }
     minus  = do { _ <- char '-'; return (-) }
     times  = do { _ <- char '*'; return (*) }
@@ -1144,11 +1134,11 @@ intOp      = plus <|> minus <|> times <|> divide
 calc :: Parser Int
 calc = do x  <- digitInt
           op <- intOp
-          y  <- digitInt 
+          y  <- digitInt
           return (x `op` y)
 ```
 
-When `calc` is run, it will both parse _and_ calculate 
+When `calc` is run, it will both parse _and_ calculate
 
 ```haskell
 >>> runParser calc "8/2"
@@ -1182,15 +1172,15 @@ When `calc` is run, it will both parse _and_ calculate
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
-What will `quiz` evaluate to? 
+What will `quiz` evaluate to?
 
 ```haskell
 calc :: Parser Int
 calc = do x  <- digitInt
           op <- intOp
-          y  <- digitInt 
+          y  <- digitInt
           return (x `op` y)
 
 quiz = runParser calc "99bottles"
@@ -1221,9 +1211,9 @@ quiz = runParser calc "99bottles"
 
 ## Next: Recursive Parsing
 
-Its cool to parse individual `Char` ... 
+Its cool to parse individual `Char` ...
 
-... but _way_ more interesting to parse recursive structures! 
+... but _way_ more interesting to parse recursive structures!
 
 ```haskell
 "((2 + 10) * (7 - 4)) * (5 + 2)"
@@ -1242,8 +1232,9 @@ Its cool to parse individual `Char` ...
 
 ## EXERCISE: A "Recursive" String Parser
 
-The parser `string s` parses *exactly* the string `s` 
-  - fails otherwise
+The parser `string s` parses _exactly_ the string `s`
+
+- fails otherwise
 
 ```haskell
 >>> runParser (string "mic") "mickeyMouse"
@@ -1261,7 +1252,6 @@ string s = ???
 ```
 
 Which library function will _eliminate_ the recursion from `string`?
-
 
 <br>
 <br>
@@ -1285,8 +1275,8 @@ Often we want to _repeat_ parsing some object
 manyP  :: Parser a -> Parser [a]
 manyP p = m0 <|> m1
   where
-    m0  = return [] 
-    m1  = do { x <- p; xs <- manyP p; return (x:xs) } 
+    m0  = return []
+    m1  = do { x <- p; xs <- manyP p; return (x:xs) }
 ```
 
 Recall `digitChar :: Parser Char` returned a _single_ numeric `Char`
@@ -1297,17 +1287,15 @@ What will `quiz` evaluate to?
 quiz = runParser (manyP digitChar) "123horse"
 ```
 
-**A.** `[(""  , "1234horse")]` 
+**A.** `[(""  , "1234horse")]`
 
-**B.** `[("1" , "234horse")]` 
+**B.** `[("1" , "234horse")]`
 
-**C.** `[("1", "23horse"), ("12", "3horse"), ("123", "horse )]` 
+**C.** `[("1", "23horse"), ("12", "3horse"), ("123", "horse )]`
 
+**D.** `[("123", "horse")]`
 
-**D.** `[("123", "horse")]` 
-
-**E.** `[]` 
-
+**E.** `[]`
 
 <br>
 <br>
@@ -1322,15 +1310,15 @@ quiz = runParser (manyP digitChar) "123horse"
 
 ## Lets fix `manyP`!
 
-Run `p` _first_ and only `return []` if it fails ... 
-  
+Run `p` _first_ and only `return []` if it fails ...
+
 ```haskell
 -- | `manyP p` repeatedly runs `p` to return a list of [a]
 manyP  :: Parser a -> Parser [a]
 manyP p = m1 <|> m0
   where
-    m0  = return [] 
-    m1  = do { x <- p; xs <- manyP p; return (x:xs) } 
+    m0  = return []
+    m1  = do { x <- p; xs <- manyP p; return (x:xs) }
 ```
 
 now, we can write an `Int` parser as
@@ -1374,19 +1362,19 @@ _Now_ we can build a proper calculator!
 
 ```haskell
 calc0 ::  Parser Int
-calc0 = binExp <|> int 
+calc0 = binExp <|> int
 
 int :: Parser Int
-int = do 
-  xs <- many digitChar 
+int = do
+  xs <- many digitChar
   return (read xs)
 
 binExp :: Parser Int
 binExp = do
-  x <- int 
-  o <- intOp 
-  y <- calc0 
-  return (x `o` y) 
+  x <- int
+  o <- intOp
+  y <- calc0
+  return (x `o` y)
 ```
 
 Works pretty well!
@@ -1416,26 +1404,26 @@ ghci> doParse calc0 "11+22-33"
 <br>
 <br>
 
-## QUIZ 
+## QUIZ
 
 ```haskell
 calc0 ::  Parser Int
-calc0 = binExp <|> int 
+calc0 = binExp <|> int
 
 int :: Parser Int
-int = do 
-  xs <- many digitChar 
+int = do
+  xs <- many digitChar
   return (read xs)
 
 binExp :: Parser Int
 binExp = do
-  x <- int 
-  o <- intOp 
-  y <- calc0 
-  return (x `o` y) 
+  x <- int
+  o <- intOp
+  y <- calc0
+  return (x `o` y)
 ```
 
-What does `quiz` evaluate to? 
+What does `quiz` evaluate to?
 
 ```haskell
 quiz = runParser calc0 "10-5-5"
@@ -1465,24 +1453,24 @@ quiz = runParser calc0 "10-5-5"
 
 ## Problem: Right-Associativity
 
-Recall 
+Recall
 
 ```haskell
 binExp :: Parser Int
 binExp = do
-  x <- int 
-  o <- intOp 
-  y <- calc0 
+  x <- int
+  o <- intOp
+  y <- calc0
   return (x `o` y)
-``` 
+```
 
 `"10-5-5"` gets parsed as `10 - (5 - 5)` because
 
 ![](/static/img/parse-left.png)
 
-The `calc0` parser implicitly forces each operator to be **right associative** 
+The `calc0` parser implicitly forces each operator to be **right associative**
 
-- doesn't matter for `+`, `*` 
+- doesn't matter for `+`, `*`
 
 - but is incorrect for `-`
 
@@ -1497,16 +1485,16 @@ The `calc0` parser implicitly forces each operator to be **right associative**
 
 ## QUIZ
 
-Recall 
+Recall
 
 ```haskell
 binExp :: Parser Int
 binExp = do
-  x <- int 
-  o <- intOp 
-  y <- calc0 
+  x <- int
+  o <- intOp
+  y <- calc0
   return (x `o` y)
-``` 
+```
 
 What does `quiz` get evaluated to?
 
@@ -1524,7 +1512,6 @@ quiz = runParser calc0 "10*2+100"
 
 **E.** `[]`
 
-
 <br>
 <br>
 <br>
@@ -1539,9 +1526,9 @@ quiz = runParser calc0 "10*2+100"
 <br>
 <br>
 
-The `calc0` parser implicitly forces *all operators* to be *right associative* 
+The `calc0` parser implicitly forces _all operators_ to be _right associative_
 
-- doesn't matter for `+`, `*` 
+- doesn't matter for `+`, `*`
 
 - but is incorrect for `-`
 
@@ -1570,42 +1557,41 @@ Lets write a combinator that parses something within `(...)`
 
 ```haskell
 parensP :: Parser a -> Parser a
-parensP p = do 
-  _ <- char '(' 
+parensP p = do
+  _ <- char '('
   x <- p
   _ <- char ')'
-  return x 
+  return x
 ```
 
-now we can try 
+now we can try
 
 ```haskell
 calc1 :: Parser Int
-calc1 = parens binExp <|> int 
+calc1 = parens binExp <|> int
 
 binExp :: Parser Int
 binExp = do
-  x <- int 
-  o <- intOp 
-  y <- calc1 
+  x <- int
+  o <- intOp
+  y <- calc1
   return (x `o` y)
 ```
 
 now the original string wont even parse
 
-
 ```haskell
->>> runParser calc1 "10-5-5" 
+>>> runParser calc1 "10-5-5"
 []
 ```
 
 but we can add parentheses to get the right result
 
 ```haskell
->>> runParser calc1 "((10-5)-5)" 
+>>> runParser calc1 "((10-5)-5)"
 [(0 ,"")]
 
->>> runParser calc1 "(10-(5-5))" 
+>>> runParser calc1 "(10-(5-5))"
 [(10 ,"")]
 
 >>> runParser calc1 "((10*2)+100)"
@@ -1630,7 +1616,7 @@ but we can add parentheses to get the right result
 
 ## Left Associativity
 
-But how to make the parser *left associative*
+But how to make the parser _left associative_
 
 - i.e. parse "10-5-5" as `(10 - 5) - 5` ?
 
@@ -1638,12 +1624,12 @@ Lets flip the order!
 
 ```haskell
 calc1      ::  Parser Int
-calc1      = binExp <|> oneInt 
+calc1      = binExp <|> oneInt
 
 binExp :: Parser Int
-binExp = do 
-  x <- calc1 
-  o <- intOp 
+binExp = do
+  x <- calc1
+  o <- intOp
   y <- int
   return (x `o` y)
 ```
@@ -1655,9 +1641,9 @@ But ...
 ...
 ```
 
-Infinite loop! `calc1 --> binExp --> calc1 --> binExp --> ...` 
+Infinite loop! `calc1 --> binExp --> calc1 --> binExp --> ...`
 
-- without _consuming_ any input :-( 
+- without _consuming_ any input :-(
 
 <br>
 <br>
@@ -1678,25 +1664,25 @@ Infinite loop! `calc1 --> binExp --> calc1 --> binExp --> ...`
 <br>
 <br>
 
-## Solution: Parsing with Multiple *Levels*
+## Solution: Parsing with Multiple _Levels_
 
 Any expression is a **sum-of-products**
 
 ```haskell
   10 * 20 * 30 + 40 * 50 + 60 * 70 * 80
-=> 
+=>
   ((((10 * 20) * 30) + (40 * 50)) + ((60 * 70) * 80))
-=>  
+=>
   ((((base * base) * base)  + (base * base)) + ((base * base) * base))
-=>  
+=>
   (((prod * base) + prod)  + (prod * base))
-=>  
-  ((prod + prod) + prod) 
-=>   
+=>
+  ((prod + prod) + prod)
+=>
   (sum + prod)
 =>
-   sum 
-=>   
+   sum
+=>
    expr
 ```
 
@@ -1711,14 +1697,14 @@ Any expression is a **sum-of-products**
 <br>
 <br>
 
-## Parsing with Multiple *Levels*
+## Parsing with Multiple _Levels_
 
 So lets **layer** our language as
 
 ```haskell
   expr :== sum
   sum  :== (((prod "+" prod) "+" prod) "+" ... "+" prod)
-  prod :== (((base "*" base) "*" base) "*" ... "*" base) 
+  prod :== (((base "*" base) "*" base) "*" ... "*" base)
   base :== "(" expr ")" ORELSE int
 ```
 
@@ -1726,16 +1712,16 @@ that is the recursion looks like
 
 ```haskell
   expr = sum
-  sum  = oneOrMore prod "+" 
+  sum  = oneOrMore prod "+"
   prod = oneOrMore base "*"
-  base = "(" expr ")" <|> int 
+  base = "(" expr ")" <|> int
 ```
 
 No infinite loop!
 
-- `expr --> prod --> base -->* expr` 
+- `expr --> prod --> base -->* expr`
 
-- but last step `-->*` _consumes_ a `(` 
+- but last step `-->*` _consumes_ a `(`
 
 <br>
 <br>
@@ -1757,22 +1743,23 @@ No infinite loop!
 ## Parsing `oneOrMore`
 
 Lets implement `oneOrMore vP oP` as a combinator
-  - `vP` parses a *single* `a` value
-  - `oP` parses an *operator* `a -> a -> a` 
-  - `oneOrMore vP oP` parses and returns the result `((v1 o v2) o v3) o v4) o ... o vn)`
+
+- `vP` parses a _single_ `a` value
+- `oP` parses an _operator_ `a -> a -> a`
+- `oneOrMore vP oP` parses and returns the result `((v1 o v2) o v3) o v4) o ... o vn)`
 
 But how?
 
-1. *grab* the first `v1` using `vP` 
+1. _grab_ the first `v1` using `vP`
 
-2. *continue* by 
-    - either trying `oP` then `v2` ... and recursively continue with `v1 o v2` 
-    - `orElse` (no more `o`) just return `v1`
+2. _continue_ by
+   - either trying `oP` then `v2` ... and recursively continue with `v1 o v2`
+   - `orElse` (no more `o`) just return `v1`
 
 ```haskell
 oneOrMore :: Parser a -> Parser (a -> a -> a) -> Parser a
 oneOrMore vP oP = do {v1 <- vP; continue v1}
-  where 
+  where
     continue v1 = do { o <- oP; v2 <- vP; continue (v1 `o` v2) }
                <|> return v1
 ```
@@ -1796,13 +1783,13 @@ oneOrMore vP oP = do {v1 <- vP; continue v1}
 
 ## Implementing Layered Parser
 
-Now we can implement the grammar 
+Now we can implement the grammar
 
 ```haskell
   expr = sum
-  sum  = oneOrMore prod "+" 
+  sum  = oneOrMore prod "+"
   prod = oneOrMore base "*"
-  base = "(" expr ")" <|> int 
+  base = "(" expr ")" <|> int
 ```
 
 simply as
@@ -1814,14 +1801,14 @@ prod = oneOrMore base mulOp
 base = parens expr <|> int
 ```
 
-where `addOp` is `+` or `-` and `mulOp` is `*` or `/`  
+where `addOp` is `+` or `-` and `mulOp` is `*` or `/`
 
 ```haskell
 addOp, mulOp :: Parser (Int -> Int -> Int)
 addOp = constP "+" (+) <|> constP "-" (-)
 mulOp = constP "*" (*) <|> constP "/" div
 
-constP :: String -> a -> Parser a 
+constP :: String -> a -> Parser a
 constP s x = do { _ <- string s; return x }
 ```
 
@@ -1847,20 +1834,23 @@ Lets make sure it works!
 <br>
 <br>
 
-## Parser combinators 
+## Parser combinators
 
 That was a taste of Parser Combinators
 
-- Transferred from Haskell to [_many_ other languages][3]. 
+- Transferred from Haskell to [_many_ other languages][3].
 
 Many libraries including [Parsec][3] used in your homework
-  -  `oneOrMore` is called `chainl`
 
-Read more about the *theory* 
-  - in these [recent][4] [papers][5]
+- `oneOrMore` is called `chainl`
 
-Read more about the *practice* 
-  - in this recent post that I like [JSON parsing from scratch][6]
+Read more about the _theory_
+
+- in these [recent][4] [papers][5]
+
+Read more about the _practice_
+
+- in this recent post that I like [JSON parsing from scratch][6]
 
 [2]: http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf
 [3]: http://www.haskell.org/haskellwiki/Parsec

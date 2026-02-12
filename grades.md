@@ -33,7 +33,7 @@ the exam (feel free to use both sides, if you wish.)
 ### Project (20%)
 
 A [project](project.html) that will be completed **in a group of 2-3**
-and demo-ed and evaluated during the final exam block on **Thu 03/19 8:00a – 11:00a**.
+and demo-ed and evaluated during the final exam block on **Tu 03/17 8:00a – 11:00a**.
 
 ### Piazza (5% EC)
 

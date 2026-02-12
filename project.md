@@ -5,7 +5,7 @@ headerImg: pier.jpg
 
 You will do the project in a **in a group of 2-3** over the _second half_ of the quarter.
 
-We will evaluate the project with a **live demo and Q&A** during the final exam block **Th _03/19/2026_, 8:00a-11:00a**.
+We will evaluate the project with a **live demo and Q&A** during the final exam block **Tu _03/17/2026_, 8:00a-11:00a**.
 
 The project will comprise 20% of your overall grade.
 
@@ -19,7 +19,7 @@ the principles learned in CSE 230.
 
 - **Thu 2/19** Proposal [Submit here](https://forms.gle/ACFX2ZhUokmA4rMH8)
 - **Fri 3/6** Updates
-- **Thu 3/19** Demonstration
+- **Tu 3/17** Demonstration
 
 The overall goal is for _you_ to write an application
 from scratch, so we will provide very basic starter
@@ -70,7 +70,7 @@ Update your `README` with
 ### Milestone 3: Demonstration
 
 You will give a **10 min** demonstration of your project during an open
-"poster session" to be conducted during the finals slot **Thu 03/19 from 8:00am -- 11:00am**.
+"poster session" to be conducted during the finals slot **Tu 03/17 from 8:00am -- 11:00am**.
 
 ## Final Demo: Plan and Rubric
 
@@ -80,7 +80,7 @@ Each group’s presentation should comprise the following components:
 
 - Prepared presentation: (8 minutes)
 
-  - An overview of the project, including a high-level walkthrough of the architecture;
+  - An overview of the project, including a high-level walk through of the architecture;
   - A demo of the project;
   - One interesting or challenging bit about the project.
 

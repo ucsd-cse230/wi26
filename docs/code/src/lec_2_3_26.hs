@@ -130,7 +130,7 @@ eval' (Num n) =
 eval' (Bin o e1 e2) = do
   v1 <- eval' e1
   v2 <- eval' e2
-  evalOpR e2 o v1 v2
+  evalOpR (Err (show e2)) o v1 v2
 
 -- Recipe a -> (a -> Recipe b) -> Recipe b
 

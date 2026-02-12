@@ -337,8 +337,8 @@ ex6 = 4 + 5
 ex7 :: Double
 ex7 = 4.0 * 5.0
 
-quiz :: Int
-quiz = if 5 > 4 then ex6 else ex7 -- HEREHEREHERE
+-- quiz :: Int
+-- quiz = if 5 > 4 then ex6 else ex7 -- HEREHEREHERE
 
 {-
 x = cond ? this : that
