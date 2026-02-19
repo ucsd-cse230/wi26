@@ -1494,7 +1494,7 @@ and only one result if thats possible
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="ot">binExp ::</span> <span class="dt">Parser</span> <span class="dt">Int</span></span>
 <span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>binExp <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> int</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> calc1</span>
 <span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>  o <span class="ot">&lt;-</span> intOp</span>
 <span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> calc1</span>
 <span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (x <span class="ot">`o`</span> y)</span></code></pre></div>

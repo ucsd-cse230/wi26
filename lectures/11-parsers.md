@@ -1572,7 +1572,7 @@ calc1 = parens binExp <|> int
 
 binExp :: Parser Int
 binExp = do
-  x <- int
+  x <- calc1
   o <- intOp
   y <- calc1
   return (x `o` y)
