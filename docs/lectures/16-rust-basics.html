@@ -237,6 +237,14 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Arrays, Lists, Trees, Graphs, etc.</li>
 </ul>
 <p>But you can quickly “run out of space” …</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h3 id="manual-memory-management"><em>Manual</em> Memory Management</h3>
 <p>Unmanaged languages (e.g., <code class="sourceCode haskell"><span class="dt">C</span></code>, <code class="sourceCode haskell"><span class="dt">C</span><span class="op">++</span></code>)</p>
 <ul>
@@ -253,6 +261,14 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <img src="../static/img/google-bugs.png" alt="Google Chromium Bugs" />
 <figcaption aria-hidden="true">Google Chromium Bugs</figcaption>
 </figure>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h3 id="automatic-memory-management"><em>Automatic</em> Memory Management</h3>
 <p>Managed languages (e.g., Python, Java, Haskell) have garbage collection</p>
 <ul>
@@ -307,13 +323,13 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <br>
 <br></p>
 <h2 id="goal-today-rust-basics">Goal Today: Rust Basics</h2>
-<ul class="task-list">
-<li><label><input type="checkbox" />Programs</label></li>
-<li><label><input type="checkbox" />Basic Types</label></li>
-<li><label><input type="checkbox" />Variables</label></li>
-<li><label><input type="checkbox" />Expressions</label></li>
-<li><label><input type="checkbox" />Functions</label></li>
-<li><label><input type="checkbox" />Control Flow</label></li>
+<ul>
+<li>Programs</li>
+<li>Basic Types</li>
+<li>Variables</li>
+<li>Expressions</li>
+<li>Functions</li>
+<li>Control Flow</li>
 </ul>
 <p><br>
 <br>
@@ -338,12 +354,12 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Hello</span>, world<span class="op">!</span></span></code></pre></div>
 <h2 id="goal-today-rust-basics-1">Goal Today: Rust Basics</h2>
 <ul>
-<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
-<li><label><input type="checkbox" />Basic Types</label></li>
-<li><label><input type="checkbox" />Expressions</label></li>
-<li><label><input type="checkbox" />Variables</label></li>
-<li><label><input type="checkbox" />Functions</label></li>
-<li><label><input type="checkbox" />Control Flow</label></li>
+<li><del>Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></del></li>
+<li>Basic Types</li>
+<li>Expressions</li>
+<li>Variables</li>
+<li>Functions</li>
+<li>Control Flow</li>
 </ul>
 <p><br>
 <br>
@@ -377,12 +393,12 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <br></p>
 <h2 id="goal-today-rust-basics-2">Goal Today: Rust Basics</h2>
 <ul>
-<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
-<li>[+] Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</li>
-<li>[+] Expressions</li>
-<li><label><input type="checkbox" />Functions</label></li>
-<li><label><input type="checkbox" />Variables</label></li>
-<li><label><input type="checkbox" />Control Flow</label></li>
+<li><del>Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></del></li>
+<li><del>Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</del></li>
+<li>Expressions</li>
+<li>Functions</li>
+<li>Variables</li>
+<li>Control Flow</li>
 </ul>
 <p><br>
 <br>
@@ -415,12 +431,12 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <br></p>
 <h2 id="goal-today-rust-basics-3">Goal Today: Rust Basics</h2>
 <ul>
-<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
-<li>[+] Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</li>
-<li>[+] Expressions: arithmetic, boolean, tuples</li>
-<li>[+] Functions: <code class="sourceCode haskell">fn name(x1<span class="op">:</span>t1,<span class="op">...</span>,xn<span class="op">:</span>tn) <span class="ot">-&gt;</span> ret { <span class="op">&lt;</span>expr<span class="op">&gt;</span> }</code></li>
-<li><label><input type="checkbox" />Variables</label></li>
-<li><label><input type="checkbox" />Control Flow</label></li>
+<li><del>Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></del></li>
+<li><del>Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</del></li>
+<li><del>Expressions: arithmetic, boolean, tuples</del></li>
+<li><del>Functions: <code class="sourceCode haskell">fn name(x1<span class="op">:</span>t1,<span class="op">...</span>,xn<span class="op">:</span>tn) <span class="ot">-&gt;</span> ret { <span class="op">&lt;</span>expr<span class="op">&gt;</span> }</code></del></li>
+<li>Variables</li>
+<li>Control Flow</li>
 </ul>
 <p><br>
 <br>
@@ -440,6 +456,12 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>But…</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="variables-are-immutable-by-default">Variables are Immutable by Default</h2>
 <p>Cannot <strong>reassign</strong> to an immutable variable <code class="sourceCode haskell">res</code></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">error</span>[<span class="dt">E0384</span>]<span class="op">:</span> cannot assign twice to immutable variable <span class="ot">`res`</span></span>
@@ -474,14 +496,17 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <br></p>
 <h2 id="goal-today-rust-basics-4">Goal Today: Rust Basics</h2>
 <ul>
-<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
-<li>[+] Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</li>
-<li>[+] Expressions: arithmetic, boolean, tuples</li>
-<li>[+] Functions: <code class="sourceCode haskell">fn name(x1<span class="op">:</span>t1,<span class="op">...</span>,xn<span class="op">:</span>tn) <span class="ot">-&gt;</span> ret { <span class="op">&lt;</span>expr<span class="op">&gt;</span> }</code></li>
-<li>[+] Variables: <code class="sourceCode haskell"><span class="kw">let</span></code> (immutable) vs <code class="sourceCode haskell"><span class="kw">let</span> mut</code> (mutable)</li>
-<li><label><input type="checkbox" />Control Flow</label></li>
+<li><del>Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></del></li>
+<li><del>Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</del></li>
+<li><del>Expressions: arithmetic, boolean, tuples</del></li>
+<li><del>Functions: <code class="sourceCode haskell">fn name(x1<span class="op">:</span>t1,<span class="op">...</span>,xn<span class="op">:</span>tn) <span class="ot">-&gt;</span> ret { <span class="op">&lt;</span>expr<span class="op">&gt;</span> }</code></del></li>
+<li><del>Variables: <code class="sourceCode haskell"><span class="kw">let</span></code> (immutable) vs <code class="sourceCode haskell"><span class="kw">let</span> mut</code> (mutable)</del></li>
+<li>Control Flow</li>
 </ul>
 <p><br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -556,12 +581,12 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <br></p>
 <h2 id="goal-today-rust-basics-5">Goal Today: Rust Basics</h2>
 <ul>
-<li>[+] Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></li>
-<li>[+] Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</li>
-<li>[+] Expressions: arithmetic, boolean, tuples</li>
-<li>[+] Functions: <code class="sourceCode haskell">fn name(x1<span class="op">:</span>t1,<span class="op">...</span>,xn<span class="op">:</span>tn) <span class="ot">-&gt;</span> ret { <span class="op">&lt;</span>expr<span class="op">&gt;</span> }</code></li>
-<li>[+] Variables: <code class="sourceCode haskell"><span class="kw">let</span></code> (immutable) vs <code class="sourceCode haskell"><span class="kw">let</span> mut</code> (mutable)</li>
-<li>[+] Control Flow: <code class="sourceCode haskell">for</code>, <code class="sourceCode haskell">while</code>, <code class="sourceCode haskell"><span class="kw">if</span></code>, <code class="sourceCode haskell">match</code></li>
+<li><del>Programs: <code class="sourceCode haskell">cargo new</code>, <code class="sourceCode haskell">cargo build</code>, <code class="sourceCode haskell">cargo run</code></del></li>
+<li><del>Basic Types: <code class="sourceCode haskell">i32</code>, <code class="sourceCode haskell">f64</code>, <code class="sourceCode haskell">bool</code>, tuples</del></li>
+<li><del>Expressions: arithmetic, boolean, tuples</del></li>
+<li><del>Functions: <code class="sourceCode haskell">fn name(x1<span class="op">:</span>t1,<span class="op">...</span>,xn<span class="op">:</span>tn) <span class="ot">-&gt;</span> ret { <span class="op">&lt;</span>expr<span class="op">&gt;</span> }</code></del></li>
+<li><del>Variables: <code class="sourceCode haskell"><span class="kw">let</span></code> (immutable) vs <code class="sourceCode haskell"><span class="kw">let</span> mut</code> (mutable)</del></li>
+<li><del>Control Flow: <code class="sourceCode haskell">for</code>, <code class="sourceCode haskell">while</code>, <code class="sourceCode haskell"><span class="kw">if</span></code>, <code class="sourceCode haskell">match</code></del></li>
 </ul>
 <p><br>
 <br>
@@ -569,31 +594,6 @@ and <a href="https://www.chromium.org/Home/chromium-security/memory-safety/">Goo
 <br>
 <br>
 <br></p>
-<h2 id="quiz">QUIZ:</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz1() <span class="op">{</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> x <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz2() <span class="op">{</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> x <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz3() <span class="op">{</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> x <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz4() <span class="op">{</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> ”🦀🦀🦀”<span class="op">;</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span><span class="op">,</span> x)<span class="op">;</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quiz5(n<span class="op">:</span> <span class="dt">i64</span>) <span class="op">-&gt;</span> <span class="dt">i64</span> <span class="op">{</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="cn">true</span> <span class="op">{</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        n</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="cn">false</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h2 id="rust-recap-statements-vs-expressions">Rust Recap: Statements vs Expressions</h2>
 <ul>
 <li><p><strong>Statements</strong> perform an action but do not return a value</p>

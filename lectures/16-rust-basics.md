@@ -11,6 +11,15 @@ Programs want to build and manipulate **data in memory**
 
 But you can quickly "run out of space" ...
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ### _Manual_ Memory Management
 
 Unmanaged languages (e.g., `C`, `C++`)
@@ -23,6 +32,15 @@ Unmanaged languages (e.g., `C`, `C++`)
     and [Google Chromium](https://www.chromium.org/Home/chromium-security/memory-safety/)
 
 ![Google Chromium Bugs](/static/img/google-bugs.png)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### _Automatic_ Memory Management
 
@@ -87,12 +105,12 @@ Based on a long history of how to track pointers ...
 
 ## Goal Today: Rust Basics
 
-- [ ] Programs
-- [ ] Basic Types
-- [ ] Variables
-- [ ] Expressions
-- [ ] Functions
-- [ ] Control Flow
+- Programs
+- Basic Types
+- Variables
+- Expressions
+- Functions
+- Control Flow
 
 <br>
 <br>
@@ -130,12 +148,12 @@ Hello, world!
 
 ## Goal Today: Rust Basics
 
-- [+] Programs: `cargo new`, `cargo build`, `cargo run`
-- [ ] Basic Types
-- [ ] Expressions
-- [ ] Variables
-- [ ] Functions
-- [ ] Control Flow
+- ~~Programs: `cargo new`, `cargo build`, `cargo run`~~
+- Basic Types
+- Expressions
+- Variables
+- Functions
+- Control Flow
 
 <br>
 <br>
@@ -179,12 +197,12 @@ tup = (42, 3.14, "world")
 
 ## Goal Today: Rust Basics
 
-- [+] Programs: `cargo new`, `cargo build`, `cargo run`
-- [+] Basic Types: `i32`, `f64`, `bool`, tuples
-- [+] Expressions
-- [ ] Functions
-- [ ] Variables
-- [ ] Control Flow
+- ~~Programs: `cargo new`, `cargo build`, `cargo run`~~
+- ~~Basic Types: `i32`, `f64`, `bool`, tuples~~
+- Expressions
+- Functions
+- Variables
+- Control Flow
 
 <br>
 <br>
@@ -229,12 +247,12 @@ fn main() {
 
 ## Goal Today: Rust Basics
 
-- [+] Programs: `cargo new`, `cargo build`, `cargo run`
-- [+] Basic Types: `i32`, `f64`, `bool`, tuples
-- [+] Expressions: arithmetic, boolean, tuples
-- [+] Functions: `fn name(x1:t1,...,xn:tn) -> ret { <expr> }`
-- [ ] Variables
-- [ ] Control Flow
+- ~~Programs: `cargo new`, `cargo build`, `cargo run`~~
+- ~~Basic Types: `i32`, `f64`, `bool`, tuples~~
+- ~~Expressions: arithmetic, boolean, tuples~~
+- ~~Functions: `fn name(x1:t1,...,xn:tn) -> ret { <expr> }`~~
+- Variables
+- Control Flow
 
 <br>
 <br>
@@ -260,6 +278,13 @@ fn fib(n: usize) -> usize {
 ```
 
 But...
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Variables are Immutable by Default
 
@@ -305,13 +330,16 @@ fn fib(n: usize) -> usize {
 
 ## Goal Today: Rust Basics
 
-- [+] Programs: `cargo new`, `cargo build`, `cargo run`
-- [+] Basic Types: `i32`, `f64`, `bool`, tuples
-- [+] Expressions: arithmetic, boolean, tuples
-- [+] Functions: `fn name(x1:t1,...,xn:tn) -> ret { <expr> }`
-- [+] Variables: `let` (immutable) vs `let mut` (mutable)
-- [ ] Control Flow
+- ~~Programs: `cargo new`, `cargo build`, `cargo run`~~
+- ~~Basic Types: `i32`, `f64`, `bool`, tuples~~
+- ~~Expressions: arithmetic, boolean, tuples~~
+- ~~Functions: `fn name(x1:t1,...,xn:tn) -> ret { <expr> }`~~
+- ~~Variables: `let` (immutable) vs `let mut` (mutable)~~
+- Control Flow
 
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -411,12 +439,12 @@ fn fib_match(n: usize) -> usize {
 
 ## Goal Today: Rust Basics
 
-- [+] Programs: `cargo new`, `cargo build`, `cargo run`
-- [+] Basic Types: `i32`, `f64`, `bool`, tuples
-- [+] Expressions: arithmetic, boolean, tuples
-- [+] Functions: `fn name(x1:t1,...,xn:tn) -> ret { <expr> }`
-- [+] Variables: `let` (immutable) vs `let mut` (mutable)
-- [+] Control Flow: `for`, `while`, `if`, `match`
+- ~~Programs: `cargo new`, `cargo build`, `cargo run`~~
+- ~~Basic Types: `i32`, `f64`, `bool`, tuples~~
+- ~~Expressions: arithmetic, boolean, tuples~~
+- ~~Functions: `fn name(x1:t1,...,xn:tn) -> ret { <expr> }`~~
+- ~~Variables: `let` (immutable) vs `let mut` (mutable)~~
+- ~~Control Flow: `for`, `while`, `if`, `match`~~
 
 <br>
 <br>
@@ -424,47 +452,6 @@ fn fib_match(n: usize) -> usize {
 <br>
 <br>
 <br>
-
-## QUIZ:
-
-```rust
-fn quiz1() {
-    x = 5;
-    println!("{}", x + 1);
-}
-```
-
-```rust
-fn quiz2() {
-    let x = 5;
-    println!("{}", x + 1);
-}
-```
-
-```rust
-fn quiz3() {
-    let mut x = 5;
-    println!("{}", x + 1);
-}
-```
-
-```rust
-fn quiz4() {
-    let mut x = 5;
-    x = ”🦀🦀🦀”;
-    println!("{}", x);
-}
-```
-
-```rust
-fn quiz5(n: i64) -> i64 {
-    if true {
-        n
-    } else {
-        false
-    }
-}
-```
 
 ## Rust Recap: Statements vs Expressions
 
