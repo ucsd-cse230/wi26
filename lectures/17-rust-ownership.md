@@ -431,6 +431,18 @@ let y = x;                     // x is moved into y
 println!("x is {x}");          // ERROR: `x` value is moved!
 ```
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## QUIZ
 
 What happens on assignment?

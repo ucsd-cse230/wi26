@@ -20,7 +20,8 @@ headerImg: books.jpg
 |  _2/5_   | Midterm 1          |                        |               |                   |
 |  _2/10_  | State              | [html][10-state]       |               | [code][code-2-10] |
 |  _2/12_  | Parser Combinators | [html][11-parsers]     |               | [code][code-2-12] |
-|  _2/17_  | Intro to Rust      | [html][11-parsers]     |               | [code][code-2-12] |
+|  _2/17_  | Intro to Rust      | [html][12-rust]     |               | [code][code-2-12] |
+|  _2/22_  | Ownership          | [html][13-ownership]     |               | [code][code-2-12] |
 |  _3/10_  | Midterm 2          |                        |               |
 
 <!--
