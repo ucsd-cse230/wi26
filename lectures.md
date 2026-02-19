@@ -68,6 +68,9 @@ headerImg: books.jpg
 [09-list]: lectures/09-list.html
 [10-state]: lectures/10-state.html
 [11-parsers]: lectures/11-parsers.html
+[12-rust]: lectures/16-rust-basics.html
+[13-ownership]: lectures/17-rust-ownership.html
+
 [13-transformers]: lectures/13-transformers.html
 [14-testing]: lectures/14-testing.html
 [01-pdf]: static/raw/01-lambda.pdf
