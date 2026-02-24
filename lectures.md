@@ -20,8 +20,9 @@ headerImg: books.jpg
 |  _2/5_   | Midterm 1          |                        |               |                   |
 |  _2/10_  | State              | [html][10-state]       |               | [code][code-2-10] |
 |  _2/12_  | Parser Combinators | [html][11-parsers]     |               | [code][code-2-12] |
-|  _2/17_  | Intro to Rust      | [html][12-rust]     |               | [code][code-2-12] |
-|  _2/22_  | Ownership          | [html][13-ownership]     |               | [code][code-2-12] |
+|  _2/17_  | Intro to Rust      | [html][12-rust]        |               | [code][code-rs]   |
+|  _2/22_  | Ownership          | [html][13-ownership]   |               | [code][code-rs]   |
+|  _2/24_  | Types & Generics   | [html][14-types]       |               | [code][code-rs]   |
 |  _3/10_  | Midterm 2          |                        |               |
 
 <!--
@@ -56,6 +57,7 @@ headerImg: books.jpg
 [code-2-3]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_2_3_26.hs
 [code-2-10]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_2_10_26.hs
 [code-2-12]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_2_12_26.hs
+[code-rs]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/rust/rust-230/src/main.rs
 [00-intro]: static/raw/lec-intro.pdf
 [01-lambda]: lectures/01-lambda.html
 [00-hello]: lectures/00-hello.html
@@ -71,7 +73,6 @@ headerImg: books.jpg
 [11-parsers]: lectures/11-parsers.html
 [12-rust]: lectures/16-rust-basics.html
 [13-ownership]: lectures/17-rust-ownership.html
-
 [13-transformers]: lectures/13-transformers.html
 [14-testing]: lectures/14-testing.html
 [01-pdf]: static/raw/01-lambda.pdf
