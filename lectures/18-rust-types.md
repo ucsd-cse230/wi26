@@ -758,7 +758,9 @@ fn main() {
   println!("choose says: {v_i32}");
 
   // use as `String`
-  let v_string = choose(false, String::from("cat"), String::from("dog"));
+  let s1 = String::from("cat");
+  let s2 = String::from("dog");
+  let v_string = choose(false, s1, s2);
   println!("choose says: {v_string}");
 }
 ```

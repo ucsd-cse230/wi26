@@ -796,9 +796,11 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;choose says: {v_i32}&quot;</span>)<span class="op">;</span></span>
 <span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// use as `String`</span></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> v_string <span class="op">=</span> choose(<span class="cn">false</span><span class="op">,</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;cat&quot;</span>)<span class="op">,</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;dog&quot;</span>))<span class="op">;</span></span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;choose says: {v_string}&quot;</span>)<span class="op">;</span></span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> s1 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;cat&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> s2 <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;dog&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> v_string <span class="op">=</span> choose(<span class="cn">false</span><span class="op">,</span> s1<span class="op">,</span> s2)<span class="op">;</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;choose says: {v_string}&quot;</span>)<span class="op">;</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>The <code class="sourceCode haskell"><span class="op">&lt;</span><span class="dt">T</span><span class="op">&gt;</span></code> syntax indicates that <code class="sourceCode haskell">choose</code> is generic in type <code class="sourceCode haskell"><span class="dt">T</span></code></p>
 <ul>
 <li>can be <em>instantiated</em> at different types, e.g. <code class="sourceCode haskell">i32</code> and <code class="sourceCode haskell"><span class="dt">String</span></code></li>
