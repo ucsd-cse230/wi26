@@ -8,8 +8,9 @@ headerImg: sea.jpg
 So far
 
 - Rust's primitive types like `i32`, `bool`, and `char`
-- References/Borrows `&T` and `&mut T`
 - `let` bindings, `fn` definitions, and control flow with `if` and `;`
+- References/Borrows `&T` and `&mut T`
+- Sharing _xor_ Mutation
 
 Next, how to write and use our own types in Rust (cf. Haskell's `data`)
 
@@ -145,7 +146,7 @@ fn circle_area(c: Circle) -> f64 {
 }
 
 fn main() {
-    let c = Circle { x: 0.0, y: 0.0, r: 10.0 };
+    let c = Circle { x: 0.0, y: 0.0, radius: 10.0 };
     let a = circle_area(c);
     println!("Circle {c:?} has area = {a:?}");
 }
@@ -153,6 +154,12 @@ fn main() {
 
 What is printed?
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -182,6 +189,13 @@ error[E0382]: borrow of moved value: `c`
 
 Three ways to avoid transfer: **Clone** or **Copy** or **Borrow**
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -464,11 +478,10 @@ Recall the `Expr` type we defined in Haskell for arithmetic expressions
 ```haskell
 data Op
   = Add | Sub | Mul | Div
-  deriving (Show)
+
 data Expr
   = Num Int
   | Bin Op Expr Expr
-  deriving (Show)
 ```
 
 ### Rust
@@ -476,13 +489,11 @@ data Expr
 Let's define the same `Expr` type as a Rust `enum`
 
 ```rust
-#[derive(Debug)]
 enum Op { Add, Sub, Mul, Div }
 
-#[derive(Debug)]
 enum Expr {
     Num(i32),
-    Bin(Op, Box<Expr>, Box<Expr>),
+    Bin(Op, Expr, Expr),
 }
 ```
 
@@ -588,7 +599,9 @@ note: expected `Box<Expr>`, found `Expr`
 
 ## Boxing Recursive Values
 
-**Read the error message carefully!** Need to store the inner `Expr` in a `Box`
+**Read the error message carefully!**
+
+Need to store the inner `Expr` in a `Box`
 
 ```rust
 help: store this in the heap by calling `Box::new`
@@ -734,7 +747,7 @@ and then Rust specific features like
 
 Like Haskell, and Java, C++, ... Rust has generic types e.g.
 
-````rust
+```rust
 fn choose<T>(b: bool, x: T, y:T) -> T {
   if b { x } else { y }
 }
@@ -748,6 +761,7 @@ fn main() {
   let v_string = choose(false, String::from("cat"), String::from("dog"));
   println!("choose says: {v_string}");
 }
+```
 
 The `<T>` syntax indicates that `choose` is generic in type `T`
 
@@ -775,7 +789,7 @@ let v2: Vec<String> = vec![String::from("a"), String::from("b")];
 
 let b1: Box<i32> = Box::new(42);
 let b2: Box<String> = Box::new(String::from("hello"));
-````
+```
 
 <br>
 <br>
@@ -831,9 +845,34 @@ enum Result<T, E> {
 <br>
 <br>
 
-## QUIZ
+## Using `Result` for Safe Division
 
 Lets rewrite our `eval_op` function to return a `Result<i32, String>`
+
+```rust
+fn eval_op(op: &Op, v1: i32, v2: i32, e2: &Expr) -> Result<i32, String> {
+  match op {
+    Op::Add => _____________________________,
+    Op::Sub => _____________________________,
+    Op::Mul => _____________________________,
+    Op::Div => if v2 == 0 {
+      let msg = String::from(format!("Division by zero: {e2:?}"));
+      Err(_________________________)
+    } else {
+      Ok(_____________________)
+    },
+  }
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ```rust
 fn eval_op(op: &Op, v1: i32, v2: i32, e2: &Expr) -> Result<i32, String> {
@@ -860,27 +899,39 @@ fn eval_op(op: &Op, v1: i32, v2: i32, e2: &Expr) -> Result<i32, String> {
 <br>
 <br>
 
-## QUIZ
+## QUIZ: A Safe Evaluator
 
 Lets rewrite our `eval` function to return a `Result<i32, String>`
 
 ```rust
 fn eval(e: &Expr) -> Result<i32, String> {
   match e {
-    Expr::Num(n) => Ok(*n),
+    Expr::Num(n) => _____________________,
     Expr::Bin(op, e1, e2) => {
-      match eval(e1) {
-        Err(msg) => Err(msg),
-        Ok(v1) => match eval(e2) {
-          Err(msg) => Err(msg),
-          Ok(v2) => eval_op(op, v1, v2, e2),
-        },
-      }
+      ____________________________________
+      ____________________________________
+      ____________________________________
+      ____________________________________
+      ____________________________________
+      ____________________________________
     }
   }
 }
 ```
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -913,7 +964,7 @@ fn eval(e: &Expr) -> Result<i32, String> {
 }
 ```
 
-**yuck!**
+**Yuck!**
 
 <br>
 <br>
@@ -1100,7 +1151,7 @@ Define a `Range` type to represent a range of indices
 type Range = (usize, usize); // (lo, hi)
 ```
 
-e.g. insde `vec!['b', 'a', 't', ' ', 'm', 'a', 'n']`
+e.g. inside `vec!['b', 'a', 't', ' ', 'm', 'a', 'n']`
 
 ```rust
 let first = (0, 3); // 'b', 'a', 't'
@@ -1128,6 +1179,12 @@ fn print_word(chars: &Vec<char>, rng: Range) {
 }
 ```
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -1166,6 +1223,10 @@ fn last_word(chars: &Vec<char>) -> Range {
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 
 ## QUIZ
 
@@ -1187,6 +1248,10 @@ fn quiz() {
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 
 ## Problem: Range Can Become Invalid!
 
@@ -1201,6 +1266,9 @@ fn quiz() {
 }
 ```
 
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -1257,9 +1325,9 @@ Instead of returning a of `(0, i)` we return the **slice** `&[char]`
 fn last_word_slice(chars: &Vec<char>) -> &[char] {
   let n = chars.len();
   for i in (0..n).rev() {
-  if chars[i] == ' ' {
-    return &chars[i+1..n];
-  }
+    if chars[i] == ' ' {
+      return &chars[i+1..n];
+    }
   }
   return &chars[0..n];
 }
@@ -1348,13 +1416,14 @@ That is, the **compiler complains** that we have simultaneously borrowed
 
 both referring to the same data!
 
-````rust
+```rust
 fn quiz() {
   let mut str = vec!['b', 'a', 't', ' ', 'm', 'a', 'n'];
   let last = last_word_slice(&str);
   str.pop();  // ERROR: simultaneous mutable and immutable borrow!
   print_word_slice(&str, last);
 }
+```
 
 <br>
 <br>
@@ -1363,28 +1432,6 @@ fn quiz() {
 <br>
 <br>
 <br>
-
-<!--
-// ```rust
-// // fn test2() {
-// // let str = vec!['b', 'a', 't', ' ', 'm', 'a', 'n'];
-// // let first = first_word_slice(&str);
-// // println!("first word: {first:?}");
-
-// // let last = last_word_slice(&str);
-// // print!("last word: {last:?}");
-// // }
-
-// // fn test3() {
-// // let mut str = vec!['b', 'a', 't', ' ', 'm', 'a', 'n'];
-// // let first = first_word_slice(&str);
-// // println!("first word: {first:?}");
-
-// // let last = last_word_slice(&str);
-// // str.pop();
-// // print!("last word: {last:?}");
-// // }
-// ```
 
 ## Stringly Slices
 
@@ -1425,7 +1472,6 @@ fn last_word_str(s: &String) -> &str {
 <br>
 <br>
 
-
 ## Stringly Slices
 
 Rust has a built-in type `str` to represent "stringly" slices.
@@ -1454,8 +1500,6 @@ fn test() {
 <br>
 <br>
 <br>
-
-
 
 ## Constructing Types
 
@@ -1513,6 +1557,154 @@ fn test() {
 <br>
 <br>
 
+## Lifetimes
+
+What happens when we run the following code?
+
+```rust
+fn longer(s1: &str, s2: &str) -> &str {
+  if s1.len() >= s2.len() { s1 } else { s2 }
+}
+
+fn test() {
+  let text = String::from("bat man begins");
+  let first = first_word_str(&text);
+  let last = last_word_str(&text);
+  let longer_word = longer(first, last);
+  println!("longer word: {longer_word:?}");
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Lifetimes: Dangling References
+
+The main aim of lifetimes is to prevent **dangling references**
+
+```rust
+fn main() {
+    let r;
+    {
+        let x = 5;
+        r = &x;   // ERROR: `x` does not live long enough!
+    }
+    println!("r: {r}");
+}
+```
+
+`r` still valid in outer scope, but `x` is dropped at end of inner scope
+
+So `r` would be a **dangling reference** to freed memory
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Lifetimes: The Borrow Checker
+
+`rustc` uses a **borrow checker** that compares _lifetimes_ of references
+
+```rust
+fn main() {
+    let r;                //  --------+-- 'a (lifetime of r)
+    {                     //          |
+        let x = 5;        // -+-- 'b  |   (lifetime of x)
+        r = &x;           //  |       |
+    }                     // -+       |   'b ends: x is dropped
+    println!("r: {r}");   //          |   ERROR: 'b < 'a !
+}                         //  --------+
+```
+
+Lifetime `'b` of `x` is **shorter** than lifetime `'a` of `r`
+
+So `r = &x` creates a reference that **outlives** `x` -- rejected!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Lifetimes: The Problem with `longer`
+
+The compiler **cannot** tell which input the return value refers to
+
+```
+error[E0106]: missing lifetime specifier
+  --> src/main.rs:1:33
+   |
+1  | fn longer(s1: &str, s2: &str) -> &str {
+   |               ----      ----     ^ expected named lifetime parameter
+   |
+   = help: this function's return type contains a borrowed value,
+     but the signature does not say whether it is borrowed from `s1` or `s2`
+```
+
+The borrow checker needs to know: **how long is the returned `&str` valid?**
+
+- If it comes from `s1`, valid as long as `s1` is alive
+- If it comes from `s2`, valid as long as `s2` is alive
+- We need to express: valid as long as **both** are alive
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Lifetime Annotations
+
+**Lifetime annotations** describe the _relationships_ between reference lifetimes
+
+```rust
+&i32        // a reference (lifetime inferred)
+&'a i32     // a reference with an explicit lifetime `'a`
+&'a mut i32 // a mutable reference with an explicit lifetime `'a`
+```
+
+Lifetime parameters start with `'` and are usually short: `'a`, `'b`, ...
+
+They are declared in angle brackets, like generic type parameters
+
+```rust
+fn longer<'a>(s1: &'a str, s2: &'a str) -> &'a str {
+    if s1.len() >= s2.len() { s1 } else { s2 }
+}
+```
+
+**Meaning**: for some lifetime `'a`, both inputs and the output live at least as long as `'a`
+
+i.e. the returned reference is valid as long as **both** `s1` and `s2` are valid
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Constructing Types
 
@@ -1544,4 +1736,3 @@ and then Rust specific features like
 <br>
 <br>
 <br>
-````

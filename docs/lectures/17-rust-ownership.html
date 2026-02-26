@@ -951,7 +951,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <br>
 <br></p>
 <h2 id="quiz-4">QUIZ</h2>
-<p>What about littled data? For example, what happens if we try</p>
+<p>What about little data? For example, what happens if we try</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    say(<span class="op">&amp;</span>x)<span class="op">;</span></span>
@@ -1068,7 +1068,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;{} and {}&quot;</span><span class="op">,</span> r1<span class="op">,</span> r2)<span class="op">;</span></span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quizA() <span class="op">{</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> quizB() <span class="op">{</span></span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> s <span class="op">=</span> <span class="dt">String</span><span class="pp">::</span>from(<span class="st">&quot;yo!&quot;</span>)<span class="op">;</span></span>
 <span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r1 <span class="op">=</span> <span class="op">&amp;</span>s<span class="op">;</span></span>
 <span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> r2 <span class="op">=</span> <span class="op">&amp;</span><span class="kw">mut</span> s<span class="op">;</span></span>
@@ -1223,6 +1223,17 @@ so the compiler considers them <strong>out of scope</strong> before the mutable 
 <img src="../static/img/sharing-xor-mutability-safe.png" class="align-center" style="width:90.0%" alt="Sharing XOR Mutability" />
 <figcaption aria-hidden="true">Sharing XOR Mutability</figcaption>
 </figure>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
 <h2 id="sharing-xor-mutability-1">Sharing XOR Mutability</h2>
 <div class="sourceCode" id="cb36"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> v <span class="op">=</span> <span class="pp">vec!</span>[<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">;</span></span>

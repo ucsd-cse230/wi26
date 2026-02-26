@@ -905,7 +905,7 @@ fn change(z: &mut String) {
 
 ## QUIZ
 
-What about littled data? For example, what happens if we try
+What about little data? For example, what happens if we try
 
 ```rust
 fn main() {
@@ -1049,7 +1049,7 @@ fn quizA() {
     println!("{} and {}", r1, r2);
 }
 
-fn quizA() {
+fn quizB() {
     let mut s = String::from("yo!");
     let r1 = &s;
     let r2 = &mut s;
@@ -1242,6 +1242,18 @@ fn change(z: &mut Vec<i32>) {
 so the compiler considers them **out of scope** before the mutable borrow `mr` is created!
 
 ![Sharing XOR Mutability](/static/img/sharing-xor-mutability-safe.png){#fig:types .align-center width=90%}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Sharing XOR Mutability
 
