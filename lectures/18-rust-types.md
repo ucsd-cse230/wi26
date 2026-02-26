@@ -689,7 +689,7 @@ fn eval_op(op: &Op, lval: i32, rval: i32) -> i32 {
 
 fn eval(e: &Expr) -> i32 {
   match e {
-    Expr::Num(n) => *n,
+    Expr::Num(n) => n,
     Expr::Bin(op, left, right) => {
       eval_op(op, eval(e1), eval(e2))
     }
@@ -699,7 +699,7 @@ fn eval(e: &Expr) -> i32 {
 
 **QUIZ** Why does `eval` take `&Expr` and not just `Expr` ?
 
-**QUIZ** What is up with the `*n`?
+**QUIZ** Can you spot another error?
 
 <br>
 <br>

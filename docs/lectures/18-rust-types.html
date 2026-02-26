@@ -737,14 +737,14 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> eval(e<span class="op">:</span> <span class="op">&amp;</span>Expr) <span class="op">-&gt;</span> <span class="dt">i32</span> <span class="op">{</span></span>
 <span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">match</span> e <span class="op">{</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Expr::</span>Num(n) <span class="op">=&gt;</span> <span class="op">*</span>n<span class="op">,</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Expr::</span>Num(n) <span class="op">=&gt;</span> n<span class="op">,</span></span>
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">Expr::</span>Bin(op<span class="op">,</span> left<span class="op">,</span> right) <span class="op">=&gt;</span> <span class="op">{</span></span>
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>      eval_op(op<span class="op">,</span> eval(e1)<span class="op">,</span> eval(e2))</span>
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
 <span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p><strong>QUIZ</strong> Why does <code class="sourceCode haskell">eval</code> take <code class="sourceCode haskell"><span class="op">&amp;</span><span class="dt">Expr</span></code> and not just <code class="sourceCode haskell"><span class="dt">Expr</span></code> ?</p>
-<p><strong>QUIZ</strong> What is up with the <code class="sourceCode haskell"><span class="op">*</span>n</code>?</p>
+<p><strong>QUIZ</strong> Can you spot another error?</p>
 <p><br>
 <br>
 <br>
