@@ -1,3 +1,5 @@
+use std::f64::consts::PI;
+
 fn fib(n: usize) -> usize {
     if n <= 1 {
         n
@@ -20,6 +22,26 @@ fn fib(n: usize) -> usize {
 //     let tup = (x + x, y * y, z || false);
 //     println!("tup = {:?}", tup);
 // }
+
+// Why not ALWAYS just say `mut`
+// 1. So other HUMANS know when things don't change
+// 2. So the COMPILER can optimize better
+// 3. So the COMPILER can catch bugs when you accidentally change something
+//      - multithreading
+
+fn change_mut(z: &mut String) {
+    *z = String::from("yum yum!");
+}
+
+#[test]
+fn test_mut_example() {
+    let mut s = String::from("hello");
+    let r = &mut s;
+    println!("string is: {s}");
+    change_mut(&mut s);
+    let r = &mut s;
+    // println!("string is now: {r}");
+}
 
 #[test]
 fn change_is_bad() {
@@ -94,3 +116,96 @@ fn call_me_i32(s: i32) {
 
 
 */
+
+fn change_bob(mut z: Vec<i32>) {
+    z.pop();
+}
+
+fn bob() {
+    let v = vec![10, 20, 30];
+    let r0 = &v[0];
+    let r1 = &v[1];
+    let r2 = &v[2];
+    println!("elems are {:?}, {:?}, {:?}", *r0, *r1, *r2);
+    // let mr = &mut v;
+    change_bob(v);
+    // change_bob(v);
+    // println!("r1 is {:?}", *r1); NOT ok
+    // println!("v is {:?}", v); // OK
+}
+
+#[derive(Debug)]
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+fn circle_area(c: &Circle) -> f64 {
+    let r = c.radius;
+    PI * r * r
+}
+
+#[test]
+fn test_circle_area() {
+    let c = Circle {
+        x: 0.0,
+        y: 0.0,
+        radius: 10.0,
+    };
+    let area = circle_area(&c);
+    println!("circle {c:?} has area = {area}");
+}
+
+#[derive(Debug)]
+enum Shape {
+    Rect(f64, f64),        // width, height
+    Poly(Vec<(f64, f64)>), // list of points
+}
+
+fn shape_area(s: &Shape) -> f64 {
+    match s {
+        Shape::Rect(w, h) => w * h,
+        Shape::Poly(pts) => poly_area(pts),
+    }
+}
+
+fn poly_area(pts: &Vec<(f64, f64)>) -> f64 {
+    todo!()
+}
+/*
+fn poly_area(pts: Vec<(f64, f64)>) -> f64
+
+*/
+
+fn test_area() {
+    let sh = Shape::Rect(10.0, 20.0);
+    let area = shape_area(&sh);
+    println!("shape {sh:?} has area = {area}");
+}
+
+/*
+data Op = Add | Mul | Sub | Div
+    deriving(Show)
+
+data Exp = Num Int | Bin Op Exp Exp
+*/
+
+#[derive(Debug)]
+enum Op {
+    Add,
+    Mul,
+    Sub,
+    Div,
+}
+
+#[derive(Debug)]
+enum Exp {
+    Num(i32),
+    Bin(Op, Box<Exp>, Box<Exp>),
+}
+
+// 2 + 3
+fn test_expr() -> Exp {
+    Exp::Bin(Op::Add, Box::new(Exp::Num(2)), Box::new(Exp::Num(3)))
+}
