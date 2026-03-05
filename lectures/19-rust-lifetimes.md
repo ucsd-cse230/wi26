@@ -269,7 +269,7 @@ fn test_ok() {
     let s1 = String::from("hello");
     let s2 = String::from("hi");
     let result = longer(&s1, &s2);  // both live long enough
-    println!("{result}");            // OK!
+    println!("{result}");           // OK!
 }
 ```
 
@@ -404,15 +404,15 @@ fn main() {
 ```rust
 fn main() {
     let s1 = String::from("long string is long"); // ---+-- 'a
-    {                                               //    |
-        let s2 = String::from("xyz");              // -+-|-- 'b
-        let result = longer(                       //  | |
-            s1.as_str(),                           //  | |
-            s2.as_str()                            //  | |
-        );                                         //  | |
-        println!("longer: {result}");              //  | |  OK!
-    }                                               // -+ |
-}                                                   // ---+
+    {                                             //    |
+        let s2 = String::from("xyz");             // -+-|-- 'b
+        let result = longer(                      //  | |
+            s1.as_str(),                          //  | |
+            s2.as_str()                           //  | |
+        );                                        //  | |
+        println!("longer: {result}");             //  | |  OK!
+    }                                             // -+ |
+}                                                 // ---+
 ```
 
 `result` is used _inside_ the inner scope where **both** `s1` and `s2` are alive.

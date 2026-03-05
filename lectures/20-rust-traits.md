@@ -38,11 +38,11 @@ Next: how to define **shared behavior** across types and use it to **iterate** o
 <br>
 <br>
 
-## Goal Today
+## Today's Goals
 
-- [ ] Traits
-- [ ] Iterators
-- [ ] Parallel Iteration
+1. **Traits**: shared behavior (cf. Haskell's typeclasses)
+2. **Iterators**: `for` loops, `map`, `filter`, `collect`
+3. **Parallel Iteration**: with `rayon`
 
 <br>
 <br>
@@ -54,7 +54,9 @@ Next: how to define **shared behavior** across types and use it to **iterate** o
 
 ## What is a Trait?
 
-A **trait** defines a set of methods that a type must implement.
+A **trait** defines a set of methods that a type must implement ...
+
+... aka **typeclass** in Haskell!
 
 ### Haskell
 
@@ -71,7 +73,8 @@ trait Summary {
 }
 ```
 
-Like Haskell's typeclasses, traits let us write code that works with **any type** that provides certain behavior.
+(Like typeclasses) traits let us write code that works with
+**any type** that implements that interface.
 
 <br>
 <br>
@@ -159,7 +162,7 @@ fn main() {
 <br>
 <br>
 
-## Default Implementations
+<!-- ## Default Implementations
 
 A trait can provide a **default** method body
 
@@ -190,57 +193,30 @@ impl Summary for Post {
 <br>
 <br>
 <br>
-<br>
+<br> -->
 
 ## Traits as Parameters
 
 We can write functions that accept **any type** implementing a trait
 
-### Haskell
+### Haskell: "Constraint"
 
 ```haskell
 notify :: (Summary a) => a -> String
 notify item = "Breaking news! " ++ summarize item
 ```
 
-### Rust
+- Haskell calls `Summary a` a **constraint** on the type variable `a`
+
+### Rust: "Trait Bound"
 
 ```rust
-fn notify(item: &impl Summary) {
+fn notify<T: Summary>(item: &T) {
     println!("Breaking news! {}", item.summarize());
 }
 ```
 
-`&impl Summary` means: any type that implements `Summary`, passed by reference.
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Trait Bound Syntax
-
-The `impl Trait` syntax is actually shorthand for **trait bounds** on generics
-
-```rust
-fn notify(item: &impl Summary) { ... }
-```
-
-is shorthand for:
-
-```rust
-fn notify<T: Summary>(item: &T) { ... }
-```
-
-The trait bound syntax is more flexible, e.g. to force two parameters to be the **same type**:
-
-```rust
-fn notify<T: Summary>(item1: &T, item2: &T) { ... }
-```
+- Rust calls `T: Summary` a **trait bound** on the type variable `T`
 
 <br>
 <br>
@@ -254,14 +230,6 @@ fn notify<T: Summary>(item1: &T, item2: &T) { ... }
 ## Multiple Trait Bounds
 
 A parameter can require **multiple** traits with `+`
-
-```rust
-fn notify(item: &(impl Summary + std::fmt::Display)) {
-    println!("Breaking news! {}", item.summarize());
-}
-```
-
-Or equivalently:
 
 ```rust
 fn notify<T: Summary + std::fmt::Display>(item: &T) {
@@ -307,7 +275,7 @@ impl Area for Circle {
     }
 }
 
-fn print_area(shape: &impl Area) {
+fn print_area<T: Area>(shape: &T) {
     println!("Area: {}", shape.area());
 }
 
@@ -361,7 +329,7 @@ impl Area for Rect {
 <br>
 <br>
 
-## Returning Types That Implement Traits
+<!-- ## Returning Types That Implement Traits
 
 You can return `impl Trait` from a function
 
@@ -390,7 +358,7 @@ fn make_shape(round: bool) -> impl Area {
 <br>
 <br>
 <br>
-<br>
+<br> -->
 
 ## Familiar Traits: `Debug`, `Clone`, `Copy`
 
@@ -422,9 +390,9 @@ These are all **traits** defined in the standard library.
 
 ## Goal Today
 
-- [+] Traits: shared behavior via `trait`, `impl Trait for Type`, trait bounds
-- [ ] Iterators
-- [ ] Parallel Iteration
+1. ~~**Traits**: shared behavior (cf. Haskell's typeclasses)~~
+2. **Iterators**: `for` loops, `map`, `filter`, `collect`
+3. **Parallel Iteration**: with `rayon`
 
 <br>
 <br>
@@ -517,20 +485,46 @@ The `for` loop calls `next()` behind the scenes until it gets `None`.
 
 ## Three Ways to Iterate
 
-| Method        | Produces         | Ownership         |
-|---------------|------------------|-------------------|
-| `.iter()`     | `&T`             | borrows the data  |
-| `.iter_mut()` | `&mut T`         | borrows mutably   |
-| `.into_iter()`| `T`              | takes ownership   |
+| Method         | Produces | Ownership       |
+| :------------- | :------- | :-------------- |
+| `.iter()`      | `&T`     | shared borrow   |
+| `.iter_mut()`  | `&mut T` | mutable borrow  |
+| `.into_iter()` | `T`      | takes ownership |
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
 
 ```rust
 fn main() {
     let v = vec![String::from("a"), String::from("b")];
 
     for s in v.iter() {
-        println!("{s}");    // s is &String (borrow)
+        println!("{s}");
     }
-    println!("{:?}", v);    // v is still valid!
+    println!("{:?}", v);
+}
+```
+
+```rust
+fn main() {
+    let mut v = vec![String::from("a"), String::from("b")];
+
+    for s in v.iter_mut() {
+        s.push_str("_foo");
+    }
+    println!("{:?}", v);
 }
 ```
 
@@ -539,9 +533,10 @@ fn main() {
     let v = vec![String::from("a"), String::from("b")];
 
     for s in v.into_iter() {
-        println!("{s}");    // s is String (owned)
+        println!("{s}");
     }
-    // v is no longer valid -- ownership was moved!
+
+    println!("{:?}", v);
 }
 ```
 
@@ -658,9 +653,8 @@ What does this print?
 ```rust
 fn main() {
     let words = vec!["hello", "world", "hi"];
-    let result: Vec<&str> = words.iter()
+    let result: Vec<_> = words.iter()
         .filter(|w| w.len() > 2)
-        .copied()
         .collect();
     println!("{:?}", result);
 }
@@ -694,18 +688,19 @@ fn main() {
 <br>
 <br>
 
+<!--
 ## Consuming Adaptors
 
 Some methods **consume** the iterator, producing a single value
 
-| Method     | Description                         |
-|------------|-------------------------------------|
-| `sum()`    | adds up all elements                |
-| `count()`  | counts the number of elements       |
-| `collect()`| gathers elements into a collection  |
-| `any()`    | true if any element matches         |
-| `all()`    | true if all elements match          |
-| `find()`   | returns first match as `Option`     |
+| Method      | Description                        |
+| ----------- | ---------------------------------- |
+| `sum()`     | adds up all elements               |
+| `count()`   | counts the number of elements      |
+| `collect()` | gathers elements into a collection |
+| `any()`     | true if any element matches        |
+| `all()`     | true if all elements match         |
+| `find()`    | returns first match as `Option`    |
 
 ```rust
 fn main() {
@@ -722,13 +717,13 @@ fn main() {
 <br>
 <br>
 <br>
-<br>
+<br> -->
 
 ## Goal Today
 
-- [+] Traits: shared behavior via `trait`, `impl Trait for Type`, trait bounds
-- [+] Iterators: `Iterator` trait, `for` loops, `map`, `filter`, `collect`
-- [ ] Parallel Iteration
+1. ~~**Traits**: shared behavior (cf. Haskell's typeclasses)~~
+2. ~~**Iterators**: `for` loops, `map`, `filter`, `collect`~~
+3. **Parallel Iteration**: with `rayon`
 
 <br>
 <br>
@@ -744,7 +739,7 @@ What if you want to speed up iteration by using **multiple cores**?
 
 In most languages, parallelism is hard and error-prone (data races, deadlocks, ...).
 
-Rust's ownership system makes it **safe** and Rayon makes it **easy**.
+`Rust`'s ownership it **safe**; `Rayon` makes it **easy**.
 
 <br>
 <br>
@@ -794,11 +789,11 @@ Rayon automatically splits the work across threads.
 
 Three parallel equivalents of the sequential methods:
 
-| Sequential      | Parallel            | Ownership         |
-|-----------------|---------------------|-------------------|
-| `.iter()`       | `.par_iter()`       | borrows the data  |
-| `.iter_mut()`   | `.par_iter_mut()`   | borrows mutably   |
-| `.into_iter()`  | `.into_par_iter()`  | takes ownership   |
+| Sequential     | Parallel           | Ownership       |
+| -------------- | ------------------ | --------------- |
+| `.iter()`      | `.par_iter()`      | shared borrow   |
+| `.iter_mut()`  | `.par_iter_mut()`  | mutable borrow  |
+| `.into_iter()` | `.into_par_iter()` | takes ownership |
 
 All the familiar adaptors work: `map`, `filter`, `sum`, `collect`, ...
 
@@ -986,9 +981,9 @@ That's it! Now `.par_iter()`, `.par_iter_mut()`, and `.into_par_iter()` are avai
 
 ## Goal Today
 
-- [+] Traits: shared behavior via `trait`, `impl Trait for Type`, trait bounds
-- [+] Iterators: `Iterator` trait, `for` loops, `map`, `filter`, `collect`
-- [+] Parallel Iteration: Rayon's `par_iter`, fearless concurrency
+1. ~~Traits: shared behavior via `trait`, `impl Trait for Type`, trait bounds~~
+2. ~~Iterators: `Iterator` trait, `for` loops, `map`, `filter`, `collect`~~
+3. ~~Parallel Iteration: Rayon's `par_iter`, fearless concurrency~~
 
 <br>
 <br>

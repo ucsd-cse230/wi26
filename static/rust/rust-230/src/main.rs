@@ -184,6 +184,8 @@ fn test_area() {
     println!("shape {sh:?} has area = {area}");
 }
 
+// ----------------------------------------------------------------------------------------------------------------
+
 /*
 data Op = Add | Mul | Sub | Div
     deriving(Show)
@@ -205,7 +207,212 @@ enum Exp {
     Bin(Op, Box<Exp>, Box<Exp>),
 }
 
+fn bin(op: Op, e1: Exp, e2: Exp) -> Exp {
+    Exp::Bin(op, Box::new(e1), Box::new(e2))
+}
+
 // 2 + 3
 fn test_expr() -> Exp {
-    Exp::Bin(Op::Add, Box::new(Exp::Num(2)), Box::new(Exp::Num(3)))
+    bin(Op::Add, Exp::Num(2), Exp::Num(3))
+}
+
+fn test_box_i32() {
+    let blah: i32 = 99;
+    let mumbles = Box::new(&blah);
+}
+
+fn eval_op(op: &Op, v1: i32, v2: i32) -> Option<i32> {
+    match op {
+        Op::Add => Some(v1 + v2),
+        Op::Mul => Some(v1 * v2),
+        Op::Sub => Some(v1 - v2),
+        Op::Div => {
+            if v2 != 0 {
+                Some(v1 / v2)
+            } else {
+                None
+            }
+        }
+    }
+}
+
+fn top_eval(e: &Exp) {
+    match eval(e) {
+        Ok(val) => println!("RESULT = {val}"),
+        Err(_) => println!("boo hoho"),
+    }
+}
+
+fn eval(e: &Exp) -> Result<i32, String> {
+    match e {
+        Exp::Num(n) => Ok(*n),
+        Exp::Bin(op, e1, e2) => {
+            let res = eval_op(op, eval(e1)?, eval(e2)?);
+            match res {
+                Some(n) => Ok(n),
+                None => Err(format!("yikes, dbz {e2:?}")),
+            }
+        } /*  Exp::Bin(op, e1, e2) => {
+          let v1 = match eval(e1) {
+            Some(v) => v,
+            None => return None,
+          };
+          let v2 =  match eval(e2) {
+            Some(v) => v,
+            None => return None,
+          };
+          eval_op(op, v1, v2),
+          */
+    }
+}
+
+/*
+    match expr {
+        Ok(v) => v,
+        Err(e) => return Err(e),
+    }
+
+    expr?
+*/
+
+#[test]
+fn test_vec() {
+    let mut vec = vec![10, 1, 20, 3, 4];
+    assert!(vec[1] * 3 == vec[3]);
+    vec.sort();
+    println!("sorted => {vec:?}");
+}
+
+#[test]
+fn test_eval() {
+    let e = bin(Op::Add, Exp::Num(2), Exp::Num(3));
+    let n = eval(&e);
+    println!("result of {e:?} ==> {n:?}");
+}
+
+fn test_opt() -> Option<i32> {
+    Some(45)
+}
+
+// --- Box<T>
+
+/*
+
+data Maybe a
+    = Just a
+    | Nothing
+
+enum Option<T> {
+    Some(T),
+    None,
+}
+
+
+data Either e t
+    = Left e
+    | Right t
+
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+*/
+
+struct Range {
+    begin: usize,
+    end: usize,
+}
+
+fn first_word(z: &Vec<char>) -> Range {
+    let begin = 0;
+    let mut end = 0;
+    while z[end] != ' ' {
+        end += 1;
+    }
+    Range { begin, end }
+}
+
+fn last_word(z: &Vec<char>) -> Range {
+    let end = z.len();
+    let mut begin = z.len() - 1;
+    while begin > 0 && z[begin - 1] != ' ' {
+        begin -= 1;
+    }
+    Range { begin, end }
+}
+
+fn print_word(z: &Vec<char>, rng: &Range) {
+    print!("<");
+    for i in rng.begin..rng.end {
+        print!("{}", z[i])
+    }
+    println!(">");
+}
+
+fn print_word_slice(z: &[char]) {
+    print!("<");
+    for ch in z {
+        print!("{ch}");
+    }
+    println!(">");
+}
+
+fn first_word_slice<'a>(z: &'a Vec<char>) -> &'a [char] {
+    let begin = 0;
+    let mut end = 0;
+    while z[end] != ' ' {
+        end += 1;
+    }
+    &z[begin..end]
+}
+
+fn last_word_slice<'a>(z: &'a Vec<char>) -> &'a [char] {
+    let end = z.len();
+    let mut begin = z.len() - 1;
+    while begin > 0 && z[begin - 1] != ' ' {
+        begin -= 1;
+    }
+    &z[begin..end]
+}
+
+#[test]
+fn test_bat_man_slice() {
+    let mut str = vec!['b', 'a', 't', ' ', 'm', 'a', 'n', 'g', 'o'];
+
+    let first = first_word_slice(&str);
+    print_word_slice(first);
+
+    let last = last_word_slice(&str); // ------- CREATE IMMUTABLE BORROW
+    print_word_slice(last); // <------ USING IMMUTABLE BORROW
+
+    println!("first word is {:?}, last word is {:?}", first, last);
+
+    let blah = &mut str[0..5];
+    blah[0] = 'c';
+
+    println!("{str:?}");
+}
+
+fn longer<'banana>(w1: &'banana [char], w2: &'banana [char]) -> &'banana [char] {
+    if w1.len() < w2.len() { w2 } else { w1 }
+}
+
+// fn test_bla_blah() {
+//     let r;
+//     {
+//         let x = 92;
+//         r = &x;
+//     }
+//     println!("The value of r = {r}")
+// }
+
+#[test]
+fn test_bat_man() {
+    let str = vec!['b', 'a', 't', ' ', 'm', 'a', 'n', 'g', 'o'];
+
+    let first = first_word(&str);
+    print_word(&str, &first);
+
+    let last = last_word(&str);
+    print_word(&str, &last);
 }

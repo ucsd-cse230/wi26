@@ -689,7 +689,7 @@ fn eval_op(op: &Op, lval: i32, rval: i32) -> i32 {
 
 fn eval(e: &Expr) -> i32 {
   match e {
-    Expr::Num(n) => n,
+    Expr::Num(n) => *n,
     Expr::Bin(op, left, right) => {
       eval_op(op, eval(e1), eval(e2))
     }
@@ -699,7 +699,7 @@ fn eval(e: &Expr) -> i32 {
 
 **QUIZ** Why does `eval` take `&Expr` and not just `Expr` ?
 
-**QUIZ** Can you spot another error?
+**QUIZ** What is up with the `*n`?
 
 <br>
 <br>
@@ -747,7 +747,7 @@ and then Rust specific features like
 
 Like Haskell, and Java, C++, ... Rust has generic types e.g.
 
-```rust
+````rust
 fn choose<T>(b: bool, x: T, y:T) -> T {
   if b { x } else { y }
 }
@@ -758,12 +758,9 @@ fn main() {
   println!("choose says: {v_i32}");
 
   // use as `String`
-  let s1 = String::from("cat");
-  let s2 = String::from("dog");
-  let v_string = choose(false, s1, s2);
+  let v_string = choose(false, String::from("cat"), String::from("dog"));
   println!("choose says: {v_string}");
 }
-```
 
 The `<T>` syntax indicates that `choose` is generic in type `T`
 
@@ -791,7 +788,7 @@ let v2: Vec<String> = vec![String::from("a"), String::from("b")];
 
 let b1: Box<i32> = Box::new(42);
 let b2: Box<String> = Box::new(String::from("hello"));
-```
+````
 
 <br>
 <br>
@@ -850,6 +847,31 @@ enum Result<T, E> {
 ## Using `Result` for Safe Division
 
 Lets rewrite our `eval_op` function to return a `Result<i32, String>`
+
+```rust
+fn eval_op(op: &Op, v1: i32, v2: i32, e2: &Expr) -> Result<i32, String> {
+  match op {
+    Op::Add => _____________________________,
+    Op::Sub => _____________________________,
+    Op::Mul => _____________________________,
+    Op::Div => if v2 == 0 {
+      let msg = String::from(format!("Division by zero: {e2:?}"));
+      Err(_________________________)
+    } else {
+      Ok(_____________________)
+    },
+  }
+}
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ```rust
 fn eval_op(op: &Op, v1: i32, v2: i32, e2: &Expr) -> Result<i32, String> {
@@ -1095,7 +1117,7 @@ fn test() {
 ## QUIZ
 
 How to write `first_word`, `last_word`, and `print_word`
-**without copying** the `Vec<char>` ?
+**without copying** the `str` vector?
 
 ```rust
 fn first_word(chars: &Vec<char>) -> ??? {
@@ -1332,6 +1354,7 @@ fn print_word_slice(chars: &[char]) {
   for i in 0..chars.len() {
       print!("{}", chars[i])
   }
+  // or for c in chars { print!("{}", c); }
 }
 ```
 
@@ -1392,14 +1415,13 @@ That is, the **compiler complains** that we have simultaneously borrowed
 
 both referring to the same data!
 
-```rust
+````rust
 fn quiz() {
   let mut str = vec!['b', 'a', 't', ' ', 'm', 'a', 'n'];
   let last = last_word_slice(&str);
   str.pop();  // ERROR: simultaneous mutable and immutable borrow!
   print_word_slice(&str, last);
 }
-```
 
 <br>
 <br>
@@ -1408,6 +1430,7 @@ fn quiz() {
 <br>
 <br>
 <br>
+
 
 ## Stringly Slices
 
@@ -1448,6 +1471,7 @@ fn last_word_str(s: &String) -> &str {
 <br>
 <br>
 
+
 ## Stringly Slices
 
 Rust has a built-in type `str` to represent "stringly" slices.
@@ -1476,6 +1500,8 @@ fn test() {
 <br>
 <br>
 <br>
+
+
 
 ## Constructing Types
 
@@ -1551,136 +1577,15 @@ fn test() {
 }
 ```
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+TODO:LIFETIMES
 
-## Lifetimes: Dangling References
 
-The main aim of lifetimes is to prevent **dangling references**
 
-```rust
-fn main() {
-    let r;
-    {
-        let x = 5;
-        r = &x;   // ERROR: `x` does not live long enough!
-    }
-    println!("r: {r}");
-}
-```
 
-`r` still valid in outer scope, but `x` is dropped at end of inner scope
 
-So `r` would be a **dangling reference** to freed memory
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-## Lifetimes: The Borrow Checker
 
-`rustc` uses a **borrow checker** that compares _lifetimes_ of references
-
-```rust
-fn main() {
-    let r;                //  --------+-- 'a (lifetime of r)
-    {                     //          |
-        let x = 5;        // -+-- 'b  |   (lifetime of x)
-        r = &x;           //  |       |
-    }                     // -+       |   'b ends: x is dropped
-    println!("r: {r}");   //          |   ERROR: 'b < 'a !
-}                         //  --------+
-```
-
-Lifetime `'b` of `x` is **shorter** than lifetime `'a` of `r`
-
-So `r = &x` creates a reference that **outlives** `x` -- rejected!
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Lifetimes: The Problem with `longer`
-
-The compiler **cannot** tell which input the return value refers to
-
-```
-error[E0106]: missing lifetime specifier
-  --> src/main.rs:1:33
-   |
-1  | fn longer(s1: &str, s2: &str) -> &str {
-   |               ----      ----     ^ expected named lifetime parameter
-   |
-   = help: this function's return type contains a borrowed value,
-     but the signature does not say whether it is borrowed from `s1` or `s2`
-```
-
-The borrow checker needs to know: **how long is the returned `&str` valid?**
-
-- If it comes from `s1`, valid as long as `s1` is alive
-- If it comes from `s2`, valid as long as `s2` is alive
-- We need to express: valid as long as **both** are alive
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Lifetime Annotations
-
-**Lifetime annotations** describe the _relationships_ between reference lifetimes
-
-```rust
-&i32        // a reference (lifetime inferred)
-&'a i32     // a reference with an explicit lifetime `'a`
-&'a mut i32 // a mutable reference with an explicit lifetime `'a`
-```
-
-Lifetime parameters start with `'` and are usually short: `'a`, `'b`, ...
-
-They are declared in angle brackets, like generic type parameters
-
-```rust
-fn longer<'a>(s1: &'a str, s2: &'a str) -> &'a str {
-    if s1.len() >= s2.len() { s1 } else { s2 }
-}
-```
-
-**Meaning**: for some lifetime `'a`, both inputs and the output live at least as long as `'a`
-
-i.e. the returned reference is valid as long as **both** `s1` and `s2` are valid
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 ## Constructing Types
 
@@ -1712,3 +1617,4 @@ and then Rust specific features like
 <br>
 <br>
 <br>
+````
