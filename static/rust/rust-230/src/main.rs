@@ -357,13 +357,13 @@ fn print_word_slice(z: &[char]) {
     println!(">");
 }
 
-fn first_word_slice<'a>(z: &'a Vec<char>) -> &'a [char] {
+fn first_word_slice(z: &mut Vec<char>) -> &mut [char] {
     let begin = 0;
     let mut end = 0;
     while z[end] != ' ' {
         end += 1;
     }
-    &z[begin..end]
+    &mut z[begin..end]
 }
 
 fn last_word_slice<'a>(z: &'a Vec<char>) -> &'a [char] {
@@ -379,19 +379,34 @@ fn last_word_slice<'a>(z: &'a Vec<char>) -> &'a [char] {
 fn test_bat_man_slice() {
     let mut str = vec!['b', 'a', 't', ' ', 'm', 'a', 'n', 'g', 'o'];
 
-    let first = first_word_slice(&str);
+    let first = first_word_slice(&mut str);
+    first[0] = 'c';
     print_word_slice(first);
 
-    let last = last_word_slice(&str); // ------- CREATE IMMUTABLE BORROW
-    print_word_slice(last); // <------ USING IMMUTABLE BORROW
+    // let last = last_word_slice(&str); // ------- CREATE IMMUTABLE BORROW
+    // print_word_slice(last); // <------ USING IMMUTABLE BORROW
 
-    println!("first word is {:?}, last word is {:?}", first, last);
+    // println!("first word is {:?}, last word is {:?}", first, last);
 
-    let blah = &mut str[0..5];
-    blah[0] = 'c';
+    // let blah = &mut str[0..5];
+    // blah[0] = 'c';
 
     println!("{str:?}");
 }
+
+// fn longer_og(my_slice: &[char]) -> &[char] {
+//     let vec = vec!['a', 'b', 'c'];
+//     let bob = &vec[0..2];
+//     bob
+//     // &my_slice[0..4]
+// }
+
+/*
+let thing : Thing = mk_thing();
+let bob = &thing;
+bob.call_method()
+
+*/
 
 fn longer<'banana>(w1: &'banana [char], w2: &'banana [char]) -> &'banana [char] {
     if w1.len() < w2.len() { w2 } else { w1 }
@@ -415,4 +430,159 @@ fn test_bat_man() {
 
     let last = last_word(&str);
     print_word(&str, &last);
+}
+
+// ---
+
+trait Summary {
+    fn summarize(&self) -> String;
+    fn size(&self) -> usize;
+
+    fn kind() -> String;
+}
+
+struct Article {
+    headline: String,
+    author: String,
+}
+
+impl Summary for Article {
+    fn summarize(&self) -> String {
+        format!("{}, by {}", self.headline, self.author)
+    }
+
+    fn size(&self) -> usize {
+        self.headline.len()
+    }
+
+    fn kind() -> String {
+        String::from("Article")
+    }
+}
+
+#[derive(Debug)]
+enum Quarter {
+    Fall,
+    Winter,
+    Spring,
+}
+
+struct Midterm {
+    year: usize,
+    quarter: Quarter,
+    course: String,
+}
+
+impl Midterm {
+    fn get_year(&self) -> usize {
+        self.year
+    }
+}
+
+impl Summary for Midterm {
+    fn summarize(&self) -> String {
+        format!(
+            "Midterm {} for {} {:?}",
+            self.course, self.year, self.quarter
+        )
+    }
+
+    fn size(&self) -> usize {
+        0
+    }
+
+    fn kind() -> String {
+        String::from("Midterm")
+    }
+}
+
+#[test]
+fn test_article() {
+    let article0 = Article {
+        headline: String::from("My Headline"),
+        author: String::from("me"),
+    };
+    let s = article0.summarize();
+    // article0.get_year();
+
+    let k = Article::kind();
+    println!("SUMMARY {s} --> {k}");
+
+    let mid0 = Midterm {
+        year: 2026,
+        quarter: Quarter::Winter,
+        course: String::from("CSE 230"),
+    };
+
+    print_summary(article0);
+    print_summary(mid0);
+}
+
+fn test_midterm() {
+    let mid0 = Midterm {
+        year: 2026,
+        quarter: Quarter::Winter,
+        course: String::from("CSE 230"),
+    };
+    mid0.get_year();
+}
+
+/*
+takes as input a THING that implements Summary
+
+and prints out the summary
+
+
+print_summary :: (Summary a, Debug a) => a -> IO ()
+
+*/
+
+fn print_summary<T>(thing: T)
+where
+    T: Summary,
+{
+    let s = thing.summarize();
+    println!("Summary of {s}");
+}
+
+#[test]
+fn test_loop() {
+    let my_vec: Vec<i32> = vec![10, 20, 30, 40, 50];
+    let res: Vec<i32> = my_vec
+        .iter()
+        .map(|n| n + 1)
+        .filter(|v| *v % 20 == 0)
+        .collect();
+
+    println!("RES = {res:?}");
+
+    // let mut iter = my_vec.iter();
+
+    // println!("NEXT: {:?}", iter.next());
+    // println!("NEXT: {:?}", iter.next());
+    // println!("NEXT: {:?}", iter.next());
+    // println!("NEXT: {:?}", iter.next());
+    // println!("NEXT: {:?}", iter.next());
+    // println!("NEXT: {:?}", iter.next());
+    // println!("NEXT: {:?}", iter.next());
+    // println!("NEXT: {:?}", iter.next());
+
+    /*
+       for v in my_vec {
+           total += v
+       }
+
+       let mut iter = my_vec.iter();
+       while let Some(v) = iter.next() {
+           total += v;
+       }
+
+
+    */
+
+    // let mut total = 0;
+
+    // for i in 0..100 {
+    //     total += i;
+    // }
 }
