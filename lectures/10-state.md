@@ -98,7 +98,7 @@ label t       = t'
   where 
       (_, t') = (helper 0 t)
 
-helper :: Int -> (Int, Tree (a, Int))
+helper :: Int -> Tree a -> (Int, Tree (a, Int))
 helper n (Leaf x)   = (n+1, Leaf (x, n))
 helper n (Node l r) = (n'', Node l' r')
   where 

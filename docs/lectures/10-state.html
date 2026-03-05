@@ -301,7 +301,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span> </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      (_, t') <span class="ot">=</span> (helper <span class="dv">0</span> t)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ot">helper ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> (<span class="dt">Int</span>, <span class="dt">Tree</span> (a, <span class="dt">Int</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ot">helper ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Tree</span> a <span class="ot">-&gt;</span> (<span class="dt">Int</span>, <span class="dt">Tree</span> (a, <span class="dt">Int</span>))</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>helper n (<span class="dt">Leaf</span> x)   <span class="ot">=</span> (n<span class="op">+</span><span class="dv">1</span>, <span class="dt">Leaf</span> (x, n))</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>helper n (<span class="dt">Node</span> l r) <span class="ot">=</span> (n'', <span class="dt">Node</span> l' r')</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">where</span> </span>
