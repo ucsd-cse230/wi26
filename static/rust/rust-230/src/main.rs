@@ -1,4 +1,8 @@
+#![allow(warnings)]
+
 use std::f64::consts::PI;
+
+pub mod concurrency;
 
 fn fib(n: usize) -> usize {
     if n <= 1 {

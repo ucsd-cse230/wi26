@@ -44,7 +44,7 @@ In Rust, the compiler catches them **at compile time**.
 - [ ] Threads
 - [ ] Message Passing (Channels)
 - [ ] Shared State (Mutex)
-- [ ] Send and Sync
+- [?] Send and Sync
 
 <br>
 <br>
@@ -59,12 +59,9 @@ In Rust, the compiler catches them **at compile time**.
 Use `thread::spawn` with a closure
 
 ```rust
-use std::thread;
-use std::time::Duration;
-
-fn main() {
+fn test_spawn() {
     thread::spawn(|| {
-        for i in 1..5 {
+        for i in 1..10 {
             println!("spawned: {i}");
             thread::sleep(Duration::from_millis(1));
         }
@@ -87,7 +84,7 @@ spawned: 2
 spawned: 3
 ```
 
-**Problem**: when `main` ends, spawned threads are **killed** -- even if unfinished!
+**Boo!**: when `main` ends, spawned threads are **killed** -- even if **not finished**!
 
 <br>
 <br>
@@ -106,9 +103,9 @@ spawned: 3
 use std::thread;
 use std::time::Duration;
 
-fn main() {
+fn test_spawn_join() {
     let handle = thread::spawn(|| {
-        for i in 1..5 {
+        for i in 1..10 {
             println!("spawned: {i}");
             thread::sleep(Duration::from_millis(1));
         }
@@ -123,7 +120,7 @@ fn main() {
 }
 ```
 
-Now all spawned thread iterations complete before the program exits.
+`handle.join()` forces the main thread to wait for the spawned thread to finish.
 
 <br>
 <br>
@@ -139,9 +136,7 @@ Now all spawned thread iterations complete before the program exits.
 What happens when we compile this?
 
 ```rust
-use std::thread;
-
-fn main() {
+fn test_spawn_with_vec() {
     let v = vec![1, 2, 3];
 
     let handle = thread::spawn(|| {
@@ -284,7 +279,7 @@ The ownership rules we already know prevent sharing data unsafely between thread
 - [+] Threads: `thread::spawn`, `move` closures, `join()`
 - [ ] Message Passing (Channels)
 - [ ] Shared State (Mutex)
-- [ ] Send and Sync
+- [?] Send and Sync
 
 <br>
 <br>
@@ -320,7 +315,7 @@ The channel is **closed** when either end is dropped.
 use std::sync::mpsc;
 use std::thread;
 
-fn main() {
+fn test_channel() {
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
@@ -332,6 +327,8 @@ fn main() {
     println!("Got: {received}");
 }
 ```
+
+When you run this
 
 ```
 Got: hello
@@ -398,7 +395,18 @@ error[E0382]: borrow of moved value: `msg`
 
 `send` takes **ownership** of `msg` -- you can't use it afterwards.
 
-This prevents the sender from modifying data while the receiver reads it!
+... **but why???**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+This _prevents the sender from modifying data_ while the receiver reads it!
 
 <br>
 <br>
@@ -416,11 +424,11 @@ use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 
-fn main() {
+fn test_multiple_messages() {
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
-        let msgs = vec!["hi", "from", "the", "thread"];
+        let msgs = vec!["hello", "from", "the", "other", "side"];
         for msg in msgs {
             tx.send(String::from(msg)).unwrap();
             thread::sleep(Duration::from_millis(500));
@@ -433,14 +441,20 @@ fn main() {
 }
 ```
 
+When we run it, we get
+
 ```
-Got: hi
+Got: hello
 Got: from
 Got: the
-Got: thread
+Got: other
+Got: side
 ```
 
-The `for` loop over `rx` blocks waiting for values and stops when the channel closes.
+The `for` loop over `rx` is an _iterator_ that:
+
+1. **blocks** waiting for values and
+2. **finishes** when the channel closes.
 
 <br>
 <br>
@@ -459,16 +473,22 @@ Clone `tx` to send from **multiple** threads to the **same** receiver
 use std::sync::mpsc;
 use std::thread;
 
-fn main() {
-    let (tx, rx) = mpsc::channel();
+fn test_multiple_producers() {
+    let (tx1, rx) = mpsc::channel();
 
-    let tx1 = tx.clone();
+    let tx2 = tx1.clone();
     thread::spawn(move || {
-        tx1.send(String::from("hi from thread 1")).unwrap();
+        let msgs = vec!["hello", "from", "the", "other", "side"];
+        for msg in msgs {
+            tx1.send(String::from(msg)).unwrap();
+        }
     });
 
     thread::spawn(move || {
-        tx.send(String::from("hi from thread 2")).unwrap();
+        let msgs = vec!["i", "must've", "called", "a", "thousand", "times"];
+        for msg in msgs {
+            tx2.send(String::from(msg)).unwrap();
+        }
     });
 
     for received in rx {
@@ -493,7 +513,7 @@ Output order is **nondeterministic** -- depends on scheduling!
 - [+] Threads: `thread::spawn`, `move` closures, `join()`
 - [+] Message Passing: `mpsc::channel()`, `send`, `recv`, multiple producers
 - [ ] Shared State (Mutex)
-- [ ] Send and Sync
+- [?] Send and Sync
 
 <br>
 <br>
@@ -506,6 +526,18 @@ Output order is **nondeterministic** -- depends on scheduling!
 ## Shared State: Mutex
 
 Sometimes threads need to **share** data (not just pass messages).
+
+**Examples?**
+
+- ???
+- ???
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 A **Mutex** (mutual exclusion) guards shared data:
 
@@ -559,10 +591,7 @@ fn main() {
 What happens here?
 
 ```rust
-use std::sync::Mutex;
-use std::thread;
-
-fn main() {
+fn test_mutex_many() {
     let counter = Mutex::new(0);
     let mut handles = vec![];
 
@@ -622,6 +651,8 @@ We need **multiple ownership** across threads.
 <br>
 <br>
 
+<!--
+
 ## Attempt: `Rc<Mutex<T>>`?
 
 Maybe `Rc` (reference counting) can give us multiple owners?
@@ -656,20 +687,24 @@ fn main() {
 <br>
 <br>
 
+-->
+
+<!--
+
 ## `Rc` is NOT Thread-Safe!
 
 ```
 error[E0277]: `Rc<Mutex<i32>>` cannot be sent between threads safely
-   --> src/main.rs:11:36
-    |
-11  |         let handle = thread::spawn(move || {
-    |                      ------------- ^------
-    |                      |             |
-    |                      |             `Rc<Mutex<i32>>` cannot be sent
-    |                      |              between threads safely
-    |                      required by a bound introduced by this call
-    |
-    = help: the trait `Send` is not implemented for `Rc<Mutex<i32>>`
+
+11 | let handle = thread::spawn(move || {
+| ------------- ^------
+| | |
+| | `Rc<Mutex<i32>>` cannot be sent
+| | between threads safely
+| required by a bound introduced by this call
+|
+= help: the trait `Send` is not implemented for `Rc<Mutex<i32>>`
+
 ```
 
 `Rc` updates its reference count **without** thread-safe synchronization.
@@ -684,15 +719,18 @@ Two threads incrementing the count at the same time could corrupt it!
 <br>
 <br>
 
+--->
+
 ## Solution: `Arc<T>` (Atomic Reference Counting)
 
-`Arc<T>` is like `Rc<T>` but uses **atomic** operations -- safe across threads!
+`Arc<T>` uses **atomic** operations to allow multiple sharers across threads!
+
+- "RC" is for **Reference Counting**; data tracks how many owners there are
+- "A" is for **Atomic**; reference count updates are thread-safe
+- Data is "dropped" when number of owners goes to `0`
 
 ```rust
-use std::sync::{Arc, Mutex};
-use std::thread;
-
-fn main() {
+fn test_mutex_many() {
     let counter = Arc::new(Mutex::new(0));
     let mut handles = vec![];
 
@@ -728,17 +766,19 @@ Result: 10
 
 ## `Arc` + `Mutex`: The Pattern
 
-| Single-threaded           | Multi-threaded            |
-|---------------------------|---------------------------|
-| `Rc<T>`                   | `Arc<T>`                  |
-| `RefCell<T>`              | `Mutex<T>`                |
-| `Rc<RefCell<T>>`          | `Arc<Mutex<T>>`           |
+<!-- | Single-threaded  | Multi-threaded  |
+| ---------------- | --------------- |
+| `Rc<T>`          | `Arc<T>`        |
+| `RefCell<T>`     | `Mutex<T>`      |
+| `Rc<RefCell<T>>` | `Arc<Mutex<T>>` | -->
 
 - `Arc` gives multiple ownership across threads
 - `Mutex` gives interior mutability (only one writer at a time)
 - Together: **shared mutable state** that is safe
 
-**Note**: `Arc` has a performance cost (atomic operations). Use `Rc` in single-threaded code.
+**Note**: `Arc` has a performance cost (atomic operations).
+
+(Sometimes, when you need multiple owners in _single-threaded_ code, use `Rc` instead.)
 
 <br>
 <br>
@@ -754,7 +794,7 @@ Result: 10
 - [+] Threads: `thread::spawn`, `move` closures, `join()`
 - [+] Message Passing: `mpsc::channel()`, `send`, `recv`, multiple producers
 - [+] Shared State: `Mutex<T>`, `Arc<T>`, `Arc<Mutex<T>>`
-- [ ] Send and Sync
+- [?] Send and Sync
 
 <br>
 <br>
@@ -764,6 +804,7 @@ Result: 10
 <br>
 <br>
 
+<!--
 ## `Send` and `Sync` Traits
 
 How does Rust **know** what's safe to use across threads?
@@ -924,13 +965,14 @@ fn quiz_c() {
 <br>
 <br>
 <br>
+--->
 
 ## Goal Today
 
 - [+] Threads: `thread::spawn`, `move` closures, `join()`
 - [+] Message Passing: `mpsc::channel()`, `send`, `recv`, multiple producers
 - [+] Shared State: `Mutex<T>`, `Arc<T>`, `Arc<Mutex<T>>`
-- [+] Send and Sync: compiler-checked thread safety
+- [?] Send and Sync: compiler-checked thread safety
 
 <br>
 <br>
@@ -947,14 +989,14 @@ Rust prevents concurrency bugs **at compile time** using the same tools we alrea
 - **Borrowing** prevents dangling references across threads
 - **`Send`/`Sync` traits** prevent non-thread-safe types from crossing thread boundaries
 
-| Tool              | What it does                                     |
-|-------------------|--------------------------------------------------|
-| `thread::spawn`   | create a new thread                              |
-| `move` closures   | transfer ownership into a thread                 |
-| `mpsc::channel`   | send data between threads (ownership transfer)   |
-| `Mutex<T>`        | shared mutable access with locking               |
-| `Arc<T>`          | thread-safe reference counting                   |
-| `Send` / `Sync`   | compile-time thread safety checks                |
+| Tool            | What it does                                   |
+| --------------- | ---------------------------------------------- |
+| `thread::spawn` | create a new thread                            |
+| `move` closures | transfer ownership into a thread               |
+| `mpsc::channel` | send data between threads (ownership transfer) |
+| `Mutex<T>`      | shared mutable access with locking             |
+| `Arc<T>`        | thread-safe reference counting                 |
+| `Send` / `Sync` | compile-time thread safety checks              |
 
 <br>
 <br>
