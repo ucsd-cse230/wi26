@@ -1,5 +1,6 @@
 #![allow(warnings)]
 
+use rayon::prelude::*;
 use std::f64::consts::PI;
 
 pub mod concurrency;
@@ -549,16 +550,26 @@ where
     println!("Summary of {s}");
 }
 
+fn test_iter_generic<I: Iterator<Item = i32>>(my_little_iterator: I) {
+    let res: i32 = my_little_iterator
+        .map(|n| n * 3)
+        .filter(|v| *v % 60 == 0)
+        .sum();
+
+    println!("RES = {res:?}");
+}
+
 #[test]
 fn test_loop() {
     let my_vec: Vec<i32> = vec![10, 20, 30, 40, 50];
-    let res: Vec<i32> = my_vec
-        .iter()
-        .map(|n| n + 1)
-        .filter(|v| *v % 20 == 0)
-        .collect();
+    test_iter_generic(my_vec.into_iter());
 
-    println!("RES = {res:?}");
+    let rng_iter = (0..100).into_iter();
+    test_iter_generic(rng_iter);
+
+    // let res: i32 = my_vec.iter().map(|n| n * 3).filter(|v| *v % 60 == 0).sum();
+
+    // println!("RES = {res:?}");
 
     // let mut iter = my_vec.iter();
 
@@ -589,4 +600,20 @@ fn test_loop() {
     // for i in 0..100 {
     //     total += i;
     // }
+}
+
+fn sum_of_squares(v: &[i128]) -> i128 {
+    // let mut total = 0;
+    v.par_iter()
+        .map(|x| x * x)
+        // .for_each(|x| total += x);
+        .sum()
+    // total
+}
+
+#[test]
+fn test_par_sum_squers() {
+    let data: Vec<i128> = (1..=1_000_00000).collect();
+    let result = sum_of_squares(&data);
+    println!("Sum of squares: {result}");
 }
