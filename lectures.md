@@ -26,7 +26,7 @@ headerImg: books.jpg
 |  _3/3_   | Lifetimes          | [html][19-lifetimes]   |               | [code][code-rs]   |
 |  _3/5_   | Traits             | [html][20-traits]      |               | [code][code-rs]   |
 |  _3/10_  | Midterm 2          |                        |               |
-|  _3/12_  | Concurrency        | [html][21-concurrency] |               | [code][code-rs]   |
+|  _3/12_  | Concurrency        | [html][21-concurrency] |               | [code][concur-rs]   |
 
 <!--
 | *11/21*    | Property-based Testing          | [html][14-testing]        |                      | [code][code-11-21] |
@@ -61,6 +61,7 @@ headerImg: books.jpg
 [code-2-10]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_2_10_26.hs
 [code-2-12]: https://github.com/ucsd-cse230/wi26/tree/main/static/code/src/lec_2_12_26.hs
 [code-rs]: https://github.com/ucsd-cse230/wi26/blob/main/static/rust/rust-230/src/main.rs
+[concur-rs]: https://github.com/ucsd-cse230/wi26/blob/main/static/rust/rust-230/src/concurrency.rs
 [00-intro]: static/raw/lec-intro.pdf
 [01-lambda]: lectures/01-lambda.html
 [00-hello]: lectures/00-hello.html
